@@ -1,9 +1,9 @@
 <?php
 
 /* Get post objects for select field options */ 
-function get_director_objects( $query_args ) {
+function get_post_objects( $query_args ) {
 $args = wp_parse_args( $query_args, array(
-    'post_type' => 'director',
+    'posts_per_page' => -1,
 ) );
 $posts = get_posts( $args );
 $post_options = array();
@@ -15,20 +15,6 @@ if ( $posts ) {
 return $post_options;
 }
 
-function get_video_objects( $query_args ) {
-$args = wp_parse_args( $query_args, array(
-    'post_type' => 'video',
-) );
-$posts = get_posts( $args );
-$post_options = array();
-if ( $posts ) {
-    foreach ( $posts as $post ) {
-        $post_options [ $post->ID ] = $post->post_title;
-    }
-}
-return $post_options;
-
-}
 
 
 /**
@@ -43,7 +29,25 @@ return $post_options;
 
 function cmb_sample_metaboxes( array $meta_boxes ) {
 
+	$post_ID = $_GET['post'];
+
 	$prefix = '_igv_';
+
+	$director_args = array(
+		'post_type' => 'director'
+	);
+
+	$showreel_args = array(
+		'post_type'			=> 'video',
+	    'meta_query' => array(
+			array(
+				'key' => '_igv_director',
+				'value' => $post_ID,
+				'type' => 'NUMERIC',
+				'compare' => '='
+			)
+		)
+    );
 
 	$meta_boxes['director_metabox'] = array(
 		'id'         => 'director_metabox',
@@ -59,7 +63,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'desc'    => __( '', 'cmb' ),
 				'id'      => $prefix . 'director',
 				'type'    => 'select',
-				'options' => get_director_objects(),
+				'options' => get_post_objects($director_args),
 			),
 		)
 	);
@@ -89,7 +93,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 						'desc'    => __( '', 'cmb' ),
 						'id'      => 'video',
 						'type'    => 'select',
-						'options' => get_video_objects(),
+						'options' => get_post_objects($showreel_args),
 					),
 				),
 			),
@@ -121,7 +125,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 						'desc'    => __( '', 'cmb' ),
 						'id'      => 'video',
 						'type'    => 'select',
-						'options' => get_video_objects(),
+						'options' => get_post_objects($showreel_args),
 					),
 				),
 			),
@@ -153,7 +157,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 						'desc'    => __( '', 'cmb' ),
 						'id'      => 'video',
 						'type'    => 'select',
-						'options' => get_video_objects(),
+						'options' => get_post_objects($showreel_args),
 					),
 				),
 			),
