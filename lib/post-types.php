@@ -86,7 +86,7 @@ function register_cpt_video() {
         'labels' => $labels,
         'hierarchical' => false,
         
-        'supports' => array( 'title', 'editor', 'thumbnail' ),
+        'supports' => array( 'title', 'editor', 'thumbnail', 'tags' ),
         
         'public' => true,
         'show_ui' => true,
@@ -100,7 +100,9 @@ function register_cpt_video() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => true,
-        'capability_type' => 'post'
+        'capability_type' => 'post',
+
+        'taxonomies' => array('post_tag')
     );
 
     register_post_type( 'video', $args );
