@@ -13,7 +13,7 @@ $gutter = 16px
 .col
   float: left
   margin-left: ($gutter/2)
-  margin-right: ($gutter/2) 
+  margin-right: ($gutter/2)
 for col in 1..$cols
   .col{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
@@ -72,28 +72,22 @@ img
   height: auto
 
 
-//the 100% widths are just so stylus can compile delete as desired
+// STRUCTURE
 
-// HEADER
+#sidebar
+  width: 20%
+  float: left
 
-#header
-  width: 100%
+#main-content
+  width: 80%
+  float: left
 
-// POSTS LOOP
-#posts
-  width: 100%
+// SIDEBAR
 
-.post
-  width: 100%
-
-#pagination
-  width: 100%
-
-
-// FOOTER
-
-#footer
-  width: 100%
+.sidebar-section
+  &:after
+    content:"\2014"
+    display: block
 
 
 // MEDIA QUERIES

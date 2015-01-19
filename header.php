@@ -80,7 +80,48 @@ if( is_home() ) {
 
   <section id="main-container">
 
-  <!-- start content -->
-  <header id="header">
-    <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-  </header>
+    <!-- start content -->
+    <nav id="sidebar">
+
+      <div class="sidebar-section">
+        Nice Shirt logo
+      </div>
+
+      <div class="sidebar-section">
+        <ul>
+          <li><a href="<?php echo home_url('about/'); ?>">About</a></li>
+          <li><a href="<?php echo home_url('news/'); ?>">News</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <ul id="sidebar-directors">
+<?php
+$directors = get_posts('post_type=director&posts_per_page=-1');
+foreach ($directors as $post) {
+  echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+}
+?>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        client area
+      </div>
+
+      <div class="sidebar-section">
+        search
+        <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+          <input type="search" class="search-form-input" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+        </form>
+      </div>
+
+      <div class="sidebar-section">
+        <ul>
+          <li>+44 (0)20 7255 8100</li>
+          <li>hello@niceshirtfilms.com</li>
+          <li><span class="genericon genericon-subscribe"></span> <span class="genericon genericon-twitter"></span> <span class="genericon genericon-facebook"></span></li>
+        </ul>
+      </div>
+
+    </nav>

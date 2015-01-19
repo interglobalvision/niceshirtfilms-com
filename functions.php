@@ -103,4 +103,22 @@ function is_single_type($type, $post) {
   }
 }
 
+// ALTER QUERY
+
+add_action('pre_get_posts','alter_query');
+
+function alter_query($query) {
+	global $wp_query;
+
+  if ( !$query->is_main_query() ) {
+		return;
+  }
+
+  if (is_home()) {
+  	$query-> set('post_type' , array('post', 'video'));
+  }
+
+	remove_all_actions ( '__after_loop');
+}
+
 ?>
