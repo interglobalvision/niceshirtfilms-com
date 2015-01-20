@@ -84,7 +84,7 @@ if( is_home() ) {
     <nav id="sidebar">
 
       <div class="sidebar-section">
-        Nice Shirt logo
+        <img src="<?php bloginfo('stylesheet_directory'); ?>/img/optimized/NiceShirt_beta_logo.svg" alt="Nice Shirt" id="logo" />
       </div>
 
       <div class="sidebar-section">
@@ -97,7 +97,7 @@ if( is_home() ) {
       <div class="sidebar-section">
         <ul id="sidebar-directors">
 <?php
-$directors = get_posts('post_type=director&posts_per_page=-1');
+$directors = get_posts('post_type=director&posts_per_page=-1&orderby=title&order=ASC');
 foreach ($directors as $post) {
   echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
 }
@@ -110,17 +110,17 @@ foreach ($directors as $post) {
       </div>
 
       <div class="sidebar-section">
-        search
         <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-          <input type="search" class="search-form-input" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+          <label>search</label>
+          <input type="search" id="search-input" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
         </form>
       </div>
 
       <div class="sidebar-section">
         <ul>
-          <li>+44 (0)20 7255 8100</li>
-          <li>hello@niceshirtfilms.com</li>
-          <li><span class="genericon genericon-subscribe"></span> <span class="genericon genericon-twitter"></span> <span class="genericon genericon-facebook"></span></li>
+          <li><a href="tel:+442072558100">+44 (0)20 7255 8100</a></li>
+          <li><a href="mailto:hello@niceshirtfilms.com">hello@niceshirtfilms.com</a></li>
+          <li><span class="genericon genericon-subscribe"></span> <a href="https://twitter.com/niceshirtfilms" target="_blank"><span class="genericon genericon-twitter"></span></a> <a href="https://www.facebook.com/NiceShirtFilms" target="_blank"><span class="genericon genericon-facebook"></span></a></li>
         </ul>
       </div>
 

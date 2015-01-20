@@ -1289,6 +1289,7 @@ a,
 a:active,
 a:visited {
   color: inherit;
+  text-decoration: none;
   transition: opacity 0.2s;
 }
 
@@ -1300,7 +1301,7 @@ a:visited:hover {
 
 html {
   background-color: #fdfdfd;
-  color: #0e0e0e;
+  color: #817e7e;
 }
 
 img {
@@ -1311,6 +1312,8 @@ img {
 #sidebar {
   width: 20%;
   float: left;
+  box-sizing: border-box;
+  padding: 16px;
 }
 
 #main-content {
@@ -1318,9 +1321,21 @@ img {
   float: left;
 }
 
+.sidebar-section {
+  margin-bottom: 16px;
+}
+
 .sidebar-section:after {
   content: "\2014";
   display: block;
+  margin-top: 16px;
+}
+
+#search-input {
+  display: inline-block;
+  width: 50px;
+  border: 0;
+  border-bottom: dotted 1px;
 }
 
 @media screen and (max-width: 1272px) {
