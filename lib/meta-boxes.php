@@ -6,7 +6,7 @@ $args = wp_parse_args( $query_args, array(
     'posts_per_page' => -1,
 ) );
 $posts = get_posts( $args );
-$post_options = array();
+$post_options = array(" " => null);
 if ( $posts ) {
     foreach ( $posts as $post ) {
         $post_options [ $post->ID ] = $post->post_title;
