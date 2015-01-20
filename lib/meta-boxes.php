@@ -25,11 +25,15 @@ return $post_options;
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     https://github.com/webdevstudios/Custom-Metaboxes-and-Fields-for-WordPress
  */
- add_filter( 'cmb_meta_boxes', 'cmb_sample_metaboxes' );
+add_filter( 'cmb_meta_boxes', 'cmb_sample_metaboxes' );
 
 function cmb_sample_metaboxes( array $meta_boxes ) {
 
-	$post_ID = $_GET['post'];
+	if (isset($_GET['post'])) {
+		$post_ID = $_GET['post'];
+	} else {
+		$post_ID = null;
+	}
 
 	$prefix = '_igv_';
 
