@@ -6,7 +6,7 @@ function scripts_and_styles_method() {
   // library.js is to bundle plugins. my.js is your scripts. enqueue more files as needed
   $jslib = $templateuri."library.js";
   wp_enqueue_script( 'jslib', $jslib,'','',true);
-  $myscripts = $templateuri."my.js";
+  $myscripts = $templateuri."main.js";
   wp_enqueue_script( 'myscripts', $myscripts,'','',true);
 
   // enqueue stylesheet here. file does not exist until stylus file is processed
@@ -28,7 +28,8 @@ if( function_exists( 'add_image_size' ) ) {
   add_image_size( 'admin-thumb', 150, 150, false );
   add_image_size( 'opengraph', 1200, 630, true );
 
-  add_image_size( 'name', 199, 299, true );
+  add_image_size( 'post-background', 700, 280, true );
+  add_image_size( 'post-background-large', 1100, 440, true );
 }
 
 // Register Nav Menus

@@ -20,6 +20,8 @@ for col in 1..$cols
 
 // VARIABLES
 
+$width-sidebar = 250px
+
 $margin-small = ($gutter)
 $margin-basic = ($gutter*2)
 $margin-large = ($gutter*5)
@@ -50,6 +52,9 @@ h2
 h3
   font-size: 1.5em
 
+h1,h2,h3,h4,h5,h6
+  line-height: $font-leading-basic
+
 p
   margin-bottom: 1em
 
@@ -78,15 +83,16 @@ img
 // STRUCTURE
 
 #sidebar
-  width: 20%
-  float: left
+  width: $width-sidebar
+  position: fixed
+  top: 0
+  left: 0
 
   box-sizing: border-box
   padding: $margin-small
 
 #main-content
-  width: 80%
-  float: left
+  padding-left: $width-sidebar
 
 // SIDEBAR
 
@@ -102,6 +108,19 @@ img
   width: 50px
   border: 0
   border-bottom: dotted 1px
+
+// POSTS
+
+.basic-post
+  text-align: center
+  color: $soft-white
+  background-color: $soft-black
+  background-position: center center
+  background-size: cover
+
+h2
+  padding-top: $margin-large
+  padding-bottom: $margin-large
 
 
 // MEDIA QUERIES
