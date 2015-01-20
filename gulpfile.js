@@ -33,7 +33,7 @@ gulp.task('js', function() {
 
 gulp.task('style', function() {
   gulp.src([
-    'css/reset.styl',
+//     'css/reset.styl',
     'css/site.styl',
   ])
     .pipe(stylus())
@@ -44,7 +44,7 @@ gulp.task('style', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['js/main.js'], ['js']);
+//   gulp.watch(['js/main.js'], ['js']);
   gulp.watch(['css/site.styl'], ['style']);
 });
 
