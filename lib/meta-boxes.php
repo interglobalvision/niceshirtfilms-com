@@ -1,6 +1,6 @@
 <?php
 
-/* Get post objects for select field options */ 
+/* Get post objects for select field options */
 function get_post_objects( $query_args ) {
 $args = wp_parse_args( $query_args, array(
     'posts_per_page' => -1,
@@ -51,17 +51,28 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'compare' => '='
 			)
 		)
-    );
+  );
 
 	$meta_boxes['director_metabox'] = array(
 		'id'         => 'director_metabox',
 		'title'      => __( 'Director', 'cmb' ),
-		'pages'      => array( 'video','showreel' ), // Post type
+		'pages'      => array( 'video' ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
-		'show_names' => false, // Show field names on the left
-		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
+		'show_names' => true, // Show field names on the left
 		'fields'     => array(
+			array(
+				'name'    => __( 'Title', 'cmb' ),
+				'desc'    => __( '', 'cmb' ),
+				'id'      => $prefix . 'title',
+				'type'    => 'text',
+			),
+			array(
+				'name'    => __( 'Brand', 'cmb' ),
+				'desc'    => __( '', 'cmb' ),
+				'id'      => $prefix . 'brand',
+				'type'    => 'text',
+			),
 			array(
 				'name'    => __( 'Director', 'cmb' ),
 				'desc'    => __( '', 'cmb' ),
