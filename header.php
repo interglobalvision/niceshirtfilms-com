@@ -83,18 +83,20 @@ if( is_home() ) {
     <!-- start content -->
     <nav id="sidebar">
 
-      <div class="sidebar-section">
-        <img src="<?php bloginfo('stylesheet_directory'); ?>/img/optimized/NiceShirt_beta_logo.svg" alt="Nice Shirt" id="logo" />
+      <div class="sidebar-section font-larger">
+        <a href="<?php echo home_url(); ?>">
+          <img src="<?php bloginfo('stylesheet_directory'); ?>/img/optimized/NiceShirt_beta_logo.svg" alt="Nice Shirt" id="logo" />
+        </a>
       </div>
 
-      <div class="sidebar-section">
+      <div class="sidebar-section font-larger">
         <ul>
           <li><a href="<?php echo home_url('about/'); ?>">About</a></li>
-          <li><a href="<?php echo home_url('news/'); ?>">News</a></li>
+          <li><a href="<?php echo home_url('category/news/'); ?>">News</a></li>
         </ul>
       </div>
 
-      <div class="sidebar-section">
+      <div class="sidebar-section font-larger">
         <ul id="sidebar-directors">
 <?php
 $directors = get_posts('post_type=director&posts_per_page=-1&orderby=title&order=ASC');
@@ -106,7 +108,7 @@ foreach ($directors as $post) {
       </div>
 
       <div class="sidebar-section">
-        client area
+        <a href="<?php echo home_url('client-log-in/'); ?>">client area</a>
       </div>
 
       <div class="sidebar-section">

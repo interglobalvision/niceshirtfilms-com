@@ -1,3 +1,4 @@
+@import "fonts"
 @import "resets"
 
 // Grid of 12 90px columns with 16px gutter
@@ -22,24 +23,42 @@ for col in 1..$cols
 
 $width-sidebar = 250px
 
+$basic-animation-speed = 0.2s
+
 $margin-small = ($gutter)
 $margin-basic = ($gutter*2)
 $margin-large = ($gutter*5)
 
+$basic-post-height = 350px
+
 $font-size-basic = 15px
-$font-leading-basic = 1.35em
-$font-tracking-basic = 0.001em
+$font-size-larger = 17px
+$font-leading-basic = 1.5em
+$font-tracking-basic = 0.03em
 
-$soft-black = rgb(14,14,14)
-$soft-white = rgb(253,253,253)
+$font-size-heading = 50px
+$font-size-subheading = 30px
 
-$gray = rgb(129,126,126)
+$color-soft-black = rgb(14,14,14)
+$color-soft-white = rgb(253,253,253)
+
+$color-light-gray = rgb(237,236,236)
+$color-text-gray = rgb(129,126,126)
 
 // TYPOGRAPHY
 
-body
-  font-family:helvetica,arial,sans-serif
+html, body
+  font-family:"LLAkkuratProWeb-Light",helvetica,arial,sans-serif
   font-size: $font-size-basic
+  line-height: $font-leading-basic
+  letter-spacing: $font-tracking-basic
+
+i, em, .font-italic
+  font-family:"LLAkkuratProWeb-Lightitalic",helvetica,arial,sans-serif
+  font-style: normal !important
+
+.font-larger
+  font-size: $font-size-larger
   line-height: $font-leading-basic
   letter-spacing: $font-tracking-basic
 
@@ -54,9 +73,13 @@ h3
 
 h1,h2,h3,h4,h5,h6
   line-height: $font-leading-basic
+  font-weight: normal
 
 p
   margin-bottom: 1em
+
+.copy
+  max-width: 650px
 
 
 // LINKS
@@ -64,7 +87,7 @@ p
 a,a:active,a:visited
   color:inherit
   text-decoration: none
-  transition:opacity .2s
+  transition:opacity $basic-animation-speed
   &:hover
     opacity:.5
 
@@ -72,12 +95,18 @@ a,a:active,a:visited
 // BASIC
 
 html
-  background-color: $soft-white
-  color: $gray
+  background-color: $color-soft-white
+  color: $color-text-gray
 
 img
   max-width: 100%
   height: auto
+
+
+// UTILITY
+
+.u-marginauto
+  margin: 0 auto
 
 
 // STRUCTURE
@@ -87,12 +116,27 @@ img
   position: fixed
   top: 0
   left: 0
-
+  height: 100%
+  overflow-y: scroll
   box-sizing: border-box
   padding: $margin-small
 
 #main-content
   padding-left: $width-sidebar
+
+// PLAYER
+
+#vimeo-player
+  position: relative
+  height: 0
+  overflow: hidden
+  transition: padding-bottom $basic-animation-speed
+  iframe, object, embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
 
 // SIDEBAR
 
@@ -107,20 +151,93 @@ img
   display: inline-block
   width: 50px
   border: 0
-  border-bottom: dotted 1px
+  border-bottom: dotted 1px $color-text-gray
 
 // POSTS
 
 .basic-post
   text-align: center
-  color: $soft-white
-  background-color: $soft-black
+  color: $color-soft-white
+  height: $basic-post-height
+  background-color: $color-soft-black
   background-position: center center
   background-size: cover
+  &:hover
+    .basic-post-content
+      display: none
+    .basic-post-hover
+      display: inline-block
 
-h2
-  padding-top: $margin-large
-  padding-bottom: $margin-large
+.basic-post-title
+  font-size: $font-size-heading
+
+.basic-post-subtitle
+  font-size: $font-size-subheading
+
+.basic-post-hover
+  display: none
+  padding: $margin-small $margin-basic
+  font-size: $font-size-subheading
+  background-color: $color-soft-white
+  opacity: 0.65
+  color: $color-soft-black
+
+// NEWS POST
+
+.news-read-more
+  .news-post-header:hover
+    .news-header
+      display: none
+    .news-hover
+      display: inline-block
+
+.news-post-header
+  text-align: center
+  color: $color-soft-white
+  height: $basic-post-height
+
+.news-title
+  font-size: $font-size-heading
+  max-width: 800px
+  margin: 0 auto
+
+.news-hover
+  display: none
+  padding: $margin-small $margin-basic
+  font-size: $font-size-subheading
+  background-color: $color-soft-white
+  opacity: 0.65
+  color: $color-soft-black
+
+.news-copy
+  display: none
+  margin: $margin-large 0
+
+// PAGES
+
+.page-header
+  background-color: $color-light-gray
+
+#page-title
+  margin-left: $margin-basic
+  padding-bottom: $margin-small
+
+// DIRECTOR
+
+.director-archive-video
+  float: left
+  width: 20%
+  position: relative
+  .u-holder
+    color: $color-soft-white
+    text-align: center
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    transition: opacity $basic-animation-speed
+    &:hover
+      opacity: 1
 
 
 // MEDIA QUERIES

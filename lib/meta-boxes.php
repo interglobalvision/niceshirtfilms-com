@@ -53,6 +53,30 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 		)
   );
 
+	$meta_boxes['posts_metabox'] = array(
+		'id'         => 'post_metabox',
+		'title'      => __( 'Post Options', 'cmb' ),
+		'pages'      => array( 'post' ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+  		  array(
+          'name' => 'Read More post?',
+          'desc' => 'show read more',
+          'id' => $prefix . 'readmore',
+          'type' => 'checkbox'
+        ),
+        array(
+            'name' => 'Background Color Picker',
+            'id'   => $prefix . 'color',
+            'type' => 'colorpicker',
+            'default'  => '#ffffff',
+            'repeatable' => false,
+        ),
+		)
+	);
+
 	$meta_boxes['director_metabox'] = array(
 		'id'         => 'director_metabox',
 		'title'      => __( 'Director', 'cmb' ),
