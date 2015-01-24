@@ -15,9 +15,22 @@ if( have_posts() ) {
 
   <section id="director" class="<?php post_class(); ?>">
 
-    <header id="director-header" class="page-header">
-      <h1 id="page-title"><?php the_title(); ?></h1>
+    <header id="director-header" class="page-header u-cf">
+      <div class="header-left">
+        <h1 id="page-title"><?php the_title(); ?></h1>
+      </div>
+      <div class="header-right">
+        <a id="director-bio-toggle" class="u-pointer">
+          BIOGRAPHY
+        </a>
+      </div>
     </header>
+
+    <section id="director-biography">
+      <div class="copy">
+        <?php the_content(); ?>
+      </div>
+    </section>
 
     <section id="vimeo-player">
 

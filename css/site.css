@@ -1372,6 +1372,20 @@ img {
   padding-left: 250px;
 }
 
+.header-left {
+  float: left;
+  width: 65%;
+}
+
+.header-right {
+  float: left;
+  width: 35%;
+  box-sizing: border-box;
+  text-align: right;
+  padding-top: 16px;
+  padding-right: 32px;
+}
+
 #vimeo-player {
   position: relative;
   height: 0;
@@ -1481,6 +1495,10 @@ img {
 #page-title {
   margin-left: 32px;
   padding-bottom: 16px;
+}
+
+#director-biography {
+  display: none;
 }
 
 .director-archive-video {

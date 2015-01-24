@@ -51,6 +51,10 @@ jQuery(document).ready(function() {
 
   // DIRECTOR PAGE
 
+  $('#director-bio-toggle').on('click', function(e) {
+    $('#director-biography').slideToggle();
+  });
+
   loadVimeoLinks.on('click', function(e) {
     e.preventDefault();
     loadVimeoPlayer($(this).data('vimeo-id'));
