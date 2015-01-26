@@ -80,6 +80,8 @@ if( is_home() ) {
 
   <section id="main-container">
 
+    <div id="sidebarBtn"></div>
+
     <!-- start content -->
     <nav id="sidebar">
 

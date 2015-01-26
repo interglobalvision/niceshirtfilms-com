@@ -62,6 +62,16 @@ jQuery(document).ready(function() {
 
 });
 
+  // TOGGLE SIDEBAR
+
+  $('#sidebarBtn').on('click', function() {
+    if ($('#sidebar').hasClass('open')) {
+      $('#sidebar').css('transform','translateX(-100%)').removeClass('open');
+    } else {
+      $('#sidebar').css('transform','translateX(0%)').addClass('open');
+    }
+  })
+
 function ifLargeImages() {
   if ($(window).width() > largeImagesWidth) {
     return true;

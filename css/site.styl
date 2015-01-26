@@ -120,6 +120,7 @@ img
   overflow-y: scroll
   box-sizing: border-box
   padding: $margin-small
+  background-color: $color-soft-white
 
 #main-content
   padding-left: $width-sidebar
@@ -259,4 +260,23 @@ img
 
 @media screen and (max-width: ($col * $cols)+($gutter * $cols))
   html
+    width: 100%
+    
+@media screen and (max-width: 800px)
+  #sidebar
+    transform: translateX(-100%)
+    transition: transform .5s
+  #sidebarBtn
+    width: $col
+    height: $col
+    top: $margin-small
+    right: $margin-small
+    position: fixed
+    background: blue
+    z-index: 999
+  #main-content
+    padding-left: 0
+    
+@media screen and (max-width: 400px)
+  #sidebar
     width: 100%
