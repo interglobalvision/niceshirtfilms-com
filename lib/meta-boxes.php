@@ -117,7 +117,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
 		'fields'     => array(
 			array(
-				'id'          => 'showreel_1',
+				'id'          => $prefix . 'showreel_1',
 				'type'        => 'group',
 				'description' => __( '', 'cmb' ),
 				'options'     => array(
@@ -149,7 +149,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
 		'fields'     => array(
 			array(
-				'id'          => 'showreel_2',
+				'id'          => $prefix . 'showreel_2',
 				'type'        => 'group',
 				'description' => __( '', 'cmb' ),
 				'options'     => array(
@@ -181,7 +181,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
 		'fields'     => array(
 			array(
-				'id'          => 'showreel_3',
+				'id'          => $prefix . 'showreel_3',
 				'type'        => 'group',
 				'description' => __( '', 'cmb' ),
 				'options'     => array(

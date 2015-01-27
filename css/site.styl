@@ -65,10 +65,12 @@ i, em, .font-italic
   letter-spacing: $font-tracking-basic
 
 h1
-  font-size: 3em
+  font-size: 43px
+  -webkit-font-smoothing: antialiased
 
 h2
   font-size: 2em
+  -webkit-font-smoothing: antialiased
 
 h3
   font-size: 1.5em
@@ -76,7 +78,6 @@ h3
 h1,h2,h3,h4,h5,h6
   line-height: $font-leading-basic
   font-weight: normal
-  -webkit-font-smoothing: antialiased
 
 p
   margin-bottom: 1em
@@ -254,16 +255,27 @@ img
 #director-biography
   display: none
 
+#director-showreel, #director-archive
+  margin-top: $margin-basic
+
+#director-archive-tags
+  padding-bottom: $margin-small
+
 .filter-tag
   display: inline-block
-  padding: $margin-small
+  padding: $margin-small $margin-small 0 $margin-small
   font-size: $font-size-smaller
 
+.director-showreel-video
+  width: 33.333%
+
 .director-archive-video
-  float: left
   width: 20%
-  position: relative
   display: none
+
+.director-archive-video, .director-showreel-video
+  float: left
+  position: relative
   &.active
     display: block
   .u-holder

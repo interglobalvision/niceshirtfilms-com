@@ -34,9 +34,39 @@ if( have_posts() ) {
 
     <section id="vimeo-player"></section>
 
-    <section id="director-showreel">
+<?php
+global $post;
 
+if (!empty($meta['_igv_showreel_1'][0])) {
+?>
+    <section id="director-showreel" class="u-cf">
+      <h3>Showreel</h3>
+<?php
+  $showreelVideos = get_post_meta( get_the_ID(), '_igv_showreel_1', true );
+  foreach($showreelVideos as $video) {
+    $post = get_post($video['video']);
+    setup_postdata($post);
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb');
+    $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
+    $meta = get_post_meta($post->ID);
+?>
+      <div <?php post_class('director-showreel-video u-pointer js-load-vimeo'); ?> data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>" data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>">
+        <img src="" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>" class="lazy-thumb" alt="<?php the_title(); ?>" />
+        <div class="u-holder">
+          <div class="u-held">
+            <p><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></p>
+            <p><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></p>
+          </div>
+        </div>
+      </div>
+<?php
+  }
+  wp_reset_postdata();
+?>
     </section>
+<?php
+}
+?>
 
     <section id="director-archive">
 <?php
@@ -54,7 +84,7 @@ $archive = get_posts(array(
 ));
 if ($archive) {
 ?>
-
+  <h3>Archive</h3>
   <ul id="director-archive-tags">
     <li class="filter-tag u-pointer highlight" data-tag-slug="all">All</li>
 <?php
@@ -66,7 +96,7 @@ if ($posttags) {
 }
 ?>
   </ul>
-
+  <div class="u-cf">
 <?php
   foreach($archive as $post) {
     setup_postdata($post);
@@ -85,6 +115,9 @@ if ($posttags) {
       </div>
 <?php
   }
+?>
+  </div>
+<?php
 }
 ?>
     </section>
