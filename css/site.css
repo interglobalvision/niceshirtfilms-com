@@ -1374,12 +1374,12 @@ img {
   transition: transform 0.5s;
 }
 
-#sidebarBtn {
+#sidebar-toggle {
   display: none;
   transition: transform 0.5s;
 }
 
-#sidebarBtn path {
+#sidebar-toggle path {
   fill: #fdfdfd;
 }
 
@@ -1556,7 +1556,7 @@ img {
     transform: translateX(0%);
   }
 
-  #sidebarBtn {
+  #sidebar-toggle {
     width: 30px;
     height: 30px;
     top: 16px;
@@ -1568,7 +1568,7 @@ img {
     transform: rotate(0deg);
   }
 
-  #sidebarBtn.rotate {
+  #sidebar-toggle.rotate {
     transform: rotate(90deg);
   }
 

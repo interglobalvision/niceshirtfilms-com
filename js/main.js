@@ -10,7 +10,7 @@ var vimeoPlayer = $('#vimeo-player');
 var loadVimeoLinks = $('.js-load-vimeo');
 
 var sidebar = $('#sidebar');
-var sidebarButton = $('#sidebarBtn');
+var sidebarButton = $('#sidebar-toggle');
 
 var tagFilters = $('.filter-tag');
 var directorArchiveVideos = $('.director-archive-video');
