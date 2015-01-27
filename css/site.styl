@@ -24,6 +24,7 @@ for col in 1..$cols
 $width-sidebar = 250px
 
 $basic-animation-speed = 0.2s
+$longer-animation-speed = 0.5s
 
 $margin-small = ($gutter)
 $margin-basic = ($gutter*2)
@@ -117,10 +118,17 @@ img
   top: 0
   left: 0
   height: 100%
-  overflow-y: scroll
+  overflow-y: auto
   box-sizing: border-box
   padding: $margin-small
   background-color: $color-soft-white
+  transition: transform $longer-animation-speed
+
+#sidebarBtn
+  display: none
+  transition: transform $longer-animation-speed
+  path
+    fill: $color-soft-white
 
 #main-content
   padding-left: $width-sidebar
@@ -258,33 +266,33 @@ img
 
 // MEDIA QUERIES
 
-@media screen and (max-width: ($col * $cols)+($gutter * $cols))
-  html
-    width: 100%
-    
 @media screen and (max-width: 800px)
-  #sidebar, #sidebarBtn
-    transition: transform .5s
+
   #sidebar
     transform: translateX(-100%)
     &.open
       transform: translateX(0%)
+
   #sidebarBtn
     width: 30px
     height: 30px
     top: $margin-small
     right: $margin-small
     position: fixed
+    display: block
     background: none
     z-index: 999
     transform: rotate(0deg)
     &.rotate
       transform: rotate(90deg)
+
   #main-content
     padding-left: 0
-    
+
 @media screen and (max-width: 400px)
+
   #logo
     width: 50%
+
   #sidebar
     width: 100%

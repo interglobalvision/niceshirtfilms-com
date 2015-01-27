@@ -80,7 +80,7 @@ if( is_home() ) {
 
   <section id="main-container">
 
-    <img src="<?php bloginfo('stylesheet_directory'); ?>/img/NiceShirt_button.svg" alt="Nice Shirt" id="sidebarBtn" />
+    <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/NiceShirt_button.svg'); ?>
 
     <!-- start content -->
     <nav id="sidebar">

@@ -9,6 +9,9 @@ var lazyThumbnails = $('.lazy-thumb');
 var vimeoPlayer = $('#vimeo-player');
 var loadVimeoLinks = $('.js-load-vimeo');
 
+var sidebar = $('#sidebar');
+var sidebarButton = $('#sidebarBtn');
+
 var hash = window.location.hash;
 
 jQuery(document).ready(function() {
@@ -60,19 +63,22 @@ jQuery(document).ready(function() {
     loadVimeoPlayer($(this).data('vimeo-id'));
   })
 
-});
-
   // TOGGLE SIDEBAR
 
-  $('#sidebarBtn').on('click', function() {
-    if ($('#sidebar').hasClass('open')) {
-      $(this).removeClass('rotate');
-      $('#sidebar').removeClass('open');
+  sidebarButton.on('click', function() {
+    if (sidebar.hasClass('open')) {
+      sidebar.removeClass('open');
+//    jQuery cant add/removeClass on SVG elements [wtf]
+      sidebarButton.attr('class', 'u-pointer');
     } else {
-      $('#sidebar').addClass('open');
-      $(this).addClass('rotate');
+      sidebar.addClass('open');
+      sidebarButton.attr('class', 'u-pointer rotate');
     }
-  })
+  });
+
+// END DOC READY
+
+});
 
 function ifLargeImages() {
   if ($(window).width() > largeImagesWidth) {
