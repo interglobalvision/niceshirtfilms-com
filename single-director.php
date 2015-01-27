@@ -46,8 +46,8 @@ if (!empty($meta['_igv_showreel_1'][0])) {
   foreach($showreelVideos as $video) {
     $post = get_post($video['video']);
     setup_postdata($post);
-    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb');
-    $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
+    $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
     $meta = get_post_meta($post->ID);
 ?>
       <div <?php post_class('director-showreel-video u-pointer js-load-vimeo'); ?> data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>" data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>">

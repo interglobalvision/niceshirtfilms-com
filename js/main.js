@@ -2,7 +2,7 @@ function l(data) {
 	console.log(data);
 }
 
-var largeImagesWidth = 2000;
+var largeImagesWidth = 1500;
 
 var basicPosts = $('.basic-post');
 var lazyThumbnails = $('.lazy-thumb');
