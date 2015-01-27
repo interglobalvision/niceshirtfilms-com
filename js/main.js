@@ -66,9 +66,11 @@ jQuery(document).ready(function() {
 
   $('#sidebarBtn').on('click', function() {
     if ($('#sidebar').hasClass('open')) {
-      $('#sidebar').css('transform','translateX(-100%)').removeClass('open');
+      $(this).removeClass('rotate');
+      $('#sidebar').removeClass('open');
     } else {
-      $('#sidebar').css('transform','translateX(0%)').addClass('open');
+      $('#sidebar').addClass('open');
+      $(this).addClass('rotate');
     }
   })
 

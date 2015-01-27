@@ -1236,24 +1236,37 @@ img {
   }
 }
 @media screen and (max-width: 800px) {
-  #sidebar {
-    transform: translateX(-100%);
+  #sidebar,
+  #sidebarBtn {
     transition: transform 0.5s;
   }
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  #sidebar.open {
+    transform: translateX(0%);
+  }
   #sidebarBtn {
-    width: 90px;
-    height: 90px;
+    width: 30px;
+    height: 30px;
     top: 16px;
     right: 16px;
     position: fixed;
-    background: #00f;
+    background: none;
     z-index: 999;
+    transform: rotate(0deg);
+  }
+  #sidebarBtn.rotate {
+    transform: rotate(90deg);
   }
   #main-content {
     padding-left: 0;
   }
 }
 @media screen and (max-width: 400px) {
+  #logo {
+    width: 50%;
+  }
   #sidebar {
     width: 100%;
   }
