@@ -121,7 +121,7 @@ img
 #sidebar
   width: $width-sidebar
   position: fixed
-  z-index: 999
+  z-index: 888
   top: 0
   left: 0
   height: 100%
@@ -133,6 +133,7 @@ img
 
 #sidebar-toggle
   display: none
+  z-index: 999
   transition: transform $longer-animation-speed
   path
     fill: $color-soft-white
@@ -322,3 +323,7 @@ img
 
   #sidebar
     width: 100%
+
+  #sidebar-toggle
+    path
+      fill: $color-text-gray

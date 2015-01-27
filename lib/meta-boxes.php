@@ -62,6 +62,12 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
   		  array(
+          'name' => 'Long title',
+          'desc' => 'longer title that also allows formatting',
+          'id' => $prefix . 'longtitle',
+          'type' => 'wysiwyg'
+        ),
+  		  array(
           'name' => 'Read More post?',
           'desc' => 'show read more',
           'id' => $prefix . 'readmore',

@@ -1366,7 +1366,7 @@ img {
 #sidebar {
   width: 250px;
   position: fixed;
-  z-index: 999;
+  z-index: 888;
   top: 0;
   left: 0;
   height: 100%;
@@ -1379,6 +1379,7 @@ img {
 
 #sidebar-toggle {
   display: none;
+  z-index: 999;
   transition: transform 0.5s;
 }
 
@@ -1607,5 +1608,9 @@ img {
 
   #sidebar {
     width: 100%;
+  }
+
+  #sidebar-toggle path {
+    fill: #817e7e;
   }
 }

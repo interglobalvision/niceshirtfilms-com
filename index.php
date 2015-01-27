@@ -72,7 +72,13 @@ if ($readMore) {
             <div class="u-held">
               <div class="news-header">
                 <h2 class="news-title">
-                  <?php the_title(); ?>
+                  <?php
+if (!empty($meta['_igv_longtitle'][0])) {
+  echo $meta['_igv_longtitle'][0];
+} else {
+  the_title();
+}
+                  ?>
                 </h2>
               </div>
               <div class="news-hover">
