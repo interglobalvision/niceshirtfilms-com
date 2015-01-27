@@ -34,6 +34,7 @@ $basic-post-height = 350px
 
 $font-size-basic = 15px
 $font-size-larger = 17px
+$font-size-smaller = 13px
 $font-leading-basic = 1.5em
 $font-tracking-basic = 0.03em
 
@@ -81,6 +82,9 @@ p
 
 .copy
   max-width: 650px
+
+.highlight
+  text-decoration: underline
 
 
 // LINKS
@@ -243,15 +247,23 @@ img
   margin-left: $margin-basic
   padding-bottom: $margin-small
 
-// DIRECTOR
+// DIRECTOR SINGLE
 
 #director-biography
   display: none
+
+.filter-tag
+  display: inline-block
+  padding: $margin-small
+  font-size: $font-size-smaller
 
 .director-archive-video
   float: left
   width: 20%
   position: relative
+  display: none
+  &.active
+    display: block
   .u-holder
     color: $color-soft-white
     text-align: center

@@ -12,6 +12,9 @@ var loadVimeoLinks = $('.js-load-vimeo');
 var sidebar = $('#sidebar');
 var sidebarButton = $('#sidebarBtn');
 
+var tagFilters = $('.filter-tag');
+var directorArchiveVideos = $('.director-archive-video');
+
 var hash = window.location.hash;
 
 jQuery(document).ready(function() {
@@ -52,7 +55,7 @@ jQuery(document).ready(function() {
     $(this).find('.news-copy').slideToggle();
   });
 
-  // DIRECTOR PAGE
+  // DIRECTOR SINGLE
 
   $('#director-bio-toggle').on('click', function(e) {
     $('#director-biography').slideToggle();
@@ -61,7 +64,19 @@ jQuery(document).ready(function() {
   loadVimeoLinks.on('click', function(e) {
     e.preventDefault();
     loadVimeoPlayer($(this).data('vimeo-id'));
-  })
+  });
+
+  tagFilters.on('click', function(e) {
+    tagFilters.removeClass('highlight');
+    $(this).addClass('highlight');
+
+    var tag = $(this).data('tag-slug');
+    if (tag !== 'all') {
+      directorArchiveVideos.removeClass('active').filter('.tag-'+tag).addClass('active');
+    } else {
+      directorArchiveVideos.addClass('active');
+    }
+  });
 
   // TOGGLE SIDEBAR
 

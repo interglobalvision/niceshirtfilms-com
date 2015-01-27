@@ -1329,6 +1329,10 @@ p {
   max-width: 650px;
 }
 
+.highlight {
+  text-decoration: underline;
+}
+
 a,
 a:active,
 a:visited {
@@ -1512,10 +1516,21 @@ img {
   display: none;
 }
 
+.filter-tag {
+  display: inline-block;
+  padding: 16px;
+  font-size: 13px;
+}
+
 .director-archive-video {
   float: left;
   width: 20%;
   position: relative;
+  display: none;
+}
+
+.director-archive-video.active {
+  display: block;
 }
 
 .director-archive-video .u-holder {
