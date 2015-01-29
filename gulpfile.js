@@ -18,25 +18,24 @@ function errorNotify(error){
 }
 
 gulp.task('js', function() {
-  return gulp.src([
+  gulp.src([
     'js/main.js',
     'js/library.js'
   ])
-    .pipe(jslint({
-      reporter: function (evt) {
-        var msg = ' ' + evt.file;
-        if (evt.pass) {
-            msg = '[PASS]' + msg;
-        } else {
-            msg = '[FAIL]' + msg;
-        }
-        console.log(msg);
-      }
-    }))
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('js'))
-    .pipe(notify({ message: 'Js task complete' }));
+  .pipe(jslint({
+    browser: true,
+    white: true,
+    devel: true,
+    unparam: true,
+    global: ['$', 'jQuery'],
+    errorsOnly: true
+  }))
+  .on('error', errorNotify)
+  .pipe(uglify())
+  .on('error', errorNotify)
+  .pipe(rename({suffix: '.min'}))
+  .pipe(gulp.dest('js'))
+  .pipe(notify({ message: 'Js task complete' }));
 });
 
 gulp.task('style', function() {
