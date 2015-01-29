@@ -1138,7 +1138,7 @@ img {
   height: 0;
   overflow: hidden;
   -webkit-transition: padding-bottom 0.2s;
-  transition: padding-bottom 0.2s;
+          transition: padding-bottom 0.2s;
 }
 #vimeo-player iframe,
 #vimeo-player object,
@@ -1196,6 +1196,10 @@ img {
 }
 .news-read-more .news-post-header:hover .news-hover {
   display: inline-block;
+}
+.home-news-posts-with-background {
+  background-size: cover;
+  background-position: center center;
 }
 .news-post-header {
   text-align: center;

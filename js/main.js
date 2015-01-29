@@ -7,8 +7,11 @@
 
   var largeImagesWidth = 1500,
 
-    basicPosts = $('.basic-post'),
+    homeVideoPosts = $('.home-video-posts'),
+    homeNewsPostsWithBackground = $('.home-news-posts-with-background'),
+
     lazyThumbnails = $('.lazy-thumb'),
+
     vimeoPlayer = $('#vimeo-player'),
     loadVimeoLinks = $('.js-load-vimeo'),
 
@@ -41,15 +44,24 @@
   $(document).ready(function () {
 
     if (hash) {
-      var   vimeoId = hash.substr(1, hash.length);
+      var vimeoId = hash.substr(1, hash.length);
       window.location.hash = '';
       loadVimeoPlayer(vimeoId);
 
       l('Load vimeo from hash: ' + vimeoId);
     }
 
-    if (basicPosts.length) {
-      basicPosts.each(function (index, item) {
+    if (homeVideoPosts.length) {
+      homeVideoPosts.each(function (index, item) {
+        var background = $(item).data('background');
+        $(item).css({
+          'background-image': 'url(' + background + ')'
+        });
+      });
+    }
+
+    if (homeNewsPostsWithBackground.length) {
+      homeNewsPostsWithBackground.each(function (index, item) {
         var background = $(item).data('background');
         $(item).css({
           'background-image': 'url(' + background + ')'

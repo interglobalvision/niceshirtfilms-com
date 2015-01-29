@@ -73,11 +73,17 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
           'id' => $prefix . 'readmore',
           'type' => 'checkbox'
         ),
+  		  array(
+          'name' => 'Thumbnail background?',
+          'desc' => 'shows thumbnail as title background',
+          'id' => $prefix . 'thumbbackground',
+          'type' => 'checkbox'
+        ),
         array(
             'name' => 'Background Color Picker',
             'id'   => $prefix . 'color',
             'type' => 'colorpicker',
-            'default'  => '#ffffff',
+            'default'  => '#000000',
             'repeatable' => false,
         ),
 		)

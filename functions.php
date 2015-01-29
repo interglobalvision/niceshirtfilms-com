@@ -3,9 +3,9 @@ function scripts_and_styles_method() {
 
   $templateuri = get_template_directory_uri() . '/js/';
 
-  $jslib = $templateuri . "library.js";
+  $jslib = $templateuri . 'library.js';
   wp_enqueue_script( 'jslib', $jslib,'','',true);
-  $myscripts = $templateuri . "main.js";
+  $myscripts = $templateuri . 'main.js';
   wp_enqueue_script( 'myscripts', $myscripts,'','',true);
 
   wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/css/site.css' );

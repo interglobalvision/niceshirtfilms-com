@@ -61,13 +61,31 @@ if (!empty($meta['_igv_readmore'][0])) {
 } else {
   $readMore = false;
 }
+if (!empty($meta['_igv_thumbbackground'][0])) {
+  $thumbBackground = $meta['_igv_thumbbackground'][0];
+} else {
+  $thumbBackground = false;
+}
+
 if ($readMore) {
   post_class('news-post news-read-more');
 } else {
   post_class('news-post');
 }
 ?> id="post-<?php the_ID(); ?>">
+<?php
+if ($thumbBackground) {
+  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background');
+  $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-large');
+?>
+        <div class="news-post-header home-news-posts-with-background u-pointer" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
+<?php
+} else {
+?>
         <div class="news-post-header u-pointer" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
+<?php
+}
+?>
           <div class="u-holder">
             <div class="u-held">
               <div class="news-header">
