@@ -3,13 +3,11 @@ function scripts_and_styles_method() {
 
   $templateuri = get_template_directory_uri() . '/js/';
 
-  // library.js is to bundle plugins. my.js is your scripts. enqueue more files as needed
-  $jslib = $templateuri."library.js";
+  $jslib = $templateuri . "library.js";
   wp_enqueue_script( 'jslib', $jslib,'','',true);
-  $myscripts = $templateuri."main.js";
+  $myscripts = $templateuri . "main.js";
   wp_enqueue_script( 'myscripts', $myscripts,'','',true);
 
-  // enqueue stylesheet here. file does not exist until stylus file is processed
   wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/css/site.css' );
 
   // dashicons for admin

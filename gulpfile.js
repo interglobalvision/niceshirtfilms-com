@@ -24,11 +24,11 @@ gulp.task('js', function() {
   ])
   .pipe(jslint({
     browser: true,
-    white: true,
     devel: true,
     unparam: true,
+    indent: 2,
     global: ['$', 'jQuery'],
-    errorsOnly: true
+    errorsOnly: false
   }))
   .on('error', errorNotify)
   .pipe(uglify())
