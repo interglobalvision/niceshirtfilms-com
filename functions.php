@@ -29,9 +29,9 @@ if( function_exists( 'add_image_size' ) ) {
   add_image_size( 'post-background', 700, 280, true );
   add_image_size( 'post-background-large', 1100, 440, true );
 
-  add_image_size( 'grid-thumb', 250, 166, true );
-  add_image_size( 'grid-thumb-large', 400, 266, true );
-  add_image_size( 'grid-thumb-largest', 700, 465, true );
+  add_image_size( 'grid-thumb', 250, 167, true );
+  add_image_size( 'grid-thumb-large', 400, 267, true );
+  add_image_size( 'grid-thumb-largest', 700, 467, true );
 
 }
 

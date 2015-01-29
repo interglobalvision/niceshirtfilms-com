@@ -1,3 +1,18 @@
+// Keep 4:3 ratio
+(function( $ ) {
+  $.fn.keepRatio = function() {
+    return this.each(function() {
+      var $this = $(this);
+      var w = $this.width();
+      var h = $this.height();
+      // 3/2 = 1.5
+      var ratio = 1.5;
+      var nh = Math.round($this.width() / ratio);
+      $this.css('height', nh + 'px');
+    });
+  }
+})( jQuery );
+
 // https://github.com/balupton/jquery-scrollto
 (function(name,context,definition){if(typeof module!='undefined'&&module.exports)module.exports=definition();else if(typeof define=='function'&&define.amd)define(definition);else context[name]=definition();})('jquery-scrollto',this,function(){var jQuery,$,ScrollTo;jQuery=$=window.jQuery||require('jquery');$.propHooks.scrollTop=$.propHooks.scrollLeft={get:function(elem,prop){var result=null;if(elem.tagName==='HTML'||elem.tagName==='BODY'){if(prop==='scrollLeft'){result=window.scrollX;}else if(prop==='scrollTop'){result=window.scrollY;}}
 if(result==null){result=elem[prop];}

@@ -11,6 +11,9 @@
     homeNewsPostsWithBackground = $('.home-news-posts-with-background'),
 
     lazyThumbnails = $('.lazy-thumb'),
+    lazyBackgrounds = $('.js-lazy-background'),
+
+    keepRatio = $('.js-keep-ratio'),
 
     vimeoPlayer = $('#vimeo-player'),
     loadVimeoLinks = $('.js-load-vimeo'),
@@ -69,6 +72,13 @@
       });
     }
 
+    if (keepRatio.length) {
+      keepRatio.keepRatio();
+      $(window).resize(function() {
+        keepRatio.keepRatio();
+      });
+    }
+
     if (lazyThumbnails.length) {
       lazyThumbnails.each(function (index, item) {
         var thumb = $(item).data('thumb'),
@@ -77,6 +87,22 @@
           $(item).attr('src', thumbLarge);
         } else {
           $(item).attr('src', thumb);
+        }
+      });
+    }
+
+    if (lazyBackgrounds.length) {
+      lazyBackgrounds.each(function (index, item) {
+        var thumb = $(item).data('thumb'),
+          thumbLarge = $(item).data('thumb-large');
+        if (ifLargeImages()) {
+          $(item).css({
+            'background-image': 'url(' + thumbLarge + ')'
+          });
+        } else {
+          $(item).css({
+            'background-image': 'url(' + thumb + ')'
+          });
         }
       });
     }

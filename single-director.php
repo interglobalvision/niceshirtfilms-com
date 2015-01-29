@@ -50,8 +50,12 @@ if (!empty($meta['_igv_showreel_1'][0])) {
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
     $meta = get_post_meta($post->ID);
 ?>
-      <div <?php post_class('director-showreel-video u-pointer js-load-vimeo'); ?> data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>" data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>">
-        <img src="" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>" class="lazy-thumb" alt="<?php the_title(); ?>" />
+      <div <?php post_class('director-showreel-video u-pointer u-background-cover js-lazy-background js-keep-ratio js-load-vimeo'); ?>
+        data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
+        data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
+        data-thumb="<?php echo $img[0]; ?>"
+        data-thumb-large="<?php echo $imgLarge[0]; ?>"
+      >
         <div class="u-holder">
           <div class="u-held">
             <p><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></p>
@@ -104,8 +108,12 @@ if ($posttags) {
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
     $meta = get_post_meta($post->ID);
 ?>
-      <div <?php post_class('director-archive-video u-pointer js-load-vimeo active'); ?> data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>" data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>">
-        <img src="" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>" class="lazy-thumb" alt="<?php the_title(); ?>" />
+      <div <?php post_class('director-archive-video u-pointer u-background-cover js-lazy-background js-load-vimeo js-keep-ratio active'); ?>
+        data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
+        data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
+        data-thumb="<?php echo $img[0]; ?>"
+        data-thumb-large="<?php echo $imgLarge[0]; ?>"
+      >
         <div class="u-holder">
           <div class="u-held">
             <p><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></p>
