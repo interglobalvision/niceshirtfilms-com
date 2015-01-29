@@ -1,16 +1,24 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
-var jslint = require('gulp-jslint');
-var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
+var util = require('gulp-util');
+
+var jslint = require('gulp-jslint');
+var uglify = require('gulp-uglify');
 
 var stylus = require('gulp-stylus');
-var concatCss = require('gulp-concat-css');
-var csslint = require('gulp-csslint');
+// var csslint = require('gulp-csslint');
+var autoprefixer = require('gulp-autoprefixer');
+var minifycss = require('gulp-minify-css');
+
+function errorNotify(error){
+  notify.onError("Error: <%= error.message %>")
+  util.log(util.colors.red('Error'), error.message);
+}
 
 gulp.task('js', function() {
-  gulp.src([
+  return gulp.src([
     'js/main.js',
     'js/library.js'
   ])
@@ -32,19 +40,21 @@ gulp.task('js', function() {
 });
 
 gulp.task('style', function() {
-  gulp.src([
-//     'css/reset.styl',
-    'css/site.styl',
-  ])
+  return gulp.src('css/site.styl')
     .pipe(stylus())
-    .pipe(concatCss('site.css'))
-    .pipe(csslint())
+    .on('error', errorNotify)
+    .pipe(autoprefixer())
+    .on('error', errorNotify)
+    .pipe(gulp.dest('css'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    .on('error', errorNotify)
     .pipe(gulp.dest('css'))
     .pipe(notify({ message: 'Style task complete' }));
 });
 
 gulp.task('watch', function() {
-//   gulp.watch(['js/main.js'], ['js']);
+  gulp.watch(['js/main.js'], ['js']);
   gulp.watch(['css/site.styl'], ['style']);
 });
 

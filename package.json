@@ -1,30 +1,32 @@
 {
-  "name": "interglobalvision_wp_boil",
+  "name": "interglobalvision_niceshirtfilms-com",
   "version": "0.0.0",
-  "description": "wp_boil -------",
+  "description": "nice shirt mate",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/interglobalvision/interglobalvision_wp_boil.git"
+    "url": "git://github.com/interglobalvision/niceshirtfilms-com.git"
   },
   "author": "interglobalvision",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/interglobalvision/interglobalvision_wp_boil/issues"
+    "url": "https://github.com/interglobalvision/niceshirtfilms-com/issues"
   },
-  "homepage": "https://github.com/interglobalvision/interglobalvision_wp_boil",
+  "homepage": "https://github.com/interglobalvision/niceshirtfilms-com",
   "devDependencies": {
+    "gulp": "^3.8.10",
     "gulp-uglify": "^1.0.2",
     "gulp-jslint": "^0.2.1",
     "gulp-watch": "^3.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-notify": "^2.0.1",
-    "gulp": "^3.8.10",
     "gulp-csslint": "^0.1.5",
     "gulp-stylus": "^1.3.4",
-    "gulp-concat-css": "^1.1.1"
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-minify-css": "^0.3.13",
+    "gulp-util": "^3.0.1"
   }
 }
