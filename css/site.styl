@@ -94,7 +94,10 @@ p
 a,a:active,a:visited
   color:inherit
   text-decoration: none
-  transition:opacity $basic-animation-speed
+  -webkit-transition: opacity $basic-animation-speed
+  -moz-transition: opacity $basic-animation-speed
+  -o-transition: opacity $basic-animation-speed
+  transition: opacity $basic-animation-speed
   &:hover
     opacity:.5
 
@@ -129,11 +132,17 @@ img
   box-sizing: border-box
   padding: $margin-small
   background-color: $color-soft-white
+  -webkit-transition: -webkit-transform $longer-animation-speed
+  -moz-transition: -moz-transform $longer-animation-speed
+  -o-transition: -o-transform $longer-animation-speed
   transition: transform $longer-animation-speed
 
 #sidebar-toggle
   display: none
   z-index: 999
+  -webkit-transition: -webkit-transform $longer-animation-speed
+  -moz-transition: -moz-transform $longer-animation-speed
+  -o-transition: -o-transform $longer-animation-speed
   transition: transform $longer-animation-speed
   path
     fill: $color-soft-white
@@ -159,6 +168,9 @@ img
   position: relative
   height: 0
   overflow: hidden
+  -webkit-transition: padding-bottom $basic-animation-speed
+  -moz-transition: padding-bottom $basic-animation-speed
+  -o-transition: padding-bottom $basic-animation-speed
   transition: padding-bottom $basic-animation-speed
   iframe, object, embed
     position: absolute
@@ -286,6 +298,9 @@ img
     position: absolute
     top: 0
     left: 0
+    -webkit-transition: opacity $basic-animation-speed
+    -moz-transition: opacity $basic-animation-speed
+    -o-transition: opacity $basic-animation-speed
     transition: opacity $basic-animation-speed
     &:hover
       opacity: 1
@@ -296,8 +311,14 @@ img
 @media screen and (max-width: 800px)
 
   #sidebar
+    -webkit-transform: translateX(-100%)
+    -moz-transform: translateX(-100%)
+    -o-transform: translateX(-100%)
     transform: translateX(-100%)
     &.open
+      -webkit-transform: translateX(0%)
+      -moz-transform: translateX(0%)
+      -o-transform: translateX(0%)
       transform: translateX(0%)
 
   #sidebar-toggle
@@ -309,8 +330,14 @@ img
     display: block
     background: none
     z-index: 999
+    -webkit-transform: rotate(0deg)
+    -moz-transform: rotate(0deg)
+    -o-transform: rotate(0deg)
     transform: rotate(0deg)
     &.rotate
+      -webkit-transform: rotate(90deg)
+      -moz-transform: rotate(90deg)
+      -o-transform: rotate(90deg)
       transform: rotate(90deg)
 
   #main-content
