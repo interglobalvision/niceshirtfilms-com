@@ -21,7 +21,7 @@ if( have_posts() ) {
 /* video post type */
 ?>
     <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>#<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>">
-      <article <?php post_class('basic-post'); ?> id="post-<?php the_ID(); ?>" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>">
+      <article <?php post_class('basic-post home-video-posts'); ?> id="post-<?php the_ID(); ?>" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>">
         <div class="u-holder">
           <div class="u-held">
             <div class="basic-post-content">
