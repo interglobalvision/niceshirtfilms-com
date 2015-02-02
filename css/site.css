@@ -1294,6 +1294,15 @@ img {
 .director-showreel-video .u-holder:hover {
   opacity: 1;
 }
+.director-archive-video .u-fixed-ratio-content,
+.director-showreel-video .u-fixed-ratio-content {
+  -webkit-transition: background-color 0.2s;
+          transition: background-color 0.2s;
+}
+.director-archive-video:hover .u-fixed-ratio-content,
+.director-showreel-video:hover .u-fixed-ratio-content {
+  background-color: rgba(0,0,0,0.5);
+}
 @media screen and (max-width: 800px) {
   #sidebar {
     -webkit-transform: translateX(-100%);
