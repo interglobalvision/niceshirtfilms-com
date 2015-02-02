@@ -122,6 +122,19 @@ img
   background-size: cover
   background-position: center center
 
+.u-fixed-ratio
+  position: relative
+  display: inline-block
+
+.u-fixed-ratio-dummy
+  padding-top: 60%
+
+.u-fixed-ratio-content
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
 
 // STRUCTURE
 
@@ -172,7 +185,7 @@ img
   position: relative
   height: 0
   overflow: hidden
-  transition: padding-bottom $basic-animation-speed
+  transition: padding-top $basic-animation-speed
   iframe, object, embed
     position: absolute
     top: 0

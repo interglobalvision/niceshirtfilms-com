@@ -4,6 +4,10 @@
     return this.each(function() {
       var $this = $(this);
       var w = $this.width();
+
+      console.log(w);
+      console.log($this.innerWidth());
+
       var h = $this.height();
       // 3/2 = 1.5
       var ratio = 1.5;

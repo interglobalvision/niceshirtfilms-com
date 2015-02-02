@@ -1099,6 +1099,20 @@ img {
   background-size: cover;
   background-position: center center;
 }
+.u-fixed-ratio {
+  position: relative;
+  display: inline-block;
+}
+.u-fixed-ratio-dummy {
+  padding-top: 60%;
+}
+.u-fixed-ratio-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 #sidebar {
   width: 250px;
   position: fixed;
@@ -1141,8 +1155,8 @@ img {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition: padding-bottom 0.2s;
-          transition: padding-bottom 0.2s;
+  -webkit-transition: padding-top 0.2s;
+          transition: padding-top 0.2s;
 }
 #vimeo-player iframe,
 #vimeo-player object,

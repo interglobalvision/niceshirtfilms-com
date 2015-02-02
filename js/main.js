@@ -40,7 +40,7 @@
       ratio = 0.5625;
     }
     vimeoPlayer.html('<iframe src="//player.vimeo.com/video/' + vimeoId + '?autoplay=1&badge=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
-      'padding-bottom': (ratio * 100) + '%'
+      'padding-top': (ratio * 100) + '%'
     });
   }
 
@@ -72,12 +72,14 @@
       });
     }
 
+/*
     if (keepRatio.length) {
       keepRatio.keepRatio();
       $(window).resize(function() {
         keepRatio.keepRatio();
       });
     }
+*/
 
     if (lazyThumbnails.length) {
       lazyThumbnails.each(function (index, item) {
