@@ -210,7 +210,7 @@ img
 
 // POSTS
 
-.basic-post
+.post-main
   text-align: center
   color: $color-soft-white
   height: $basic-post-height
@@ -218,55 +218,43 @@ img
   background-position: center center
   background-size: cover
   &:hover
-    .basic-post-content
+    .post-header
       display: none
-    .basic-post-hover
+    .post-header-hover
       display: inline-block
 
-.basic-post-title
-  font-size: $font-size-heading
-
-.basic-post-subtitle
-  font-size: $font-size-subheading
-
-.basic-post-hover
-  display: none
-  padding: $margin-small $margin-basic
-  font-size: $font-size-subheading
-  background-color: $color-soft-white
-  opacity: 0.65
-  color: $color-soft-black
-
-// NEWS POST
-
-.news-read-more
-  .news-post-header:hover
-    .news-header
-      display: none
-    .news-hover
-      display: inline-block
-
-.home-news-posts-with-background
-  background-size: cover
-  background-position: center center
-
-.news-post-header
-  text-align: center
-  color: $color-soft-white
-  height: $basic-post-height
-
-.news-title
-  font-size: $font-size-heading
-  max-width: 800px
+.post-header
+  width: 85%
   margin: 0 auto
 
-.news-hover
+.post-title
+  font-size: $font-size-heading
+
+.post-subtitle
+  font-size: $font-size-subheading
+
+.post-header-hover
   display: none
   padding: $margin-small $margin-basic
   font-size: $font-size-subheading
   background-color: $color-soft-white
   opacity: 0.65
   color: $color-soft-black
+
+.post-copy
+  overflow: hidden
+  position: relative
+  height: 0
+  transition: height $basic-animation-speed
+  &.open
+    height: auto
+
+.post-copy-close
+  position: absolute
+  top: $margin-basic
+  right: $margin-basic
+
+// NEWS POST
 
 .news-copy
   display: none
@@ -316,9 +304,6 @@ img
     position: absolute
     top: 0
     left: 0
-    -webkit-transition: opacity $basic-animation-speed
-    -moz-transition: opacity $basic-animation-speed
-    -o-transition: opacity $basic-animation-speed
     transition: opacity $basic-animation-speed
     &:hover
       opacity: 1
@@ -333,14 +318,8 @@ img
 @media screen and (max-width: 800px)
 
   #sidebar
-    -webkit-transform: translateX(-100%)
-    -moz-transform: translateX(-100%)
-    -o-transform: translateX(-100%)
     transform: translateX(-100%)
     &.open
-      -webkit-transform: translateX(0%)
-      -moz-transform: translateX(0%)
-      -o-transform: translateX(0%)
       transform: translateX(0%)
 
   #sidebar-toggle
@@ -352,14 +331,8 @@ img
     display: block
     background: none
     z-index: 999
-    -webkit-transform: rotate(0deg)
-    -moz-transform: rotate(0deg)
-    -o-transform: rotate(0deg)
     transform: rotate(0deg)
     &.rotate
-      -webkit-transform: rotate(90deg)
-      -moz-transform: rotate(90deg)
-      -o-transform: rotate(90deg)
       transform: rotate(90deg)
 
   #main-content

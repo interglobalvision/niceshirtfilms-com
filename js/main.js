@@ -7,8 +7,7 @@
 
   var largeImagesWidth = 1500,
 
-    homeVideoPosts = $('.home-video-posts'),
-    homeNewsPostsWithBackground = $('.home-news-posts-with-background'),
+    lazyHomeBackground = $('.js-lazy-home-background'),
 
     lazyThumbnails = $('.lazy-thumb'),
     lazyBackgrounds = $('.js-lazy-background'),
@@ -54,17 +53,8 @@
       l('Load vimeo from hash: ' + vimeoId);
     }
 
-    if (homeVideoPosts.length) {
-      homeVideoPosts.each(function (index, item) {
-        var background = $(item).data('background');
-        $(item).css({
-          'background-image': 'url(' + background + ')'
-        });
-      });
-    }
-
-    if (homeNewsPostsWithBackground.length) {
-      homeNewsPostsWithBackground.each(function (index, item) {
+    if (lazyHomeBackground.length) {
+      lazyHomeBackground.each(function (index, item) {
         var background = $(item).data('background');
         $(item).css({
           'background-image': 'url(' + background + ')'
@@ -109,12 +99,25 @@
       });
     }
 
+    // POSTS
+
+    $('.post-copy-close').on('click', function (e) {
+      e.preventDefault();
+      $(this).parent('.post-copy').removeClass('open');
+    });
+
+    // HOME VIDEO POSTS
+
+    $('.home-video .post-main').on('click', function (e) {
+      e.preventDefault();
+      $(this).ScrollTo().parent().find('.post-copy').addClass('open');
+    });
+
     // NEWS POSTS
 
-    $('.news-read-more').on('click', function (e) {
+    $('.news-read-more .post-main').on('click', function (e) {
       e.preventDefault();
-      $(this).ScrollTo();
-      $(this).find('.news-copy').slideToggle();
+      $(this).ScrollTo().parent().find('.post-copy').addClass('open');
     });
 
     // DIRECTOR SINGLE

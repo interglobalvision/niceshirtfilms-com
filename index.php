@@ -20,19 +20,21 @@ if( have_posts() ) {
     if (is_single_type('video', $post)) {
 /* video post type */
 ?>
-    <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>#<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>">
-      <article <?php post_class('basic-post home-video-posts'); ?> id="post-<?php the_ID(); ?>" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>">
+    <article <?php post_class('home-video'); ?> id="post-<?php the_ID(); ?>">
+      <div class="post-main u-pointer js-lazy-home-background" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>">
+
         <div class="u-holder">
           <div class="u-held">
-            <div class="basic-post-content">
-              <h2 class="basic-post-title">
+
+            <div class="post-header">
+              <h2 class="post-title">
 <?php
 if (!empty($meta['_igv_director'][0])) {
   echo echoDirectorName($meta['_igv_director'][0]);
 }
 ?>
               </h2>
-              <h3 class="basic-post-subtitle">
+              <h3 class="post-subtitle">
 <?php
 if (!empty($meta['_igv_title'][0])) {
   echo '<em>' . $meta['_igv_title'][0] . '</em>';
@@ -43,13 +45,51 @@ if (!empty($meta['_igv_brand'][0])) {
 ?>
               </h3>
             </div>
-            <div class="basic-post-hover">
+
+            <div class="post-header-hover">
               PLAY
             </div>
+
           </div>
         </div>
-      </article>
-    </a>
+
+      </div>
+
+      <div class="post-copy">
+        <nav class="post-copy-close u-pointer">x</nav>
+
+        <div class="copy u-marginauto">
+          <p>
+           <h4 class="basic-post-title">
+<?php
+if (!empty($meta['_igv_director'][0])) {
+  echo echoDirectorName($meta['_igv_director'][0]);
+}
+?>
+           </h4>
+           <h5 class="basic-post-subtitle">
+<?php
+if (!empty($meta['_igv_title'][0])) {
+  echo '<em>' . $meta['_igv_title'][0] . '</em>';
+}
+if (!empty($meta['_igv_brand'][0])) {
+  echo ' &middot; ' . $meta['_igv_brand'][0];
+}
+?>
+            </h5>
+          </p>
+
+          <?php the_content(); ?>
+
+          <p>
+            <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">Director page</a>
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
 <?php
     } else {
 /* news post type */
@@ -68,9 +108,9 @@ if (!empty($meta['_igv_thumbbackground'][0])) {
 }
 
 if ($readMore) {
-  post_class('news-post news-read-more');
+  post_class('news-read-more');
 } else {
-  post_class('news-post');
+  post_class();
 }
 ?> id="post-<?php the_ID(); ?>">
 <?php
@@ -78,18 +118,18 @@ if ($thumbBackground) {
   $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background');
   $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-large');
 ?>
-        <div class="news-post-header home-news-posts-with-background u-pointer" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
+        <div class="post-main u-pointer js-lazy-home-background" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
 <?php
 } else {
 ?>
-        <div class="news-post-header u-pointer" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
+        <div class="post-main u-pointer" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
 <?php
 }
 ?>
           <div class="u-holder">
             <div class="u-held">
-              <div class="news-header">
-                <h2 class="news-title">
+              <div class="post-header">
+                <h2 class="post-title">
                   <?php
 if (!empty($meta['_igv_longtitle'][0])) {
   echo $meta['_igv_longtitle'][0];
@@ -99,17 +139,20 @@ if (!empty($meta['_igv_longtitle'][0])) {
                   ?>
                 </h2>
               </div>
-              <div class="news-hover">
+              <div class="post-header-hover">
                 READ MORE
               </div>
             </div>
           </div>
         </div>
-        <div class="news-copy">
+
+        <div class="post-copy">
+          <nav class="post-copy-close u-pointer">x</nav>
           <div class="copy u-marginauto">
             <?php the_content(); ?>
           </div>
         </div>
+
       </article>
 <?php
     }
@@ -122,29 +165,6 @@ if (!empty($meta['_igv_longtitle'][0])) {
 
   <!-- end posts -->
   </section>
-
-<?php
-if( get_next_posts_link() || get_previous_posts_link() ) {
-?>
-  <!-- post pagination -->
-  <nav id="pagination">
-<?php
-$previous = get_previous_posts_link('Newer');
-$next = get_next_posts_link('Older');
-if ($previous) {
-  echo $previous;
-}
-if ($previous && $next) {
-  echo ' &mdash; ';
-}
-if ($next) {
-  echo $next;
-}
-?>
-  </nav>
-<?php
-}
-?>
 
 <!-- end main-content -->
 
