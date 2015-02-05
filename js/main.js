@@ -41,6 +41,7 @@
     vimeoPlayer.html('<iframe src="//player.vimeo.com/video/' + vimeoId + '?autoplay=1&badge=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
       'padding-top': (ratio * 100) + '%'
     });
+    $('html').addClass('cinema-mode');
   }
 
   $(document).ready(function () {
@@ -132,8 +133,8 @@
     });
 
     tagFilters.on('click', function (e) {
-      tagFilters.removeClass('highlight');
-      $(this).addClass('highlight');
+      tagFilters.removeClass('filter-tag-active');
+      $(this).addClass('filter-tag-active');
 
       var tag = $(this).data('tag-slug');
       if (tag !== 'all') {

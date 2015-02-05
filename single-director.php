@@ -16,20 +16,41 @@ if( have_posts() ) {
   <section id="director" <?php post_class(); ?>>
 
     <header id="director-header" class="page-header u-cf">
-      <div class="header-left">
-        <h1 id="page-title"><?php the_title(); ?></h1>
+
+      <div class="col col1 colpad1left">
+
+        <h2><?php the_title(); ?></h2>
+
       </div>
-      <div class="header-right">
-        <a id="director-bio-toggle" class="u-pointer">
-          BIOGRAPHY
-        </a>
+
+      <div class="col col1">
+
+        <ul id="director-menu">
+          <li id="director-main-toggle" class="director-menu-item director-menu-item-blue director-menu-item-active u-pointer">Back to reel</li>
+          <li id="director-archive-toggle" class="director-menu-item u-pointer">Archive</li>
+          <li id="director-bio-toggle" class="director-menu-item u-pointer">Biography</li>
+        </ul>
+
       </div>
+
     </header>
 
-    <section id="director-biography">
-      <div class="copy">
-        <?php the_content(); ?>
+    <section id="director-biography" class="u-cf">
+
+      <div class="col col1">
+
+        <?php the_post_thumbnail(); ?>
+
       </div>
+
+      <div class="col col2">
+
+        <div class="copy">
+          <?php the_content(); ?>
+        </div>
+
+      </div>
+
     </section>
 
     <section id="vimeo-player"></section>
@@ -40,7 +61,16 @@ global $post;
 if (!empty($meta['_igv_showreel_1'][0])) {
 ?>
     <section id="director-showreel" class="u-cf">
-      <h3>Showreel</h3>
+      <div class="director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-director-showreel-playall">
+        <div class="u-fixed-ratio-dummy"></div>
+        <div class="u-fixed-ratio-content">
+          <div class="u-holder">
+            <div class="u-held">
+              Play All
+            </div>
+          </div>
+        </div>
+      </div>
 <?php
   $showreelVideos = get_post_meta( get_the_ID(), '_igv_showreel_1', true );
   foreach($showreelVideos as $video) {
@@ -50,7 +80,7 @@ if (!empty($meta['_igv_showreel_1'][0])) {
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
     $meta = get_post_meta($post->ID);
 ?>
-      <div <?php post_class('director-showreel-video u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-vimeo'); ?>
+      <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-vimeo'); ?>
         data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
         data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"
@@ -91,9 +121,10 @@ $archive = get_posts(array(
 ));
 if ($archive) {
 ?>
-  <h3>Archive</h3>
+  <div class="u-cf">
+    <div class="col2 colpad1left">
   <ul id="director-archive-tags">
-    <li class="filter-tag u-pointer highlight" data-tag-slug="all">All</li>
+    <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
 $posttags = get_tags();
 if ($posttags) {
@@ -102,7 +133,8 @@ if ($posttags) {
   }
 }
 ?>
-  </ul>
+      </ul>
+    </div>
   <div class="u-cf">
 <?php
   foreach($archive as $post) {
