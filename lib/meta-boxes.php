@@ -151,7 +151,8 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 		),
 	);
 
-	$meta_boxes['showreel_2_metabox'] = array(
+	/*
+$meta_boxes['showreel_2_metabox'] = array(
 		'id'         => 'showreel_2_metabox',
 		'title'      => __( 'Showreel 2', 'cmb' ),
 		'pages'      => array( 'director', ), // Post type
@@ -182,8 +183,10 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 			),
 		),
 	);
+*/
 
-	$meta_boxes['showreel_3_metabox'] = array(
+	/*
+$meta_boxes['showreel_3_metabox'] = array(
 		'id'         => 'showreel_3_metabox',
 		'title'      => __( 'Showreel 3', 'cmb' ),
 		'pages'      => array( 'director', ), // Post type
@@ -214,6 +217,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 			),
 		),
 	);
+*/
 
 	return $meta_boxes;
 }

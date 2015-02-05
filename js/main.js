@@ -42,6 +42,13 @@
     $('#main-content').ScrollTo();
   }
 
+  function closeVimeoPlayer() {
+    $('html').removeClass('cinema-mode');
+    vimeoPlayer.html('').css({
+      'padding-top': '0%'
+    });
+  }
+
   $(document).ready(function () {
 
     if (hash) {
@@ -60,15 +67,6 @@
         });
       });
     }
-
-/*
-    if (keepRatio.length) {
-      keepRatio.keepRatio();
-      $(window).resize(function() {
-        keepRatio.keepRatio();
-      });
-    }
-*/
 
     if (lazyThumbnails.length) {
       lazyThumbnails.each(function (index, item) {
@@ -137,13 +135,18 @@
 
     // DIRECTOR SINGLE
 
-    $('#director-bio-toggle').on('click', function (e) {
-      $('#director-biography').slideToggle();
+    $('.director-menu-item').on('click', function (e) {
+      var target = $(this).data('target');
+      if ($('#director-menu').data('active') != target) {
+        closeVimeoPlayer();
+        $('.director-section').slideUp();
+        $('#director-' + target).slideDown();
+        $('.director-menu-item').removeClass('active')
+        $(this).addClass('active');
+        $('#director-menu').data('active', target);
+      }
     });
 
-    $('#director-archive-toggle').on('click', function (e) {
-      $('#director-archive').slideToggle();
-    });
 
     loadVimeoLinks.on('click', function (e) {
       e.preventDefault();

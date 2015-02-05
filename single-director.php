@@ -26,32 +26,14 @@ if( have_posts() ) {
       <div class="col col1">
 
         <ul id="director-menu">
-          <li id="director-main-toggle" class="director-menu-item director-menu-item-blue director-menu-item-active u-pointer">Back to reel</li>
-          <li id="director-archive-toggle" class="director-menu-item u-pointer">Archive</li>
-          <li id="director-bio-toggle" class="director-menu-item u-pointer">Biography</li>
+          <li data-target="showreel" class="director-menu-item director-menu-item-blue active u-pointer">Back to reel</li>
+          <li data-target="archive" class="director-menu-item u-pointer">Archive</li>
+          <li data-target="biography" class="director-menu-item u-pointer">Biography</li>
         </ul>
 
       </div>
 
     </header>
-
-    <section id="director-biography" class="u-cf">
-
-      <div class="col col1">
-
-        <?php the_post_thumbnail(); ?>
-
-      </div>
-
-      <div class="col col2">
-
-        <div class="copy">
-          <?php the_content(); ?>
-        </div>
-
-      </div>
-
-    </section>
 
     <section id="vimeo-player"></section>
 
@@ -60,7 +42,7 @@ global $post;
 
 if (!empty($meta['_igv_showreel_1'][0])) {
 ?>
-    <section id="director-showreel" class="u-cf">
+    <section id="director-showreel" class="director-section u-cf">
       <div class="director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-director-showreel-playall">
         <div class="u-fixed-ratio-dummy"></div>
         <div class="u-fixed-ratio-content">
@@ -105,7 +87,7 @@ if (!empty($meta['_igv_showreel_1'][0])) {
 }
 ?>
 
-    <section id="director-archive">
+    <section id="director-archive" class="director-section">
 <?php
 $archive = get_posts(array(
 	'post_type'       => 'video',
@@ -123,8 +105,8 @@ if ($archive) {
 ?>
   <div class="u-cf">
     <div class="col2 colpad1left">
-  <ul id="director-archive-tags">
-    <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
+      <ul id="director-archive-tags">
+        <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
 $posttags = get_tags();
 if ($posttags) {
@@ -135,6 +117,7 @@ if ($posttags) {
 ?>
       </ul>
     </div>
+  </div>
   <div class="u-cf">
 <?php
   foreach($archive as $post) {
@@ -161,11 +144,30 @@ if ($posttags) {
       </div>
 <?php
   }
+  wp_reset_postdata();
 ?>
   </div>
 <?php
 }
 ?>
+    </section>
+
+    <section id="director-biography" class="director-section u-cf">
+
+      <div class="col col1">
+
+        <?php the_post_thumbnail(); ?>
+
+      </div>
+
+      <div class="col col2">
+
+        <div class="copy">
+          <?php the_content(); ?>
+        </div>
+
+      </div>
+
     </section>
 
   </section>

@@ -89,13 +89,15 @@ a,a:active,a:visited
 // BASIC
 
 html, body
-  background-color: $color-soft-white
+  background-color: $color-light-gray
   transition: background-color $longer-animation-speed
 
 img
   max-width: 100%
   height: auto
 
+.background-gray
+  background-color: $color-light-gray
 
 // UTILITY
 
@@ -316,12 +318,13 @@ img
   padding: 0em 0.5em
   color: $color-soft-white
   transition: opacity $basic-animation-speed
+  &.active
+    opacity: 0
 
 .director-menu-item-blue
   background-color: $color-blue
 
-.director-menu-item-active
-  opacity: 0
+
 
 #director-biography, #director-archive
   display: none
