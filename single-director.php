@@ -43,12 +43,12 @@ global $post;
 if (!empty($meta['_igv_showreel_1'][0])) {
 ?>
     <section id="director-showreel" class="director-section u-cf">
-      <div class="director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-director-showreel-playall">
+      <div class="director-showreel-video director-showreel-playall col col1 u-pointer u-background-cover u-fixed-ratio">
         <div class="u-fixed-ratio-dummy"></div>
         <div class="u-fixed-ratio-content">
           <div class="u-holder">
             <div class="u-held">
-              Play All
+              <h2>Play All</h2>
             </div>
           </div>
         </div>
@@ -72,8 +72,8 @@ if (!empty($meta['_igv_showreel_1'][0])) {
         <div class="u-fixed-ratio-content">
           <div class="u-holder">
             <div class="u-held">
-              <p><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></p>
-              <p><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></p>
+              <h2><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></h2>
+              <h3><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h3>
             </div>
           </div>
         </div>
