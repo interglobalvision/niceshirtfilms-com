@@ -30,6 +30,18 @@
     return false;
   }
 
+//   HOMEPAGE FUNCTIONS
+
+  function closeAllPosts() {
+    $('.home-post').removeClass('active');
+    $('.post-main').each(function(i, el) {
+      el.style.height = '';
+    });
+    $('.home-video-player').html('');
+  }
+
+//   DIRECTOR SINGLE FUNCTIONS
+
   function loadVimeoPlayer(vimeoId) {
     var ratio = $(this).data('video-ratio');
     if (ratio === undefined) {
@@ -101,15 +113,22 @@
     $('.post-copy-close').on('click', function (e) {
       e.preventDefault();
       $(this).parent('.post-copy').parent().removeClass('active');
+/*
       var postMain = $(this).parent('.post-copy').siblings('.post-main');
       postMain[0].style.height = '';
       postMain.children('.home-video-player').html('');
+*/
+      closeAllPosts();
+
     });
 
     // HOME VIDEO POSTS
 
     $('.home-video .post-main').on('click', function (e) {
       e.preventDefault();
+
+      closeAllPosts();
+
       var post = $(this).ScrollTo().parent(),
         postVimeoId = post.data('vimeo-id'),
         postVimeoRatio = post.data('video-ratio');
@@ -130,6 +149,9 @@
 
     $('.news-read-more .post-main').on('click', function (e) {
       e.preventDefault();
+
+      closeAllPosts();
+
       $(this).ScrollTo().parent().addClass('active');
     });
 

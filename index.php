@@ -21,7 +21,7 @@ if( have_posts() ) {
 /* video post type */
 ?>
     <article
-      <?php post_class('home-video'); ?>
+      <?php post_class('home-post home-video'); ?>
       id="post-<?php the_ID(); ?>"
       data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
       data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
@@ -71,15 +71,15 @@ if (!empty($meta['_igv_brand'][0])) {
 
         <div class="post-copy-container">
           <div class="copy u-marginauto">
-            <p>
-             <h4 class="basic-post-title">
+            <div class="u-align-center">
+             <h3 class="basic-post-title">
 <?php
 if (!empty($meta['_igv_director'][0])) {
   echo echoDirectorName($meta['_igv_director'][0]);
 }
 ?>
-             </h4>
-             <h5 class="basic-post-subtitle">
+             </h3>
+             <h4 class="basic-post-subtitle">
 <?php
 if (!empty($meta['_igv_title'][0])) {
   echo '<em>' . $meta['_igv_title'][0] . '</em>';
@@ -88,13 +88,17 @@ if (!empty($meta['_igv_brand'][0])) {
   echo ' &middot; ' . $meta['_igv_brand'][0];
 }
 ?>
-              </h5>
-            </p>
+              </h4>
+            </div>
 
             <?php the_content(); ?>
 
-            <p>
-              <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">Director page</a>
+            <p class="u-align-center">
+              <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
+                <span class="button">
+                  Director page
+                </span>
+              </a>
             </p>
 
           </div>
@@ -121,9 +125,9 @@ if (!empty($meta['_igv_thumbbackground'][0])) {
 }
 
 if ($readMore) {
-  post_class('home-news news-read-more');
+  post_class('home-post home-news news-read-more');
 } else {
-  post_class('home-news');
+  post_class('home-post home-news');
 }
 ?> id="post-<?php the_ID(); ?>">
 <?php
@@ -165,6 +169,11 @@ if (!empty($meta['_igv_longtitle'][0])) {
           </nav>
           <div class="post-copy-container">
             <div class="copy u-marginauto">
+              <div class="u-align-center">
+                <h3 class="basic-post-title">
+                  <?php the_time('j F Y'); ?>
+                </h3>
+              </div>
               <?php the_content(); ?>
             </div>
           </div>
