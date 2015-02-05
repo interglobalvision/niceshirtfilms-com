@@ -136,8 +136,8 @@ if ($posttags) {
         <div class="u-fixed-ratio-content">
           <div class="u-holder">
             <div class="u-held">
-              <p><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></p>
-              <p><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></p>
+              <h3><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></h3>
+              <h4><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h4>
             </div>
           </div>
         </div>
