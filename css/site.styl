@@ -7,8 +7,8 @@ $gutter = 16px
 
 $width-sidebar = 250px
 
-$basic-animation-speed = 0.2s
-$longer-animation-speed = 0.5s
+$basic-animation-speed = 0.3s
+$longer-animation-speed = 0.6s
 
 $margin-small = ($gutter)
 $margin-tiny = ($gutter/2)
@@ -81,9 +81,6 @@ p
 a,a:active,a:visited
   color:inherit
   text-decoration: none
-  -webkit-transition: opacity $basic-animation-speed
-  -moz-transition: opacity $basic-animation-speed
-  -o-transition: opacity $basic-animation-speed
   transition: opacity $basic-animation-speed
   &:hover
     opacity:.5
@@ -150,14 +147,12 @@ img
   box-sizing: border-box
   padding: $margin-small
   background-color: $color-soft-white
-  transition: transform $longer-animation-speed
+  transition-property: transform, background-color
+  transition-duration: $longer-animation-speed
 
 #sidebar-toggle
   display: none
   z-index: 999
-  -webkit-transition: -webkit-transform $longer-animation-speed
-  -moz-transition: -moz-transform $longer-animation-speed
-  -o-transition: -o-transform $longer-animation-speed
   transition: transform $longer-animation-speed
   path
     fill: $color-soft-white
@@ -213,9 +208,12 @@ img
   text-align: center
   color: $color-soft-white
   height: $basic-post-height
+  position: relative
   background-color: $color-soft-black
   background-position: center center
   background-size: cover
+  transition: height $longer-animation-speed
+  overflow: hidden
   &:hover
     .post-header
       display: none
@@ -245,19 +243,42 @@ img
   position: relative
   height: 0
   transition: height $basic-animation-speed
-  &.open
-    height: auto
 
 .post-copy-close
   position: absolute
   top: $margin-basic
   right: $margin-basic
 
+.post-copy-container
+  box-sizing: border-box
+  padding: $margin-basic
+
 // NEWS POST
+
+.home-news.active
+  .post-copy
+    height: auto
 
 .news-copy
   display: none
   margin: $margin-large 0
+
+// VIDEO POST
+
+.home-video-player
+  position: absolute
+  top: $basic-post-height
+  height: $basic-post-height
+  width: 100%
+  z-index: 1
+  transition-property: top
+  transition-duration: $longer-animation-speed
+
+.home-video.active
+  .post-copy
+    height: auto
+  .home-video-player
+    top: 0
 
 // PAGES
 

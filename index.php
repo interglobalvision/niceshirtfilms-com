@@ -20,7 +20,12 @@ if( have_posts() ) {
     if (is_single_type('video', $post)) {
 /* video post type */
 ?>
-    <article <?php post_class('home-video'); ?> id="post-<?php the_ID(); ?>">
+    <article
+      <?php post_class('home-video'); ?>
+      id="post-<?php the_ID(); ?>"
+      data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
+      data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
+    >
       <div class="post-main u-pointer js-lazy-home-background" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>">
 
         <div class="u-holder">
@@ -53,21 +58,28 @@ if (!empty($meta['_igv_brand'][0])) {
           </div>
         </div>
 
+        <div class="home-video-player">
+
+        </div>
+
       </div>
 
       <div class="post-copy">
-        <nav class="post-copy-close u-pointer">x</nav>
+        <nav class="post-copy-close u-pointer">
+          <span class="genericon genericon-close-alt"></span>
+        </nav>
 
-        <div class="copy u-marginauto">
-          <p>
-           <h4 class="basic-post-title">
+        <div class="post-copy-container">
+          <div class="copy u-marginauto">
+            <p>
+             <h4 class="basic-post-title">
 <?php
 if (!empty($meta['_igv_director'][0])) {
   echo echoDirectorName($meta['_igv_director'][0]);
 }
 ?>
-           </h4>
-           <h5 class="basic-post-subtitle">
+             </h4>
+             <h5 class="basic-post-subtitle">
 <?php
 if (!empty($meta['_igv_title'][0])) {
   echo '<em>' . $meta['_igv_title'][0] . '</em>';
@@ -76,15 +88,16 @@ if (!empty($meta['_igv_brand'][0])) {
   echo ' &middot; ' . $meta['_igv_brand'][0];
 }
 ?>
-            </h5>
-          </p>
+              </h5>
+            </p>
 
-          <?php the_content(); ?>
+            <?php the_content(); ?>
 
-          <p>
-            <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">Director page</a>
-          </p>
+            <p>
+              <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">Director page</a>
+            </p>
 
+          </div>
         </div>
 
       </div>
@@ -108,9 +121,9 @@ if (!empty($meta['_igv_thumbbackground'][0])) {
 }
 
 if ($readMore) {
-  post_class('news-read-more');
+  post_class('home-news news-read-more');
 } else {
-  post_class();
+  post_class('home-news');
 }
 ?> id="post-<?php the_ID(); ?>">
 <?php
@@ -147,9 +160,13 @@ if (!empty($meta['_igv_longtitle'][0])) {
         </div>
 
         <div class="post-copy">
-          <nav class="post-copy-close u-pointer">x</nav>
-          <div class="copy u-marginauto">
-            <?php the_content(); ?>
+          <nav class="post-copy-close u-pointer">
+            <span class="genericon genericon-close-alt"></span>
+          </nav>
+          <div class="post-copy-container">
+            <div class="copy u-marginauto">
+              <?php the_content(); ?>
+            </div>
           </div>
         </div>
 

@@ -12,8 +12,6 @@
     lazyThumbnails = $('.lazy-thumb'),
     lazyBackgrounds = $('.js-lazy-background'),
 
-    keepRatio = $('.js-keep-ratio'),
-
     vimeoPlayer = $('#vimeo-player'),
     loadVimeoLinks = $('.js-load-vimeo'),
 
@@ -28,9 +26,8 @@
   function ifLargeImages() {
     if ($(window).width() > largeImagesWidth) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   function loadVimeoPlayer(vimeoId) {
@@ -42,6 +39,7 @@
       'padding-top': (ratio * 100) + '%'
     });
     $('html').addClass('cinema-mode');
+    $('#main-content').ScrollTo();
   }
 
   $(document).ready(function () {
@@ -104,27 +102,47 @@
 
     $('.post-copy-close').on('click', function (e) {
       e.preventDefault();
-      $(this).parent('.post-copy').removeClass('open');
+      $(this).parent('.post-copy').parent().removeClass('active');
+      var postMain = $(this).parent('.post-copy').siblings('.post-main');
+      postMain[0].style.height = '';
+      postMain.children('.home-video-player').html('');
     });
 
     // HOME VIDEO POSTS
 
     $('.home-video .post-main').on('click', function (e) {
       e.preventDefault();
-      $(this).ScrollTo().parent().find('.post-copy').addClass('open');
+      var post = $(this).ScrollTo().parent(),
+        postVimeoId = post.data('vimeo-id'),
+        postVimeoRatio = post.data('video-ratio');
+
+      if (postVimeoRatio == 0) {
+        postVimeoRatio = 0.5625;
+      }
+
+      var postVimeoHeight = (post.width() * postVimeoRatio);
+
+      post.addClass('active');
+
+      post.find('.post-main').height(postVimeoHeight);
+      post.find('.home-video-player').height(postVimeoHeight).html('<iframe width="100%" height="100%" src="//player.vimeo.com/video/' + postVimeoId + '?autoplay=1&badge=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
     });
 
     // NEWS POSTS
 
     $('.news-read-more .post-main').on('click', function (e) {
       e.preventDefault();
-      $(this).ScrollTo().parent().find('.post-copy').addClass('open');
+      $(this).ScrollTo().parent().addClass('active');
     });
 
     // DIRECTOR SINGLE
 
     $('#director-bio-toggle').on('click', function (e) {
       $('#director-biography').slideToggle();
+    });
+
+    $('#director-archive-toggle').on('click', function (e) {
+      $('#director-archive').slideToggle();
     });
 
     loadVimeoLinks.on('click', function (e) {
