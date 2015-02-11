@@ -1126,7 +1126,8 @@ img {
   padding-top: 16px;
   padding-right: 32px;
 }
-#vimeo-player {
+#vimeo-player,
+#video-overlay-player {
   position: relative;
   height: 0;
   overflow: hidden;
@@ -1134,8 +1135,11 @@ img {
           transition: padding-top 0.3s;
 }
 #vimeo-player iframe,
+#video-overlay-player iframe,
 #vimeo-player object,
-#vimeo-player embed {
+#video-overlay-player object,
+#vimeo-player embed,
+#video-overlay-player embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -1339,6 +1343,45 @@ img {
 .director-archive-video:hover .u-fixed-ratio-content,
 .director-showreel-video:hover .u-fixed-ratio-content {
   background-color: rgba(0,0,0,0.5);
+}
+#video-overlay {
+  display: none;
+  background-color: rgba(255,255,255,0.92);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+}
+#video-overlay-player {
+  background-color: #0e0e0e;
+}
+.video-overlay-nav {
+  position: absolute;
+  top: 50%;
+}
+.video-overlay-nav .genericon {
+  font-size: 50px;
+}
+#video-overlay-close {
+  top: 32px;
+  right: 32px;
+}
+#video-overlay-next {
+  margin-top: -25px;
+  right: 32px;
+}
+#video-overlay-previous {
+  margin-top: -25px;
+  left: 32px;
+}
+#video-overlay-inner {
+  width: 80%;
+  margin: 0 auto;
+}
+#video-overlay-text {
+  margin-top: 16px;
 }
 @media screen and (max-width: 800px) {
   #sidebar {

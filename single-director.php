@@ -11,6 +11,7 @@ if( have_posts() ) {
   while( have_posts() ) {
     the_post();
     $meta = get_post_meta($post->ID);
+    $directorName = get_the_title();
 ?>
 
   <section id="director" <?php post_class(); ?>>
@@ -43,16 +44,6 @@ global $post;
 if (!empty($meta['_igv_showreel_1'][0])) {
 ?>
     <section id="director-showreel" class="director-section u-cf">
-      <div class="director-showreel-video director-showreel-playall col col1 u-pointer u-background-cover u-fixed-ratio">
-        <div class="u-fixed-ratio-dummy"></div>
-        <div class="u-fixed-ratio-content">
-          <div class="u-holder">
-            <div class="u-held">
-              <h2>Play All</h2>
-            </div>
-          </div>
-        </div>
-      </div>
 <?php
   $showreelVideos = get_post_meta( get_the_ID(), '_igv_showreel_1', true );
   foreach($showreelVideos as $video) {
@@ -62,11 +53,14 @@ if (!empty($meta['_igv_showreel_1'][0])) {
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
     $meta = get_post_meta($post->ID);
 ?>
-      <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-vimeo'); ?>
+      <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-overlay-vimeo'); ?>
         data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
         data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"
         data-thumb-large="<?php echo $imgLarge[0]; ?>"
+        data-director="<?php echo $directorName; ?>"
+        data-title="<?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?>"
+        data-brand="<?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?>"
       >
         <div class="u-fixed-ratio-dummy"></div>
         <div class="u-fixed-ratio-content">
@@ -126,7 +120,7 @@ if ($posttags) {
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
     $meta = get_post_meta($post->ID);
 ?>
-      <div <?php post_class('director-archive-video u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-vimeo active'); ?>
+      <div <?php post_class('director-archive-video u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-inline-vimeo active'); ?>
         data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
         data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"

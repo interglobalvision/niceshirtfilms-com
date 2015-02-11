@@ -17,6 +17,8 @@ $margin-large = ($gutter*5)
 
 $basic-post-height = 350px
 
+$overlay-nav-size = 50px
+
 $font-size-basic = 15px
 $font-size-larger = 17px
 $font-size-smaller = 13px
@@ -183,7 +185,7 @@ img
 
 // PLAYER
 
-#vimeo-player
+#vimeo-player, #video-overlay-player
   position: relative
   height: 0
   overflow: hidden
@@ -379,6 +381,48 @@ img
     transition: background-color $basic-animation-speed
   &:hover .u-fixed-ratio-content
     background-color: rgba(0,0,0,0.5)
+
+
+// VIDEO OVERLAY
+
+#video-overlay
+  display: none
+  background-color: rgba(255,255,255,.92)
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 99999
+
+#video-overlay-player
+  background-color: $color-soft-black
+
+.video-overlay-nav
+  position: absolute
+  top: 50%
+  .genericon
+    font-size: $overlay-nav-size
+
+#video-overlay-close
+  top: $margin-basic
+  right: $margin-basic
+
+#video-overlay-next
+  margin-top: -($overlay-nav-size/2)
+  right: $margin-basic
+
+#video-overlay-previous
+  margin-top: -($overlay-nav-size/2)
+  left: $margin-basic
+
+#video-overlay-inner
+  width: 80%
+  margin: 0 auto
+
+#video-overlay-text
+  margin-top: $margin-small
+
 
 
 // MEDIA QUERIES
