@@ -1272,11 +1272,9 @@ img {
   background-color: #cdcbcb;
   padding: 0em 0.5em;
   color: #fdfdfd;
-  -webkit-transition: opacity 0.3s;
-          transition: opacity 0.3s;
 }
 .director-menu-item.active {
-  opacity: 0;
+  display: none;
 }
 .director-menu-item-blue {
   background-color: #00bcec;

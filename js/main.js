@@ -209,13 +209,20 @@ $(document).ready(function () {
 
   $('.director-menu-item').on('click', function (e) {
     var target = $(this).data('target');
-    if ($('#director-menu').data('active') != target) {
+    if (target === 'playall') {
+      loadOverlayVimeoPlayer($('.director-showreel-video').eq(0).data(), 0);
+    } else if ($('#director-menu').data('active') != target) {
       closeinlineVimeoPlayer();
       $('.director-section').slideUp();
       $('#director-' + target).slideDown();
       $('.director-menu-item').removeClass('active');
       $(this).addClass('active');
       $('#director-menu').data('active', target);
+      if (target === 'showreel') {
+        $('#director-showreel-playall').show();
+      } else {
+        $('#director-showreel-playall').hide();
+      }
     }
   });
 

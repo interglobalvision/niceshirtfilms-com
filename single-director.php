@@ -27,6 +27,7 @@ if( have_posts() ) {
       <div class="col col1">
 
         <ul id="director-menu">
+          <li id="director-showreel-playall" data-target="playall" class="director-menu-item director-menu-item-blue u-pointer">Play All</li>
           <li data-target="showreel" class="director-menu-item director-menu-item-blue active u-pointer">Back to reel</li>
           <li data-target="archive" class="director-menu-item u-pointer">Archive</li>
           <li data-target="biography" class="director-menu-item u-pointer">Biography</li>
