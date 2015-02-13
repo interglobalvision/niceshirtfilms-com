@@ -8,6 +8,11 @@ function l(data) {
 
 var largeImagesWidth = 1500,
 
+  basicAnimationSpeed = 300,
+  longerAnimationSpeed = 600,
+
+  scrollTimer,
+
   lazyHomeBackground = $('.js-lazy-home-background'),
 
   lazyThumbnails = $('.lazy-thumb'),
@@ -148,7 +153,7 @@ function inlineVimeoPlayerNext() {
     }
   });
 
-  if (nowPlayingIndex === undefined || nowPlayingIndex === (currentPlaylistLength-1)) {
+  if (nowPlayingIndex === undefined || nowPlayingIndex === (currentPlaylistLength - 1)) {
     loadInlineVimeoPlayer($(currentPlaylist[0]));
   } else {
     loadInlineVimeoPlayer($(currentPlaylist[(nowPlayingIndex + 1)]));
@@ -250,7 +255,7 @@ $(document).ready(function () {
   $('.home-video .post-main').on('click', function (e) {
     e.preventDefault();
     closeAllPosts();
-    var post = $(this).ScrollTo().parent(),
+    var post = $(this).parent(),
       postVimeoId = post.data('vimeo-id'),
       postVimeoRatio = post.data('video-ratio');
     if (postVimeoRatio == 0) {
@@ -259,7 +264,20 @@ $(document).ready(function () {
     var postVimeoHeight = (post.width() * postVimeoRatio);
     post.addClass('active');
     post.find('.post-main').height(postVimeoHeight);
-    post.find('.home-video-player').height(postVimeoHeight).html('<iframe class="home-vimeo-embed" width="100%" height="100%" src="//player.vimeo.com/video/' + postVimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+    post.find('.home-video-player').height(postVimeoHeight).html('<iframe id="home-vimeo-embed" width="100%" height="100%" src="//player.vimeo.com/video/' + postVimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=home-vimeo-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+
+    var iframe = $('#home-vimeo-embed')[0],
+      player = $f(iframe);
+    player.addEvent('ready', function () {
+      player.addEvent('finish', function () {
+        post.find('.home-video-player').html('');
+      });
+    });
+
+    scrollTimer = setTimeout(function () {
+      post.ScrollTo();
+    }, longerAnimationSpeed);
+
   });
 
   // HOME NEWS POSTS OPEN
