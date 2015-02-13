@@ -308,10 +308,32 @@ img
   body, #sidebar
     background-color: $color-light-gray
     color: $color-light-text-gray
-  .director-showreel-video
-    opacity: 0.1
-    &:hover
-      opacity: 1
+  .inline-player-nav
+    opacity: 1
+  #director-archive
+    padding-top: $margin-small
+//   .director-showreel-video
+//     opacity: 0.1
+//     &:hover
+//       opacity: 1
+
+  // INLINE PLAYER
+
+.inline-player-nav
+  display: inline-block
+  font-size: $font-size-smaller
+  background-color: $color-dark-gray
+  color: $color-soft-white
+  text-transform: uppercase
+  padding: 0 0.5em
+  margin-bottom: 0.5em
+  margin-right: 0.5em
+  opacity: 0
+  transition: opacity $basic-animation-speed
+  &:hover
+    background-color: $color-dark-gray
+
+  // HEADER
 
 #director-header
   padding-top: $margin-small
@@ -332,14 +354,15 @@ img
 .director-menu-item-blue
   background-color: $color-blue
 
-.director-showreel-video.director-showreel-playall
-  .u-holder
-    opacity: 1
-  .u-fixed-ratio-content
-    background-color: rgba(0,0,0,0.5)
+  // CONTENT SECTIONS
 
 #director-biography, #director-archive
   display: none
+
+  // ARCHIVE
+
+#director-archive
+  transition: padding-top $basic-animation-speed
 
 #director-archive-tags
   padding-bottom: $margin-small
@@ -360,6 +383,8 @@ img
 .director-archive-video
   width: 20%
   display: none
+
+  // THUMBNAILS
 
 .director-archive-video, .director-showreel-video
   float: left

@@ -99,7 +99,11 @@ $archive = get_posts(array(
 if ($archive) {
 ?>
   <div class="u-cf">
-    <div class="col2 colpad1left">
+    <div class="col col1">
+      <nav id="inline-player-previous" class="inline-player-nav u-pointer">Prev</nav>
+      <nav id="inline-player-next" class="inline-player-nav u-pointer">Next</nav>
+    </div>
+    <div class="col col2">
       <ul id="director-archive-tags">
         <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
@@ -122,6 +126,7 @@ if ($posttags) {
     $meta = get_post_meta($post->ID);
 ?>
       <div <?php post_class('director-archive-video u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-inline-vimeo active'); ?>
+        id="director-archive-video-<?php echo $post->ID; ?>"
         data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
         data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"
