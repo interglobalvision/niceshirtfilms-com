@@ -87,6 +87,33 @@ function wpb_imagelink_setup() {
 }
 add_action('admin_init', 'wpb_imagelink_setup', 10);
 
+// Exact match search
+add_filter( 'posts_search', 'exact_match_search', 20, 2 );
+function exact_match_search( $search, $wp_query ) {
+  global $wpdb;
+
+  if ( empty( $search ) )
+    return $search;
+
+  $q = $wp_query->query_vars;
+
+  $search = $searchand = '';
+
+  foreach ( (array) $q['search_terms'] as $term ) {
+    $term = esc_sql( like_escape( $term ) );
+    $search .= "{$searchand}($wpdb->posts.post_title REGEXP '[[:<:]]{$term}[[:>:]]') OR ($wpdb->posts.post_content REGEXP '[[:<:]]{$term}[[:>:]]')";
+    $searchand = ' AND ';
+  }
+
+  if ( ! empty( $search ) ) {
+    $search = " AND ({$search}) ";
+    if ( ! is_user_logged_in() )
+      $search .= " AND ($wpdb->posts.post_password = '') ";
+  }
+
+  return $search;
+}
+
 // UTILITY FUNCTIONS
 
 // get ID of page by slug
