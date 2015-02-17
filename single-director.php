@@ -154,7 +154,7 @@ if ($posttags) {
 
     <section id="director-biography" class="director-section u-cf">
 
-      <div class="col col1">
+      <div class="col col1 u-force-width">
 
         <?php the_post_thumbnail(); ?>
 
