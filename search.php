@@ -113,9 +113,20 @@ if( $director_search->have_posts() ) {
 <?php 
   while( $director_search->have_posts() ) {
     $director_search->the_post();
+    $matched_content = matched_content($post);
+
   ?>
 
-      <a href="<?php the_permalink() ?>"><h3 id="page-title"><?php the_title(); ?></h3></a>
+      <a href="<?php the_permalink() ?>">
+      <h3 id="page-title"><?php the_title(); ?></h3>
+      <?php
+      if( $matched_content ) {
+      ?>
+        <p><?php echo $matched_content; ?></p>
+      <?php 
+      }
+      ?>
+      </a>
   <?php } ?>
   </section>
 <?php 

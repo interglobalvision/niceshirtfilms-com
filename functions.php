@@ -160,3 +160,29 @@ function echoDirectorName($id) {
     echo $director->post_title;
   }
 }
+
+// Check if the posts' content matched the search
+function matched_content( $post ) {
+  global $wp_query;
+
+  $search_terms = $wp_query->query_vars['search_terms'];
+  foreach( $search_terms as $search_term ) {
+
+    $search_term_pos = stripos( $post->post_content, $search_term  );
+    if( $search_term_pos >= 0 ) {
+      return strsntnc( $post->post_content, $search_term );
+    } 
+  }
+  return FALSE;
+}
+
+// Find and return the sentence from the haystack containing the needle
+function strsntnc( $haystack, $needle ) {
+  $sentences = explode('.', $haystack);
+  foreach( $sentences as $sentence ) {
+    stripos( $sentence, $needle );
+    if( stripos( $sentence, $needle ) )
+      return $sentence . ".";
+  }
+}
+
