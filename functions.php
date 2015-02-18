@@ -167,9 +167,11 @@ function matched_content( $post ) {
 
   $search_terms = $wp_query->query_vars['search_terms'];
   foreach( $search_terms as $search_term ) {
+    if( stripos( $post->title, $search_term  ) ) {
+      return FALSE;
+    } 
 
-    $search_term_pos = stripos( $post->post_content, $search_term  );
-    if( $search_term_pos >= 0 ) {
+    if( stripos( $post->post_content, $search_term  ) ) {
       return strsntnc( $post->post_content, $search_term );
     } 
   }
@@ -185,4 +187,3 @@ function strsntnc( $haystack, $needle ) {
       return $sentence . ".";
   }
 }
-
