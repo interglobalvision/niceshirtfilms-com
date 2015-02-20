@@ -48,8 +48,8 @@ get_template_part( 'lib/meta-boxes' );
 
 add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
 function cmb_initialize_cmb_meta_boxes() {
-  if( ! class_exists( 'cmb_Meta_Box' ) )
-    require_once 'lib/metabox/init.php';
+  if( ! class_exists( 'cmb2_bootstrap_202' ) )
+    require_once 'lib/CMB2/init.php';
 }
 
 // Disable that freaking admin bar
