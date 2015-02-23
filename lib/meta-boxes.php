@@ -135,6 +135,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'type'    => 'custom_attached_posts',
 				'options' => array(
 					'query_args' => $showreel_args, // override the get_posts args
+          'show_thumbnails' => true
 				),
 			)
 		),
