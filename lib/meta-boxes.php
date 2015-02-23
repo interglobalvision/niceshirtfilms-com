@@ -119,36 +119,25 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
     )
   );
 
-  $meta_boxes['showreel_1_metabox'] = array(
-    'id'         => 'showreel_1_metabox',
-    'title'      => __( 'Showreel 1', 'cmb' ),
+  $meta_boxes['showreel_metabox'] = array(
+    'id'         => 'showreel_metabox',
+    'title'      => __( 'Showreel', 'cmb' ),
     'object_types'      => array( 'director', ), // Post type
     'context'    => 'normal',
     'priority'   => 'high',
     'show_names' => true, // Show field names on the left
     // 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
-    'fields'     => array(
-      array(
-        'id'          => $prefix . 'showreel_1',
-        'type'        => 'group',
-        'description' => __( '', 'cmb' ),
-        'options'     => array(
-          'group_title'   => __( 'Video {#}', 'cmb' ), // {#} gets replaced by row number
-          'add_button'    => __( 'Add Another Video', 'cmb' ),
-          'remove_button' => __( 'Remove Video', 'cmb' ),
-          'sortable'      => true // beta
-        ),
-        'fields'      => array(
-          array(
-            'name'    => __( 'Video', 'cmb' ),
-            'desc'    => __( '', 'cmb' ),
-            'id'      => 'video',
-            'type'    => 'select',
-            'options' => get_post_objects($showreel_args),
-          )
-        )
-      )
-    )
+		'fields'     => array(
+			array(
+				'name'    => __( '', 'cmb2' ),
+				'desc'    => __( 'Drag videos from the left column to the right column to attach them to this page.<br />You may rearrange the order of the videos in the right column by dragging and dropping.', 'cmb2' ),
+				'id'      => $prefix . 'showreel',
+				'type'    => 'custom_attached_posts',
+				'options' => array(
+					'query_args' => $showreel_args, // override the get_posts args
+				),
+			)
+		),
   );
   return $meta_boxes;
 }

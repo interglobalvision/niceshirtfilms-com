@@ -42,33 +42,33 @@ if( have_posts() ) {
 <?php
 global $post;
 
-if (!empty($meta['_igv_showreel_1'][0])) {
+if (!empty($meta['_igv_showreel'])) {
 ?>
     <section id="director-showreel" class="director-section u-cf">
 <?php
-  $showreelVideos = get_post_meta( get_the_ID(), '_igv_showreel_1', true );
+  $showreelVideos = get_post_meta( get_the_ID(), '_igv_showreel', true );
   foreach($showreelVideos as $video) {
-    $post = get_post($video['video']);
+    $post = get_post($video);
     setup_postdata($post);
     $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
-    $meta = get_post_meta($post->ID);
+    $video_meta = get_post_meta($post->ID);
 ?>
       <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-overlay-vimeo'); ?>
-        data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
-        data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
+        data-vimeo-id="<?php if (!empty($video_meta['_vimeo_id_value'][0])) { echo $video_meta['_vimeo_id_value'][0];} ?>"
+        data-video-ratio="<?php if (!empty($video_meta['_vimeo_ratio_value'][0])) { echo $video_meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"
         data-thumb-large="<?php echo $imgLarge[0]; ?>"
         data-director="<?php echo $directorName; ?>"
-        data-title="<?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?>"
-        data-brand="<?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?>"
+        data-title="<?php if (!empty($video_meta['_igv_title'][0])) { echo $video_meta['_igv_title'][0];} ?>"
+        data-brand="<?php if (!empty($video_meta['_igv_brand'][0])) { echo $video_meta['_igv_brand'][0];} ?>"
       >
         <div class="u-fixed-ratio-dummy"></div>
         <div class="u-fixed-ratio-content">
           <div class="u-holder">
             <div class="u-held">
-              <h2><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></h2>
-              <h3><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h3>
+              <h2><em><?php if (!empty($video_meta['_igv_title'][0])) { echo $video_meta['_igv_title'][0];} ?></em></h2>
+              <h3><?php if (!empty($video_meta['_igv_brand'][0])) { echo $video_meta['_igv_brand'][0];} ?></h3>
             </div>
           </div>
         </div>
