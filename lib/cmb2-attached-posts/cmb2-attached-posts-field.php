@@ -176,7 +176,7 @@ function cmb2_attached_posts_fields_display_attached( $field, $attached ) {
 		$zebra = $count % 2 == 0 ? 'even' : 'odd';
 
     // Set thumbnail if the options is true
-	  $thumbnail = $field->options( 'show_thumbnails' ) == TRUE ? get_the_post_thumbnail( $post_id, 'thumbnail' ) : '';
+	  $thumbnail = $field->options( 'show_thumbnails' ) == TRUE ? get_the_post_thumbnail( $post_id, 'admin-video-thumb' ) : '';
 
 		// Build our list item
 		echo '<li data-id="' . $post_id . '" class="' . $zebra . '">', $thumbnail ,'<a title="'. __( 'Edit' ) .'" href="', get_edit_post_link( $post_id ) ,'">'.  get_the_title( $post_id ) .'</a><span class="dashicons dashicons-minus add-remove"></span></li>';
