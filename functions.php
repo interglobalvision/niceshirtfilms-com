@@ -120,6 +120,20 @@ function exact_match_search( $search, $wp_query ) {
   return $search;
 }
 
+// custom login logo
+function change_my_wp_login_image() {
+echo "
+<style>
+  body.login #login h1 a {
+    background: url('".get_bloginfo('template_url')."/images/niceshirt.png') 0 no-repeat transparent;
+    height:72px;
+    width:312px;
+  }
+</style>
+";
+}
+add_action("login_head", "change_my_wp_login_image");
+
 // UTILITY FUNCTIONS
 
 // get ID of page by slug
