@@ -51,7 +51,7 @@ function cmb2_attached_posts_fields_render( $field, $escaped_value, $object_id, 
 		'orderby'			=> 'name',
 		'order'				=> 'ASC',
 	) );
-	
+
 	// Get post type object for attached post type
 	$attached_post_type = get_post_type_object( $args['post_type'] );
 
@@ -93,7 +93,7 @@ function cmb2_attached_posts_fields_render( $field, $escaped_value, $object_id, 
 		$added = ! empty ( $attached ) && in_array( $post->ID, $attached ) ? ' added' : '';
 
     // Set thumbnail if the options is true
-	  $thumbnail = $field->options( 'show_thumbnails' ) == TRUE ? get_the_post_thumbnail( $post->ID, 'thumbnail' ) : '';
+	  $thumbnail = $field->options( 'show_thumbnails' ) == TRUE ? get_the_post_thumbnail( $post->ID, 'admin-video-thumb' ) : '';
 
 		// Build our list item
 		echo '<li data-id="', $post->ID ,'" class="' . $zebra . $added . '">', $thumbnail ,'<a title="'. __( 'Edit' ) .'" href="', get_edit_post_link( $post->ID ) ,'">', $post->post_title ,'</a><span class="dashicons dashicons-plus add-remove"></span></li>';
@@ -174,7 +174,7 @@ function cmb2_attached_posts_fields_display_attached( $field, $attached ) {
 
 		// Set our zebra stripes
 		$zebra = $count % 2 == 0 ? 'even' : 'odd';
-    
+
     // Set thumbnail if the options is true
 	  $thumbnail = $field->options( 'show_thumbnails' ) == TRUE ? get_the_post_thumbnail( $post_id, 'thumbnail' ) : '';
 

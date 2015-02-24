@@ -24,6 +24,7 @@ if( function_exists( 'add_theme_support' ) ) {
 
 if( function_exists( 'add_image_size' ) ) {
   add_image_size( 'admin-thumb', 150, 150, false );
+  add_image_size( 'admin-video-thumb', 150, 84, true );
   add_image_size( 'opengraph', 1200, 630, true );
 
   add_image_size( 'post-background', 700, 280, true );
@@ -174,11 +175,11 @@ function matched_content( $post ) {
   foreach( $search_terms as $search_term ) {
     if( stripos( $post->title, $search_term  ) ) {
       return FALSE;
-    } 
+    }
 
     if( stripos( $post->post_content, $search_term  ) ) {
       return strsntnc( $post->post_content, $search_term );
-    } 
+    }
   }
   return FALSE;
 }
