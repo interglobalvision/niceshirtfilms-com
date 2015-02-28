@@ -24,10 +24,10 @@ gulp.task('js', function() {
   ])
   .pipe(jshint({
     browser: true,
+    jquery: true,
     devel: true,
-    unparam: true,
+    unused: true,
     indent: 2,
-    global: ['$', 'jQuery', '$f']
   }))
   .pipe(jshint.reporter('jshint-stylish'))
   .on('error', errorNotify)
