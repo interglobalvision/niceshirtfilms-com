@@ -1,6 +1,3 @@
-/*jslint browser: true, devel: true, vars: true, indent: 2 */
-/*global $, $f, jQuery, document */
-
 function l(data) {
   "use strict";
   console.log(data);
