@@ -30,9 +30,7 @@ var largeImagesWidth = 1500,
   sidebarButton = $('#sidebar-toggle'),
 
   tagFilters = $('.filter-tag'),
-  directorArchiveVideos = $('.director-archive-video'),
-
-  hash = window.location.hash;
+  directorArchiveVideos = $('.director-archive-video');
 
 function ifLargeImages() {
   "use strict";
@@ -194,13 +192,6 @@ function closeinlineVimeoPlayer() {
 
 $(document).ready(function () {
   "use strict";
-
-  if (hash) {
-    var vimeoId = hash.substr(1, hash.length);
-    window.location.hash = '';
-    loadInlineVimeoPlayer(vimeoId);
-    l('Load vimeo from hash: ' + vimeoId);
-  }
 
   if (lazyHomeBackground.length) {
     lazyHomeBackground.each(function (index, item) {
