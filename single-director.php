@@ -27,10 +27,10 @@ if( have_posts() ) {
       <div class="col col1">
 
         <ul id="director-menu">
-          <li id="director-showreel-playall" data-target="playall" class="director-menu-item director-menu-item-blue u-pointer">Play All</li>
-          <li data-target="showreel" class="director-menu-item director-menu-item-blue active u-pointer">Back to reel</li>
-          <li data-target="archive" class="director-menu-item u-pointer">Archive</li>
-          <li data-target="biography" class="director-menu-item u-pointer">Biography</li>
+          <li id="director-showreel-playall" class="director-menu-item director-menu-item-blue u-pointer"><a href="#play-all">Play All</a></li>
+          <li class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Back to reel</a></li>
+          <li class="director-menu-item u-pointer"><a href="#archive">Archive</a></li>
+          <li class="director-menu-item u-pointer"><a href="#biography">Biography</a></li>
         </ul>
 
       </div>
@@ -125,23 +125,25 @@ if ($posttags) {
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
     $meta = get_post_meta($post->ID);
 ?>
-      <div <?php post_class('director-archive-video u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-inline-vimeo active'); ?>
-        id="director-archive-video-<?php echo $post->ID; ?>"
-        data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
-        data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
-        data-thumb="<?php echo $img[0]; ?>"
-        data-thumb-large="<?php echo $imgLarge[0]; ?>"
-      >
-        <div class="u-fixed-ratio-dummy"></div>
-        <div class="u-fixed-ratio-content">
-          <div class="u-holder">
-            <div class="u-held">
-              <h3><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></h3>
-              <h4><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h4>
+      <a href="#<?php echo "video-" . $post->ID; ?>">
+        <div <?php post_class('director-archive-video u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-inline-vimeo active'); ?>
+          id="director-archive-video-<?php echo $post->ID; ?>"
+          data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
+          data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
+          data-thumb="<?php echo $img[0]; ?>"
+          data-thumb-large="<?php echo $imgLarge[0]; ?>"
+        >
+          <div class="u-fixed-ratio-dummy"></div>
+          <div class="u-fixed-ratio-content">
+            <div class="u-holder">
+              <div class="u-held">
+                <h3><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></h3>
+                <h4><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h4>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
 <?php
   }
   wp_reset_postdata();

@@ -345,6 +345,27 @@ img
 #director-menu
   padding-top: $margin-small
 
+  li:nth-child(2)
+    display: none
+
+  &[data-active="archive"]
+    li:first-child,
+    li:nth-child(3)
+      display: none
+
+    li:nth-child(2)
+    li:nth-child(4)
+      display: inline-block
+
+  &[data-active="biography"]
+    li:first-child,
+    li:nth-child(4)
+      display: none
+
+    li:nth-child(2)
+    li:nth-child(3)
+      display: inline-block
+
 .director-menu-item
   display: inline-block
   text-transform: uppercase
@@ -353,6 +374,9 @@ img
   color: $color-soft-white
   &.active
     display: none
+
+  a:hover
+    opacity: 1
 
 .director-menu-item-blue
   background-color: $color-blue
@@ -366,6 +390,9 @@ img
 
 #director-archive
   transition: padding-top $basic-animation-speed
+
+  a:hover
+    opacity: 1
 
 #director-archive-tags
   padding-bottom: $margin-small

@@ -30,7 +30,9 @@ var largeImagesWidth = 1500,
   sidebarButton = $('#sidebar-toggle'),
 
   tagFilters = $('.filter-tag'),
-  directorArchiveVideos = $('.director-archive-video');
+  directorArchiveVideos = $('.director-archive-video'),
+
+  pathArray = window.location.pathname.split( '/' );
 
 function ifLargeImages() {
   "use strict";
@@ -188,6 +190,50 @@ function closeinlineVimeoPlayer() {
   }).data('now-playing', '');
 }
 
+// Route
+function router( page, hash ) {
+
+  // Routes: Director Page
+  if ( page === 'director') {
+
+    if ( hash === 'play-all' ) {
+
+      // #play-all
+      loadOverlayVimeoPlayer( $('.director-showreel-video').eq(0).data(), 0 );
+
+    } else if ( hash.indexOf('video-') === 0 || hash === 'archive' ) {
+      if ( $('#director-menu').attr('data-active') !== 'archive' ) {
+        closeinlineVimeoPlayer();
+        $('.director-section').slideUp();
+        $('#director-archive').slideDown();
+        $('#director-menu').attr('data-active', 'archive');
+      }
+
+      // #video-XXXX
+      if ( hash.indexOf('video-') === 0 ) {
+        loadInlineVimeoPlayer( $("#director-archive-" + hash ) );
+        $('#vimeo-player').slideDown();
+        $('#director-menu').attr('data-active', 'archive');
+      }
+
+    } else if ( hash === 'biography' ) {
+
+      // #biography
+      if ( hash === 'biography' ) {
+        closeinlineVimeoPlayer();
+        $('.director-section').slideUp();
+        $('#director-biography').slideDown();
+        $('#director-menu').attr('data-active', 'biography' );
+      }
+
+    } else {
+      $('#director-menu').attr('data-active', '');
+      $('.director-section').slideUp();
+      $('#director-showreel').slideDown();
+    }
+  }
+
+}
 // DOC READY BRO
 
 $(document).ready(function () {
@@ -278,27 +324,6 @@ $(document).ready(function () {
 
   // DIRECTOR SINGLE
 
-    // MENU TABS
-
-  $('.director-menu-item').on('click', function (e) {
-    var target = $(this).data('target');
-    if (target === 'playall') {
-      loadOverlayVimeoPlayer($('.director-showreel-video').eq(0).data(), 0);
-    } else if ($('#director-menu').data('active') != target) {
-      closeinlineVimeoPlayer();
-      $('.director-section').slideUp();
-      $('#director-' + target).slideDown();
-      $('.director-menu-item').removeClass('active');
-      $(this).addClass('active');
-      $('#director-menu').data('active', target);
-      if (target === 'showreel') {
-        $('#director-showreel-playall').show();
-      } else {
-        $('#director-showreel-playall').hide();
-      }
-    }
-  });
-
     // LOAD SHOWREEL VIDEOS IN OVERLAY
 
   $('.js-load-overlay-vimeo').on('click', function () {
@@ -317,12 +342,6 @@ $(document).ready(function () {
 
   $('#video-overlay-previous').on('click', function () {
     overlayVimeoPlayerPrevious();
-  });
-
-    // LOAD ARCHIVE VIDEOS INLINE
-
-  $('.js-load-inline-vimeo').on('click', function () {
-    loadInlineVimeoPlayer($(this));
   });
 
     // INLINE PLAYER NAVS
@@ -361,6 +380,18 @@ $(document).ready(function () {
       sidebarButton.attr('class', 'u-pointer rotate');
     }
   });
+
+  // Router: on change
+  window.onhashchange = function (e) {
+    var hash = window.location.hash.replace("#",'');
+    router( pathArray[1], hash );
+  }
+  
+  // Router: on load
+  if ( window.location.hash ) {
+    var hash = window.location.hash.replace("#",'');
+    router( pathArray[1], hash );
+  }
 
 // END DOC READY
 
