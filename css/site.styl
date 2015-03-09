@@ -7,8 +7,8 @@ $gutter = 16px
 
 $width-sidebar = 250px
 
-$basic-animation-speed = 0.3s
-$longer-animation-speed = 0.6s
+$basic-animation-speed = 0.6s
+$longer-animation-speed = 0.7s
 
 $margin-small = ($gutter)
 $margin-tiny = ($gutter/2)
@@ -71,6 +71,9 @@ h2
 
 h3
   font-size: $font-size-subheading
+
+h4
+  font-size: $font-size-basic
 
 h1,h2,h3,h4,h5,h6
   line-height: $font-leading-basic
@@ -349,38 +352,26 @@ img
 #director-menu
   padding-top: $margin-small
 
-  li
-    width: 30%
-    text-align: center
-    &:nth-child(2)
+  #director-showreel-label
+    display: none
+
+  &[data-active="archive"], &[data-active="biography"]
+    #director-showreel-play
       display: none
-
-  &[data-active="archive"]
-    li:first-child,
-    li:nth-child(3)
-      display: none
-
-    li:nth-child(2)
-    li:nth-child(4)
-      display: inline-block
-
-  &[data-active="biography"]
-    li:first-child,
-    li:nth-child(4)
-      display: none
-
-    li:nth-child(2)
-    li:nth-child(3)
+    #director-showreel-label
       display: inline-block
 
 .director-menu-item
+  width: 80px
+  text-align: center
   display: inline-block
   text-transform: uppercase
   background-color: $color-dark-gray
   padding: 0em 0.4em
   color: $color-soft-white
-  &.active
-    display: none
+
+  &:active
+    background-color: $color-light-gray
 
   a:hover
     opacity: 1

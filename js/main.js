@@ -5,8 +5,7 @@ function l(data) {
 
 var largeImagesWidth = 1500,
 
-  basicAnimationSpeed = 300,
-  longerAnimationSpeed = 600,
+  basicAnimationSpeed = 600,
 
   scrollTimer,
 
@@ -190,7 +189,8 @@ function closeinlineVimeoPlayer() {
   }).data('now-playing', '');
 }
 
-// Route
+// ROUTER
+
 function router( page, hash ) {
 
   // Routes: Director Page
@@ -202,17 +202,18 @@ function router( page, hash ) {
       loadOverlayVimeoPlayer( $('.director-showreel-video').eq(0).data(), 0 );
 
     } else if ( hash.indexOf('video-') === 0 || hash === 'archive' ) {
+
       if ( $('#director-menu').attr('data-active') !== 'archive' ) {
         closeinlineVimeoPlayer();
-        $('.director-section').slideUp();
-        $('#director-archive').slideDown();
+        $('.director-section').slideUp(basicAnimationSpeed);
+        $('#director-archive').slideDown(basicAnimationSpeed);
         $('#director-menu').attr('data-active', 'archive');
       }
 
       // #video-XXXX
       if ( hash.indexOf('video-') === 0 ) {
         loadInlineVimeoPlayer( $("#director-archive-" + hash ) );
-        $('#vimeo-player').slideDown();
+        $('#vimeo-player').slideDown(basicAnimationSpeed);
         $('#director-menu').attr('data-active', 'archive');
       }
 
@@ -221,15 +222,15 @@ function router( page, hash ) {
       // #biography
       if ( hash === 'biography' ) {
         closeinlineVimeoPlayer();
-        $('.director-section').slideUp();
-        $('#director-biography').slideDown();
+        $('.director-section').slideUp(basicAnimationSpeed);
+        $('#director-biography').slideDown(basicAnimationSpeed);
         $('#director-menu').attr('data-active', 'biography' );
       }
 
     } else {
       $('#director-menu').attr('data-active', '');
-      $('.director-section').slideUp();
-      $('#director-showreel').slideDown();
+      $('.director-section').slideUp(basicAnimationSpeed);
+      $('#director-showreel').slideDown(basicAnimationSpeed);
     }
 
 //   }
@@ -293,7 +294,7 @@ $(document).ready(function () {
     var post = $(this).parent(),
       postVimeoId = post.data('vimeo-id'),
       postVimeoRatio = post.data('video-ratio');
-    if (postVimeoRatio == 0) {
+    if (postVimeoRatio === 0) {
       postVimeoRatio = 0.5625;
     }
     var postVimeoHeight = (post.width() * postVimeoRatio);
@@ -311,7 +312,7 @@ $(document).ready(function () {
 
     scrollTimer = setTimeout(function () {
       post.ScrollTo();
-    }, longerAnimationSpeed);
+    }, basicAnimationSpeed);
 
   });
 
@@ -357,7 +358,7 @@ $(document).ready(function () {
 
     // TAG FILTERS
 
-  tagFilters.on('click', function (e) {
+  tagFilters.on('click', function () {
     tagFilters.removeClass('filter-tag-active');
     $(this).addClass('filter-tag-active');
 
@@ -383,10 +384,10 @@ $(document).ready(function () {
   });
 
   // Router: on change
-  window.onhashchange = function (e) {
+  window.onhashchange = function () {
     var hash = window.location.hash.replace("#",'');
     router( pathArray[1], hash );
-  }
+  };
 
   // Router: on load
   if ( window.location.hash ) {

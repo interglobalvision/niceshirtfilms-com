@@ -1006,6 +1006,9 @@ h2 {
 h3 {
   font-size: 30px;
 }
+h4 {
+  font-size: 17px;
+}
 h1,
 h2,
 h3,
@@ -1026,8 +1029,8 @@ a:active,
 a:visited {
   color: inherit;
   text-decoration: none;
-  -webkit-transition: opacity 0.3s;
-          transition: opacity 0.3s;
+  -webkit-transition: opacity 0.6s;
+          transition: opacity 0.6s;
 }
 a:hover,
 a:active:hover,
@@ -1037,8 +1040,8 @@ a:visited:hover {
 html,
 body {
   background-color: #edecec;
-  -webkit-transition: background-color 0.6s;
-          transition: background-color 0.6s;
+  -webkit-transition: background-color 0.7s;
+          transition: background-color 0.7s;
 }
 img {
   max-width: 100%;
@@ -1103,14 +1106,14 @@ img {
   background-color: #fdfdfd;
   -webkit-transition-property: -webkit-transform, background-color;
           transition-property: transform, background-color;
-  -webkit-transition-duration: 0.6s;
-          transition-duration: 0.6s;
+  -webkit-transition-duration: 0.7s;
+          transition-duration: 0.7s;
 }
 #sidebar-toggle {
   display: none;
   z-index: 999;
-  -webkit-transition: -webkit-transform 0.6s;
-          transition: transform 0.6s;
+  -webkit-transition: -webkit-transform 0.7s;
+          transition: transform 0.7s;
 }
 #sidebar-toggle path {
   fill: #fdfdfd;
@@ -1135,8 +1138,8 @@ img {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition: padding-top 0.3s;
-          transition: padding-top 0.3s;
+  -webkit-transition: padding-top 0.6s;
+          transition: padding-top 0.6s;
 }
 #vimeo-player iframe,
 #video-overlay-player iframe,
@@ -1173,8 +1176,8 @@ img {
   background-color: #0e0e0e;
   background-position: center center;
   background-size: cover;
-  -webkit-transition: height 0.6s;
-          transition: height 0.6s;
+  -webkit-transition: height 0.7s;
+          transition: height 0.7s;
   overflow: hidden;
 }
 .post-main:hover .post-header {
@@ -1205,8 +1208,8 @@ img {
   overflow: hidden;
   position: relative;
   height: 0;
-  -webkit-transition: height 0.3s;
-          transition: height 0.3s;
+  -webkit-transition: height 0.6s;
+          transition: height 0.6s;
 }
 .post-copy-close {
   position: absolute;
@@ -1232,8 +1235,8 @@ img {
   z-index: 1;
   -webkit-transition-property: top;
           transition-property: top;
-  -webkit-transition-duration: 0.6s;
-          transition-duration: 0.6s;
+  -webkit-transition-duration: 0.7s;
+          transition-duration: 0.7s;
 }
 .home-video.active .post-copy {
   height: auto;
@@ -1272,8 +1275,8 @@ img {
   margin-bottom: 0.4em;
   margin-right: 0.4em;
   opacity: 0;
-  -webkit-transition: opacity 0.3s;
-          transition: opacity 0.3s;
+  -webkit-transition: opacity 0.6s;
+          transition: opacity 0.6s;
 }
 .inline-player-nav:hover {
   background-color: #cdcbcb;
@@ -1285,38 +1288,28 @@ img {
 #director-menu {
   padding-top: 16px;
 }
-#director-menu li {
-  width: 30%;
-  text-align: center;
-}
-#director-menu li:nth-child(2) {
+#director-menu #director-showreel-label {
   display: none;
 }
-#director-menu[data-active="archive"] li:first-child,
-#director-menu[data-active="archive"] li:nth-child(3) {
+#director-menu[data-active="archive"] #director-showreel-play,
+#director-menu[data-active="biography"] #director-showreel-play {
   display: none;
 }
-#director-menu[data-active="archive"] li:nth-child(2),
-#director-menu[data-active="archive"] li:nth-child(4) {
-  display: inline-block;
-}
-#director-menu[data-active="biography"] li:first-child,
-#director-menu[data-active="biography"] li:nth-child(4) {
-  display: none;
-}
-#director-menu[data-active="biography"] li:nth-child(2),
-#director-menu[data-active="biography"] li:nth-child(3) {
+#director-menu[data-active="archive"] #director-showreel-label,
+#director-menu[data-active="biography"] #director-showreel-label {
   display: inline-block;
 }
 .director-menu-item {
+  width: 80px;
+  text-align: center;
   display: inline-block;
   text-transform: uppercase;
   background-color: #cdcbcb;
   padding: 0em 0.4em;
   color: #fdfdfd;
 }
-.director-menu-item.active {
-  display: none;
+.director-menu-item:active {
+  background-color: #edecec;
 }
 .director-menu-item a:hover {
   opacity: 1;
@@ -1329,8 +1322,8 @@ img {
   display: none;
 }
 #director-archive {
-  -webkit-transition: padding-top 0.3s;
-          transition: padding-top 0.3s;
+  -webkit-transition: padding-top 0.6s;
+          transition: padding-top 0.6s;
 }
 #director-archive a:hover {
   opacity: 1;
@@ -1371,8 +1364,8 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transition: opacity 0.3s;
-          transition: opacity 0.3s;
+  -webkit-transition: opacity 0.6s;
+          transition: opacity 0.6s;
 }
 .director-archive-video .u-holder:hover,
 .director-showreel-video .u-holder:hover {
@@ -1380,8 +1373,8 @@ img {
 }
 .director-archive-video .u-fixed-ratio-content,
 .director-showreel-video .u-fixed-ratio-content {
-  -webkit-transition: background-color 0.3s;
-          transition: background-color 0.3s;
+  -webkit-transition: background-color 0.6s;
+          transition: background-color 0.6s;
 }
 .director-archive-video:hover .u-fixed-ratio-content,
 .director-showreel-video:hover .u-fixed-ratio-content {
