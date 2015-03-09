@@ -4,9 +4,15 @@
   </section>
 
   <section id="video-overlay">
-    <nav id="video-overlay-close" class="video-overlay-nav u-pointer"><span class="genericon genericon-close"></span></nav>
-    <nav id="video-overlay-next" class="video-overlay-nav u-pointer"><span class="genericon genericon-next"></span></nav>
-    <nav id="video-overlay-previous" class="video-overlay-nav u-pointer"><span class="genericon genericon-previous"></span></nav>
+    <nav id="video-overlay-close" class="video-overlay-nav u-pointer">
+      <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-close.svg'); ?>
+    </nav>
+    <nav id="video-overlay-next" class="video-overlay-nav u-pointer">
+      <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-right.svg'); ?>
+    </nav>
+    <nav id="video-overlay-previous" class="video-overlay-nav u-pointer">
+      <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-left.svg'); ?>
+    </nav>
     <div class="u-holder">
       <div class="u-held">
         <div id="video-overlay-inner">

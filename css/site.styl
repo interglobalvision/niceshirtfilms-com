@@ -81,6 +81,9 @@ h1,h2,h3,h4,h5,h6
 
 p
   margin-bottom: 1em
+//
+//   a
+//     font-family:"LLAkkuratProWeb-Regular",helvetica,arial,sans-serif
 
 .copy
   max-width: 650px
@@ -332,16 +335,15 @@ img
 
 .inline-player-nav
   display: inline-block
-  background-color: $color-dark-gray
-  color: $color-soft-white
-  text-transform: uppercase
-  padding: 0 0.4em
   margin-bottom: 0.4em
-  margin-right: 0.4em
-  opacity: 0
-  transition: opacity $basic-animation-speed
-  &:hover
-    background-color: $color-dark-gray
+  margin-right: 1em
+  svg
+    height: 20px
+    path
+      fill: $color-soft-black
+    &:hover
+      path
+        fill: $color-dark-gray
 
   // HEADER
 
@@ -369,9 +371,6 @@ img
   background-color: $color-dark-gray
   padding: 0em 0.4em
   color: $color-soft-white
-
-  &:active
-    background-color: $color-light-gray
 
   a:hover
     opacity: 1

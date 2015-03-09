@@ -1268,18 +1268,17 @@ img {
 }
 .inline-player-nav {
   display: inline-block;
-  background-color: #cdcbcb;
-  color: #fdfdfd;
-  text-transform: uppercase;
-  padding: 0 0.4em;
   margin-bottom: 0.4em;
-  margin-right: 0.4em;
-  opacity: 0;
-  -webkit-transition: opacity 0.6s;
-          transition: opacity 0.6s;
+  margin-right: 1em;
 }
-.inline-player-nav:hover {
-  background-color: #cdcbcb;
+.inline-player-nav svg {
+  height: 20px;
+}
+.inline-player-nav svg path {
+  fill: #0e0e0e;
+}
+.inline-player-nav svg:hover path {
+  fill: #cdcbcb;
 }
 #director-header {
   padding-top: 16px;
@@ -1307,9 +1306,6 @@ img {
   background-color: #cdcbcb;
   padding: 0em 0.4em;
   color: #fdfdfd;
-}
-.director-menu-item:active {
-  background-color: #edecec;
 }
 .director-menu-item a:hover {
   opacity: 1;
