@@ -19,14 +19,16 @@ $basic-post-height = 350px
 
 $overlay-nav-size = 50px
 
-$font-size-basic = 15px
-$font-size-larger = 17px
-$font-size-smaller = 13px
+$font-size-basic = 17px
+
+$font-size-heading = 60px
+$font-size-subheading = 30px
+
+$font-size-smaller = 14px
+$font-size-smallest = 12px
+
 $font-leading-basic = 1.5em
 $font-tracking-basic = 0.03em
-
-$font-size-heading = 50px
-$font-size-subheading = 30px
 
 $color-soft-black = rgb(14,14,14)
 $color-soft-white = rgb(253,253,253)
@@ -51,21 +53,24 @@ i, em, .font-italic
   font-family:"LLAkkuratProWeb-Lightitalic",helvetica,arial,sans-serif
   font-style: normal !important
 
-.font-larger
-  font-size: $font-size-larger
+.font-size-smaller
+  font-size: $font-size-smaller
   line-height: $font-leading-basic
-  letter-spacing: $font-tracking-basic
+
+.font-size-smallest
+  font-size: $font-size-smallest
+  line-height: $font-leading-basic
 
 h1
-  font-size: 43px
+  font-size: $font-size-heading
   -webkit-font-smoothing: antialiased
 
 h2
-  font-size: 2em
+  font-size: $font-size-heading
   -webkit-font-smoothing: antialiased
 
 h3
-  font-size: 1.5em
+  font-size: $font-size-subheading
 
 h1,h2,h3,h4,h5,h6
   line-height: $font-leading-basic
@@ -324,13 +329,12 @@ img
 
 .inline-player-nav
   display: inline-block
-  font-size: $font-size-smaller
   background-color: $color-dark-gray
   color: $color-soft-white
   text-transform: uppercase
-  padding: 0 0.5em
-  margin-bottom: 0.5em
-  margin-right: 0.5em
+  padding: 0 0.4em
+  margin-bottom: 0.4em
+  margin-right: 0.4em
   opacity: 0
   transition: opacity $basic-animation-speed
   &:hover
@@ -345,8 +349,11 @@ img
 #director-menu
   padding-top: $margin-small
 
-  li:nth-child(2)
-    display: none
+  li
+    width: 30%
+    text-align: center
+    &:nth-child(2)
+      display: none
 
   &[data-active="archive"]
     li:first-child,
@@ -370,7 +377,7 @@ img
   display: inline-block
   text-transform: uppercase
   background-color: $color-dark-gray
-  padding: 0em 0.5em
+  padding: 0em 0.4em
   color: $color-soft-white
   &.active
     display: none
@@ -399,13 +406,12 @@ img
 
 .filter-tag
   display: inline-block
-  font-size: $font-size-smaller
   background-color: $color-dark-gray
   color: $color-soft-white
   text-transform: uppercase
-  padding: 0 0.5em
-  margin-bottom: 0.5em
-  margin-right: 0.5em
+  padding: 0 0.4em
+  margin-bottom: 0.4em
+  margin-right: 0.4em
 
 .filter-tag-active
   background-color: $color-blue

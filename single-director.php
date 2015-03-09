@@ -20,15 +20,15 @@ if( have_posts() ) {
 
       <div class="col col1 colpad1left">
 
-        <h2><?php the_title(); ?></h2>
+        <h3><?php the_title(); ?></h3>
 
       </div>
 
       <div class="col col1">
 
-        <ul id="director-menu">
+        <ul id="director-menu" class="font-size-smaller">
           <li id="director-showreel-playall" class="director-menu-item director-menu-item-blue u-pointer"><a href="#play-all">Play All</a></li>
-          <li class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Back to reel</a></li>
+          <li class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Showreel</a></li>
           <li class="director-menu-item u-pointer"><a href="#archive">Archive</a></li>
           <li class="director-menu-item u-pointer"><a href="#biography">Biography</a></li>
         </ul>
@@ -67,7 +67,7 @@ if (!empty($meta['_igv_showreel'])) {
         <div class="u-fixed-ratio-content">
           <div class="u-holder">
             <div class="u-held">
-              <h2><em><?php if (!empty($video_meta['_igv_title'][0])) { echo $video_meta['_igv_title'][0];} ?></em></h2>
+              <h3><em><?php if (!empty($video_meta['_igv_title'][0])) { echo $video_meta['_igv_title'][0];} ?></em></h3>
               <h3><?php if (!empty($video_meta['_igv_brand'][0])) { echo $video_meta['_igv_brand'][0];} ?></h3>
             </div>
           </div>
@@ -104,7 +104,7 @@ if ($archive) {
       <nav id="inline-player-next" class="inline-player-nav u-pointer">Next</nav>
     </div>
     <div class="col col2">
-      <ul id="director-archive-tags">
+      <ul id="director-archive-tags" class="font-size-smallest">
         <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
 $posttags = get_tags();
@@ -138,7 +138,7 @@ if ($posttags) {
             <div class="u-holder">
               <div class="u-held">
                 <h3><em><?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?></em></h3>
-                <h4><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h4>
+                <h3><?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?></h3>
               </div>
             </div>
           </div>

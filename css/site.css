@@ -976,7 +976,7 @@ ul.u-inline-list li {
 }
 body {
   font-family: "LLAkkuratProWeb-Light", helvetica, arial, sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.5em;
   letter-spacing: 0.03em;
   color: #817e7e;
@@ -987,21 +987,24 @@ em,
   font-family: "LLAkkuratProWeb-Lightitalic", helvetica, arial, sans-serif;
   font-style: normal !important;
 }
-.font-larger {
-  font-size: 17px;
+.font-size-smaller {
+  font-size: 14px;
   line-height: 1.5em;
-  letter-spacing: 0.03em;
+}
+.font-size-smallest {
+  font-size: 12px;
+  line-height: 1.5em;
 }
 h1 {
-  font-size: 43px;
+  font-size: 60px;
   -webkit-font-smoothing: antialiased;
 }
 h2 {
-  font-size: 2em;
+  font-size: 60px;
   -webkit-font-smoothing: antialiased;
 }
 h3 {
-  font-size: 1.5em;
+  font-size: 30px;
 }
 h1,
 h2,
@@ -1185,7 +1188,7 @@ img {
   margin: 0 auto;
 }
 .post-title {
-  font-size: 50px;
+  font-size: 60px;
 }
 .post-subtitle {
   font-size: 30px;
@@ -1262,13 +1265,12 @@ img {
 }
 .inline-player-nav {
   display: inline-block;
-  font-size: 13px;
   background-color: #cdcbcb;
   color: #fdfdfd;
   text-transform: uppercase;
-  padding: 0 0.5em;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
+  padding: 0 0.4em;
+  margin-bottom: 0.4em;
+  margin-right: 0.4em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
           transition: opacity 0.3s;
@@ -1282,6 +1284,10 @@ img {
 }
 #director-menu {
   padding-top: 16px;
+}
+#director-menu li {
+  width: 30%;
+  text-align: center;
 }
 #director-menu li:nth-child(2) {
   display: none;
@@ -1306,7 +1312,7 @@ img {
   display: inline-block;
   text-transform: uppercase;
   background-color: #cdcbcb;
-  padding: 0em 0.5em;
+  padding: 0em 0.4em;
   color: #fdfdfd;
 }
 .director-menu-item.active {
@@ -1334,13 +1340,12 @@ img {
 }
 .filter-tag {
   display: inline-block;
-  font-size: 13px;
   background-color: #cdcbcb;
   color: #fdfdfd;
   text-transform: uppercase;
-  padding: 0 0.5em;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
+  padding: 0 0.4em;
+  margin-bottom: 0.4em;
+  margin-right: 0.4em;
 }
 .filter-tag-active {
   background-color: #00bcec;

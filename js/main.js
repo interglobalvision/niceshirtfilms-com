@@ -194,7 +194,7 @@ function closeinlineVimeoPlayer() {
 function router( page, hash ) {
 
   // Routes: Director Page
-  if ( page === 'director') {
+//   if ( page === 'director') {
 
     if ( hash === 'play-all' ) {
 
@@ -231,7 +231,8 @@ function router( page, hash ) {
       $('.director-section').slideUp();
       $('#director-showreel').slideDown();
     }
-  }
+
+//   }
 
 }
 // DOC READY BRO
@@ -386,7 +387,7 @@ $(document).ready(function () {
     var hash = window.location.hash.replace("#",'');
     router( pathArray[1], hash );
   }
-  
+
   // Router: on load
   if ( window.location.hash ) {
     var hash = window.location.hash.replace("#",'');
