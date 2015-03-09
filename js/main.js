@@ -326,6 +326,17 @@ $(document).ready(function () {
 
   // DIRECTOR SINGLE
 
+    // TAG FILTER FIX
+
+  $('.filter-tag').each(function(index, item) {
+    var tag = $(this).data('tag-slug');
+    if (tag != 'all') {
+      if ($('.tag-'+tag).length === 0) {
+        $(this).remove();
+      }
+    }
+  });
+
     // LOAD SHOWREEL VIDEOS IN OVERLAY
 
   $('.js-load-overlay-vimeo').on('click', function () {
