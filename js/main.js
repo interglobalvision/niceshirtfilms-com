@@ -228,6 +228,7 @@ function router( page, hash ) {
       }
 
     } else {
+      closeinlineVimeoPlayer();
       $('#director-menu').attr('data-active', '');
       $('.director-section').slideUp(basicAnimationSpeed);
       $('#director-showreel').slideDown(basicAnimationSpeed);
