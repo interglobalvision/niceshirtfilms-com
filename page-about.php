@@ -27,7 +27,25 @@ if( have_posts() ) {
 
     <section class="row cf">
 
-      <div class="col col2 colpad1left">
+      <div class="col col1">
+
+<?php
+$directors = get_posts('post_type=director&posts_per_page=-1&orderby=rand');
+foreach ($directors as $post) {
+  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'col1');
+?>
+  <div class="about-page-director">
+    <a href="<?php echo get_the_permalink($post->ID); ?>">
+      <img src="<?php echo $img[0]; ?>" />
+    </a>
+  </div>
+<?php
+}
+?>
+
+      </div>
+
+      <div class="col col2">
 
         <div class="copy">
 

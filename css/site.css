@@ -1251,6 +1251,12 @@ img {
   margin-left: 32px;
   padding-bottom: 16px;
 }
+.about-page-director {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 16px;
+}
 .cinema-mode {
   background-color: #edecec;
   color: #c8c8c8;
