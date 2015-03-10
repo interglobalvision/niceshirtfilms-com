@@ -512,6 +512,12 @@ em,
   font-family: "LLAkkuratProWeb-Lightitalic", helvetica, arial, sans-serif;
   font-style: normal !important;
 }
+b,
+strong,
+.font-bold {
+  font-family: "LLAkkuratMonoProWeb-Regular", helvetica, arial, sans-serif;
+  font-style: normal !important;
+}
 .font-size-smaller {
   font-size: 14px;
   line-height: 1.5em;
