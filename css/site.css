@@ -12,6 +12,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "LLAkkuratProWeb-Regular";
+  src: url("fonts/lineto-akkurat-pro-regular.eot");
+  src: url("fonts/lineto-akkurat-pro-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-akkurat-pro-regular.woff") format("woff"), url("fonts/lineto-akkurat-pro-regular.ttf") format("truetype"), url("fonts/lineto-akkurat-pro-regular.svg#LLAkkuratProWeb-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 body,
 div,
@@ -509,13 +516,13 @@ body {
 i,
 em,
 .font-italic {
-  font-family: "LLAkkuratProWeb-Lightitalic", helvetica, arial, sans-serif;
+  font-family: "LLAkkuratProWeb-Lightitalic";
   font-style: normal !important;
 }
 b,
 strong,
 .font-bold {
-  font-family: "LLAkkuratMonoProWeb-Regular", helvetica, arial, sans-serif;
+  font-family: "LLAkkuratProWeb-Regular";
   font-style: normal !important;
 }
 .font-size-smaller {
@@ -551,6 +558,9 @@ h6 {
 }
 p {
   margin-bottom: 1em;
+}
+p a {
+  font-family: "LLAkkuratProWeb-Regular";
 }
 .copy {
   max-width: 650px;
@@ -711,10 +721,13 @@ img {
 #sidebar-contact svg path {
   fill: #817e7e;
 }
+.menu-active {
+  font-family: "LLAkkuratProWeb-Regular";
+}
 .post-main {
   text-align: center;
   color: #fdfdfd;
-  height: 350px;
+  height: 380px;
   position: relative;
   background-color: #0e0e0e;
   background-position: center center;
@@ -769,8 +782,8 @@ img {
 }
 .home-video-player {
   position: absolute;
-  top: 350px;
-  height: 350px;
+  top: 380px;
+  height: 380px;
   width: 100%;
   z-index: 1;
   -webkit-transition-property: top;
@@ -813,6 +826,16 @@ img {
 .contact-person {
   margin-bottom: 16px;
   margin-top: 16px;
+}
+.contact-person svg {
+  display: inline-block;
+  height: 17px;
+  width: 17px;
+  margin-right: 0.4em;
+  margin-top: 0.2em;
+}
+.contact-person svg path {
+  fill: #817e7e;
 }
 .search-results-label {
   margin: 0 auto;

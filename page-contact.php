@@ -56,11 +56,11 @@ foreach ($people as $post) {
   }
 
   if (!empty($meta['_igv_twitter'][0])) {
-    echo '<a href="' . $meta['_igv_twitter'][0] . '">' . $meta['_igv_twitter'][0] . '</a>';
+    echo '<a target="_blank" href="' . $meta['_igv_twitter'][0] . '">' . file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-twitter.svg') . '</a>';
   }
 
   if (!empty($meta['_igv_facebook'][0])) {
-    echo '<a href="' . $meta['_igv_facebook'][0] . '">' . $meta['_igv_facebook'][0] . '</a>';
+    echo '<a target="_blank" href="' . $meta['_igv_facebook'][0] . '">' . file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-facebook.svg') . '</a>';
   }
 
 ?>

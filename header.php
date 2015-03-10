@@ -93,9 +93,9 @@ if( is_home() ) {
 
       <div class="sidebar-section font-larger">
         <ul>
-          <li><a href="<?php echo home_url('about/'); ?>">About</a></li>
-          <li><a href="<?php echo home_url('category/news/'); ?>">News</a></li>
-          <li><a href="<?php echo home_url('contact/'); ?>">Contact</a></li>
+          <li <?php if (is_page('about')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('about/'); ?>">About</a></li>
+          <li <?php if (is_category('news')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('category/news/'); ?>">News</a></li>
+          <li <?php if (is_page('contact')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('contact/'); ?>">Contact</a></li>
         </ul>
       </div>
 
@@ -103,8 +103,25 @@ if( is_home() ) {
         <ul id="sidebar-directors">
 <?php
 $directors = get_posts('post_type=director&posts_per_page=-1&orderby=title&order=ASC');
-foreach ($directors as $post) {
-  echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+if (is_single()) {
+  if (is_single_type('director', $post)) {
+    $directorId = $post->ID;
+    foreach ($directors as $post) {
+      if ($directorId === $post->ID) {
+        echo '<li class="menu-active"><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+      } else {
+        echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+      }
+    }
+  } else {
+    foreach ($directors as $post) {
+      echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+    }
+  }
+} else {
+  foreach ($directors as $post) {
+    echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+  }
 }
 ?>
         </ul>
@@ -112,7 +129,7 @@ foreach ($directors as $post) {
 
       <div class="sidebar-section">
         <form role="search" method="get" id="search-form" action="<?php echo home_url( '/' ); ?>">
-          <label id="search-label">search</label>
+          <label <?php if (is_search()) {echo 'class="menu-active"';}?> id="search-label">search</label>
           <input type="search" id="search-input" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
         </form>
       </div>
@@ -123,8 +140,8 @@ foreach ($directors as $post) {
           <li><a href="mailto:hello@niceshirtfilms.com">hello@niceshirtfilms.com</a></li>
           <li>
           <a href="<?php echo home_url('sign-up/'); ?>"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-subscribe.svg'); ?></a>
-          <a href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-twitter.svg'); ?></a>
-          <a href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-facebook.svg'); ?></a>
+          <a target="_blank" href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-twitter.svg'); ?></a>
+          <a target="_blank" href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-facebook.svg'); ?></a>
         </ul>
       </div>
 

@@ -15,7 +15,7 @@ $margin-tiny = ($gutter/2)
 $margin-basic = ($gutter*2)
 $margin-large = ($gutter*5)
 
-$basic-post-height = 350px
+$basic-post-height = 380px
 
 $overlay-nav-size = 50px
 
@@ -50,11 +50,11 @@ body
   color: $color-text-gray
 
 i, em, .font-italic
-  font-family:"LLAkkuratProWeb-Lightitalic",helvetica,arial,sans-serif
+  font-family:"LLAkkuratProWeb-Lightitalic"
   font-style: normal !important
 
 b, strong, .font-bold
-  font-family:"LLAkkuratMonoProWeb-Regular",helvetica,arial,sans-serif
+  font-family:"LLAkkuratProWeb-Regular"
   font-style: normal !important
 
 .font-size-smaller
@@ -85,9 +85,9 @@ h1,h2,h3,h4,h5,h6
 
 p
   margin-bottom: 1em
-//
-//   a
-//     font-family:"LLAkkuratProWeb-Regular",helvetica,arial,sans-serif
+
+  a
+    font-family:"LLAkkuratProWeb-Regular"
 
 .copy
   max-width: 650px
@@ -241,6 +241,10 @@ img
     path
       fill: $color-text-gray
 
+.menu-active
+  font-family:"LLAkkuratProWeb-Regular"
+
+
 // POSTS
 
 .post-main
@@ -350,6 +354,14 @@ img
 .contact-person
   margin-bottom: $margin-small
   margin-top: $margin-small
+  svg
+    display: inline-block
+    height: $font-size-basic
+    width: $font-size-basic
+    margin-right: 0.4em
+    margin-top: 0.2em
+    path
+      fill: $color-text-gray
 
 // SEARCH RESULTS
 
