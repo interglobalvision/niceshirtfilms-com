@@ -810,6 +810,15 @@ img {
   margin-bottom: 16px;
   margin-top: 16px;
 }
+.search-results-label {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 400px;
+}
+.search-results {
+  margin-top: 32px;
+  margin-bottom: 80px;
+}
 .cinema-mode {
   background-color: #edecec;
   color: #c8c8c8;

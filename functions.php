@@ -204,9 +204,12 @@ function matched_content( $post ) {
 // Find and return the sentence from the haystack containing the needle
 function strsntnc( $haystack, $needle ) {
   $sentences = explode('.', $haystack);
-  foreach( $sentences as $sentence ) {
+
+  foreach ( $sentences as $sentence ) {
     stripos( $sentence, $needle );
-    if( stripos( $sentence, $needle ) )
+
+    if ( stripos( $sentence, $needle ) ) {
       return $sentence . ".";
+    }
   }
 }
