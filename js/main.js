@@ -1,5 +1,4 @@
 function l(data) {
-  "use strict";
   console.log(data);
 }
 
@@ -34,7 +33,6 @@ var largeImagesWidth = 1500,
   pathArray = window.location.pathname.split( '/' );
 
 function ifLargeImages() {
-  "use strict";
   if ($(window).width() > largeImagesWidth) {
     return true;
   }
@@ -44,7 +42,6 @@ function ifLargeImages() {
 //   HOMEPAGE FUNCTIONS
 
 function closeAllPosts() {
-  "use strict";
   $('.home-post').removeClass('active');
   $('.post-main').each(function (i, el) {
     el.style.height = '';
@@ -57,7 +54,6 @@ function closeAllPosts() {
   // OVERLAY PLAYER
 
 function loadOverlayVimeoPlayer(postData, postIndex) {
-  "use strict";
   var ratio;
   if (postData.vimeoRatio === undefined) {
     ratio = 0.5625;
@@ -81,7 +77,6 @@ function loadOverlayVimeoPlayer(postData, postIndex) {
 }
 
 function overlayVimeoPlayerNext() {
-  "use strict";
   var nowPlayingIndex = overlay.data('now-playing'),
     nextIndex = nowPlayingIndex + 1;
   if (directorShowreelLength > nextIndex) {
@@ -92,7 +87,6 @@ function overlayVimeoPlayerNext() {
 }
 
 function overlayVimeoPlayerPrevious() {
-  "use strict";
   var nowPlayingIndex = overlay.data('now-playing'),
     prevousIndex = nowPlayingIndex - 1;
   if (prevousIndex === -1) {
@@ -103,7 +97,6 @@ function overlayVimeoPlayerPrevious() {
 }
 
 function closeOverlayVimeoPlayer() {
-  "use strict";
   overlay.hide().data('now-playing', '');
   overlayVimeoPlayer.html('');
 }
@@ -111,7 +104,6 @@ function closeOverlayVimeoPlayer() {
     // INLINE PLAYER
 
 function loadInlineVimeoPlayer(archiveVideo) {
-  "use strict";
 
   var archiveVideoData = archiveVideo.data(),
     ratio = archiveVideoData.vimeoRatio;
@@ -136,7 +128,6 @@ function loadInlineVimeoPlayer(archiveVideo) {
 }
 
 function inlineVimeoPlayerNext() {
-  "use strict";
 
   var nowPlayingId = inlineVimeoPlayer.data('now-playing-id'),
     currentPlaylist = $('.director-archive-video:visible'),
@@ -158,7 +149,6 @@ function inlineVimeoPlayerNext() {
 }
 
 function inlineVimeoPlayerPrevious() {
-  "use strict";
 
   var nowPlayingId = inlineVimeoPlayer.data('now-playing-id'),
     currentPlaylist = $('.director-archive-video:visible'),
@@ -182,7 +172,6 @@ function inlineVimeoPlayerPrevious() {
 }
 
 function closeinlineVimeoPlayer() {
-  "use strict";
   $('html').removeClass('cinema-mode');
   inlineVimeoPlayer.html('').css({
     'padding-top': '0%'
@@ -238,8 +227,7 @@ function router( page, hash ) {
 }
 
 // MAP EMBED
-
-function initialize() {
+function initializeMap() {
   var myLatlng = new google.maps.LatLng(51.513748, -0.139104);
 
   var mapOptions = {
@@ -322,12 +310,26 @@ function initialize() {
 
   $('#map-canvas').height(($(window).height()*0.6));
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+
+if ($('#map-canvas').length) {
+  google.maps.event.addDomListener(window, 'load', initializeMap);
+}
+
+// LAYOUT FIXES
+
+function layoutFixSearchInput() {
+
+  var width = $('#search-form').width();
+  var minus = $('#search-label').width();
+  $('#search-input').width(width - minus - 20);
+
+}
 
 // DOC READY BRO
 
 $(document).ready(function () {
-  "use strict";
+
+  layoutFixSearchInput();
 
   if (lazyHomeBackground.length) {
     lazyHomeBackground.each(function (index, item) {

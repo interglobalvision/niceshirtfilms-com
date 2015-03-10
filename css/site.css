@@ -688,6 +688,7 @@ img {
 }
 #search-input {
   display: inline-block;
+  outline: none;
   width: 50px;
   border: 0;
   border-bottom: dotted 1px #817e7e;
