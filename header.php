@@ -121,11 +121,14 @@ foreach ($directors as $post) {
         </form>
       </div>
 
-      <div class="sidebar-section">
+      <div id="sidebar-contact" class="sidebar-section">
         <ul>
           <li><a href="tel:+442072558100">+44 (0)20 7255 8100</a></li>
           <li><a href="mailto:hello@niceshirtfilms.com">hello@niceshirtfilms.com</a></li>
-          <li><span class="genericon genericon-subscribe"></span> <a href="https://twitter.com/niceshirtfilms" target="_blank"><span class="genericon genericon-twitter"></span></a> <a href="https://www.facebook.com/NiceShirtFilms" target="_blank"><span class="genericon genericon-facebook"></span></a></li>
+          <li>
+          <a href="<?php echo home_url('sign-up/'); ?>"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-subscribe.svg'); ?></a>
+          <a href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-twitter.svg'); ?></a>
+          <a href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-facebook.svg'); ?></a>
         </ul>
       </div>
 
