@@ -136,7 +136,7 @@ if( $director_search->have_posts() ) {
 
     if ( $matched_content ) {
 ?>
-      <a href="<?php the_permalink() ?>/#biography">
+      <a href="<?php the_permalink() ?>#biography">
         <h3><?php the_title(); ?></h3>
         <p><?php echo $matched_content; ?></p>
       </a>
