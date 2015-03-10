@@ -174,7 +174,22 @@ if (!empty($meta['_igv_longtitle'][0])) {
                   <?php the_time('j F Y'); ?>
                 </h4>
               </div>
-              <?php the_content(); ?>
+<?php
+the_content();
+
+if (!empty($meta['_igv_director'][0])) {
+?>
+
+              <p class="u-align-center">
+                <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
+                  <span class="button">
+                    Director page
+                  </span>
+                </a>
+              </p>
+<?php
+}
+?>
             </div>
           </div>
         </div>

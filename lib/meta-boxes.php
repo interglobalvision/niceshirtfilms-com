@@ -86,6 +86,14 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
         'default'  => '#000000',
         'repeatable' => false,
       ),
+      array(
+        'name' => 'Assiciated Director',
+        'desc' => 'link to director page?',
+        'id'   => $prefix . 'director',
+        'type' => 'colorpicker',
+        'type'    => 'select',
+        'options' => get_post_objects($director_args),
+      ),
     )
   );
 
