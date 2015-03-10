@@ -202,18 +202,23 @@ function matched_content( $post ) {
     }
 
     if( stripos( $post->post_content, $search_term  ) ) {
-      return strsntnc( $post->post_content, $search_term );
+      return find_sentence_with_needle( $post->post_content, $search_term );
     }
   }
   return FALSE;
 }
 
 // Find and return the sentence from the haystack containing the needle
-function strsntnc( $haystack, $needle ) {
+function find_sentence_with_needle( $haystack, $needle ) {
   $sentences = explode('.', $haystack);
 
+
+  // REGEX: Word boundaries around the needle and case insensitive
+  $word_needle = '/\b' . $needle . '\b/i';
+
   foreach ( $sentences as $sentence ) {
-    if ( stripos( $sentence, $needle ) ) {
+    if ( preg_match( $word_needle, $sentence ) ) {
+      $sentence = str_replace( $needle, '<strong>' . $needle . '</strong>', $sentence);
       return $sentence . ".";
     }
   }
