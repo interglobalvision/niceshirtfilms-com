@@ -727,12 +727,6 @@ img {
   width: 85%;
   margin: 0 auto;
 }
-.post-title {
-  font-size: 60px;
-}
-.post-subtitle {
-  font-size: 30px;
-}
 .post-header-hover {
   display: none;
   padding: 16px 32px;
@@ -756,6 +750,9 @@ img {
 .post-copy-container {
   box-sizing: border-box;
   padding: 32px;
+}
+.basic-post-title {
+  margin-bottom: 16px;
 }
 .home-news.active .post-copy {
   height: auto;

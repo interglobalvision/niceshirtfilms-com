@@ -32,14 +32,14 @@ if( have_posts() ) {
           <div class="u-held">
 
             <div class="post-header">
-              <h2 class="post-title">
+              <h2>
 <?php
 if (!empty($meta['_igv_director'][0])) {
   echo echoDirectorName($meta['_igv_director'][0]);
 }
 ?>
               </h2>
-              <h3 class="post-subtitle">
+              <h3>
 <?php
 if (!empty($meta['_igv_title'][0])) {
   echo '<em>' . $meta['_igv_title'][0] . '</em>';
@@ -72,14 +72,14 @@ if (!empty($meta['_igv_brand'][0])) {
         <div class="post-copy-container">
           <div class="copy u-marginauto">
             <div class="u-align-center">
-             <h3 class="basic-post-title">
+             <h3 class="video-post-title">
 <?php
 if (!empty($meta['_igv_director'][0])) {
   echo echoDirectorName($meta['_igv_director'][0]);
 }
 ?>
              </h3>
-             <h4 class="basic-post-subtitle">
+             <h4 class="video-post-subtitle">
 <?php
 if (!empty($meta['_igv_title'][0])) {
   echo '<em>' . $meta['_igv_title'][0] . '</em>';
@@ -146,7 +146,7 @@ if ($thumbBackground) {
           <div class="u-holder">
             <div class="u-held">
               <div class="post-header">
-                <h2 class="post-title">
+                <h3>
                   <?php
 if (!empty($meta['_igv_longtitle'][0])) {
   echo $meta['_igv_longtitle'][0];
@@ -154,7 +154,7 @@ if (!empty($meta['_igv_longtitle'][0])) {
   the_title();
 }
                   ?>
-                </h2>
+                </h3>
               </div>
               <div class="post-header-hover">
                 READ MORE
@@ -170,9 +170,9 @@ if (!empty($meta['_igv_longtitle'][0])) {
           <div class="post-copy-container">
             <div class="copy u-marginauto">
               <div class="u-align-center">
-                <h3 class="basic-post-title">
+                <h4 class="basic-post-title">
                   <?php the_time('j F Y'); ?>
-                </h3>
+                </h4>
               </div>
               <?php the_content(); ?>
             </div>
