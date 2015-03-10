@@ -27,7 +27,7 @@ if( have_posts() ) {
 
     <section class="row cf">
 
-      <div class="col col1">
+      <div class="col col1 cf">
 
 <?php
 $directors = get_posts('post_type=director&posts_per_page=-1&orderby=rand');

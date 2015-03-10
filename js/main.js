@@ -235,8 +235,95 @@ function router( page, hash ) {
     }
 
 //   }
-
 }
+
+// MAP EMBED
+
+function initialize() {
+  var myLatlng = new google.maps.LatLng(51.513748, -0.139104);
+
+  var mapOptions = {
+    center: myLatlng,
+    zoom: 14,
+    scrollwheel: false,
+    styles: [{
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+              "color": "#444444"
+          }]
+      }, {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [{
+              "color": "#f2f2f2"
+          }]
+      }, {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [{
+              "visibility": "off"
+          }]
+      }, {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [{
+              "saturation": -100
+          }, {
+              "lightness": 45
+          }]
+      }, {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [{
+              "visibility": "simplified"
+          }]
+      }, {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [{
+              "visibility": "off"
+          }]
+      }, {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [{
+              "visibility": "off"
+          }]
+      }, {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [{
+              "color": "#01bcec"
+          }, {
+              "visibility": "on"
+          }]
+      }]
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var contentString = $('#map-copy').html();
+
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    icon: ''
+  });
+
+  infowindow.open(map,marker);
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+
+  $('#map-canvas').height(($(window).height()*0.6));
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
 // DOC READY BRO
 
 $(document).ready(function () {

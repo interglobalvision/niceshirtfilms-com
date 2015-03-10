@@ -1246,16 +1246,30 @@ img {
 }
 .page-header {
   background-color: #edecec;
+  padding-top: 16px;
+  padding-bottom: 8px;
 }
 #page-title {
   margin-left: 32px;
   padding-bottom: 16px;
 }
 .about-page-director {
-  display: inline-block;
+  float: left;
   width: 50%;
   box-sizing: border-box;
   padding: 16px;
+}
+#map-copy {
+  display: none;
+}
+#map-canvas {
+  height: 400px;
+  margin: 0;
+  padding: 0;
+}
+.contact-person {
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
 .cinema-mode {
   background-color: #edecec;
@@ -1285,10 +1299,6 @@ img {
 }
 .inline-player-nav svg:hover path {
   fill: #cdcbcb;
-}
-#director-header {
-  padding-top: 16px;
-  padding-bottom: 8px;
 }
 #director-menu {
   padding-top: 16px;

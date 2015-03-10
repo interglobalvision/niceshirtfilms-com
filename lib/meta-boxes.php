@@ -140,6 +140,47 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 			)
 		),
   );
+
+    $meta_boxes['person_metabox'] = array(
+    'id'         => 'person_metabox',
+    'title'      => __( 'Person Details', 'cmb' ),
+    'object_types'      => array( 'people' ), // Post type
+    'context'    => 'normal',
+    'priority'   => 'high',
+    'show_names' => true, // Show field names on the left
+    'fields'     => array(
+      array(
+        'name'    => __( 'Title', 'cmb' ),
+        'desc'    => __( '', 'cmb' ),
+        'id'      => $prefix . 'title',
+        'type'    => 'text',
+      ),
+      array(
+        'name'    => __( 'Phone number', 'cmb' ),
+        'desc'    => __( '', 'cmb' ),
+        'id'      => $prefix . 'phone',
+        'type'    => 'text',
+      ),
+      array(
+        'name'    => __( 'Email', 'cmb' ),
+        'desc'    => __( '', 'cmb' ),
+        'id'      => $prefix . 'email',
+        'type'    => 'text_email',
+      ),
+      array(
+        'name'    => __( 'Twitter', 'cmb' ),
+        'desc'    => __( '', 'cmb' ),
+        'id'      => $prefix . 'twitter',
+        'type'    => 'text',
+      ),      array(
+        'name'    => __( 'Facebook', 'cmb' ),
+        'desc'    => __( '', 'cmb' ),
+        'id'      => $prefix . 'facebook',
+        'type'    => 'text',
+      ),
+    )
+  );
+
   return $meta_boxes;
 }
 ?>

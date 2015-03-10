@@ -2,7 +2,7 @@
 // Menu icons for Custom Post Types
 function add_menu_icons_styles(){
 ?>
- 
+
 <style>
 #adminmenu .menu-icon-director div.wp-menu-image:before {
     content: '\f498';
@@ -11,7 +11,7 @@ function add_menu_icons_styles(){
     content: '\f498';
 }
 </style>
- 
+
 <?php
 }
 add_action( 'admin_head', 'add_menu_icons_styles' );
@@ -22,7 +22,7 @@ add_action( 'init', 'register_cpt_director' );
 
 function register_cpt_director() {
 
-    $labels = array( 
+    $labels = array(
         'name' => _x( 'Directors', 'director' ),
         'singular_name' => _x( 'Director', 'director' ),
         'add_new' => _x( 'Add New', 'director' ),
@@ -37,17 +37,17 @@ function register_cpt_director() {
         'menu_name' => _x( 'Directors', 'director' ),
     );
 
-    $args = array( 
+    $args = array(
         'labels' => $labels,
         'hierarchical' => false,
-        
+
         'supports' => array( 'title', 'editor', 'thumbnail' ),
-        
+
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        
+
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
@@ -62,12 +62,11 @@ function register_cpt_director() {
 }
 
 
-
 add_action( 'init', 'register_cpt_video' );
 
 function register_cpt_video() {
 
-    $labels = array( 
+    $labels = array(
         'name' => _x( 'Videos', 'video' ),
         'singular_name' => _x( 'Video', 'video' ),
         'add_new' => _x( 'Add New', 'video' ),
@@ -82,17 +81,17 @@ function register_cpt_video() {
         'menu_name' => _x( 'Videos', 'video' ),
     );
 
-    $args = array( 
+    $args = array(
         'labels' => $labels,
         'hierarchical' => false,
-        
+
         'supports' => array( 'title', 'editor', 'thumbnail', 'tags' ),
-        
+
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        
+
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
@@ -109,3 +108,45 @@ function register_cpt_video() {
 }
 
 
+add_action( 'init', 'register_cpt_people' );
+
+function register_cpt_people() {
+
+    $labels = array(
+        'name' => _x( 'People', 'people' ),
+        'singular_name' => _x( 'People', 'people' ),
+        'add_new' => _x( 'Add New', 'people' ),
+        'add_new_item' => _x( 'Add New People', 'people' ),
+        'edit_item' => _x( 'Edit People', 'people' ),
+        'new_item' => _x( 'New People', 'people' ),
+        'view_item' => _x( 'View People', 'people' ),
+        'search_items' => _x( 'Search People', 'people' ),
+        'not_found' => _x( 'No people found', 'people' ),
+        'not_found_in_trash' => _x( 'No people found in Trash', 'people' ),
+        'parent_item_colon' => _x( 'Parent People:', 'people' ),
+        'menu_name' => _x( 'People', 'people' ),
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => false,
+
+        'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => false,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => true,
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'people', $args );
+}

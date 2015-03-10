@@ -309,6 +309,8 @@ img
 
 .page-header
   background-color: $color-light-gray
+  padding-top: $margin-small
+  padding-bottom: $margin-tiny
 
 #page-title
   margin-left: $margin-basic
@@ -317,10 +319,24 @@ img
   // ABOUT PAGE
 
 .about-page-director
-  display: inline-block
+  float: left
   width: 50%
   box-sizing: border-box
   padding: $margin-small
+
+  // CONTACT PAGE
+
+#map-copy
+  display: none
+
+#map-canvas
+  height: 400px
+  margin: 0
+  padding: 0
+
+.contact-person
+  margin-bottom: $margin-small
+  margin-top: $margin-small
 
 // DIRECTOR SINGLE
 
@@ -354,10 +370,6 @@ img
         fill: $color-dark-gray
 
   // HEADER
-
-#director-header
-  padding-top: $margin-small
-  padding-bottom: $margin-tiny
 
 #director-menu
   padding-top: $margin-small
