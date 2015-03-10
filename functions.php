@@ -34,6 +34,9 @@ if( function_exists( 'add_image_size' ) ) {
   add_image_size( 'grid-thumb-large', 400, 267, true );
   add_image_size( 'grid-thumb-largest', 700, 467, true );
 
+  add_image_size( 'width-500', 500, 9999, false );
+  add_image_size( 'width-250', 250, 9999, false );
+
 }
 
 // Register Nav Menus

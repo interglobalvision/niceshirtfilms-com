@@ -27,7 +27,7 @@ if( have_posts() ) {
 <?php
 $people = get_posts('post_type=people&posts_per_page=-1&orderby=menu_order');
 foreach ($people as $post) {
-  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'col1');
+  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'width-250');
   $meta = get_post_meta($post->ID);
 ?>
       <div class="contact-person row u-cf">

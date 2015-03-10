@@ -32,7 +32,7 @@ if( have_posts() ) {
 <?php
 $directors = get_posts('post_type=director&posts_per_page=-1&orderby=rand');
 foreach ($directors as $post) {
-  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'col1');
+  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'width-250');
 ?>
   <div class="about-page-director">
     <a href="<?php echo get_the_permalink($post->ID); ?>">

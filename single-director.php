@@ -162,7 +162,7 @@ if ($posttags) {
 
       <div class="col col1 u-force-width">
 
-        <?php the_post_thumbnail(); ?>
+        <?php the_post_thumbnail('width-500'); ?>
 
       </div>
 
