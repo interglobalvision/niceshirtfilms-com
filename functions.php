@@ -184,6 +184,13 @@ function echoDirectorName($id) {
   }
 }
 
+// Get permalink to director page for video
+
+function get_video_permalink($post, $meta) {
+  $directorPermalink = get_the_permalink($meta['_igv_director'][0]);
+  return $directorPermalink . '#video-' . $post->post_name;
+}
+
 // Check if the posts' content matched the search
 function matched_content( $post ) {
   global $wp_query;
@@ -206,8 +213,6 @@ function strsntnc( $haystack, $needle ) {
   $sentences = explode('.', $haystack);
 
   foreach ( $sentences as $sentence ) {
-    stripos( $sentence, $needle );
-
     if ( stripos( $sentence, $needle ) ) {
       return $sentence . ".";
     }
