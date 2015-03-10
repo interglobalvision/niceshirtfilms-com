@@ -130,14 +130,14 @@ if( $director_search->have_posts() ) {
     </div>
     <div class="col col2">
 <?php
-  while( $director_search->have_posts() ) {
+  while ( $director_search->have_posts() ) {
     $director_search->the_post();
     $matched_content = matched_content($post);
 
-    if( $matched_content ) {
+    if ( $matched_content ) {
 ?>
       <a href="<?php the_permalink() ?>/#biography">
-        <h3><?php the_title(); ?> *</h3>
+        <h3><?php the_title(); ?></h3>
         <p><?php echo $matched_content; ?></p>
       </a>
 <?php
@@ -145,6 +145,7 @@ if( $director_search->have_posts() ) {
 ?>
       <a href="<?php the_permalink() ?>">
         <h3><?php the_title(); ?></h3>
+        <?php the_excerpt(); ?>
       </a>
 <?php
     }

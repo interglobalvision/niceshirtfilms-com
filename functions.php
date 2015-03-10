@@ -191,6 +191,13 @@ function get_video_permalink($post, $meta) {
   return $directorPermalink . '#video-' . $post->post_name;
 }
 
+// Excerpt custom ...
+
+function new_excerpt_more( $more ) {
+	return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
 // Check if the posts' content matched the search
 function matched_content( $post ) {
   global $wp_query;
