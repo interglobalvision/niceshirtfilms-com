@@ -538,11 +538,9 @@ strong,
 }
 h1 {
   font-size: 60px;
-  -webkit-font-smoothing: antialiased;
 }
 h2 {
   font-size: 60px;
-  -webkit-font-smoothing: antialiased;
 }
 h3 {
   font-size: 30px;
@@ -557,6 +555,7 @@ h4,
 h5,
 h6 {
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   font-weight: normal;
 }
 p {
@@ -871,6 +870,9 @@ img {
   display: inline-block;
   margin-bottom: 0.4em;
   margin-right: 1em;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+          transition: opacity 0.6s;
 }
 .inline-player-nav svg {
   height: 20px;

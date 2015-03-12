@@ -2,7 +2,7 @@ function l(data) {
   console.log(data);
 }
 
-var largeImagesWidth = 1500,
+var largeImagesTriggerWidth = 700,
 
   basicAnimationSpeed = 600,
 
@@ -33,7 +33,7 @@ var largeImagesWidth = 1500,
   pathArray = window.location.pathname.split( '/' );
 
 function ifLargeImages() {
-  if ($(window).width() > largeImagesWidth) {
+  if ($(window).width() > largeImagesTriggerWidth) {
     return true;
   }
   return false;
@@ -333,10 +333,19 @@ $(document).ready(function () {
 
   if (lazyHomeBackground.length) {
     lazyHomeBackground.each(function (index, item) {
-      var background = $(item).data('background');
-      $(item).css({
-        'background-image': 'url(' + background + ')'
-      });
+      var background = $(item).data('background'),
+        backgroundLarge = $(item).data('background-large');
+
+      if (ifLargeImages()) {
+        $(item).css({
+          'background-image': 'url(' + backgroundLarge + ')'
+        });
+      } else {
+        $(item).css({
+          'background-image': 'url(' + background + ')'
+        });
+      }
+
     });
   }
 
