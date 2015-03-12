@@ -525,6 +525,9 @@ strong,
   font-family: "LLAkkuratProWeb-Regular";
   font-style: normal !important;
 }
+.font-light-gray {
+  color: #c8c8c8;
+}
 .font-size-smaller {
   font-size: 14px;
   line-height: 1.5em;
@@ -845,6 +848,9 @@ img {
 .search-results {
   margin-top: 32px;
   margin-bottom: 80px;
+}
+.search-results strong {
+  color: #00bcec;
 }
 .cinema-mode {
   background-color: #edecec;
