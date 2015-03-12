@@ -299,7 +299,7 @@ function initializeMap() {
   var marker = new google.maps.Marker({
     position: myLatlng,
     map: map,
-    icon: ''
+    icon: '../wp-content/themes/niceshirtfilms-com/img/optimized/ns-mapmarker.png'
   });
 
   infowindow.open(map,marker);
