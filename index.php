@@ -52,7 +52,7 @@ if (!empty($meta['_igv_brand'][0])) {
             </div>
 
             <div class="post-header-hover">
-              PLAY
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/img/optimized/ns-play.svg" alt="PLAY"/>
             </div>
 
           </div>
@@ -157,7 +157,7 @@ if (!empty($meta['_igv_longtitle'][0])) {
                 </h3>
               </div>
               <div class="post-header-hover">
-                READ MORE
+                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/optimized/ns-readmore.svg" alt="READ MORE"/>
               </div>
             </div>
           </div>
