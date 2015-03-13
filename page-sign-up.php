@@ -13,7 +13,7 @@ if( have_posts() ) {
     $meta = get_post_meta($post->ID);
 ?>
 
-  <article id="page" class="<?php post_class(); ?>">
+  <article id="page" <?php post_class(); ?>>
 
     <header class="page-header u-cf">
 
@@ -31,13 +31,17 @@ if( have_posts() ) {
 
         <div class="col col1">
 
-                <label for="fieldName">Name</label>
+                <label for="fieldName">First name</label>
 
-                <label for="fieldckikjh">last name</label>
+                <label for="fieldckikjh">Last name</label>
 
-                <label for="fieldEmail">Email</label>
+                <label for="fieldEmail">Email address*</label>
 
-                <label for="fieldckikjk">Fav film</label>
+                <label for="fieldckikjk">What is your favourite ad right now?</label>
+
+                <label>
+                  * = mandatory field for submission
+                </label>
 
         </div>
 
@@ -51,7 +55,7 @@ if( have_posts() ) {
 
                 <input id="fieldckikjk" name="cm-f-ckikjk" type="text" />
 
-                <button type="submit">Subscribe</button>
+                <button type="submit">Submit Form</button>
 
         </div>
 

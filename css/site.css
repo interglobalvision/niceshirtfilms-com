@@ -838,6 +838,34 @@ img {
 .contact-person svg path {
   fill: #817e7e;
 }
+#subForm label {
+  font-family: "LLAkkuratProWeb-Lightitalic";
+  color: #c8c8c8;
+  display: block;
+  height: 51px;
+  margin-bottom: 16px;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+#subForm input {
+  width: 100%;
+  max-width: 550px;
+  margin-bottom: 16px;
+  padding: 8px;
+  font-family: "LLAkkuratProWeb-Light", helvetica, arial, sans-serif;
+  font-size: 30px;
+  color: #00bcec;
+  border: 0;
+  outline-color: #00bcec;
+}
+#subForm button {
+  background-color: #00bcec;
+  color: #fdfdfd;
+  border: 0;
+  font-family: "LLAkkuratProWeb-Light", helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 .search-results-label {
   margin: 0 auto;
   width: 70%;

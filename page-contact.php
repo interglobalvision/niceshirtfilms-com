@@ -13,7 +13,7 @@ if( have_posts() ) {
     $meta = get_post_meta($post->ID);
 ?>
 
-  <article id="page" class="<?php post_class(); ?>">
+  <article id="page" <?php post_class(); ?>>
 
     <section id="map">
       <div id="map-copy">
