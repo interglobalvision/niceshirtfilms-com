@@ -5,6 +5,7 @@ function l(data) {
 var largeImagesTriggerWidth = 700,
 
   basicAnimationSpeed = 600,
+  fastAnimationSpeed = 200,
 
   scrollTimer,
 
@@ -60,7 +61,7 @@ var overlayVimeoPlayer = {
     } else {
       ratio = postData.vimeoRatio;
     }
-    overlay.show().data('now-playing', postIndex);
+    overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
     this.player.html('<iframe id="overlay-vimeo-player-embed" src="//player.vimeo.com/video/' + postData.vimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=overlay-vimeo-player-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
       'padding-top': (ratio * 100) + '%'
     });
@@ -97,7 +98,7 @@ var overlayVimeoPlayer = {
   },
 
   close: function () {
-    overlay.hide().data('now-playing', '');
+    overlay.fadeOut(fastAnimationSpeed).data('now-playing', '');
     this.player.html('');
   }
 
@@ -107,7 +108,7 @@ var overlayVimeoPlayer = {
 var inlineVimeoPlayer = {
 
   player : $('#vimeo-player'),
-  
+
   load: function (archiveVideo) {
 
     var archiveVideoData = archiveVideo.data(),
