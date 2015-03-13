@@ -15,6 +15,8 @@ $margin-tiny = ($gutter/2)
 $margin-basic = ($gutter*2)
 $margin-large = ($gutter*5)
 
+$margin-nav-spacing = 5px
+
 $basic-post-height = 380px
 
 $overlay-nav-size = 50px
@@ -469,10 +471,13 @@ img
 .director-menu-item
   width: 80px
   text-align: center
-  display: inline-block
+  display: block
+  float: left
   text-transform: uppercase
   background-color: $color-dark-gray
   padding: 0em 0.4em
+  margin-bottom: $margin-nav-spacing
+  margin-right: $margin-nav-spacing
   color: $color-soft-white
 
   a:hover
@@ -498,13 +503,13 @@ img
   padding-bottom: $margin-small
 
 .filter-tag
-  display: inline-block
+  float: left
   background-color: $color-dark-gray
   color: $color-soft-white
   text-transform: uppercase
   padding: 0 0.4em
-  margin-bottom: 0.4em
-  margin-right: 0.4em
+  margin-bottom: $margin-nav-spacing
+  margin-right: $margin-nav-spacing
 
 .filter-tag-active
   background-color: $color-blue

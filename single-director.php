@@ -26,7 +26,7 @@ if( have_posts() ) {
 
       <div class="col col1">
 
-        <ul id="director-menu" class="font-size-smaller">
+        <ul id="director-menu" class="font-size-smaller u-cf">
           <li id="director-showreel-play" class="director-menu-item director-menu-item-blue u-pointer"><a href="#play-all">Play All</a></li>
           <li id="director-showreel-label" class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Showreel</a></li>
           <li class="director-menu-item u-pointer"><a href="#archive">Archive</a></li>
@@ -108,7 +108,7 @@ if ($archive) {
       </nav>
     </div>
     <div class="col col2">
-      <ul id="director-archive-tags" class="font-size-smallest">
+      <ul id="director-archive-tags" class="font-size-smallest u-cf">
         <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
 $posttags = get_tags();
