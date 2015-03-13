@@ -3,10 +3,16 @@ function scripts_and_styles_method() {
 
   $templateuri = get_template_directory_uri() . '/js/';
 
-  $jslib = $templateuri . 'library.js';
-  wp_enqueue_script( 'jslib', $jslib,'','',true);
-  $myscripts = $templateuri . 'main.js';
-  wp_enqueue_script( 'myscripts', $myscripts,'','',true);
+  $libJs = $templateuri . 'library.js';
+  wp_enqueue_script( 'js-lib', $libJs,'','',true);
+
+  $mainJs = $templateuri . 'main.js';
+  wp_register_script( 'js-main', $mainJs, null, false, true);
+  $jsVariables = array(
+  	'themeUrl' => get_template_directory_uri()
+  );
+  wp_localize_script( 'js-main', 'wp_variables', $jsVariables );
+  wp_enqueue_script( 'js-main' );
 
   wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/css/site.css' );
 
@@ -29,6 +35,7 @@ if( function_exists( 'add_image_size' ) ) {
 
   add_image_size( 'post-background', 700, 280, true );
   add_image_size( 'post-background-large', 1100, 440, true );
+  add_image_size( 'post-background-extra-large', 1920, 768, true );
 
   add_image_size( 'grid-thumb', 250, 167, true );
   add_image_size( 'grid-thumb-large', 400, 267, true );

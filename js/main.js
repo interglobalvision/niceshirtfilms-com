@@ -309,7 +309,7 @@ function initializeMap() {
   var marker = new google.maps.Marker({
     position: myLatlng,
     map: map,
-    icon: '../wp-content/themes/niceshirtfilms-com/img/optimized/ns-mapmarker.png'
+    icon: wp_variables.themeUrl + '/img/optimized/ns-mapmarker.png'
   });
 
   infowindow.open(map,marker);
@@ -318,7 +318,7 @@ function initializeMap() {
     infowindow.open(map,marker);
   });
 
-  $('#map-canvas').height(($(window).height()*0.6));
+  $('#map-canvas').height(($(window).height()*0.5));
 }
 
 if ($('#map-canvas').length) {
