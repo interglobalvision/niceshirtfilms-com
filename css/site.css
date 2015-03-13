@@ -980,7 +980,16 @@ img {
 }
 .director-archive-video {
   width: 20%;
-  display: none;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.2s;
+          transition: transform 0.2s;
+}
+.director-archive-video.active {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
 }
 .director-archive-video,
 .director-showreel-video {

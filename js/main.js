@@ -26,6 +26,7 @@ var largeImagesTriggerWidth = 700,
   sidebarButton = $('#sidebar-toggle'),
 
   tagFilters = $('.filter-tag'),
+  tagFilterTimeout,
   directorArchiveVideos = $('.director-archive-video'),
 
   pathArray = window.location.pathname.split( '/' );
@@ -435,17 +436,6 @@ $(document).ready(function () {
 
   // DIRECTOR SINGLE
 
-    // TAG FILTER FIX
-
-  $('.filter-tag').each(function(index, item) {
-    var tag = $(this).data('tag-slug');
-    if (tag != 'all') {
-      if ($('.tag-'+tag).length === 0) {
-        $(this).remove();
-      }
-    }
-  });
-
     // LOAD SHOWREEL VIDEOS IN OVERLAY
 
   $('.js-load-overlay-vimeo').on('click', function () {
@@ -478,15 +468,58 @@ $(document).ready(function () {
 
     // TAG FILTERS
 
+      // FIX
+
+  tagFilters.each(function(index, item) {
+    var tag = $(this).data('tag-slug');
+    if (tag != 'all') {
+      if ($('.tag-'+tag).length === 0) {
+        $(this).remove();
+      }
+    }
+  });
+
+    // FILTERING
+
   tagFilters.on('click', function () {
     tagFilters.removeClass('filter-tag-active');
     $(this).addClass('filter-tag-active');
 
     var tag = $(this).data('tag-slug');
     if (tag !== 'all') {
-      directorArchiveVideos.removeClass('active').filter('.tag-' + tag).addClass('active');
+//       directorArchiveVideos.removeClass('active').filter('.tag-' + tag).addClass('active');
+
+      directorArchiveVideos.css({
+        'transform': 'scale(0)'
+      });
+      tagFilterTimeout = setTimeout(function() {
+        directorArchiveVideos.hide().filter('.tag-' + tag).show().css({
+          'transform': 'scale(1)'
+        });
+      }, fastAnimationSpeed);
+
+/*
+      directorArchiveVideos.slideUp(basicAnimationSpeed, function() {
+        directorArchiveVideos.filter('.tag-' + tag).slideDown(basicAnimationSpeed);
+      });
+*/
     } else {
-      directorArchiveVideos.addClass('active');
+//       directorArchiveVideos.addClass('active');
+
+      directorArchiveVideos.css({
+        'transform': 'scale(0)'
+      });
+      tagFilterTimeout = setTimeout(function() {
+        directorArchiveVideos.hide().show().css({
+          'transform': 'scale(1)'
+        });
+      }, fastAnimationSpeed);
+
+/*
+      directorArchiveVideos.slideUp(basicAnimationSpeed, function() {
+        directorArchiveVideos.slideDown(basicAnimationSpeed);
+      });
+*/
     }
   });
 
