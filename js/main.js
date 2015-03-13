@@ -205,6 +205,8 @@ function router( page, hash ) {
         $('.director-section').slideUp(basicAnimationSpeed);
         $('#director-archive').slideDown(basicAnimationSpeed);
         $('#director-menu').attr('data-active', 'archive');
+      } else if ( hash === 'archive' ) {
+        inlineVimeoPlayer.close();
       }
 
       // #video-XXXX
