@@ -33,6 +33,10 @@ foreach ($people as $post) {
       <div class="contact-person row u-cf">
         <div class="col col1 u-align-right">
           <img src="<?php echo $img[0]; ?>" />
+<?php
+if (!$img) {
+  echo '&nbsp;';
+} ?>
         </div>
 
         <div class="col col2">

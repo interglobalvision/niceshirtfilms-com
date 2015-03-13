@@ -57,6 +57,9 @@ b, strong, .font-bold
   font-family:"LLAkkuratProWeb-Regular"
   font-style: normal !important
 
+.font-light-gray
+  color: $color-light-text-gray
+
 .font-size-smaller
   font-size: $font-size-smaller
   line-height: $font-leading-basic
@@ -67,11 +70,9 @@ b, strong, .font-bold
 
 h1
   font-size: $font-size-heading
-  -webkit-font-smoothing: antialiased
 
 h2
   font-size: $font-size-heading
-  -webkit-font-smoothing: antialiased
 
 h3
   font-size: $font-size-subheading
@@ -81,11 +82,11 @@ h4
 
 h1,h2,h3,h4,h5,h6
   line-height: $font-leading-basic
+  -webkit-font-smoothing: antialiased
   font-weight: normal
 
 p
   margin-bottom: 1em
-
   a
     font-family:"LLAkkuratProWeb-Regular"
 
@@ -270,10 +271,7 @@ img
 .post-header-hover
   display: none
   padding: $margin-small $margin-basic
-  font-size: $font-size-subheading
-  background-color: $color-soft-white
-  opacity: 0.65
-  color: $color-soft-black
+  opacity: 0.85
 
 .post-copy
   overflow: hidden
@@ -373,6 +371,8 @@ img
 .search-results
   margin-top: $margin-basic
   margin-bottom: $margin-large
+  strong
+    color: $color-blue
 
 // DIRECTOR SINGLE
 
@@ -397,6 +397,8 @@ img
   display: inline-block
   margin-bottom: 0.4em
   margin-right: 1em
+  opacity: 0
+  transition: opacity $basic-animation-speed
   svg
     height: 20px
     path

@@ -61,7 +61,7 @@ query_posts( array(
 
       <div class="col col1 colpad1left">
 
-      <h3>Search results for: '<?php echo $search_term ?>'</h3>
+      <h3>Search results for '<?php echo $search_term ?>'</h3>
 
       </div>
 
@@ -84,7 +84,7 @@ if( $video_search->have_posts() ) {
 ?>
   <section id="video-search" class="search-results row u-cf">
     <div class="col col1">
-      <h4 class="search-results-label">Videos that matched title, brand, director, or matched a tag</h4>
+      <h4 class="search-results-label font-light-gray font-italic">Videos that matched title, brand, director, or matched a tag</h4>
     </div>
     <div class="col col2">
 <?php
@@ -126,18 +126,18 @@ if( $director_search->have_posts() ) {
 ?>
   <section id="director-search" class="search-results row u-cf">
     <div class="col col1">
-      <h4 class="search-results-label">Directors that matched the criteria</h4>
+      <h4 class="search-results-label font-light-gray font-italic">Directors that matched the criteria</h4>
     </div>
     <div class="col col2">
 <?php
-  while( $director_search->have_posts() ) {
+  while ( $director_search->have_posts() ) {
     $director_search->the_post();
     $matched_content = matched_content($post);
 
-    if( $matched_content ) {
+    if ( $matched_content ) {
 ?>
-      <a href="<?php the_permalink() ?>/#biography">
-        <h3><?php the_title(); ?> *</h3>
+      <a href="<?php the_permalink() ?>#biography">
+        <h3><?php the_title(); ?></h3>
         <p><?php echo $matched_content; ?></p>
       </a>
 <?php
@@ -145,6 +145,7 @@ if( $director_search->have_posts() ) {
 ?>
       <a href="<?php the_permalink() ?>">
         <h3><?php the_title(); ?></h3>
+        <?php the_excerpt(); ?>
       </a>
 <?php
     }
@@ -161,7 +162,7 @@ if( have_posts() ) {
 ?>
   <section id="search" class="search-results row u-cf">
     <div class="col col1">
-      <h4 class="search-results-label">Posts or pages that matched the criteria</h4>
+      <h4 class="search-results-label font-light-gray font-italic">Posts or pages that matched the criteria</h4>
     </div>
     <div class="col col2">
 <?php

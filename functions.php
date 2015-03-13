@@ -109,7 +109,7 @@ function exact_match_search( $search, $wp_query ) {
   $search = $searchand = '';
 
   foreach ( (array) $q['search_terms'] as $term ) {
-    $term = esc_sql( like_escape( $term ) );
+    $term = esc_sql( $wpdb->esc_like( $term ) );
     $search .= "{$searchand}($wpdb->posts.post_title REGEXP '[[:<:]]{$term}[[:>:]]') OR ($wpdb->posts.post_content REGEXP '[[:<:]]{$term}[[:>:]]')";
     $searchand = ' AND ';
   }
@@ -190,6 +190,13 @@ function get_video_permalink($post, $meta) {
   $directorPermalink = get_the_permalink($meta['_igv_director'][0]);
   return $directorPermalink . '#video-' . $post->post_name;
 }
+
+// Excerpt custom ...
+
+function new_excerpt_more( $more ) {
+	return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
 
 // Check if the posts' content matched the search
 function matched_content( $post ) {
