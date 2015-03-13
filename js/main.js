@@ -185,7 +185,7 @@ var inlineVimeoPlayer = {
     }).data('now-playing', '');
   }
 
-}
+};
 
 // ROUTER
 

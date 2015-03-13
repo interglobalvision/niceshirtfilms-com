@@ -30,9 +30,14 @@ if( have_posts() ) {
       <div class="col col1 cf">
 
 <?php
-$directors = get_posts('post_type=director&posts_per_page=-1&orderby=rand');
-foreach ($directors as $post) {
-  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'width-250');
+if (!empty($meta['_igv_gif'][0])) {
+?>
+        <img src="<?php echo $meta['_igv_gif'][0]; ?>" />
+<?php
+} else {
+  $directors = get_posts('post_type=director&posts_per_page=-1&orderby=rand');
+  foreach ($directors as $post) {
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'width-250');
 ?>
   <div class="about-page-director">
     <a href="<?php echo get_the_permalink($post->ID); ?>">
@@ -40,6 +45,7 @@ foreach ($directors as $post) {
     </a>
   </div>
 <?php
+  }
 }
 ?>
 

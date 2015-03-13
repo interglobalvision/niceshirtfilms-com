@@ -3,8 +3,8 @@
 /* Get post objects for select field options */
 function get_post_objects( $query_args ) {
   $args = wp_parse_args( $query_args, array(
-    'posts_per_page' => -1,
-  ) );
+      'posts_per_page' => -1,
+    ) );
   $posts = get_posts( $args );
   $post_options = array(" " => null);
   if ( $posts ) {
@@ -16,17 +16,7 @@ function get_post_objects( $query_args ) {
 }
 
 
-
-/**
- * Include and setup custom metaboxes and fields.
- *
- * @category YourThemeOrPlugin
- * @package  Metaboxes
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     https://github.com/webdevstudios/Custom-Metaboxes-and-Fields-for-WordPress
- */
 add_filter( 'cmb2_meta_boxes', 'cmb_sample_metaboxes' );
-
 function cmb_sample_metaboxes( array $meta_boxes ) {
 
   if (isset($_GET['post'])) {
@@ -42,7 +32,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
   );
 
   $showreel_args = array(
-    'post_type'			=> 'video',
+    'post_type'   => 'video',
     'meta_query' => array(
       array(
         'key' => '_igv_director',
@@ -135,21 +125,21 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
     'priority'   => 'high',
     'show_names' => true, // Show field names on the left
     // 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
-		'fields'     => array(
-			array(
-				'name'    => __( '', 'cmb2' ),
-				'desc'    => __( 'Drag videos from the left column to the right column to attach them to this page.<br />You may rearrange the order of the videos in the right column by dragging and dropping.', 'cmb2' ),
-				'id'      => $prefix . 'showreel',
-				'type'    => 'custom_attached_posts',
-				'options' => array(
-					'query_args' => $showreel_args, // override the get_posts args
+    'fields'     => array(
+      array(
+        'name'    => __( '', 'cmb2' ),
+        'desc'    => __( 'Drag videos from the left column to the right column to attach them to this page.<br />You may rearrange the order of the videos in the right column by dragging and dropping.', 'cmb2' ),
+        'id'      => $prefix . 'showreel',
+        'type'    => 'custom_attached_posts',
+        'options' => array(
+          'query_args' => $showreel_args, // override the get_posts args
           'show_thumbnails' => true
-				),
-			)
-		),
+        ),
+      )
+    ),
   );
 
-    $meta_boxes['person_metabox'] = array(
+  $meta_boxes['person_metabox'] = array(
     'id'         => 'person_metabox',
     'title'      => __( 'Person Details', 'cmb' ),
     'object_types'      => array( 'people' ), // Post type
@@ -191,4 +181,30 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 
   return $meta_boxes;
 }
+
+
+add_action( 'cmb2_init', 'yourprefix_register_about_page_metabox' );
+function yourprefix_register_about_page_metabox() {
+
+  $prefix = '_igv_';
+
+  $cmb_about_page = new_cmb2_box( array(
+      'id'           => $prefix . 'metabox',
+      'title'        => __( 'About Page Metabox', 'cmb2' ),
+      'object_types' => array( 'page', ),
+      'context'      => 'normal',
+      'priority'     => 'high',
+      'show_names'   => true,
+      'show_on'      => array( 'id' => array( 2, 5 ) ),
+    ) );
+
+  $cmb_about_page->add_field( array(
+      'name' => __( 'GIF', 'cmb2' ),
+      'desc' => __( 'if set displays instead of all the shirts on the left', 'cmb2' ),
+      'id'   => $prefix . 'gif',
+      'type' => 'file',
+    ) );
+}
+
+
 ?>
