@@ -134,7 +134,7 @@ if( $director_search->have_posts() ) {
     $director_search->the_post();
     $matched_content = matched_content($post);
 ?>
-      <div class="search-result">
+      <div class="search-result copy">
 <?php
     if ( $matched_content ) {
 ?>
