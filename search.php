@@ -126,29 +126,34 @@ if( $director_search->have_posts() ) {
 ?>
   <section id="director-search" class="search-results row u-cf">
     <div class="col col1">
-      <h4 class="search-results-label font-light-gray font-italic">Directors that matched the criteria</h4>
+      <h4 class="search-results-label search-results-label-fix font-light-gray font-italic">Directors that matched the criteria</h4>
     </div>
     <div class="col col2">
 <?php
   while ( $director_search->have_posts() ) {
     $director_search->the_post();
     $matched_content = matched_content($post);
-
+?>
+      <div class="search-result">
+<?php
     if ( $matched_content ) {
 ?>
-      <a href="<?php the_permalink() ?>#biography">
-        <h3><?php the_title(); ?></h3>
-        <p><?php echo $matched_content; ?></p>
-      </a>
+        <a href="<?php the_permalink() ?>#biography">
+          <h3><?php the_title(); ?></h3>
+          <p><?php echo $matched_content; ?></p>
+        </a>
 <?php
     } else {
 ?>
-      <a href="<?php the_permalink() ?>">
-        <h3><?php the_title(); ?></h3>
-        <?php the_excerpt(); ?>
-      </a>
+        <a href="<?php the_permalink() ?>">
+          <h3><?php the_title(); ?></h3>
+          <?php the_excerpt(); ?>
+        </a>
 <?php
     }
+?>
+      </div>
+<?php
   }
 ?>
     </div>
@@ -162,7 +167,7 @@ if( have_posts() ) {
 ?>
   <section id="search" class="search-results row u-cf">
     <div class="col col1">
-      <h4 class="search-results-label font-light-gray font-italic">Posts or pages that matched the criteria</h4>
+      <h4 class="search-results-label search-results-label-fix font-light-gray font-italic">Posts or pages that matched the criteria</h4>
     </div>
     <div class="col col2">
 <?php
@@ -171,9 +176,10 @@ if( have_posts() ) {
     $meta = get_post_meta($post->ID);
 ?>
 
-    <article class="copy">
+    <article class="search-result copy">
       <a href="<?php the_permalink() ?>">
-        <h4><?php the_title(); ?></h4>
+        <h3><?php the_title(); ?></h3>
+        <?php the_excerpt(); ?>
       </a>
     </article>
 

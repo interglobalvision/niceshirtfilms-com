@@ -843,6 +843,9 @@ img {
   width: 70%;
   max-width: 400px;
 }
+.search-results-label-fix {
+  padding-top: 14px;
+}
 .search-results {
   margin-top: 32px;
   margin-bottom: 80px;
