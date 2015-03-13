@@ -109,7 +109,7 @@ function exact_match_search( $search, $wp_query ) {
   $search = $searchand = '';
 
   foreach ( (array) $q['search_terms'] as $term ) {
-    $term = esc_sql( like_escape( $term ) );
+    $term = esc_sql( $wpdb->esc_like( $term ) );
     $search .= "{$searchand}($wpdb->posts.post_title REGEXP '[[:<:]]{$term}[[:>:]]') OR ($wpdb->posts.post_content REGEXP '[[:<:]]{$term}[[:>:]]')";
     $searchand = ' AND ';
   }
