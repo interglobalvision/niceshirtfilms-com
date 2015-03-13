@@ -1,6 +1,3 @@
-    <footer id="footer">
-    </footer>
-
   </section>
 
   <section id="video-overlay">

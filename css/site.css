@@ -776,6 +776,10 @@ img {
 .basic-post-title {
   margin-bottom: 16px;
 }
+#pagination {
+  padding: 80px;
+  text-align: center;
+}
 .home-news.active .post-copy {
   height: auto;
 }

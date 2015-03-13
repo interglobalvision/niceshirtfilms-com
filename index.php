@@ -207,6 +207,8 @@ if (!empty($meta['_igv_director'][0])) {
   <!-- end posts -->
   </section>
 
+  <?php get_template_part('partials/pagination'); ?>
+
 <!-- end main-content -->
 
 </main>
