@@ -713,6 +713,8 @@ img {
   border: 0;
   border-bottom: dotted 1px #817e7e;
   background-color: transparent;
+  font-family: "LLAkkuratProWeb-Regular";
+  color: #00bcec;
 }
 #sidebar-contact {
   line-height: 2em;
@@ -880,6 +882,7 @@ img {
 }
 .search-results strong {
   color: #00bcec;
+  font-weight: normal !important;
 }
 .cinema-mode {
   background-color: #edecec;
