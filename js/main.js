@@ -27,6 +27,7 @@ var largeImagesTriggerWidth = 700,
 
   tagFilters = $('.filter-tag'),
   tagFilterTimeout,
+  tagFilterTimeout2,
   directorArchiveVideos = $('.director-archive-video'),
 
   pathArray = window.location.pathname.split( '/' );
@@ -489,37 +490,43 @@ $(document).ready(function () {
     if (tag !== 'all') {
 //       directorArchiveVideos.removeClass('active').filter('.tag-' + tag).addClass('active');
 
+      clearTimeout(tagFilterTimeout);
+      clearTimeout(tagFilterTimeout2);
+
       directorArchiveVideos.css({
         'transform': 'scale(0)'
       });
       tagFilterTimeout = setTimeout(function() {
-        directorArchiveVideos.hide().filter('.tag-' + tag).show().css({
-          'transform': 'scale(1)'
-        });
+        directorArchiveVideos.hide().filter('.tag-' + tag).show();
+
+        tagFilterTimeout2 = setTimeout(function() {
+          directorArchiveVideos.filter('.tag-' + tag).css({
+            'transform': 'scale(1)'
+          });
+        }, fastAnimationSpeed);
+
       }, fastAnimationSpeed);
 
-/*
-      directorArchiveVideos.slideUp(basicAnimationSpeed, function() {
-        directorArchiveVideos.filter('.tag-' + tag).slideDown(basicAnimationSpeed);
-      });
-*/
     } else {
 //       directorArchiveVideos.addClass('active');
 
+      clearTimeout(tagFilterTimeout);
+      clearTimeout(tagFilterTimeout2);
+
       directorArchiveVideos.css({
         'transform': 'scale(0)'
       });
       tagFilterTimeout = setTimeout(function() {
-        directorArchiveVideos.hide().show().css({
-          'transform': 'scale(1)'
-        });
+        directorArchiveVideos.hide().show();
+
+        tagFilterTimeout2 = setTimeout(function() {
+          directorArchiveVideos.css({
+            'transform': 'scale(1)'
+          });
+        }, fastAnimationSpeed);
+
       }, fastAnimationSpeed);
 
-/*
-      directorArchiveVideos.slideUp(basicAnimationSpeed, function() {
-        directorArchiveVideos.slideDown(basicAnimationSpeed);
-      });
-*/
     }
   });
 
@@ -528,7 +535,7 @@ $(document).ready(function () {
   sidebarButton.on('click', function () {
     if (sidebar.hasClass('open')) {
       sidebar.removeClass('open');
-//    jQuery cant add/removeClass on SVG elements [wtf]
+      // jQuery cant add/removeClass on SVG elements [wtf]
       sidebarButton.attr('class', 'u-pointer');
     } else {
       sidebar.addClass('open');
