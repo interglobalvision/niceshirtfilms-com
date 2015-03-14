@@ -87,7 +87,7 @@ if( is_home() ) {
 
       <div class="sidebar-section font-larger">
         <a href="<?php echo home_url(); ?>">
-          <img src="<?php bloginfo('stylesheet_directory'); ?>/img/optimized/NiceShirt_beta_logo.svg" alt="Nice Shirt" id="logo" />
+          <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/niceshirt-logo.svg'); ?>
         </a>
       </div>
 
