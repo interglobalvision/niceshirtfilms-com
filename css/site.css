@@ -698,6 +698,12 @@ img {
   width: 100%;
   height: 100%;
 }
+#logo {
+  width: 100%;
+}
+#logo path {
+  fill: #817e7e;
+}
 .sidebar-section {
   margin-bottom: 16px;
 }
@@ -1063,7 +1069,15 @@ img {
 #video-overlay-text {
   margin-top: 16px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1111px) {
+  #sidebar {
+    width: 220px;
+  }
+  #main-content {
+    padding-left: 220px;
+  }
+}
+@media screen and (max-width: 888px) {
   #sidebar {
     -webkit-transform: translateX(-100%);
         -ms-transform: translateX(-100%);
