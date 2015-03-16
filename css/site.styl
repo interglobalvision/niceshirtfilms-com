@@ -22,7 +22,7 @@ $basic-post-height = 380px
 
 $overlay-nav-size = 50px
 
-$font-size-basic = 17px
+$font-size-basic = 15px
 
 $font-size-heading = 60px
 $font-size-subheading = 30px
@@ -42,8 +42,11 @@ $color-light-gray = rgb(237,236,236)
 $color-mid-gray = rgb(223,223,223)
 $color-dark-gray = rgb(205,203,203)
 
+$color-border-gray = rgb(237, 236, 236)
+
 $color-light-text-gray = rgb(200,200,200)
 $color-text-gray = rgb(129,126,126)
+$color-dark-text-gray = rgb(65,65,63)
 
 // TYPOGRAPHY
 
@@ -106,10 +109,9 @@ p
 a,a:active,a:visited
   color:inherit
   text-decoration: none
-  transition: opacity $basic-animation-speed
+  transition: color $basic-animation-speed
   &:hover
-    opacity:.5
-
+  	color: $color-light-text-gray
 
 // BASIC
 
@@ -153,6 +155,8 @@ img
   bottom: 0
   left: 0
   right: 0
+  border-top: 1px solid $color-border-gray
+  border-right: 1px solid $color-border-gray
 
 .u-force-width
   min-height: 1em
@@ -261,6 +265,10 @@ img
 
 
 // POSTS
+
+#posts
+	article
+		border-bottom: 1px solid $color-border-gray
 
 .post-main
   text-align: center
