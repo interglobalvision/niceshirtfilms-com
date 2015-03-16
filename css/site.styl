@@ -102,6 +102,8 @@ p
 
 .copy
   max-width: 650px
+  box-sizing: border-box
+  padding-right: $margin-small
 
 
 // LINKS
@@ -109,7 +111,6 @@ p
 a,a:active,a:visited
   color:inherit
   text-decoration: none
-  transition: color $basic-animation-speed
   &:hover
   	color: $color-light-text-gray
 
@@ -235,11 +236,11 @@ img
     fill: $color-text-gray
 
 .sidebar-section
-  margin-bottom: $margin-small
+  margin-bottom: $margin-tiny
   &:after
     content:"\2014"
     display: block
-    margin-top: $margin-small
+    margin-top: $margin-tiny
 
 #search-input
   display: inline-block
