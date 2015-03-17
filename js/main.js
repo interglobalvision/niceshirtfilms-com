@@ -17,6 +17,7 @@ var largeImagesTriggerWidth = 700,
   overlay = $('#video-overlay'),
   overlayDirector = $('#video-overlay-director'),
   overlayTitle = $('#video-overlay-title'),
+  overlayMiddot = $('#video-overlay-middot'),
   overlayBrand = $('#video-overlay-brand'),
 
   directorShowreelVideos = $('.director-showreel-video'),
@@ -70,6 +71,13 @@ var overlayVimeoPlayer = {
     overlayDirector.html(postData.director);
     overlayTitle.html(postData.title);
     overlayBrand.html(postData.brand);
+
+    // hide middot if title or brand is blank
+    overlayMiddot.show();
+    if (postData.title === '' || postData.brand === '') {
+      overlayMiddot.hide();
+    }
+
     var iframe = $('#overlay-vimeo-player-embed')[0],
       player = $f(iframe);
     player.addEvent('ready', function () {
@@ -194,6 +202,7 @@ function router( page, hash ) {
 
   // Routes: Director Page
 //   if ( page === 'director') {
+      $('.director-menu-item').removeClass('active');
 
     if ( hash === 'play-all' ) {
 
@@ -218,15 +227,17 @@ function router( page, hash ) {
         $('#director-menu').attr('data-active', 'archive');
       }
 
+      $('#director-menu-archive').addClass('active');
+
+    // #biography
     } else if ( hash === 'biography' ) {
 
-      // #biography
-      if ( hash === 'biography' ) {
-        inlineVimeoPlayer.close();
-        $('.director-section').slideUp(basicAnimationSpeed);
-        $('#director-biography').slideDown(basicAnimationSpeed);
-        $('#director-menu').attr('data-active', 'biography' );
-      }
+      inlineVimeoPlayer.close();
+      $('.director-section').slideUp(basicAnimationSpeed);
+      $('#director-biography').slideDown(basicAnimationSpeed);
+      $('#director-menu').attr('data-active', 'biography' );
+
+      $('#director-menu-biography').addClass('active');
 
     } else {
       inlineVimeoPlayer.close();

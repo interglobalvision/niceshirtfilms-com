@@ -1,5 +1,9 @@
   </section>
 
+<?php
+if (is_single()) {
+  if (is_single_type('director', $post)) {
+?>
   <section id="video-overlay">
     <nav id="video-overlay-close" class="video-overlay-nav u-pointer">
       <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-close.svg'); ?>
@@ -16,12 +20,16 @@
           <div id="video-overlay-player"></div>
           <div id="video-overlay-text" class="u-align-center">
             <h3 id="video-overlay-director"></h3>
-            <h4><span id="video-overlay-title" class="font-italic"></span> &middot; <span id="video-overlay-brand"></span></h4>
+            <h4><span id="video-overlay-title" class="font-italic"></span> <span id="video-overlay-middot">&middot;</span> <span id="video-overlay-brand"></span></h4>
           </div>
         </div>
       </div>
     </div>
   </section>
+<?php
+  }
+}
+?>
 
   <section id="scripts">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

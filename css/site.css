@@ -632,7 +632,7 @@ img {
   float: left;
 }
 .col1 {
-  width: 33.3%;
+  width: 33.33%;
 }
 .col2 {
   width: 66.6%;
@@ -957,8 +957,11 @@ img {
   margin-right: 5px;
   color: #fdfdfd;
 }
+.director-menu-item.active {
+  background-color: #dfdfdf;
+}
 .director-menu-item a:hover {
-  opacity: 1;
+  color: #fdfdfd;
 }
 .director-menu-item-blue {
   background-color: #00bcec;
