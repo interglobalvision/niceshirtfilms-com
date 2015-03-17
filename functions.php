@@ -226,13 +226,12 @@ function matched_content( $post ) {
 function find_sentence_with_needle( $haystack, $needle ) {
   $sentences = explode('.', $haystack);
 
-
   // REGEX: Word boundaries around the needle and case insensitive
   $word_needle = '/\b' . $needle . '\b/i';
 
   foreach ( $sentences as $sentence ) {
-    if ( preg_match( $word_needle, $sentence ) ) {
-      $sentence = str_replace( $needle, '<strong>' . $needle . '</strong>', $sentence);
+    if ( preg_match( $word_needle, $sentence, $matches ) ) {
+      $sentence = str_ireplace( $needle, '<strong>' . $matches[0] . '</strong>', $sentence);
       return $sentence . ".";
     }
   }
