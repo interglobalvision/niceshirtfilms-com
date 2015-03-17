@@ -17,7 +17,7 @@ if( have_posts() ) {
 
     <header class="page-header u-cf">
 
-      <div class="col col1 colpad1left">
+      <div class="col col2 colpad1left">
 
         <h3><?php the_title(); ?></h3>
 
@@ -25,7 +25,7 @@ if( have_posts() ) {
 
     </header>
 
-    <section class="row cf">
+    <section class="row u-cf">
 
       <div class="col col1 cf">
 

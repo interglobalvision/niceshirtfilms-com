@@ -172,8 +172,6 @@ audio:not([controls]) {
   display: none;
 }
 html {
-  background: #fff;
-/* 1 */
   color: #000;
 /* 2 */
   font-size: 100%;
@@ -664,7 +662,7 @@ img {
           transition: transform 0.7s;
 }
 #sidebar-toggle path {
-  fill: #fdfdfd;
+  fill: #cdcbcb;
 }
 #main-content {
   padding-left: 250px;
@@ -705,7 +703,7 @@ img {
   width: 100%;
 }
 #logo path {
-  fill: #817e7e;
+  fill: #41413f;
 }
 .sidebar-section {
   margin-bottom: 8px;
@@ -867,15 +865,18 @@ img {
   box-sizing: border-box;
 }
 #subForm input {
-  width: 100%;
+  display: block;
+  width: 90%;
   max-width: 550px;
   margin-bottom: 16px;
   padding: 8px;
+  box-sizing: border-box;
   font-family: "LLAkkuratProWeb-Light", helvetica, arial, sans-serif;
   font-size: 30px;
   color: #00bcec;
   border: 0;
   outline-color: #00bcec;
+  display: block;
 }
 #subForm button {
   background-color: #00bcec;
@@ -893,11 +894,11 @@ img {
 .search-results-label-fix {
   padding-top: 14px;
 }
-.search-results {
+.search-result-section {
   margin-top: 32px;
   margin-bottom: 80px;
 }
-.search-results strong {
+.search-result-section strong {
   color: #00bcec;
   font-weight: normal !important;
 }
@@ -1119,6 +1120,31 @@ img {
   #main-content {
     padding-left: 0;
   }
+  .colpad1left {
+    padding-left: 16px;
+  }
+  .copy {
+    padding-left: 16px;
+  }
+  #director-header .col1 {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  #director-header .col1.colpad1left {
+    width: 33.33%;
+  }
+  .director-showreel-video.col1 {
+    width: 50%;
+  }
+  .director-archive-video {
+    width: 33.33%;
+  }
+  .search-results-label {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 @media screen and (max-width: 400px) {
   #logo {
@@ -1128,6 +1154,6 @@ img {
     width: 100%;
   }
   #sidebar-toggle path {
-    fill: #817e7e;
+    fill: #41413f;
   }
 }

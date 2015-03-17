@@ -59,7 +59,7 @@ query_posts( array(
 
   <header class="page-header u-cf">
 
-      <div class="col col1 colpad1left">
+      <div class="col col2 colpad1left">
 
       <h3>Search results for '<?php echo $search_term ?>'</h3>
 
@@ -82,7 +82,7 @@ if( !$video_search->have_posts() && !$director_search->have_posts() && !have_pos
 <?php
 if( $video_search->have_posts() ) {
 ?>
-  <section id="video-search" class="search-results row u-cf">
+  <section id="video-search" class="search-result-section row u-cf">
     <div class="col col1">
       <h4 class="search-results-label font-light-gray font-italic">Videos that matched title, brand, director, or matched a tag</h4>
     </div>
@@ -124,7 +124,7 @@ if( $video_search->have_posts() ) {
 <?php
 if( $director_search->have_posts() ) {
 ?>
-  <section id="director-search" class="search-results row u-cf">
+  <section id="director-search" class="search-result-section row u-cf">
     <div class="col col1">
       <h4 class="search-results-label search-results-label-fix font-light-gray font-italic">Directors that matched the criteria</h4>
     </div>
@@ -165,7 +165,7 @@ if( $director_search->have_posts() ) {
 <?php
 if( have_posts() ) {
 ?>
-  <section id="search" class="search-results row u-cf">
+  <section id="search" class="search-result-section row u-cf">
     <div class="col col1">
       <h4 class="search-results-label search-results-label-fix font-light-gray font-italic">Posts or pages that matched the criteria</h4>
     </div>

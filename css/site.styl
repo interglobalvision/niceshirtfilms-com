@@ -198,7 +198,7 @@ img
   z-index: 999
   transition: transform $longer-animation-speed
   path
-    fill: $color-soft-white
+    fill: $color-dark-gray
 
 #main-content
   padding-left: $width-sidebar
@@ -234,7 +234,7 @@ img
 #logo
   width: 100%
   path
-    fill: $color-text-gray
+    fill: $color-dark-text-gray
 
 .sidebar-section
   margin-bottom: $margin-tiny
@@ -404,15 +404,18 @@ img
     padding: 0 $margin-basic
     box-sizing: border-box
   input
-    width: 100%
+    display: block
+    width: 90%
     max-width: 550px
     margin-bottom: $margin-small
     padding: $margin-tiny
+    box-sizing: border-box
     font-family:"LLAkkuratProWeb-Light",helvetica,arial,sans-serif
     font-size: $font-size-subheading
     color: $color-blue
     border: 0
     outline-color: $color-blue
+    display: block
   button
     background-color: $color-blue
     color: $color-soft-white
@@ -433,7 +436,7 @@ img
 .search-results-label-fix
   padding-top: $font-size-smaller
 
-.search-results
+.search-result-section
   margin-top: $margin-basic
   margin-bottom: $margin-large
   strong
@@ -642,6 +645,31 @@ img
   #main-content
     padding-left: 0
 
+  .colpad1left
+    padding-left: $margin-small
+
+  .copy
+    padding-left: $margin-small
+
+  #director-header
+    .col1
+      width: 50%
+      box-sizing: border-box
+      &.colpad1left
+        width: 33.33%
+
+  .director-showreel-video.col1
+    width: 50%
+
+  .director-archive-video
+    width: 33.33%
+
+  .search-results-label
+    width: 100%
+    box-sizing: border-box
+    padding-left: $margin-small
+    padding-right: $margin-small
+
 @media screen and (max-width: 400px)
 
   #logo
@@ -652,4 +680,4 @@ img
 
   #sidebar-toggle
     path
-      fill: $color-text-gray
+      fill: $color-dark-text-gray

@@ -17,7 +17,7 @@ if( have_posts() ) {
 
     <header class="page-header u-cf">
 
-      <div class="col col1 colpad1left">
+      <div class="col col2 colpad1left">
 
         <h3><?php the_title(); ?></h3>
 
@@ -27,7 +27,7 @@ if( have_posts() ) {
 
     <form id="subForm" action="http://modernactivity.createsend.com/t/y/s/fkiuil/" method="post">
 
-      <section class="row cf">
+      <section class="row u-cf">
 
         <div class="col col1">
 
@@ -45,7 +45,7 @@ if( have_posts() ) {
 
         </div>
 
-        <div class="col col1">
+        <div class="col col2">
 
                 <input id="fieldName" name="cm-name" type="text" />
 
