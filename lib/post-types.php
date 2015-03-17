@@ -5,10 +5,13 @@ function add_menu_icons_styles(){
 
 <style>
 #menu-posts-director div.wp-menu-image:before {
-    content: '\f110';
+  content: '\f110';
 }
 #menu-posts-video div.wp-menu-image:before {
-    content: '\f234';
+  content: '\f234';
+}
+#menu-posts-people div.wp-menu-image:before {
+  content: '\f307';
 }
 </style>
 
