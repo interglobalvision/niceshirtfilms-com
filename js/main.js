@@ -29,9 +29,7 @@ var largeImagesTriggerWidth = 700,
   tagFilters = $('.filter-tag'),
   tagFilterTimeout,
   tagFilterTimeout2,
-  directorArchiveVideos = $('.director-archive-video'),
-
-  pathArray = window.location.pathname.split( '/' );
+  directorArchiveVideos = $('.director-archive-video');
 
 function ifLargeImages() {
   if ($(window).width() > largeImagesTriggerWidth) {
@@ -201,7 +199,7 @@ var inlineVimeoPlayer = {
 function router( page, hash ) {
 
   // Routes: Director Page
-//   if ( page === 'director') {
+  if ( page === 'director') {
       $('.director-menu-item').removeClass('active');
 
     if ( hash === 'play-all' ) {
@@ -246,7 +244,7 @@ function router( page, hash ) {
       $('#director-showreel').slideDown(basicAnimationSpeed);
     }
 
-//   }
+   }
 }
 
 // MAP EMBED
@@ -554,16 +552,18 @@ $(document).ready(function () {
     }
   });
 
-  // Router: on change
-  window.onhashchange = function () {
-    var hash = window.location.hash.replace("#",'');
-    router( pathArray[1], hash );
-  };
+  if ( $('body').hasClass('single-director') ) {
+    // Router: on change
+    window.onhashchange = function () {
+      var hash = window.location.hash.replace("#",'');
+      router( 'director', hash );
+    };
 
-  // Router: on load
-  if ( window.location.hash ) {
-    var hash = window.location.hash.replace("#",'');
-    router( pathArray[1], hash );
+    // Router: on load
+    if ( window.location.hash ) {
+      var hash = window.location.hash.replace("#",'');
+      router( 'director', hash );
+    }
   }
 
 // END DOC READY
