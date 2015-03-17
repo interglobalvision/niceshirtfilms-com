@@ -565,6 +565,7 @@ p {
 }
 p a {
   font-family: "LLAkkuratProWeb-Regular";
+  color: #41413f;
 }
 .copy {
   max-width: 650px;
@@ -737,6 +738,7 @@ img {
 }
 .menu-active {
   font-family: "LLAkkuratProWeb-Regular";
+  color: #41413f;
 }
 #posts article {
   border-bottom: 1px solid #edecec;
