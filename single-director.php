@@ -55,6 +55,7 @@ if (!empty($meta['_igv_showreel'])) {
     $video_meta = get_post_meta($post->ID);
 ?>
       <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-overlay-vimeo'); ?>
+        data-slug="<?php echo $post->post_name; ?>"
         data-vimeo-id="<?php if (!empty($video_meta['_vimeo_id_value'][0])) { echo $video_meta['_vimeo_id_value'][0];} ?>"
         data-video-ratio="<?php if (!empty($video_meta['_vimeo_ratio_value'][0])) { echo $video_meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"

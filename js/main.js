@@ -128,8 +128,6 @@ var overlayVimeoPlayer = {
 
   fixHeight: function () {
 
-    l('fixing height');
-
     var windowHeight = $(window).height(),
       height = this.overlayInner.height();
 
@@ -231,11 +229,22 @@ function router( page, hash ) {
   if ( page === 'director') {
       $('.director-menu-item').removeClass('active');
 
+    // play all showreel
     if ( hash === 'play-all' ) {
 
-      // #play-all
       overlayVimeoPlayer.load( $('.director-showreel-video').eq(0).data(), 0 );
 
+    // load direct to showreel
+    } else if ( hash.indexOf('showreel-') === 0) {
+
+      var video = hash.substring(9),
+        videoElement = $('.director-showreel-video[data-slug="' + video + '"]');
+
+      if (videoElement) {
+        overlayVimeoPlayer.load(videoElement.data(), videoElement.index());
+      }
+
+    // load archive & possible a specific video
     } else if ( hash.indexOf('video-') === 0 || hash === 'archive' ) {
 
       if ( $('#director-menu').attr('data-active') !== 'archive' ) {
