@@ -20,7 +20,7 @@ if (is_single()) {
           <div id="video-overlay-player"></div>
           <div id="video-overlay-text" class="u-align-center">
             <h3 id="video-overlay-director"></h3>
-            <h4><span id="video-overlay-title" class="font-italic"></span> <span id="video-overlay-middot">&middot;</span> <span id="video-overlay-brand"></span></h4>
+            <h4><span id="video-overlay-title" class="font-italic"></span><span id="video-overlay-middot"> &middot; </span><span id="video-overlay-brand"></span></h4>
           </div>
         </div>
       </div>

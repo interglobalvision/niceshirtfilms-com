@@ -14,12 +14,6 @@ var largeImagesTriggerWidth = 700,
   lazyThumbnails = $('.lazy-thumb'),
   lazyBackgrounds = $('.js-lazy-background'),
 
-  overlay = $('#video-overlay'),
-  overlayDirector = $('#video-overlay-director'),
-  overlayTitle = $('#video-overlay-title'),
-  overlayMiddot = $('#video-overlay-middot'),
-  overlayBrand = $('#video-overlay-brand'),
-
   directorShowreelVideos = $('.director-showreel-video'),
   directorShowreelLength = directorShowreelVideos.length,
 
@@ -55,6 +49,16 @@ var overlayVimeoPlayer = {
 
   player: $('#video-overlay-player'),
 
+  overlay: $('#video-overlay'),
+  overlayInner: $('#video-overlay-inner'),
+
+  overlayDirector: $('#video-overlay-director'),
+  overlayTitle: $('#video-overlay-title'),
+  overlayMiddot: $('#video-overlay-middot'),
+  overlayBrand: $('#video-overlay-brand'),
+
+  timeout: 0,
+
   load: function (postData, postIndex) {
     var ratio;
     if (postData.vimeoRatio === undefined) {
@@ -62,19 +66,31 @@ var overlayVimeoPlayer = {
     } else {
       ratio = postData.vimeoRatio;
     }
-    overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
+    this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
     this.player.html('<iframe id="overlay-vimeo-player-embed" src="//player.vimeo.com/video/' + postData.vimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=overlay-vimeo-player-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
       'padding-top': (ratio * 100) + '%'
     });
-    overlayDirector.html(postData.director);
-    overlayTitle.html(postData.title);
-    overlayBrand.html(postData.brand);
+    this.overlayDirector.html(postData.director);
+    this.overlayTitle.html(postData.title);
+    this.overlayBrand.html(postData.brand);
 
     // hide middot if title or brand is blank
-    overlayMiddot.show();
+    this.overlayMiddot.show();
     if (postData.title === '' || postData.brand === '') {
-      overlayMiddot.hide();
+      this.overlayMiddot.hide();
     }
+
+    // use fixHeight after animations
+    // : could be improved significantly
+    var that = this;
+    this.timeout = setTimeout(function() {
+      that.fixHeight();
+    }, (basicAnimationSpeed + fastAnimationSpeed + 1));
+    $(window).resize(function() {
+      this.timeout = setTimeout(function() {
+        that.fixHeight();
+      }, 50);
+    });
 
     var iframe = $('#overlay-vimeo-player-embed')[0],
       player = $f(iframe);
@@ -89,9 +105,9 @@ var overlayVimeoPlayer = {
     var nowPlayingIndex = overlay.data('now-playing'),
       nextIndex = nowPlayingIndex + 1;
     if (directorShowreelLength > nextIndex) {
-      overlayVimeoPlayer.load(directorShowreelVideos.eq(nextIndex).data(), nextIndex);
+      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(nextIndex).data(), nextIndex);
     } else {
-      overlayVimeoPlayer.load(directorShowreelVideos.eq(0).data(), 0);
+      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(0).data(), 0);
     }
   },
 
@@ -99,15 +115,28 @@ var overlayVimeoPlayer = {
     var nowPlayingIndex = overlay.data('now-playing'),
       prevousIndex = nowPlayingIndex - 1;
     if (prevousIndex === -1) {
-      overlayVimeoPlayer.load(directorShowreelVideos.eq(directorShowreelLength - 1).data(), directorShowreelLength - 1);
+      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(directorShowreelLength - 1).data(), directorShowreelLength - 1);
     } else {
-      overlayVimeoPlayer.load(directorShowreelVideos.eq(prevousIndex).data(), prevousIndex);
+      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(prevousIndex).data(), prevousIndex);
     }
   },
 
   close: function () {
-    overlay.fadeOut(fastAnimationSpeed).data('now-playing', '');
+    this.overlay.fadeOut(fastAnimationSpeed).data('now-playing', '');
     this.player.html('');
+  },
+
+  fixHeight: function () {
+
+    l('fixing height');
+
+    var windowHeight = $(window).height(),
+      height = this.overlayInner.height();
+
+    while (height > (windowHeight*0.95)) {
+      this.overlayInner.width(this.overlayInner.width()*0.95);
+      height = this.overlayInner.height();
+    }
   }
 
 };
@@ -339,11 +368,9 @@ if ($('#map-canvas').length) {
 // LAYOUT FIXES
 
 function layoutFixSearchInput() {
-
   var width = $('#search-form').width();
   var minus = $('#search-label').width();
   $('#search-input').width(width - minus - 20);
-
 }
 
 // DOC READY BRO
