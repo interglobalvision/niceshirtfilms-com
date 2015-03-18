@@ -587,10 +587,12 @@ body {
   -webkit-transition: background-color 0.7s;
           transition: background-color 0.7s;
 }
-img,
-iframe {
+img {
   max-width: 100%;
   height: auto;
+}
+iframe {
+  max-width: 100%;
 }
 .background-gray {
   background-color: #edecec;
