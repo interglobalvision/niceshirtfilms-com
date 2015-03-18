@@ -121,7 +121,7 @@ html, body
   background-color: $color-light-gray
   transition: background-color $longer-animation-speed
 
-img
+img, iframe
   max-width: 100%
   height: auto
 
@@ -403,6 +403,8 @@ img
     margin-bottom: $margin-small
     padding: 0 $margin-basic
     box-sizing: border-box
+  .mobile-label
+    display: none
   input
     display: block
     width: 90%
@@ -632,8 +634,9 @@ img
   #sidebar-toggle
     width: 30px
     height: 30px
-    top: $margin-small
-    right: $margin-small
+    top: 0
+    right: 0
+    padding: $margin-small
     position: fixed
     display: block
     background: none
@@ -670,7 +673,31 @@ img
     padding-left: $margin-small
     padding-right: $margin-small
 
+  #subForm
+    label
+      padding: 0 $margin-small
+
+
 @media screen and (max-width: 400px)
+
+  // TYPOGRAPHY
+
+  $font-size-heading = 50px
+  $font-size-subheading = 25px
+
+  h1, h2
+    font-size: $font-size-heading
+
+  h3
+    font-size: $font-size-subheading
+
+  #subForm
+    label
+      height: ($font-size-subheading + ($margin-tiny*2) + 5px)
+    input
+      font-size: $font-size-subheading
+
+  // SIDEBAR MENU
 
   #logo
     width: 50%
@@ -681,3 +708,81 @@ img
   #sidebar-toggle
     path
       fill: $color-dark-text-gray
+
+  // POSTS
+
+  .post-main
+    height: 260px
+
+  // DIRECTOR SINGLE
+
+  #director-header
+    .col1
+      width: 50%
+      &.colpad1left
+        width: 50%
+
+  #director-menu
+    padding-top: 0
+
+  .director-showreel-video.col1
+    width: 100%
+    .u-fixed-ratio-content
+      border-right: none
+
+  #director-archive, #director-biography
+    .col1
+      display: none
+    .col2
+      width: 100%
+      box-sizing: border-box
+      padding-left: $margin-small
+      padding-right: $margin-small
+
+  .director-archive-video
+    width: 50%
+
+  // PAGE
+
+  #page
+    .row
+      .col1
+        display: none
+      .col2
+        width: 100%
+        box-sizing: border-box
+
+  .contact-person
+    box-sizing: border-box
+    padding-left: $margin-small
+    padding-right: $margin-small
+
+  #subForm
+    .col2
+      box-sizing: border-box
+      padding-left: $margin-small
+      padding-right: $margin-small
+    input
+      width: 100%
+    .mobile-label
+      display: block
+      padding: 0
+      margin-bottom: $margin-tiny
+      margin-top: $margin-tiny
+      height: auto
+
+  // SEARCH
+
+  .search-result-section
+    margin-top: 0
+    margin-bottom: $margin-basic
+    .col
+      float: none
+      width: 100%
+      box-sizing: border-box
+      padding-left: $margin-small
+      padding-right: $margin-small
+    .col1
+      margin-bottom: $margin-tiny
+    .search-results-label, .search-result.copy
+      padding: 0

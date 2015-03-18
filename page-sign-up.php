@@ -47,15 +47,23 @@ if( have_posts() ) {
 
         <div class="col col2">
 
+                <label for="fieldName" class="mobile-label">First name</label>
                 <input id="fieldName" name="cm-name" type="text" />
 
+                <label for="fieldckikjh" class="mobile-label">Last name</label>
                 <input id="fieldckikjh" name="cm-f-ckikjh" type="text" />
 
+                <label for="fieldEmail" class="mobile-label">Email address*</label>
                 <input id="fieldEmail" name="cm-fkiuil-fkiuil" required="" type="email" />
 
+                <label for="fieldckikjk" class="mobile-label">What is your favourite ad right now?</label>
                 <input id="fieldckikjk" name="cm-f-ckikjk" type="text" />
 
                 <button type="submit">Submit Form</button>
+
+                <label class="mobile-label">
+                  * = mandatory field for submission
+                </label>
 
         </div>
 

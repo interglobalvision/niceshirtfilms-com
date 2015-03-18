@@ -587,7 +587,8 @@ body {
   -webkit-transition: background-color 0.7s;
           transition: background-color 0.7s;
 }
-img {
+img,
+iframe {
   max-width: 100%;
   height: auto;
 }
@@ -864,6 +865,9 @@ img {
   padding: 0 32px;
   box-sizing: border-box;
 }
+#subForm .mobile-label {
+  display: none;
+}
 #subForm input {
   display: block;
   width: 90%;
@@ -1102,8 +1106,9 @@ img {
   #sidebar-toggle {
     width: 30px;
     height: 30px;
-    top: 16px;
-    right: 16px;
+    top: 0;
+    right: 0;
+    padding: 16px;
     position: fixed;
     display: block;
     background: none;
@@ -1145,8 +1150,24 @@ img {
     padding-left: 16px;
     padding-right: 16px;
   }
+  #subForm label {
+    padding: 0 16px;
+  }
 }
 @media screen and (max-width: 400px) {
+  h1,
+  h2 {
+    font-size: 50px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  #subForm label {
+    height: 46px;
+  }
+  #subForm input {
+    font-size: 25px;
+  }
   #logo {
     width: 50%;
   }
@@ -1155,5 +1176,82 @@ img {
   }
   #sidebar-toggle path {
     fill: #41413f;
+  }
+  .post-main {
+    height: 260px;
+  }
+  #director-header .col1 {
+    width: 50%;
+  }
+  #director-header .col1.colpad1left {
+    width: 50%;
+  }
+  #director-menu {
+    padding-top: 0;
+  }
+  .director-showreel-video.col1 {
+    width: 100%;
+  }
+  .director-showreel-video.col1 .u-fixed-ratio-content {
+    border-right: none;
+  }
+  #director-archive .col1,
+  #director-biography .col1 {
+    display: none;
+  }
+  #director-archive .col2,
+  #director-biography .col2 {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .director-archive-video {
+    width: 50%;
+  }
+  #page .row .col1 {
+    display: none;
+  }
+  #page .row .col2 {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .contact-person {
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  #subForm .col2 {
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  #subForm input {
+    width: 100%;
+  }
+  #subForm .mobile-label {
+    display: block;
+    padding: 0;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    height: auto;
+  }
+  .search-result-section {
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+  .search-result-section .col {
+    float: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .search-result-section .col1 {
+    margin-bottom: 8px;
+  }
+  .search-result-section .search-results-label,
+  .search-result-section .search-result.copy {
+    padding: 0;
   }
 }
