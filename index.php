@@ -66,7 +66,7 @@ if (!empty($meta['_igv_brand'][0])) {
 
       <div class="post-copy">
         <nav class="post-copy-close u-pointer">
-          <span class="genericon genericon-close-alt"></span>
+          <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-close.svg'); ?>
         </nav>
 
         <div class="post-copy-container">
@@ -165,7 +165,7 @@ if (!empty($meta['_igv_longtitle'][0])) {
 
         <div class="post-copy">
           <nav class="post-copy-close u-pointer">
-            <span class="genericon genericon-close-alt"></span>
+            <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-close.svg'); ?>
           </nav>
           <div class="post-copy-container">
             <div class="copy u-marginauto">

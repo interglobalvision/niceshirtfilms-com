@@ -286,11 +286,14 @@ iframe
   background-size: cover
   transition: height $longer-animation-speed
   overflow: hidden
-  &:hover
-    .post-header
-      display: none
-    .post-header-hover
-      display: inline-block
+
+.home-news.news-read-more, .home-video
+  .post-main
+    &:hover
+      .post-header
+        display: none
+      .post-header-hover
+        display: inline-block
 
 .post-header
   width: 85%
@@ -302,10 +305,8 @@ iframe
   opacity: 0.85
 
 .post-copy
-  overflow: hidden
+  display: none
   position: relative
-  height: 0
-  transition: height $basic-animation-speed
 
 .post-copy-close
   position: absolute
@@ -328,8 +329,10 @@ iframe
 // NEWS POST
 
 .home-news.active
-  .post-copy
-    height: auto
+  .post-header
+    display: block
+  .post-header-hover
+    display: none
 
 .news-copy
   display: none
@@ -347,8 +350,6 @@ iframe
   transition-duration: $longer-animation-speed
 
 .home-video.active
-  .post-copy
-    height: auto
   .home-video-player
     top: 0
 

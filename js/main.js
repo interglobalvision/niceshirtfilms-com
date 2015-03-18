@@ -40,6 +40,7 @@ function closeAllPosts() {
     el.style.height = '';
   });
   $('.home-video-player').html('');
+  $('.post-copy').slideUp(fastAnimationSpeed);
 }
 
 //   DIRECTOR SINGLE FUNCTIONS
@@ -455,6 +456,9 @@ $(document).ready(function () {
     }
     var postVimeoHeight = (post.width() * postVimeoRatio);
     post.addClass('active');
+
+    post.find('.post-copy').slideDown(fastAnimationSpeed);
+
     post.find('.post-main').height(postVimeoHeight);
     post.find('.home-video-player').height(postVimeoHeight).html('<iframe id="home-vimeo-embed" width="100%" height="100%" src="//player.vimeo.com/video/' + postVimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=home-vimeo-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 
@@ -477,7 +481,16 @@ $(document).ready(function () {
   $('.news-read-more .post-main').on('click', function (e) {
     e.preventDefault();
     closeAllPosts();
-    $(this).ScrollTo().parent().addClass('active');
+
+    var post = $(this).parent()
+
+    post.find('.post-copy').slideDown(fastAnimationSpeed);
+    post.addClass('active');
+
+    scrollTimer = setTimeout(function () {
+      post.ScrollTo();
+    }, (fastAnimationSpeed+10));
+
   });
 
   // DIRECTOR SINGLE
