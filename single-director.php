@@ -49,10 +49,11 @@ if (!empty($meta['_igv_showreel'])) {
   $showreelVideos = get_post_meta( get_the_ID(), '_igv_showreel', true );
   foreach($showreelVideos as $video) {
     $post = get_post($video);
-    setup_postdata($post);
-    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
-    $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
-    $video_meta = get_post_meta($post->ID);
+    if(!empty($post)) {
+      setup_postdata($post);
+      $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
+      $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
+      $video_meta = get_post_meta($post->ID);
 ?>
       <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-overlay-vimeo'); ?>
         data-slug="<?php echo $post->post_name; ?>"
@@ -75,6 +76,7 @@ if (!empty($meta['_igv_showreel'])) {
         </div>
       </div>
 <?php
+    }
   }
   wp_reset_postdata();
 ?>
