@@ -26,7 +26,7 @@ if( have_posts() ) {
       data-vimeo-id="<?php if (!empty($meta['_vimeo_id_value'][0])) { echo $meta['_vimeo_id_value'][0];} ?>"
       data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
     >
-      <div class="post-main u-pointer js-lazy-home-background" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>">
+      <div class="post-main u-pointer js-lazy-background" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>">
 
         <div class="u-holder">
           <div class="u-held">
@@ -135,7 +135,7 @@ if ($thumbBackground) {
   $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background');
   $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-large');
 ?>
-        <div class="post-main u-pointer js-lazy-home-background" data-background="<?php echo $img[0]; ?>" data-background-large="<?php echo $imgLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
+        <div class="post-main u-pointer js-lazy-background" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
 <?php
 } else {
 ?>
