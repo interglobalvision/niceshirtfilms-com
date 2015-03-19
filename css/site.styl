@@ -3,18 +3,16 @@
 
 // VARIABLES
 
-$gutter = 16px
-
 $width-sidebar = 250px
 
 $basic-animation-speed = 0.6s
 $fast-animation-speed = 0.2s
 $longer-animation-speed = 0.7s
 
-$margin-small = ($gutter)
-$margin-tiny = ($gutter/2)
-$margin-basic = ($gutter*2)
-$margin-large = ($gutter*5)
+$margin-small = 16px
+$margin-tiny = ($margin-small/2)
+$margin-basic = ($margin-small*2)
+$margin-large = ($margin-small*5)
 
 $margin-nav-spacing = 5px
 
@@ -790,3 +788,30 @@ iframe
       margin-bottom: $margin-tiny
     .search-results-label, .search-result.copy
       padding: 0
+
+  // NEW MARGINS
+
+    // VIDEO OVERLAY
+
+  .video-overlay-nav
+    svg
+      height: 20px
+      width: 20px
+
+  #video-overlay-close
+    top: 13px
+    right: 13px
+
+  #video-overlay-next
+    margin-top: -(20px/2)
+    right: 13px
+
+  #video-overlay-previous
+    margin-top: -(20px/2)
+    left: 13px
+
+  #video-overlay-inner
+    width: 70%
+
+  #video-overlay-text
+    margin-top: 13px

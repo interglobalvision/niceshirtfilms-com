@@ -1256,3 +1256,25 @@ iframe {
     padding: 0;
   }
 }
+.video-overlay-nav svg {
+  height: 20px;
+  width: 20px;
+}
+#video-overlay-close {
+  top: 13px;
+  right: 13px;
+}
+#video-overlay-next {
+  margin-top: -10px;
+  right: 13px;
+}
+#video-overlay-previous {
+  margin-top: -10px;
+  left: 13px;
+}
+#video-overlay-inner {
+  width: 70%;
+}
+#video-overlay-text {
+  margin-top: 13px;
+}
