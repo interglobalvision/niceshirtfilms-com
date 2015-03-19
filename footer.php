@@ -1,9 +1,5 @@
   </section>
 
-<?php
-if (is_single()) {
-  if (is_single_type('director', $post)) {
-?>
   <section id="video-overlay">
     <nav id="video-overlay-close" class="video-overlay-nav u-pointer">
       <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-close.svg'); ?>
@@ -26,10 +22,6 @@ if (is_single()) {
       </div>
     </div>
   </section>
-<?php
-  }
-}
-?>
 
   <section id="scripts">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

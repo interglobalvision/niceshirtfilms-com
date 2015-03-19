@@ -387,6 +387,71 @@ function layoutFixSearchInput() {
 
 $(document).ready(function () {
 
+
+
+
+  $('.js-ajax-director').on({
+    'click': function(e) {
+      e.preventDefault();
+
+//       l(e.target.href);
+
+      var url = e.target.href;
+
+      var clickedMenuItem = $(this).parent();
+
+      $.ajax(url, {
+        beforeSend: function() {
+
+          $('#main-content').fadeOut(fastAnimationSpeed);
+          $('#sidebar-directors li').removeClass('menu-active');
+
+        },
+        dataType: 'html',
+        error: function() {
+          console.log('ajaxy error');
+        },
+        success: function(data) {
+
+//           l(data);
+
+          // need to add second param of page title from the data
+          history.pushState(null, null, url);
+
+          var content = $(data).find('#main-content');
+
+//           l(content.html());
+
+          $('#main-content').html(content.html());
+
+          $('#main-content').fadeIn(basicAnimationSpeed);
+
+          $('#main-content').find('.js-lazy-background').each(function (index, item) {
+            var thumb = $(item).data('thumb'),
+              thumbLarge = $(item).data('thumb-large');
+            if (ifLargeImages()) {
+              $(item).css({
+                'background-image': 'url(' + thumbLarge + ')'
+              });
+            } else {
+              $(item).css({
+                'background-image': 'url(' + thumb + ')'
+              });
+            }
+          });
+
+          clickedMenuItem.addClass('menu-active');
+
+        }
+      });
+    }
+  });
+
+
+
+
+
+
   layoutFixSearchInput();
 
   if (lazyHomeBackground.length) {
@@ -482,7 +547,7 @@ $(document).ready(function () {
     e.preventDefault();
     closeAllPosts();
 
-    var post = $(this).parent()
+    var post = $(this).parent();
 
     post.find('.post-copy').slideDown(fastAnimationSpeed);
     post.addClass('active');

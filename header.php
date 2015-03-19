@@ -108,9 +108,9 @@ if (is_single()) {
     $directorId = $post->ID;
     foreach ($directors as $post) {
       if ($directorId === $post->ID) {
-        echo '<li class="menu-active"><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+        echo '<li class="menu-active"><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
       } else {
-        echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+        echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
       }
     }
   } else {
