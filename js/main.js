@@ -103,22 +103,22 @@ var overlayVimeoPlayer = {
   },
 
   playNext: function () {
-    var nowPlayingIndex = overlay.data('now-playing'),
+    var nowPlayingIndex = this.overlay.data('now-playing'),
       nextIndex = nowPlayingIndex + 1;
     if (directorShowreelLength > nextIndex) {
-      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(nextIndex).data(), nextIndex);
+      this.load(directorShowreelVideos.eq(nextIndex).data(), nextIndex);
     } else {
-      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(0).data(), 0);
+      this.load(directorShowreelVideos.eq(0).data(), 0);
     }
   },
 
   playPrev: function () {
-    var nowPlayingIndex = overlay.data('now-playing'),
+    var nowPlayingIndex = this.overlay.data('now-playing'),
       prevousIndex = nowPlayingIndex - 1;
     if (prevousIndex === -1) {
-      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(directorShowreelLength - 1).data(), directorShowreelLength - 1);
+      this.load(directorShowreelVideos.eq(directorShowreelLength - 1).data(), directorShowreelLength - 1);
     } else {
-      this.overlayVimeoPlayer.load(directorShowreelVideos.eq(prevousIndex).data(), prevousIndex);
+      this.load(directorShowreelVideos.eq(prevousIndex).data(), prevousIndex);
     }
   },
 
@@ -183,9 +183,9 @@ var inlineVimeoPlayer = {
     });
 
     if (nowPlayingIndex === undefined || nowPlayingIndex === (currentPlaylistLength - 1)) {
-      inlineVimeoPlayer.load($(currentPlaylist[0]));
+      this.load($(currentPlaylist[0]));
     } else {
-      inlineVimeoPlayer.load($(currentPlaylist[(nowPlayingIndex + 1)]));
+      this.load($(currentPlaylist[(nowPlayingIndex + 1)]));
     }
 
   },
@@ -204,11 +204,11 @@ var inlineVimeoPlayer = {
     });
 
     if (nowPlayingIndex === undefined) {
-      inlineVimeoPlayer.load($(currentPlaylist[0]));
+      this.load($(currentPlaylist[0]));
     } else if (nowPlayingIndex === 0) {
-      inlineVimeoPlayer.load($(currentPlaylist[(currentPlaylistLength - 1)]));
+      this.load($(currentPlaylist[(currentPlaylistLength - 1)]));
     } else {
-      inlineVimeoPlayer.load($(currentPlaylist[(nowPlayingIndex - 1)]));
+      this.load($(currentPlaylist[(nowPlayingIndex - 1)]));
     }
 
   },
