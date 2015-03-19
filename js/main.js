@@ -340,9 +340,11 @@ var overlayVimeoPlayer = {
 // INLINE PLAYER
 var inlineVimeoPlayer = {
 
-  player : $('#vimeo-player'),
+  player: $('#vimeo-player'),
 
   load: function (archiveVideo) {
+
+    this.player = $('#vimeo-player');
 
     var archiveVideoData = archiveVideo.data(),
       ratio = archiveVideoData.vimeoRatio;
