@@ -115,12 +115,12 @@ if (is_single()) {
     }
   } else {
     foreach ($directors as $post) {
-      echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+      echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
     }
   }
 } else {
   foreach ($directors as $post) {
-    echo '<li><a href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+    echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
   }
 }
 ?>
