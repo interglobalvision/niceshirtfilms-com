@@ -94,7 +94,7 @@ if (!empty($meta['_igv_brand'][0])) {
             <?php the_content(); ?>
 
             <p class="u-align-center">
-              <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
+              <a class="js-ajax-director" href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
                 <span class="button">
                   Director page
                 </span>
@@ -181,7 +181,7 @@ if (!empty($meta['_igv_director'][0])) {
 ?>
 
               <p class="u-align-center">
-                <a href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
+                <a class="js-ajax-director" href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
                   <span class="button">
                     Director page
                   </span>

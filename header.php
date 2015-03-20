@@ -93,9 +93,9 @@ if( is_home() ) {
 
       <div class="sidebar-section font-larger">
         <ul>
-          <li <?php if (is_page('about')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('about/'); ?>">About</a></li>
+          <li <?php if (is_page('about')) {echo 'class="menu-active"';}?>><a class="js-ajax-page" href="<?php echo home_url('about/'); ?>">About</a></li>
           <li <?php if (is_category('news')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('category/news/'); ?>">News</a></li>
-          <li <?php if (is_page('contact')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('contact/'); ?>">Contact</a></li>
+          <li <?php if (is_page('contact')) {echo 'class="menu-active"';}?>><a class="js-ajax-page" href="<?php echo home_url('contact/'); ?>">Contact</a></li>
         </ul>
       </div>
 
@@ -139,7 +139,7 @@ if (is_single()) {
           <li><a href="tel:+442072558100">+44 (0)20 7255 8100</a></li>
           <li><a href="mailto:hello@niceshirtfilms.com">hello@niceshirtfilms.com</a></li>
           <li>
-          <a href="<?php echo home_url('sign-up/'); ?>"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-subscribe.svg'); ?></a>
+          <a class="js-ajax-page" href="<?php echo home_url('sign-up/'); ?>"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-subscribe.svg'); ?></a>
           <a target="_blank" href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-twitter.svg'); ?></a>
           <a target="_blank" href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-facebook.svg'); ?></a>
         </ul>

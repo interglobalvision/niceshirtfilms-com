@@ -568,6 +568,7 @@ function initializeMap() {
 function ajaxBefore() {
   $('#main-content').fadeOut(fastAnimationSpeed);
   $('#sidebar li').removeClass('menu-active');
+  $('#sidebar').removeClass('open');
   $('html').removeClass('cinema-mode');
 }
 
@@ -601,6 +602,24 @@ function ajaxDirectorSuccess(data, url) {
 
 }
 
+function ajaxPageSuccess(data, url) {
+
+  // need to add second param of page title from the data
+  history.pushState(null, null, url);
+
+  var content = $(data).find('#main-content');
+
+  $('#main-content').html(content.html());
+  $('#main-content').fadeIn(basicAnimationSpeed);
+
+  clickedMenuItem.addClass('menu-active');
+
+  if ($('#map-canvas').length) {
+    initializeMap();
+  }
+
+}
+
 // DOC READY BRO
 
 $(document).ready(function () {
@@ -608,7 +627,8 @@ $(document).ready(function () {
   $('.js-ajax-director').on({
     'click': function(e) {
       e.preventDefault();
-      var url = e.target.href;
+
+      var url = e.currentTarget.href;
       clickedMenuItem = $(this).parent();
 
       $.ajax(url, {
@@ -621,6 +641,28 @@ $(document).ready(function () {
         },
         success: function(data) {
           ajaxDirectorSuccess(data, url);
+        }
+      });
+    }
+  });
+
+  $('.js-ajax-page').on({
+    'click': function(e) {
+      e.preventDefault();
+
+      var url = e.currentTarget.href;
+      clickedMenuItem = $(this).parent();
+
+      $.ajax(url, {
+        beforeSend: function() {
+          ajaxBefore();
+        },
+        dataType: 'html',
+        error: function(jqXHR, textStatus, errorThrown) {
+          ajaxErrorHandler(jqXHR, textStatus, errorThrown);
+        },
+        success: function(data) {
+          ajaxPageSuccess(data, url);
         }
       });
     }
