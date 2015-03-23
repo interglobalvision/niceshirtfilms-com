@@ -591,6 +591,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+img.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
 iframe {
   max-width: 100%;
 }
