@@ -77,7 +77,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
         'repeatable' => false,
       ),
       array(
-        'name' => 'Assiciated Director',
+        'name' => 'Associated Director',
         'desc' => 'link to director page?',
         'id'   => $prefix . 'director',
         'type' => 'colorpicker',
