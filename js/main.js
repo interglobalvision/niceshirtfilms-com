@@ -3,6 +3,7 @@ function l(data) {
 }
 
 var largeImagesTriggerWidth = 700,
+  extraLargeImagesTriggerWidth = 1100,
 
   basicAnimationSpeed = 600,
   fastAnimationSpeed = 200,
@@ -33,15 +34,17 @@ function ifLargeImages() {
 
 function lazyLoadBackgrounds() {
   $('.js-lazy-background').each(function (index, item) {
-    var thumb = $(item).data('thumb'),
-      thumbLarge = $(item).data('thumb-large');
-    if (ifLargeImages()) {
+    if ($(window).width() > extraLargeImagesTriggerWidth) {
       $(item).css({
-        'background-image': 'url(' + thumbLarge + ')'
+        'background-image': 'url(' + $(item).data('thumb-extra-large') + ')'
+      });
+    } else if ($(window).width() > largeImagesTriggerWidth) {
+      $(item).css({
+        'background-image': 'url(' + $(item).data('thumb-large') + ')'
       });
     } else {
       $(item).css({
-        'background-image': 'url(' + thumb + ')'
+        'background-image': 'url(' + $(item).data('thumb') + ')'
       });
     }
   });
