@@ -52,7 +52,8 @@ if (!empty($meta['_igv_showreel'])) {
     if(!empty($post)) {
       setup_postdata($post);
       $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
-      $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
+      $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-larger');
+      $imgExtraLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
       $video_meta = get_post_meta($post->ID);
 ?>
       <div <?php post_class('director-showreel-video col col1 u-pointer u-background-cover u-fixed-ratio js-lazy-background js-load-overlay-vimeo'); ?>
@@ -61,6 +62,7 @@ if (!empty($meta['_igv_showreel'])) {
         data-video-ratio="<?php if (!empty($video_meta['_vimeo_ratio_value'][0])) { echo $video_meta['_vimeo_ratio_value'][0];} ?>"
         data-thumb="<?php echo $img[0]; ?>"
         data-thumb-large="<?php echo $imgLarge[0]; ?>"
+        data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>"
         data-director="<?php echo $directorName; ?>"
         data-title="<?php if (!empty($video_meta['_igv_title'][0])) { echo $video_meta['_igv_title'][0];} ?>"
         data-brand="<?php if (!empty($video_meta['_igv_brand'][0])) { echo $video_meta['_igv_brand'][0];} ?>"
@@ -131,6 +133,7 @@ if ($posttags) {
     setup_postdata($post);
     $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb');
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
+    $imgExtraLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-larger');
     $meta = get_post_meta($post->ID);
 ?>
       <a href="#<?php echo "video-" . $post->post_name; ?>">
@@ -142,6 +145,7 @@ if ($posttags) {
           data-thumb-large="<?php echo $imgLarge[0]; ?>"
           data-title="<?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?>"
           data-brand="<?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?>"
+          data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>"
         >
           <div class="u-fixed-ratio-dummy"></div>
           <div class="u-fixed-ratio-content">
