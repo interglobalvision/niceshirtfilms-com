@@ -355,6 +355,7 @@ var inlineVimeoPlayer = {
       ratio = 0.5625;
     }
 
+    $('#now-playing-title').html('<em>' + archiveVideoData.brand + '</em> - ' + archiveVideoData.title);
     this.player.data('now-playing-id', archiveVideo[0].id).html('<iframe id="inline-vimeo-player-embed" src="//player.vimeo.com/video/' + archiveVideoData.vimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=inline-vimeo-player-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
       'padding-top': (ratio * 100) + '%'
     });
@@ -417,6 +418,7 @@ var inlineVimeoPlayer = {
 
   close: function () {
     $('html').removeClass('cinema-mode');
+    $('#now-playing-title').html('');
     this.player.html('').css({
       'padding-top': '0%'
     }).data('now-playing', '');
