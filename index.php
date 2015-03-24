@@ -134,7 +134,7 @@ if ($thumbBackground) {
   $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background');
   $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-large');
 ?>
-        <div class="post-main u-pointer js-lazy-background" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
+        <div class="post-main u-pointer js-lazy-background" data-thumb="<?php echo $img[0]; ?>" data-thumb-large="<?php echo $imgLarge[0]; ?>" data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>" style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
 <?php
 } else {
 ?>
