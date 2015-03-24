@@ -946,6 +946,9 @@ iframe {
 .inline-player-nav svg:hover path {
   fill: #cdcbcb;
 }
+#now-playing-title {
+  color: #41413f;
+}
 #director-menu {
   padding-top: 16px;
 }

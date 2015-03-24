@@ -113,6 +113,7 @@ if ($archive) {
       </nav>
     </div>
     <div class="col col2">
+      <h3 id="now-playing-title"></h3>
       <ul id="director-archive-tags" class="font-size-smallest u-cf">
         <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
@@ -142,6 +143,8 @@ if ($posttags) {
           data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
           data-thumb="<?php echo $img[0]; ?>"
           data-thumb-large="<?php echo $imgLarge[0]; ?>"
+          data-title="<?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?>"
+          data-brand="<?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?>"
           data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>"
         >
           <div class="u-fixed-ratio-dummy"></div>
