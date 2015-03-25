@@ -350,7 +350,7 @@ var inlineVimeoPlayer = {
     this.player = $('#vimeo-player');
 
     var archiveVideoData = archiveVideo.data(),
-      ratio = archiveVideoData.vimeoRatio;
+      ratio = archiveVideoData.videoRatio;
     if (ratio === undefined) {
       ratio = 0.5625;
     }
