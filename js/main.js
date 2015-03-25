@@ -262,10 +262,10 @@ var overlayVimeoPlayer = {
 
   load: function (postData, postIndex) {
     var ratio;
-    if (postData.vimeoRatio === undefined) {
+    if (postData.videoRatio === undefined) {
       ratio = 0.5625;
     } else {
-      ratio = postData.vimeoRatio;
+      ratio = postData.videoRatio;
     }
     this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
     this.player.html('<iframe id="overlay-vimeo-player-embed" src="//player.vimeo.com/video/' + postData.vimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=overlay-vimeo-player-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
