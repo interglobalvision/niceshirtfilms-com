@@ -25,13 +25,6 @@ var largeImagesTriggerWidth = 700,
 
 // GENERIC FUNCTIONS
 
-function ifLargeImages() {
-  if ($(window).width() > largeImagesTriggerWidth) {
-    return true;
-  }
-  return false;
-}
-
 function lazyLoadBackgrounds() {
   $('.js-lazy-background').each(function (index, item) {
     if ($(window).width() > extraLargeImagesTriggerWidth) {
