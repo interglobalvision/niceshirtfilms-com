@@ -1,6 +1,7 @@
 @import "fonts"
 @import "resets"
 
+
 // VARIABLES
 
 $width-sidebar = 250px
@@ -45,6 +46,7 @@ $color-border-gray = rgb(237, 236, 236)
 $color-light-text-gray = rgb(200,200,200)
 $color-text-gray = rgb(129,126,126)
 $color-dark-text-gray = rgb(65,65,63)
+
 
 // TYPOGRAPHY
 
@@ -113,6 +115,7 @@ a,a:active,a:visited
   &:hover
   	color: $color-light-text-gray
 
+
 // BASIC
 
 html, body
@@ -139,6 +142,7 @@ iframe
   background-color: $color-dark-gray
   padding: 0em 0.5em
   color: $color-soft-white
+
 
 // UTILITY
 
@@ -168,6 +172,7 @@ iframe
 .u-force-width
   min-height: 1em
 
+
 // 3 COL FLUID
 
 .col
@@ -181,6 +186,7 @@ iframe
 
 .colpad1left
   padding-left: 33.3%
+
 
 // STRUCTURE
 
@@ -220,6 +226,7 @@ iframe
   padding-top: $margin-small
   padding-right: $margin-basic
 
+
 // PLAYER
 
 #vimeo-player, #video-overlay-player
@@ -233,6 +240,7 @@ iframe
     left: 0
     width: 100%
     height: 100%
+
 
 // SIDEBAR
 
@@ -326,11 +334,13 @@ iframe
 .basic-post-title
   margin-bottom: $margin-small
 
+
   // PAGINATION
 
 #pagination
   padding: $margin-large
   text-align: center
+
 
 // NEWS POST
 
@@ -343,6 +353,7 @@ iframe
 .news-copy
   display: none
   margin: $margin-large 0
+
 
 // VIDEO POST
 
@@ -359,6 +370,7 @@ iframe
   .home-video-player
     top: 0
 
+
 // PAGES
 
 .page-header
@@ -370,6 +382,7 @@ iframe
   margin-left: $margin-basic
   padding-bottom: $margin-small
 
+
   // ABOUT PAGE
 
 .about-page-director
@@ -377,6 +390,7 @@ iframe
   width: 50%
   box-sizing: border-box
   padding: $margin-small
+
 
   // CONTACT PAGE
 
@@ -401,6 +415,7 @@ iframe
     margin-top: 0.2em
     path
       fill: $color-text-gray
+
 
   // SIGN UP PAGE
 
@@ -437,7 +452,6 @@ iframe
     letter-spacing: 0.05em;
 
 
-
 // SEARCH RESULTS
 
 .search-results-label
@@ -455,6 +469,7 @@ iframe
     color: $color-blue
     font-weight: normal !important
 
+
 // DIRECTOR SINGLE
 
 .cinema-mode
@@ -467,10 +482,6 @@ iframe
     opacity: 1
   #director-archive
     padding-top: $margin-small
-//   .director-showreel-video
-//     opacity: 0.1
-//     &:hover
-//       opacity: 1
 
   // INLINE PLAYER
 
@@ -487,6 +498,7 @@ iframe
     &:hover
       path
         fill: $color-dark-gray
+
 
   // HEADER
 
@@ -524,10 +536,12 @@ iframe
 .director-menu-item-blue
   background-color: $color-blue
 
+
   // CONTENT SECTIONS
 
 #director-biography, #director-archive
   display: none
+
 
   // ARCHIVE
 
@@ -558,6 +572,7 @@ iframe
   &.active
     transform: scale(1)
 
+
   // THUMBNAILS
 
 .director-archive-video, .director-showreel-video
@@ -582,8 +597,6 @@ iframe
     transition: background-color $basic-animation-speed
   &:hover .u-fixed-ratio-content
     background-color: rgba(0,0,0,0.5)
-
-
 
 
 // VIDEO OVERLAY
@@ -627,6 +640,20 @@ iframe
   margin-top: $margin-small
 
 
+// TYPE MEDIA QUERIES
+
+@media screen and (max-width: 1200px)
+
+  .director-showreel-video
+    h3
+      font-size: ($font-size-subheading*0.75)
+
+@media screen and (max-width: 1080px)
+
+  .director-showreel-video
+    h3
+      font-size: ($font-size-subheading*0.5)
+
 // MEDIA QUERIES
 
 @media screen and (max-width: 1111px)
@@ -639,6 +666,8 @@ iframe
   #main-content
     padding-left: $width-sidebar
 
+  .director-archive-video
+    width: 33.33%
 
 @media screen and (max-width: 888px)
 
@@ -677,11 +706,12 @@ iframe
       &.colpad1left
         width: 33.33%
 
+  .director-showreel-video
+    h3
+      font-size: ($font-size-subheading*0.75)
+
   .director-showreel-video.col1
     width: 50%
-
-  .director-archive-video
-    width: 33.33%
 
   .search-results-label
     width: 100%
@@ -694,7 +724,8 @@ iframe
       padding: 0 $margin-small
 
 
-@media screen and (max-width: 400px)
+@media screen and (max-width: 500px)
+
 
   // TYPOGRAPHY
 
@@ -713,6 +744,7 @@ iframe
     input
       font-size: $font-size-subheading
 
+
   // SIDEBAR MENU
 
   #logo
@@ -725,10 +757,12 @@ iframe
     path
       fill: $color-dark-text-gray
 
+
   // POSTS
 
   .post-main
     height: 260px
+
 
   // DIRECTOR SINGLE
 
@@ -760,6 +794,7 @@ iframe
   .director-archive-video
     width: 50%
 
+
   // PAGE
 
   #page
@@ -789,6 +824,7 @@ iframe
       margin-top: $margin-tiny
       height: auto
 
+
   // SEARCH
 
   .search-result-section
@@ -805,6 +841,7 @@ iframe
     .search-results-label,
     .search-result.copy
       padding: 0
+
 
     // VIDEO OVERLAY
 
