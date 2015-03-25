@@ -1047,6 +1047,11 @@ iframe {
 .director-showreel-video .u-holder:hover {
   opacity: 1;
 }
+.director-archive-video .u-held,
+.director-showreel-video .u-held {
+  box-sizing: border-box;
+  padding: 8px;
+}
 .director-archive-video .u-fixed-ratio-content,
 .director-showreel-video .u-fixed-ratio-content {
   -webkit-transition: background-color 0.6s;
