@@ -1206,6 +1206,9 @@ iframe {
   .director-showreel-video.col1 .u-fixed-ratio-content {
     border-right: none;
   }
+  .director-showreel-video.col1 .u-holder {
+    opacity: 1;
+  }
   #director-archive .col1,
   #director-biography .col1 {
     display: none;
