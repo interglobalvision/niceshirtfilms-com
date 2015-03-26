@@ -8,7 +8,6 @@ var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 
 var stylus = require('gulp-stylus');
-// var csslint = require('gulp-csslint');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 
