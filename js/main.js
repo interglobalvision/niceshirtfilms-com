@@ -1,7 +1,3 @@
-function l(data) {
-  console.log(data);
-}
-
 var largeImagesTriggerWidth = 700,
   extraLargeImagesTriggerWidth = 1100,
 
@@ -350,7 +346,6 @@ var inlineVimeoPlayer = {
     if (ratio === undefined) {
       ratio = 0.5625;
     }
-
 
     this.inlineTitle.html(archiveVideoData.title);
     this.inlineBrand.html(archiveVideoData.brand);

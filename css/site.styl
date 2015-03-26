@@ -482,12 +482,20 @@ iframe
   body, #sidebar
     background-color: $color-light-gray
     color: $color-light-text-gray
+  #inline-player-bar
+    display: block
+    opacity: 1
   .inline-player-nav
     opacity: 1
   #director-archive
     padding-top: $margin-small
 
   // INLINE PLAYER
+
+#inline-player-bar
+  display: none
+  opacity: 0
+  transition: opacity $basic-animation-speed
 
 .inline-player-nav
   display: inline-block
@@ -505,6 +513,7 @@ iframe
         fill: $color-dark-gray
 
 #inline-nowplaying
+  color: $color-dark-text-gray
   padding-bottom: $margin-tiny
   margin-top: (-12px + $margin-tiny)
 

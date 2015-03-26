@@ -103,7 +103,7 @@ $archive = get_posts(array(
 ));
 if ($archive) {
 ?>
-  <div class="u-cf">
+  <div id="inline-player-bar" class="u-cf">
     <div class="col col1">
       <nav id="inline-player-previous" class="inline-player-nav u-pointer">
         <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-left.svg'); ?>
