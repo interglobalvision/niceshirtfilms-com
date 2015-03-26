@@ -613,10 +613,33 @@ function ajaxDirectorSuccess(data, url) {
 
 }
 
+function ajaxIndexSuccess(data, url) {
+
+  var title = $(data)[5].innerText;
+
+  history.pushState(null, title, url);
+  document.title = title;
+
+  var content = $(data).find('#main-content');
+
+  $('#main-content').html(content.html());
+  $('#main-content').fadeIn(basicAnimationSpeed);
+
+  clickedMenuItem.addClass('menu-active');
+
+  lazyLoadBackgrounds();
+
+  // REINIT
+  postsInit();
+
+}
+
 function ajaxPageSuccess(data, url) {
 
-  // need to add second param of page title from the data
-  history.pushState(null, null, url);
+  var title = $(data)[5].innerText;
+
+  history.pushState(null, title, url);
+  document.title = title;
 
   var content = $(data).find('#main-content');
 
@@ -652,6 +675,28 @@ $(document).ready(function () {
         },
         success: function(data) {
           ajaxDirectorSuccess(data, url);
+        }
+      });
+    }
+  });
+
+  $('.js-ajax-index').on({
+    'click': function(e) {
+      e.preventDefault();
+
+      var url = e.currentTarget.href;
+      clickedMenuItem = $(this).parent();
+
+      $.ajax(url, {
+        beforeSend: function() {
+          ajaxBefore();
+        },
+        dataType: 'html',
+        error: function(jqXHR, textStatus, errorThrown) {
+          ajaxErrorHandler(jqXHR, textStatus, errorThrown);
+        },
+        success: function(data) {
+          ajaxIndexSuccess(data, url);
         }
       });
     }

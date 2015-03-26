@@ -86,7 +86,7 @@ if( is_home() ) {
     <nav id="sidebar">
 
       <div class="sidebar-section font-larger">
-        <a href="<?php echo home_url(); ?>">
+        <a class="js-ajax-index" href="<?php echo home_url(); ?>">
           <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/niceshirt-logo.svg'); ?>
         </a>
       </div>
@@ -94,7 +94,7 @@ if( is_home() ) {
       <div class="sidebar-section font-larger">
         <ul>
           <li <?php if (is_page('about')) {echo 'class="menu-active"';}?>><a class="js-ajax-page" href="<?php echo home_url('about/'); ?>">About</a></li>
-          <li <?php if (is_category('news')) {echo 'class="menu-active"';}?>><a href="<?php echo home_url('category/news/'); ?>">News</a></li>
+          <li <?php if (is_category('news')) {echo 'class="menu-active"';}?>><a class="js-ajax-index" href="<?php echo home_url('category/news/'); ?>">News</a></li>
           <li <?php if (is_page('contact')) {echo 'class="menu-active"';}?>><a class="js-ajax-page" href="<?php echo home_url('contact/'); ?>">Contact</a></li>
         </ul>
       </div>
