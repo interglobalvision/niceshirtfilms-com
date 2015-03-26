@@ -724,8 +724,10 @@ iframe {
   display: inline-block;
   outline: none;
   width: 50px;
-  border: 0;
-  border-bottom: dotted 1px #817e7e;
+  border-width: 0 0 1px 0;
+  -webkit-border-image: url("../img/optimized/ns-searchborder.svg") 2 3 repeat;
+       -o-border-image: url("../img/optimized/ns-searchborder.svg") 2 3 repeat;
+          border-image: url("../img/optimized/ns-searchborder.svg") 2 3 repeat;
   background-color: transparent;
   font-family: "LLAkkuratProWeb-Regular";
   color: #00bcec;
@@ -931,6 +933,7 @@ iframe {
 }
 .inline-player-nav {
   display: inline-block;
+  padding-top: 8px;
   margin-bottom: 0.4em;
   margin-right: 1em;
   opacity: 0;
@@ -945,6 +948,10 @@ iframe {
 }
 .inline-player-nav svg:hover path {
   fill: #cdcbcb;
+}
+#inline-nowplaying {
+  padding-bottom: 8px;
+  margin-top: -4px;
 }
 #now-playing-title {
   color: #41413f;
@@ -1022,6 +1029,9 @@ iframe {
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
           transform: scale(1);
+}
+.director-archive-video h4 {
+  -webkit-font-smoothing: antialiased;
 }
 .director-archive-video,
 .director-showreel-video {
@@ -1102,7 +1112,7 @@ iframe {
 }
 @media screen and (max-width: 1200px) {
   .director-showreel-video h3 {
-    font-size: 22.5px;
+    font-size: 23px;
   }
 }
 @media screen and (max-width: 1080px) {

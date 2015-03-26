@@ -260,8 +260,8 @@ iframe
   display: inline-block
   outline: none
   width: 50px
-  border: 0
-  border-bottom: dotted 1px $color-text-gray
+  border-width: 0 0 1px 0
+  border-image: url(../img/optimized/ns-searchborder.svg) 2 3 repeat
   background-color: transparent
   font-family:"LLAkkuratProWeb-Regular"
   color: $color-blue
@@ -487,6 +487,7 @@ iframe
 
 .inline-player-nav
   display: inline-block
+  padding-top: $margin-tiny
   margin-bottom: 0.4em
   margin-right: 1em
   opacity: 0
@@ -499,6 +500,9 @@ iframe
       path
         fill: $color-dark-gray
 
+#inline-nowplaying
+  padding-bottom: $margin-tiny
+  margin-top: (-12px + $margin-tiny)
 
   // HEADER
 
@@ -571,6 +575,8 @@ iframe
   transition: transform $fast-animation-speed
   &.active
     transform: scale(1)
+  h4
+    -webkit-font-smoothing: antialiased
 
 
   // THUMBNAILS
@@ -646,7 +652,7 @@ iframe
 
   .director-showreel-video
     h3
-      font-size: ($font-size-subheading*0.75)
+      font-size: 23px
 
 @media screen and (max-width: 1080px)
 

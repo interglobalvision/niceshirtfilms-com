@@ -113,7 +113,15 @@ if ($archive) {
       </nav>
     </div>
     <div class="col col2">
-      <h3 id="now-playing-title"></h3>
+      <h3 id="inline-nowplaying">
+        <span id="inline-brand"></span>
+        <span id="inline-middot"> &middot; </span>
+        <span id="inline-title" class="font-italic"></span>
+      </h3>
+    </div>
+  </div>
+<div class="u-cf">
+    <div class="col col2 colpad1left">
       <ul id="director-archive-tags" class="font-size-smallest u-cf">
         <li class="filter-tag filter-tag-active u-pointer" data-tag-slug="all">All</li>
 <?php
