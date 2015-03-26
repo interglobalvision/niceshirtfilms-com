@@ -577,8 +577,10 @@ function ajaxErrorHandler(jqXHR, textStatus, errorThrown) {
 
 function ajaxDirectorSuccess(data, url) {
 
-  // need to add second param of page title from the data
-  history.pushState(null, null, url);
+  var title = $(data)[5].innerText;
+
+  history.pushState(null, title, url);
+  document.title = title;
 
   var content = $(data).find('#main-content');
 
