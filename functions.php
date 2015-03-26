@@ -6,7 +6,7 @@ function scripts_and_styles_method() {
   $libJs = $templateuri . 'library.js';
   wp_enqueue_script( 'js-lib', $libJs,'','',true);
 
-  $mainJs = $templateuri . 'main.js';
+  $mainJs = $templateuri . 'main.min.js';
   wp_register_script( 'js-main', $mainJs, null, false, true);
   $jsVariables = array(
   	'themeUrl' => get_template_directory_uri()
