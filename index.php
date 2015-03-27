@@ -45,8 +45,11 @@ if (!empty($meta['_igv_director'][0])) {
 if (!empty($meta['_igv_title'][0])) {
   echo '<em>' . $meta['_igv_title'][0] . '</em>';
 }
+if (!empty($meta['_igv_title'][0]) && !empty($meta['_igv_brand'][0])) {
+  echo ' &middot; ';
+}
 if (!empty($meta['_igv_brand'][0])) {
-  echo ' &middot; ' . $meta['_igv_brand'][0];
+  echo $meta['_igv_brand'][0];
 }
 ?>
               </h3>
