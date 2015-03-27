@@ -340,12 +340,13 @@ var inlineVimeoPlayer = {
   load: function (archiveVideo) {
 
     this.player = $('#vimeo-player');
-    this.inlineTitle: $('#inline-title');
-    this.inlineBrand: $('#inline-brand');
-    this.inlineMiddot: $('#inline-middot');
+    this.inlineTitle = $('#inline-title');
+    this.inlineBrand = $('#inline-brand');
+    this.inlineMiddot = $('#inline-middot');
 
     var archiveVideoData = archiveVideo.data(),
       ratio = archiveVideoData.videoRatio;
+
     if (ratio === undefined) {
       ratio = 0.5625;
     }
