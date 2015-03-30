@@ -36,6 +36,7 @@ $color-soft-black = rgb(14,14,14)
 $color-soft-white = rgb(253,253,253)
 
 $color-blue = rgb(0,188,236)
+$color-light-blue = rgb(127,221,245)
 
 $color-light-gray = rgb(237,236,236)
 $color-mid-gray = rgb(223,223,223)
@@ -517,9 +518,11 @@ iframe
         fill: $color-dark-gray
 
 #inline-nowplaying
+  font-size: $font-size-smaller
+  -webkit-font-smoothing: subpixel-antialiased
   color: $color-dark-text-gray
   padding-bottom: $margin-tiny
-  margin-top: (-12px + $margin-tiny)
+  margin-top: (-3px + $margin-tiny)
 
   // HEADER
 
@@ -551,12 +554,15 @@ iframe
   color: $color-soft-white
   &.active
     background-color: $color-mid-gray
+  &:hover
+    background-color: $color-mid-gray
   a:hover
     color: $color-soft-white
 
 .director-menu-item-blue
   background-color: $color-blue
-
+  &:hover
+    background-color: $color-light-blue
 
   // CONTENT SECTIONS
 

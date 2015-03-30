@@ -969,9 +969,11 @@ iframe {
   fill: #cdcbcb;
 }
 #inline-nowplaying {
+  font-size: 14px;
+  -webkit-font-smoothing: subpixel-antialiased;
   color: #41413f;
   padding-bottom: 8px;
-  margin-top: -4px;
+  margin-top: 5px;
 }
 #now-playing-title {
   color: #41413f;
@@ -1005,11 +1007,17 @@ iframe {
 .director-menu-item.active {
   background-color: #dfdfdf;
 }
+.director-menu-item:hover {
+  background-color: #dfdfdf;
+}
 .director-menu-item a:hover {
   color: #fdfdfd;
 }
 .director-menu-item-blue {
   background-color: #00bcec;
+}
+.director-menu-item-blue:hover {
+  background-color: #7fddf5;
 }
 #director-biography,
 #director-archive {
