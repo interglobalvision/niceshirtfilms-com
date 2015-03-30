@@ -19,6 +19,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "LLAkkuratProWeb-Italic";
+  src: url("fonts/lineto-akkurat-pro-italic.eot");
+  src: url("fonts/lineto-akkurat-pro-italic.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-akkurat-pro-italic.woff") format("woff"), url("fonts/lineto-akkurat-pro-italic.ttf") format("truetype"), url("fonts/lineto-akkurat-pro-italic.svg#LLAkkuratProWeb-Italic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 body,
 div,
@@ -1060,6 +1067,10 @@ iframe {
 }
 .director-archive-video h4 {
   -webkit-font-smoothing: antialiased;
+  font-family: "LLAkkuratProWeb-Regular";
+}
+.director-archive-video h4 em {
+  font-family: "LLAkkuratProWeb-Italic";
 }
 .director-archive-video,
 .director-showreel-video {
