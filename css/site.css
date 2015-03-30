@@ -770,8 +770,14 @@ iframe {
 .home-video .post-main:hover .post-header-hover {
   display: inline-block;
 }
+.director-label {
+  margin-top: 16px;
+}
 .director-label path {
   fill: #817e7e;
+}
+.director-label:hover path {
+  fill: #c8c8c8;
 }
 .post-header {
   width: 85%;
