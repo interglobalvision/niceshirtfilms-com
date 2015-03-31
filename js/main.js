@@ -378,20 +378,20 @@ var inlineVimeoPlayer = {
   playNext: function () {
 
     var nowPlayingId = this.player.data('now-playing-id'),
-      currentPlaylist = $('.director-archive-video:visible'),
+      currentPlaylist = $('.director-archive-video:visible').parent('a'),
       currentPlaylistLength = currentPlaylist.length,
       nowPlayingIndex;
 
     currentPlaylist.each(function (index, element) {
-      if (nowPlayingId === $(element)[0].id) {
+      if (nowPlayingId === $(element).children('.video')[0].id) {
         nowPlayingIndex = index;
       }
     });
 
     if (nowPlayingIndex === undefined || nowPlayingIndex === (currentPlaylistLength - 1)) {
-      this.load($(currentPlaylist[0]));
+      window.location.hash = $(currentPlaylist[0]).attr('href').slice(1);
     } else {
-      this.load($(currentPlaylist[(nowPlayingIndex + 1)]));
+      window.location.hash = $(currentPlaylist[(nowPlayingIndex + 1)]).attr('href').slice(1);
     }
 
   },
@@ -399,22 +399,22 @@ var inlineVimeoPlayer = {
   playPrev: function () {
 
     var nowPlayingId = this.player.data('now-playing-id'),
-      currentPlaylist = $('.director-archive-video:visible'),
+      currentPlaylist = $('.director-archive-video:visible').parent('a'),
       currentPlaylistLength = currentPlaylist.length,
       nowPlayingIndex;
 
     currentPlaylist.each(function (index, element) {
-      if (nowPlayingId === $(element)[0].id) {
+      if (nowPlayingId === $(element).children('.video')[0].id) {
         nowPlayingIndex = index;
       }
     });
 
     if (nowPlayingIndex === undefined) {
-      this.load($(currentPlaylist[0]));
+      window.location.hash = $(currentPlaylist[0]).attr('href').slice(1);
     } else if (nowPlayingIndex === 0) {
-      this.load($(currentPlaylist[(currentPlaylistLength - 1)]));
+      window.location.hash = $(currentPlaylist[(currentPlaylistLength - 1)]).attr('href').slice(1);
     } else {
-      this.load($(currentPlaylist[(nowPlayingIndex - 1)]));
+      window.location.hash = $(currentPlaylist[(nowPlayingIndex - 1)]).attr('href').slice(1);
     }
 
   },
