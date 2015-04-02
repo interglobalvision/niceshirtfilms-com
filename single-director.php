@@ -151,9 +151,9 @@ if ($posttags) {
           data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
           data-thumb="<?php echo $img[0]; ?>"
           data-thumb-large="<?php echo $imgLarge[0]; ?>"
+          data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>"
           data-title="<?php if (!empty($meta['_igv_title'][0])) { echo $meta['_igv_title'][0];} ?>"
           data-brand="<?php if (!empty($meta['_igv_brand'][0])) { echo $meta['_igv_brand'][0];} ?>"
-          data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>"
         >
           <div class="u-fixed-ratio-dummy"></div>
           <div class="u-fixed-ratio-content">

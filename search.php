@@ -90,8 +90,9 @@ if( $video_search->have_posts() ) {
 <?php
   while( $video_search->have_posts() ) {
     $video_search->the_post();
-    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
-    $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-largest');
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb');
+    $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-large');
+    $imgExtraLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'grid-thumb-larger');
     $meta = get_post_meta($post->ID);
 ?>
     <a href="<?php echo get_video_permalink($post, $meta); ?>">
@@ -100,6 +101,7 @@ if( $video_search->have_posts() ) {
           data-video-ratio="<?php if (!empty($meta['_vimeo_ratio_value'][0])) { echo $meta['_vimeo_ratio_value'][0];} ?>"
           data-thumb="<?php echo $img[0]; ?>"
           data-thumb-large="<?php echo $imgLarge[0]; ?>"
+          data-thumb-extra-large="<?php echo $imgExtraLarge[0]; ?>"
       >
         <div class="u-fixed-ratio-dummy"></div>
         <div class="u-fixed-ratio-content">
