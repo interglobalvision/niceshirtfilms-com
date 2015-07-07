@@ -250,35 +250,35 @@ var overlayVimeoPlayer = {
   timeout: 0,
 
   load: function (postData, postIndex) {
+    var _this = this;
     var ratio;
+
     if (postData.videoRatio === undefined) {
       ratio = 0.5625;
     } else {
       ratio = postData.videoRatio;
     }
-    this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
-    this.player.html('<iframe id="overlay-vimeo-player-embed" src="//player.vimeo.com/video/' + postData.vimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=overlay-vimeo-player-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
+    _this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
+    _this.player.html('<iframe id="overlay-vimeo-player-embed" src="//player.vimeo.com/video/' + postData.vimeoId + '?api=1&autoplay=1&badge=0&byline=0&portrait=0&player_id=overlay-vimeo-player-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').css({
       'padding-top': (ratio * 100) + '%'
     });
-    this.overlayDirector.html(postData.director);
-    this.overlayTitle.html(postData.title);
-    this.overlayBrand.html(postData.brand);
+    _this.overlayDirector.html(postData.director);
+    _this.overlayTitle.html(postData.title);
+    _this.overlayBrand.html(postData.brand);
 
     // hide middot if title or brand is blank
-    this.overlayMiddot.show();
+    _this.overlayMiddot.show();
     if (postData.title === '' || postData.brand === '') {
-      this.overlayMiddot.hide();
+      _this.overlayMiddot.hide();
     }
 
     // use fixHeight after animations
-    // : could be improved significantly
-    var that = this;
-    this.timeout = setTimeout(function() {
-      that.fixHeight();
+    _this.timeout = setTimeout(function() {
+      _this.fixHeight();
     }, (basicAnimationSpeed + fastAnimationSpeed + 1));
     $(window).resize(function() {
       this.timeout = setTimeout(function() {
-        that.fixHeight();
+        _this.fixHeight();
       }, 50);
     });
 
@@ -286,7 +286,7 @@ var overlayVimeoPlayer = {
       player = $f(iframe);
     player.addEvent('ready', function () {
       player.addEvent('finish', function () {
-        this.playNext();
+        _this.playNext();
       });
     });
   },
