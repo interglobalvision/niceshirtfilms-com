@@ -13,6 +13,7 @@ get_header();
 if( have_posts() ) {
   while( have_posts() ) {
     the_post();
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background');
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-large');
     $imgExtraLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-extra-large');
     $meta = get_post_meta($post->ID);
@@ -114,11 +115,13 @@ if (!empty($meta['_igv_brand'][0])) {
 ?>
       <article
 <?php
-// Get webm file path
-if (!empty($meta['_igv_videobackground'][0])) {
-  $webmBackground = $meta['_igv_videobackground'][0];
+// Get videobackground files path
+if (!empty($meta['_igv_videobackground_webm'][0]) && !empty($meta['_igv_videobackground_mp4'][0])) {
+  $webmBackground = $meta['_igv_videobackground_webm'][0];
+  $mp4Background = $meta['_igv_videobackground_mp4'][0];
 } else {
   $webmBackground = false;
+  $mp4Background = false;
 }
 
 if (!empty($meta['_igv_readmore'][0])) {
@@ -140,12 +143,13 @@ if ($readMore) {
 }
 ?> id="post-<?php the_ID(); ?>">
 <?php
-if ($webmBackground) {
+if ($webmBackground && $mp4Background) {
 ?>
         <div class="post-main u-pointer"  style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
           <div class="webm-background-container">
             <video class="webm-background" autoplay="true" loop="true" muted="true">
               <source src="<?php echo $webmBackground; ?>" type='video/webm; codecs="vp8, vorbis"'/>
+              <source src="<?php echo $mp4Background; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
             </video>
           </div>
 <?php
