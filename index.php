@@ -13,6 +13,7 @@ get_header();
 if( have_posts() ) {
   while( have_posts() ) {
     the_post();
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background');
     $imgLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-large');
     $imgExtraLarge = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-background-extra-large');
     $meta = get_post_meta($post->ID);
