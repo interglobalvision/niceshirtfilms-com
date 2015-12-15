@@ -144,7 +144,7 @@ if ($webmBackground) {
 ?>
         <div class="post-main u-pointer"  style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
           <div class="webm-background-container">
-            <video class="webm-background" autoplay="true" loop="true">
+            <video class="webm-background" autoplay="true" loop="true" muted="true">
               <source src="<?php echo $webmBackground; ?>" type='video/webm; codecs="vp8, vorbis"'/>
             </video>
           </div>
