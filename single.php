@@ -22,11 +22,13 @@ if( have_posts() ) {
 ?>
       <article
 <?php
-// Get webm file path
-if (!empty($meta['_igv_videobackground'][0])) {
-  $webmBackground = $meta['_igv_videobackground'][0];
+// Get videobackground files path
+if (!empty($meta['_igv_videobackground_webm'][0]) && !empty($meta['_igv_videobackground_mp4'][0])) {
+  $webmBackground = $meta['_igv_videobackground_webm'][0];
+  $mp4Background = $meta['_igv_videobackground_mp4'][0];
 } else {
   $webmBackground = false;
+  $mp4Background = false;
 }
 
 if (!empty($meta['_igv_thumbbackground'][0])) {
@@ -39,12 +41,13 @@ post_class('home-post home-news');
 
 ?> id="post-<?php the_ID(); ?>">
 <?php
-if ($webmBackground) {
+if ($webmBackground && $mp4Background) {
 ?>
         <div class="post-main u-pointer"  style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
           <div class="webm-background-container">
             <video class="webm-background" autoplay="true" loop="true">
               <source src="<?php echo $webmBackground; ?>" type='video/webm; codecs="vp8, vorbis"'/>
+              <source src="<?php echo $mp4Background; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
             </video>
           </div>
 <?php
