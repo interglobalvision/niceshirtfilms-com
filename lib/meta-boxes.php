@@ -64,6 +64,18 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
         'type' => 'checkbox'
       ),
       array(
+        'name' => 'Video Background WebM',
+        'desc' => 'Video clip use for title background (WebM)',
+        'id' => $prefix . 'videobackground_webm',
+        'type' => 'file'
+      ),
+      array(
+        'name' => 'Video Background MP4',
+        'desc' => 'Video clip use for title background (mp4)',
+        'id' => $prefix . 'videobackground_mp4',
+        'type' => 'file'
+      ),
+      array(
         'name' => 'Thumbnail background?',
         'desc' => 'shows thumbnail as title background',
         'id' => $prefix . 'thumbbackground',
