@@ -1,3 +1,6 @@
+/* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
+/* global $, document, wp_variables, google, $f */
+
 var largeImagesTriggerWidth = 700,
   extraLargeImagesTriggerWidth = 1100,
 
@@ -29,8 +32,8 @@ function videoBackgrounds() {
     video.css('min-width', '');
     if( container.height() > video.height() ) {
       var newHeight = container.height() / video.height() * 103;
-      video.css('min-width', newHeight + '%')
-    } 
+      video.css('min-width', newHeight + '%');
+    }
   });
 }
 
@@ -576,7 +579,7 @@ function initializeMap() {
   var marker = new google.maps.Marker({
     position: myLatlng,
     map: map,
-    icon: wp_variables.themeUrl + '/img/optimized/ns-mapmarker.png'
+    icon: wp_variables.themeUrl + '/img/dist/ns-mapmarker.png'
   });
   infowindow.open(map,marker);
   google.maps.event.addListener(marker, 'click', function() {

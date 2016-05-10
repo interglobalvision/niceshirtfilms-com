@@ -592,7 +592,7 @@ html,
 body {
   background-color: #edecec;
   -webkit-transition: background-color 0.7s;
-          transition: background-color 0.7s;
+  transition: background-color 0.7s;
 }
 img {
   max-width: 100%;
@@ -664,8 +664,10 @@ iframe {
   box-sizing: border-box;
   padding: 16px;
   background-color: #fdfdfd;
-  -webkit-transition-property: -webkit-transform, background-color;
-          transition-property: transform, background-color;
+  -webkit-transition-property: background-color, -webkit-transform;
+  transition-property: background-color, -webkit-transform;
+  transition-property: transform, background-color;
+  transition-property: transform, background-color, -webkit-transform;
   -webkit-transition-duration: 0.7s;
           transition-duration: 0.7s;
 }
@@ -673,7 +675,9 @@ iframe {
   display: none;
   z-index: 999;
   -webkit-transition: -webkit-transform 0.7s;
-          transition: transform 0.7s;
+  transition: -webkit-transform 0.7s;
+  transition: transform 0.7s;
+  transition: transform 0.7s, -webkit-transform 0.7s;
 }
 #sidebar-toggle path {
   fill: #cdcbcb;
@@ -699,7 +703,7 @@ iframe {
   height: 0;
   overflow: hidden;
   -webkit-transition: padding-top 0.6s;
-          transition: padding-top 0.6s;
+  transition: padding-top 0.6s;
 }
 #vimeo-player iframe,
 #video-overlay-player iframe,
@@ -732,9 +736,8 @@ iframe {
   outline: none;
   width: 50px;
   border-width: 0 0 1px 0;
-  -webkit-border-image: url("../img/optimized/ns-searchborder.svg") 2 3 repeat;
-       -o-border-image: url("../img/optimized/ns-searchborder.svg") 2 3 repeat;
-          border-image: url("../img/optimized/ns-searchborder.svg") 2 3 repeat;
+  -o-border-image: url("../img/dist/ns-searchborder.svg") 2 3 repeat;
+     border-image: url("../img/dist/ns-searchborder.svg") 2 3 repeat;
   background-color: transparent;
   font-family: "LLAkkuratProWeb-Regular";
   color: #00bcec;
@@ -766,7 +769,7 @@ iframe {
   background-position: center center;
   background-size: cover;
   -webkit-transition: height 0.7s;
-          transition: height 0.7s;
+  transition: height 0.7s;
   overflow: hidden;
 }
 .home-news.news-read-more .post-main:hover .post-header,
@@ -806,7 +809,7 @@ iframe {
       -ms-flex-align: center;
           align-items: center;
   -webkit-transition: all 0.2s;
-          transition: all 0.2s;
+  transition: all 0.2s;
 }
 .touch .webm-background-container {
   display: none;
@@ -815,7 +818,7 @@ iframe {
   height: auto;
   width: 100%;
   -webkit-transition: all 0.2s;
-          transition: all 0.2s;
+  transition: all 0.2s;
 }
 .post-header {
   width: 85%;
@@ -867,7 +870,7 @@ iframe {
   width: 100%;
   z-index: 1;
   -webkit-transition-property: top;
-          transition-property: top;
+  transition-property: top;
   -webkit-transition-duration: 0.7s;
           transition-duration: 0.7s;
 }
@@ -987,7 +990,7 @@ iframe {
   display: none;
   opacity: 0;
   -webkit-transition: opacity 0.6s;
-          transition: opacity 0.6s;
+  transition: opacity 0.6s;
 }
 .inline-player-nav {
   display: inline-block;
@@ -996,7 +999,7 @@ iframe {
   margin-right: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.6s;
-          transition: opacity 0.6s;
+  transition: opacity 0.6s;
 }
 .inline-player-nav svg {
   height: 20px;
@@ -1064,7 +1067,7 @@ iframe {
 }
 #director-archive {
   -webkit-transition: padding-top 0.6s;
-          transition: padding-top 0.6s;
+  transition: padding-top 0.6s;
 }
 #director-archive a:hover {
   opacity: 1;
@@ -1087,14 +1090,14 @@ iframe {
 .director-archive-video {
   width: 20%;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
   -webkit-transition: -webkit-transform 0.2s;
-          transition: transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 .director-archive-video.active {
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 .director-archive-video h4 {
@@ -1122,7 +1125,7 @@ iframe {
   top: 0;
   left: 0;
   -webkit-transition: opacity 0.6s;
-          transition: opacity 0.6s;
+  transition: opacity 0.6s;
 }
 .director-archive-video .u-holder:hover,
 .director-showreel-video .u-holder:hover {
@@ -1136,7 +1139,7 @@ iframe {
 .director-archive-video .u-fixed-ratio-content,
 .director-showreel-video .u-fixed-ratio-content {
   -webkit-transition: background-color 0.6s;
-          transition: background-color 0.6s;
+  transition: background-color 0.6s;
 }
 .director-archive-video:hover .u-fixed-ratio-content,
 .director-showreel-video:hover .u-fixed-ratio-content {
@@ -1205,12 +1208,10 @@ iframe {
 @media screen and (max-width: 888px) {
   #sidebar {
     -webkit-transform: translateX(-100%);
-        -ms-transform: translateX(-100%);
             transform: translateX(-100%);
   }
   #sidebar.open {
     -webkit-transform: translateX(0%);
-        -ms-transform: translateX(0%);
             transform: translateX(0%);
   }
   #sidebar-toggle {
@@ -1224,12 +1225,10 @@ iframe {
     background: none;
     z-index: 999;
     -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
             transform: rotate(0deg);
   }
   #sidebar-toggle.rotate {
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
             transform: rotate(90deg);
   }
   #main-content {
