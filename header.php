@@ -144,7 +144,7 @@ if (is_single()) {
           <a target="_blank" href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-facebook.svg'); ?></a>
         </ul>
       </div>
-      
-       <div id="credz" style="color:#c8c8c8" class="sidebar-section">Site + identity<br>by <a href="http://modernactivity.com">Modern Activity</a></div>      
+
+       <div style="color:#c8c8c8" class="sidebar-section font-light-gray">Site + identity<br>by <a href="http://modernactivity.com">Modern Activity</a></div>
 
     </nav>
