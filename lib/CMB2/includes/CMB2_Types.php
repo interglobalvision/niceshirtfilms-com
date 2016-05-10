@@ -1,13 +1,16 @@
 <?php
-
 /**
- * CMB field types
+ * CMB field type objects
  *
- * @todo test taxonomy methods with non-post objects
- * @todo test all methods with non-post objects
  * @todo Date/Time fields should store date format as data attribute for JS
  *
  * @since  1.0.0
+ *
+ * @category  WordPress_Plugin
+ * @package   CMB2
+ * @author    WebDevStudios
+ * @license   GPL-2.0+
+ * @link      http://webdevstudios.com
  */
 class CMB2_Types {
 
@@ -150,9 +153,10 @@ class CMB2_Types {
 	public function is_valid_img_ext( $file ) {
 		$file_ext = $this->get_file_ext( $file );
 
-		$is_valid_types = (array) apply_filters( 'cmb2_valid_img_types', array( 'jpg', 'jpeg', 'png', 'gif', 'ico', 'icon' ) );
+		$is_valid_types = apply_filters( 'cmb2_valid_img_types', array( 'jpg', 'jpeg', 'png', 'gif', 'ico', 'icon' ) );
+		$is_valid = $file_ext && in_array( $file_ext, (array) $is_valid_types );
 
-		return ( $file_ext && in_array( $file_ext, $is_valid_types ) );
+		return (bool) apply_filters( 'cmb2_' . $this->field->id() . '_is_valid_img_ext', $is_valid, $file, $file_ext );
 	}
 
 	/**
@@ -204,7 +208,13 @@ class CMB2_Types {
 			: $this->field->args( 'default' );
 
 		$concatenated_items = ''; $i = 1;
-		foreach ( (array) $this->field->options() as $opt_value => $opt_label ) {
+
+		$options = array();
+		if ( $option_none = $this->field->args( 'show_option_none' ) ) {
+			$options[ '' ] = $option_none;
+		}
+		$options = $options + (array) $this->field->options();
+		foreach ( $options as $opt_value => $opt_label ) {
 
 			// Clone args & modify for just this item
 			$a = $args;
@@ -285,7 +295,7 @@ class CMB2_Types {
 			</div>
 		</div>
 		<p class="cmb-add-row">
-			<button data-selector="<?php echo $table_id; ?>" class="cmb-add-row-button button"><?php echo esc_html( $this->_text( 'add_row_text', __( 'Add Row', 'cmb2' ) ) ); ?></button>
+			<button type="button" data-selector="<?php echo $table_id; ?>" class="cmb-add-row-button button"><?php echo esc_html( $this->_text( 'add_row_text', __( 'Add Row', 'cmb2' ) ) ); ?></button>
 		</p>
 
 		<?php
@@ -344,7 +354,7 @@ class CMB2_Types {
 				<?php $this->_render(); ?>
 			</div>
 			<div class="cmb-td cmb-remove-row">
-				<button class="button cmb-remove-row-button<?php echo $disabled; ?>"><?php echo esc_html( $this->_text( 'remove_row_text', __( 'Remove', 'cmb2' ) ) ); ?></button>
+				<button type="button" class="button cmb-remove-row-button<?php echo $disabled; ?>"><?php echo esc_html( $this->_text( 'remove_row_text', __( 'Remove', 'cmb2' ) ) ); ?></button>
 			</div>
 		</div>
 
@@ -407,15 +417,20 @@ class CMB2_Types {
 	 */
 	public function input( $args = array() ) {
 		$a = $this->parse_args( $args, 'input', array(
-			'type'  => 'text',
-			'class' => 'regular-text',
-			'name'  => $this->_name(),
-			'id'    => $this->_id(),
-			'value' => $this->field->escaped_value(),
-			'desc'  => $this->_desc( true ),
+			'type'            => 'text',
+			'class'           => 'regular-text',
+			'name'            => $this->_name(),
+			'id'              => $this->_id(),
+			'value'           => $this->field->escaped_value(),
+			'desc'            => $this->_desc( true ),
+			'js_dependencies' => array(),
 		) );
 
-		return sprintf( '<input%s/>%s', $this->concat_attrs( $a, array( 'desc' ) ), $a['desc'] );
+		if ( ! empty( $a['js_dependencies'] ) ) {
+			CMB2_JS::add_dependencies( $a['js_dependencies'] );
+		}
+
+		return sprintf( '<input%s/>%s', $this->concat_attrs( $a, array( 'desc', 'js_dependencies' ) ), $a['desc'] );
 	}
 
 	/**
@@ -465,18 +480,6 @@ class CMB2_Types {
 		return $this->input( array( 'class' => 'cmb2-text-url cmb2-text-medium regular-text', 'value' => $this->field->escaped_value( 'esc_url' ) ) );
 	}
 
-	public function text_date() {
-		$formatted_value = $this->field->get_timestamp_format();
-
-		return $this->input( array( 'class' => 'cmb2-text-small cmb2-datepicker', 'desc' => $this->_desc(), 'value' => $formatted_value ) );
-	}
-
-	public function text_time() {
-		$formatted_value = $this->field->get_timestamp_format( 'time_format' );
-
-		return $this->input( array( 'class' => 'cmb2-timepicker text-time', 'desc' => $this->_desc(), 'value' => $formatted_value ) );
-	}
-
 	public function text_money() {
 		return ( ! $this->field->get_param_callback_result( 'before_field' ) ? '$ ' : ' ' ) . $this->input( array( 'class' => 'cmb2-text-money', 'desc' => $this->_desc() ) );
 	}
@@ -501,70 +504,119 @@ class CMB2_Types {
 		echo $a['desc'];
 	}
 
-	public function text_date_timestamp() {
-		$formatted_value = $this->field->get_timestamp_format();
+	public function text_date( $args = array() ) {
+		$args = wp_parse_args( $args, array(
+			'class'           => 'cmb2-text-small cmb2-datepicker',
+			'value'           => $this->field->get_timestamp_format(),
+			'desc'            => $this->_desc(),
+			'js_dependencies' => array( 'jquery-ui-core', 'jquery-ui-datepicker' ),
+		) );
 
-		return $this->input( array( 'class' => 'cmb2-text-small cmb2-datepicker', 'value' => $formatted_value ) );
+		if ( false === strpos( $args['class'], 'timepicker' ) ) {
+			$this->parse_picker_options( 'date' );
+		}
+
+		return $this->input( $args );
 	}
 
-	public function text_datetime_timestamp( $meta_value = null ) {
-		$desc = '';
-		if ( ! $meta_value ) {
-			$meta_value = $this->field->escaped_value();
+	// Alias for text_date
+	public function text_date_timestamp( $args = array() ) {
+		return $this->text_date( $args );
+	}
+
+	public function text_time( $args = array() ) {
+		$args = wp_parse_args( $args, array(
+			'class'           => 'cmb2-timepicker text-time',
+			'value'           => $this->field->get_timestamp_format( 'time_format' ),
+			'js_dependencies' => array( 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-datetimepicker' ),
+		) );
+
+		$this->parse_picker_options( 'time' );
+
+		return $this->text_date( $args );
+	}
+
+	public function text_datetime_timestamp( $args = array() ) {
+		$args = wp_parse_args( $args, array(
+			'value'      => $this->field->escaped_value(),
+			'desc'       => $this->_desc(),
+			'datepicker' => array(),
+			'timepicker' => array(),
+		) );
+
+		if ( empty( $args['value'] ) ) {
+			$args['value'] = $this->field->escaped_value();
 			// This will be used if there is a select_timezone set for this field
 			$tz_offset = $this->field->field_timezone_offset();
 			if ( ! empty( $tz_offset ) ) {
-				$meta_value -= $tz_offset;
+				$args['value'] -= $tz_offset;
 			}
-			$desc = $this->_desc();
 		}
 
-		$inputs = array(
-			$this->input( array(
-				'class' => 'cmb2-text-small cmb2-datepicker',
-				'name'  => $this->_name( '[date]' ),
-				'id'    => $this->_id( '_date' ),
-				'value' => ! empty( $meta_value ) && ! is_array( $meta_value ) ? $this->field->get_timestamp_format( 'date_format', $meta_value ) : '',
-				'desc'  => '',
-			) ),
-			$this->input( array(
-				'class' => 'cmb2-timepicker text-time',
-				'name'  => $this->_name( '[time]' ),
-				'id'    => $this->_id( '_time' ),
-				'value' => ! empty( $meta_value ) && ! is_array( $meta_value ) ? $this->field->get_timestamp_format( 'time_format', $meta_value ) : '',
-				'desc'  => $desc,
-			) ),
-		);
+		$has_good_value = ! empty( $args['value'] ) && ! is_array( $args['value'] );
 
-		return implode( "\n", $inputs );
+		$date_args = wp_parse_args( $args['datepicker'], array(
+			'class' => 'cmb2-text-small cmb2-datepicker',
+			'name'  => $this->_name( '[date]' ),
+			'id'    => $this->_id( '_date' ),
+			'value' => $has_good_value ? $this->field->get_timestamp_format( 'date_format', $args['value'] ) : '',
+			'desc'  => '',
+		) );
+
+		// Let's get the date-format, and set it up as a data attr for the field.
+		$date_args = $this->parse_picker_options( 'date', $date_args );
+
+		$time_args = wp_parse_args( $args['timepicker'], array(
+			'class' => 'cmb2-timepicker text-time',
+			'name'  => $this->_name( '[time]' ),
+			'id'    => $this->_id( '_time' ),
+			'value' => $has_good_value ? $this->field->get_timestamp_format( 'time_format', $args['value'] ) : '',
+			'desc'  => $args['desc'],
+			'js_dependencies' => array( 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-datetimepicker' ),
+		) );
+
+		// Let's get the time-format, and set it up as a data attr for the field.
+		$time_args = $this->parse_picker_options( 'time', $time_args );
+
+		return $this->input( $date_args ) . "\n" . $this->input( $time_args );
 	}
 
-	public function text_datetime_timestamp_timezone() {
-		$meta_value = $this->field->escaped_value();
-		if ( is_array( $meta_value ) ) {
-			$meta_value = '';
+	public function text_datetime_timestamp_timezone( $args = array() ) {
+		$args = wp_parse_args( $args, array(
+			'value'                   => $this->field->escaped_value(),
+			'desc'                    => $this->_desc( true ),
+			'text_datetime_timestamp' => array(),
+			'select_timezone'         => array(),
+		) );
+
+		$args['value'] = $this->field->escaped_value();
+		if ( is_array( $args['value'] ) ) {
+			$args['value'] = '';
 		}
-		$datetime   = unserialize( $meta_value );
-		$meta_value = $tzstring = '';
+
+		$datetime = maybe_unserialize( $args['value'] );
+		$value = $tzstring = '';
 
 		if ( $datetime && $datetime instanceof DateTime ) {
-			$tz         = $datetime->getTimezone();
-			$tzstring   = $tz->getName();
-			$meta_value = $datetime->getTimestamp() + $tz->getOffset( new DateTime( 'NOW' ) );
+			$tz       = $datetime->getTimezone();
+			$tzstring = $tz->getName();
+			$value    = $datetime->getTimestamp();
 		}
 
-		$inputs = array(
-			$this->text_datetime_timestamp( $meta_value ),
-			$this->select( array(
-				'class'   => 'cmb2_select cmb2-select-timezone',
-				'name'    => $this->_name( '[timezone]' ),
-				'id'      => $this->_id( '_timezone' ),
-				'options' => wp_timezone_choice( $tzstring ),
-				'desc'    => $this->_desc(),
-			) ),
-		);
+		$timestamp_args = wp_parse_args( $args['text_datetime_timestamp'], array(
+			'desc'  => '',
+			'value' => $value,
+		) );
 
-		return implode( "\n", $inputs );
+		$timezone_args = wp_parse_args( $args['select_timezone'], array(
+			'class'   => 'cmb2_select cmb2-select-timezone',
+			'name'    => $this->_name( '[timezone]' ),
+			'id'      => $this->_id( '_timezone' ),
+			'options' => wp_timezone_choice( $tzstring ),
+			'desc'    => $args['desc'],
+		) );
+
+		return $this->text_datetime_timestamp( $timestamp_args ) . "\n" . $this->select( $timezone_args );
 	}
 
 	public function select_timezone() {
@@ -579,8 +631,9 @@ class CMB2_Types {
 		) );
 	}
 
-	public function colorpicker() {
-		$meta_value = $this->field->escaped_value();
+	public function colorpicker( $args = array(), $meta_value = '' ) {
+		$meta_value = $meta_value ? $meta_value : $this->field->escaped_value();
+
 		$hex_color = '(([a-fA-F0-9]){3}){1,2}$';
 		if ( preg_match( '/^' . $hex_color . '/i', $meta_value ) ) {
 			// Value is just 123abc, so prepend #
@@ -590,7 +643,15 @@ class CMB2_Types {
 			$meta_value = '#';
 		}
 
-		return $this->input( array( 'class' => 'cmb2-colorpicker cmb2-text-small', 'value' => $meta_value ) );
+		wp_enqueue_style( 'wp-color-picker' );
+
+		$args = wp_parse_args( $args, array(
+			'class'           => 'cmb2-colorpicker cmb2-text-small',
+			'value'           => $meta_value,
+			'js_dependencies' => 'wp-color-picker',
+		) );
+
+		return $this->input( $args );
 	}
 
 	public function title( $args = array() ) {
@@ -640,7 +701,7 @@ class CMB2_Types {
 			$options .= $this->select_option( array(
 				'label'   => $term->name,
 				'value'   => $term->slug,
-				'checked' => $saved_term == $term->slug,
+				'checked' => $saved_term === $term->slug,
 			) );
 		}
 
@@ -671,15 +732,29 @@ class CMB2_Types {
 	}
 
 	public function multicheck_inline() {
-		$this->multicheck( 'multicheck_inline' );
+		return $this->multicheck( 'multicheck_inline' );
 	}
 
-	public function checkbox() {
+	public function checkbox( $args = array(), $is_checked = null ) {
+		$defaults = array(
+			'type'  => 'checkbox',
+			'class' => 'cmb2-option cmb2-list',
+			'value' => 'on',
+			'desc'  => '',
+		);
+
 		$meta_value = $this->field->escaped_value();
-		$args = array( 'type' => 'checkbox', 'class' => 'cmb2-option cmb2-list', 'value' => 'on', 'desc' => '' );
-		if ( ! empty( $meta_value ) ) {
-			$args['checked'] = 'checked';
+
+		$is_checked = null === $is_checked
+			? ! empty( $meta_value )
+			: $is_checked;
+
+		if ( $is_checked ) {
+			$defaults['checked'] = 'checked';
 		}
+
+		$args = $this->parse_args( $args, 'checkbox', $defaults );
+
 		return sprintf( '%s <label for="%s">%s</label>', $this->input( $args ), $this->_id(), $this->_desc() );
 	}
 
@@ -724,7 +799,7 @@ class CMB2_Types {
 	}
 
 	public function taxonomy_radio_inline() {
-		$this->taxonomy_radio();
+		return $this->taxonomy_radio();
 	}
 
 	public function taxonomy_multicheck() {
@@ -765,7 +840,7 @@ class CMB2_Types {
 	}
 
 	public function taxonomy_multicheck_inline() {
-		$this->taxonomy_multicheck();
+		return $this->taxonomy_multicheck();
 	}
 
 	public function oembed() {
@@ -793,12 +868,15 @@ class CMB2_Types {
 		$meta_value = $this->field->escaped_value();
 		$name       = $this->_name();
 		$img_size   = $this->field->args( 'preview_size' );
+		$query_args = $this->field->args( 'query_args' );
 
 		echo $this->input( array(
 			'type'  => 'hidden',
 			'class' => 'cmb2-upload-file cmb2-upload-list',
 			'size'  => 45, 'desc'  => '', 'value'  => '',
 			'data-previewsize' => is_array( $img_size ) ? sprintf( '[%s]', implode( ',', $img_size ) ) : 50,
+			'data-queryargs'   => ! empty( $query_args ) ? json_encode( $query_args ) : '',
+			'js_dependencies'  => 'media-editor',
 		) ),
 		$this->input( array(
 			'type'  => 'button',
@@ -849,6 +927,7 @@ class CMB2_Types {
 		$meta_value = $this->field->escaped_value();
 		$options    = (array) $this->field->options();
 		$img_size   = $this->field->args( 'preview_size' );
+		$query_args = $this->field->args( 'query_args' );
 
 		// if options array and 'url' => false, then hide the url field
 		$input_type = array_key_exists( 'url', $options ) && false === $options['url'] ? 'hidden' : 'text';
@@ -859,6 +938,8 @@ class CMB2_Types {
 			'size'  => 45,
 			'desc'  => '',
 			'data-previewsize' => is_array( $img_size ) ? '[' . implode( ',', $img_size ) . ']' : 350,
+			'data-queryargs'   => ! empty( $query_args ) ? json_encode( $query_args ) : '',
+			'js_dependencies'  => 'media-editor',
 		) );
 
 		printf( '<input class="cmb2-upload-button button" type="button" value="%s" />', esc_attr( $this->_text( 'add_upload_file_text', __( 'Add or Upload File', 'cmb2' ) ) ) );
@@ -866,9 +947,11 @@ class CMB2_Types {
 		$this->_desc( true, true );
 
 		$cached_id = $this->_id();
+
 		// Reset field args for attachment ID
 		$args = $this->field->args();
-		$args['id'] = $cached_id . '_id';
+		// If we're looking at a file in a group, we need to get the non-prefixed id
+		$args['id'] = ( $this->field->group ? $this->field->args( '_id' ) : $cached_id ) . '_id';
 		unset( $args['_id'], $args['_name'] );
 
 		// And get new field object
@@ -894,33 +977,33 @@ class CMB2_Types {
 			'desc'  => '',
 		) ),
 		'<div id="', $this->_id( '-status' ), '" class="cmb2-media-status">';
-			if ( ! empty( $meta_value ) ) {
+		if ( ! empty( $meta_value ) ) {
 
-				if ( $this->is_valid_img_ext( $meta_value ) ) {
+			if ( $this->is_valid_img_ext( $meta_value ) ) {
 
-					if ( $_id_value ) {
-						$image = wp_get_attachment_image( $_id_value, $img_size, null, array( 'class' => 'cmb-file-field-image' ) );
-					} else {
-						$size = is_array( $img_size ) ? $img_size[0] : 350;
-						$image = '<img style="max-width: ' . absint( $size ) . 'px; width: 100%; height: auto;" src="' . $meta_value . '" alt="" />';
-					}
-
-					$this->img_status_output( array(
-						'image'     => $image,
-						'tag'       => 'div',
-						'cached_id' => $cached_id,
-					) );
-
+				if ( $_id_value ) {
+					$image = wp_get_attachment_image( $_id_value, $img_size, null, array( 'class' => 'cmb-file-field-image' ) );
 				} else {
-
-					$this->file_status_output( array(
-						'value'     => $meta_value,
-						'tag'       => 'div',
-						'cached_id' => $cached_id,
-					) );
-
+					$size = is_array( $img_size ) ? $img_size[0] : 350;
+					$image = '<img style="max-width: ' . absint( $size ) . 'px; width: 100%; height: auto;" src="' . $meta_value . '" alt="" />';
 				}
+
+				$this->img_status_output( array(
+					'image'     => $image,
+					'tag'       => 'div',
+					'cached_id' => $cached_id,
+				) );
+
+			} else {
+
+				$this->file_status_output( array(
+					'value'     => $meta_value,
+					'tag'       => 'div',
+					'cached_id' => $cached_id,
+				) );
+
 			}
+		}
 		echo '</div>';
 	}
 
@@ -952,11 +1035,52 @@ class CMB2_Types {
 			esc_html( $this->_text( 'file_text', __( 'File:', 'cmb2' ) ) ),
 			$this->get_file_name_from_path( $args['value'] ),
 			$args['value'],
-			esc_html( $this->_text( 'file-download-text', __( 'Download', 'cmb2' ) ) ),
+			esc_html( $this->_text( 'file_download_text', __( 'Download', 'cmb2' ) ) ),
 			isset( $args['cached_id'] ) ? ' rel="' . $args['cached_id'] . '"' : '',
 			esc_html( $this->_text( 'remove_text', __( 'Remove', 'cmb2' ) ) ),
 			isset( $args['id_input'] ) ? $args['id_input'] : ''
 		);
+	}
+
+	/**
+	 * Parse the picker attributes.
+	 * @since  2.2.0
+	 * @param  string  $arg  'date' or 'time'
+	 * @param  array   $args Optional arguments to modify (else use $this->field->args['attributes'])
+	 * @return array         Array of field attributes
+	 */
+	public function parse_picker_options( $arg = 'date', $args = array() ) {
+		$att    = 'data-' . $arg . 'picker';
+		$update = empty( $args );
+		$atts   = array();
+		$format = $this->field->args( $arg . '_format' );
+
+		if ( $js_format = cmb2_utils()->php_to_js_dateformat( $format ) ) {
+
+			if ( $update ) {
+				$atts = $this->field->args( 'attributes' );
+			} else {
+				$atts = isset( $args['attributes'] )
+					? $args['attributes']
+					: $atts;
+			}
+
+			// Don't override user-provided datepicker values
+			$data = isset( $atts[ $att ] )
+				? json_decode( $atts[ $att ], true )
+				: array();
+
+			$data[ $arg . 'Format' ] = $js_format;
+			$atts[ $att ] = function_exists( 'wp_json_encode' )
+				? wp_json_encode( $data )
+				: json_encode( $data );
+		}
+
+		if ( $update ) {
+			$this->field->args['attributes'] = $atts;
+		}
+
+		return array_merge( $args, $atts );
 	}
 
 }
