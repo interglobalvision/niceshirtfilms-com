@@ -1,3 +1,6 @@
+/* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
+/* global $, document, wp_variables, google, $f */
+
 var largeImagesTriggerWidth = 700,
   extraLargeImagesTriggerWidth = 1100,
 
@@ -30,7 +33,7 @@ function videoBackgrounds() {
     if( container.height() > video.height() ) {
       var newHeight = container.height() / video.height() * 103;
       video.css('min-width', newHeight + '%');
-    } 
+    }
   });
 }
 
