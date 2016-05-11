@@ -145,4 +145,6 @@ if (is_single()) {
         </ul>
       </div>
 
+       <div style="color:#c8c8c8" class="sidebar-section font-light-gray">Site + identity<br>by <a href="http://modernactivity.com">Modern Activity</a></div>
+
     </nav>
