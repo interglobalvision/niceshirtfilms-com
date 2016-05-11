@@ -30,6 +30,7 @@ if( have_posts() ) {
           <li id="director-showreel-play" class="director-menu-item director-menu-item-blue u-pointer"><a href="#play-all">Play All</a></li>
           <li id="director-showreel-label" class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Showreel</a></li>
           <li id="director-menu-archive" class="director-menu-item u-pointer"><a href="#archive">Archive</a></li>
+          <li id="director-menu-stills" class="director-menu-item u-pointer"><a href="#stills">Stills</a></li>
           <li id="director-menu-biography" class="director-menu-item u-pointer"><a href="#biography">Biography</a></li>
         </ul>
 
@@ -175,6 +176,26 @@ if ($posttags) {
 }
 ?>
     </section>
+<?php
+$stills = get_post_meta( get_the_ID(), '_igv_stills', true );
+//pr($stills);
+if (!empty($stills)) {
+?>
+    <section id="director-stills" class="director-section u-cf">
+<?php
+  foreach( $stills as $still ) {
+    $still_image = wp_get_attachment_image($still['still_image_id'], 'stills');
+?>
+  <div class="still"><?php echo $still_image; ?></div>
+
+<?php
+  }
+?>
+
+    </section>
+<?php
+}
+?>
 
     <section id="director-biography" class="director-section u-cf">
 
