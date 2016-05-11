@@ -1027,11 +1027,13 @@ iframe {
   display: none;
 }
 #director-menu[data-active="archive"] #director-showreel-play,
-#director-menu[data-active="biography"] #director-showreel-play {
+#director-menu[data-active="biography"] #director-showreel-play,
+#director-menu[data-active="stills"] #director-showreel-play {
   display: none;
 }
 #director-menu[data-active="archive"] #director-showreel-label,
-#director-menu[data-active="biography"] #director-showreel-label {
+#director-menu[data-active="biography"] #director-showreel-label,
+#director-menu[data-active="stills"] #director-showreel-label {
   display: inline-block;
 }
 .director-menu-item {

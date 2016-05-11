@@ -162,6 +162,12 @@ function directorInit() {
     overlayVimeoPlayer.load($(this).data(), $(this).index());
   });
 
+
+  // MASONRY
+  $('#director-stills').masonry({
+    itemSelector: '.still',
+  });
+
     // OVERLAY NAVS
 
   $('#video-overlay-close').on('click', function () {
@@ -489,6 +495,16 @@ function router( page, hash ) {
       }
 
       $('#director-menu-archive').addClass('active');
+
+    // #stills
+    } else if ( hash === 'stills' ) {
+
+      inlineVimeoPlayer.close();
+      $('.director-section').slideUp(basicAnimationSpeed);
+      $('#director-stills').slideDown(basicAnimationSpeed);
+      $('#director-menu').attr('data-active', 'stills' );
+
+      $('#director-menu-stills').addClass('active');
 
     // #biography
     } else if ( hash === 'biography' ) {
