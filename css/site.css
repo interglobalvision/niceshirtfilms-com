@@ -1145,7 +1145,7 @@ iframe {
 }
 .director-archive-video:hover .u-fixed-ratio-content,
 .director-showreel-video:hover .u-fixed-ratio-content {
-  background-color: rgba(0,0,0,0.5) d;
+  background-color: rgba(0,0,0,0.5);
 }
 .still {
   width: 33%;

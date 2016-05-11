@@ -3,6 +3,7 @@
 function get_post_objects( $query_args ) {
   $args = wp_parse_args( $query_args, array(
     'post_type' => 'post',
+    'posts_per_page' => -1,
   ) );
   $posts = get_posts( $args );
   $post_options = array();
@@ -237,7 +238,7 @@ function igv_cmb_metaboxes() {
     'context'      => 'normal',
     'priority'     => 'high',
     'show_names'   => true,
-    'show_on'      => array( 'id' => array( $about_metabox->ID ) ),
+    'show_on'      => array( 'id' => array( $about_page->ID ) ),
   ) );
 
   $about_metabox->add_field( array(
