@@ -187,16 +187,17 @@ if ($posttags) {
 if (!empty($stills)) {
 ?>
     <section id="director-stills" class="director-section u-cf">
+      <div id="stills-container">
 <?php
   foreach( $stills as $still ) {
     $still_image = wp_get_attachment_image($still, 'stills');
 ?>
-  <div class="still"><?php echo $still_image; ?></div>
-
+    <div class="still"><?php echo $still_image; ?></div>
 <?php
   }
 ?>
 
+      </div>
     </section>
 <?php
 }

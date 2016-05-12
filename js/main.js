@@ -163,13 +163,6 @@ function directorInit() {
   });
 
 
-  // MASONRY
-  $('#director-stills').imagesLoaded( function() {
-    $('#director-stills').masonry({
-      itemSelector: '.still',
-    });
-  });
-
     // OVERLAY NAVS
 
   $('#video-overlay-close').on('click', function () {
@@ -500,6 +493,14 @@ function router( page, hash ) {
 
     // #stills
     } else if ( hash === 'stills' ) {
+      // MASONRY
+      $('#stills-container').imagesLoaded( function() {
+        if( $('#stills-container').masonry({
+          $('#stills-container').masonry({
+            itemSelector: '.still',
+          });
+      });
+
 
       inlineVimeoPlayer.close();
       $('.director-section').slideUp(basicAnimationSpeed);
