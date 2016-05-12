@@ -164,8 +164,10 @@ function directorInit() {
 
 
   // MASONRY
-  $('#director-stills').masonry({
-    itemSelector: '.still',
+  $('#director-stills').imagesLoaded( function() {
+    $('#director-stills').masonry({
+      itemSelector: '.still',
+    });
   });
 
     // OVERLAY NAVS
