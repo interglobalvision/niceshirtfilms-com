@@ -495,10 +495,9 @@ function router( page, hash ) {
     } else if ( hash === 'stills' ) {
       // MASONRY
       $('#stills-container').imagesLoaded( function() {
-        if( $('#stills-container').masonry({
-          $('#stills-container').masonry({
-            itemSelector: '.still',
-          });
+        $('#stills-container').masonry({
+          itemSelector: '.still',
+        });
       });
 
 
