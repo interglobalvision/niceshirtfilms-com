@@ -66,8 +66,18 @@ function cmb_initialize_cmb_meta_boxes() {
     require_once 'lib/CMB2/init.php';
 
   // Add CMB2 Attached Posts Field plugin
-  if ( ! function_exists( 'cmb2_attached_posts_fields_render' ) )
+  if ( ! function_exists( 'cmb2_attached_posts_fields_render' ) ) {
     require_once 'lib/cmb2-attached-posts/cmb2-attached-posts-field.php';
+  }
+
+  // Add CMB2 Gallery field
+  if ( ! function_exists( 'pw_gallery_field' ) ) {
+    define( 'PW_GALLERY_URL', get_stylesheet_directory_uri() . '/lib/cmb-field-gallery/' );
+    require_once 'lib/cmb-field-gallery/cmb-field-gallery.php';
+  }
+
+  //
+
 }
 
 // Disable that freaking admin bar
