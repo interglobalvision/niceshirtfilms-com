@@ -1064,7 +1064,8 @@ iframe {
   background-color: #7fddf5;
 }
 #director-biography,
-#director-archive {
+#director-archive,
+#director-stills {
   display: none;
 }
 #director-archive {
