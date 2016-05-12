@@ -162,29 +162,13 @@ function igv_cmb_metaboxes() {
     'show_names' => true, // Show field names on the left
   ) );
 
-  $stills_group_id = $stills_metabox -> add_field( array(
+  $stills_metabox -> add_field( array(
     'id'          => $prefix . 'stills',
-    'type'        => 'group',
     'description' => __( 'Director Stills', 'cmb2' ),
-    'options'     => array(
-      'group_title'   => __( 'Still {#}', 'cmb2' ), // {#} gets replaced by row number
-      'add_button'    => __( 'Add Another Still', 'cmb2' ),
-      'remove_button' => __( 'Remove Still', 'cmb2' ),
-      'sortable'      => true, // beta
-      // 'closed'     => true, // true to have the groups closed by default
-    ),
+    'button' => 'Manage stills', // Optionally set button label
+    'type' => 'pw_gallery',
+    'sanitization_cb' => 'pw_gallery_field_sanitise',
   ) );
-
-  $stills_metabox->add_group_field( $stills_group_id, array(
-    'name' => 'Still Image',
-    'id'   => 'still_image',
-    'type' => 'file',
-    'options' => array(
-      'url' => false, // Hide the text input for the url
-    ),
-  ) );
-
-
 
   // Person Metabox
   $person_metabox = new_cmb2_box( array(
