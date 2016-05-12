@@ -556,7 +556,9 @@ iframe
   #director-showreel-label
     display: none
 
-  &[data-active="archive"], &[data-active="biography"]
+  &[data-active="archive"],
+  &[data-active="biography"],
+  &[data-active="stills"]
     #director-showreel-play
       display: none
     #director-showreel-label
@@ -587,7 +589,9 @@ iframe
 
   // CONTENT SECTIONS
 
-#director-biography, #director-archive
+#director-biography,
+#director-archive,
+#director-stills
   display: none
 
 
@@ -651,6 +655,8 @@ iframe
   &:hover .u-fixed-ratio-content
     background-color: rgba(0,0,0,0.5)
 
+.still
+  width: 33%
 
 // VIDEO OVERLAY
 
@@ -775,6 +781,9 @@ iframe
   #subForm
     label
       padding: 0 $margin-small
+
+  .still
+    width: 50%
 
 
 @media screen and (max-width: 500px)
@@ -920,3 +929,7 @@ iframe
 
   #video-overlay-text
     margin-top: 13px
+
+  .still
+    width: 100%
+

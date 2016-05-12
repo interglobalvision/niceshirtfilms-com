@@ -1027,11 +1027,13 @@ iframe {
   display: none;
 }
 #director-menu[data-active="archive"] #director-showreel-play,
-#director-menu[data-active="biography"] #director-showreel-play {
+#director-menu[data-active="biography"] #director-showreel-play,
+#director-menu[data-active="stills"] #director-showreel-play {
   display: none;
 }
 #director-menu[data-active="archive"] #director-showreel-label,
-#director-menu[data-active="biography"] #director-showreel-label {
+#director-menu[data-active="biography"] #director-showreel-label,
+#director-menu[data-active="stills"] #director-showreel-label {
   display: inline-block;
 }
 .director-menu-item {
@@ -1062,7 +1064,8 @@ iframe {
   background-color: #7fddf5;
 }
 #director-biography,
-#director-archive {
+#director-archive,
+#director-stills {
   display: none;
 }
 #director-archive {
@@ -1144,6 +1147,9 @@ iframe {
 .director-archive-video:hover .u-fixed-ratio-content,
 .director-showreel-video:hover .u-fixed-ratio-content {
   background-color: rgba(0,0,0,0.5);
+}
+.still {
+  width: 33%;
 }
 #video-overlay {
   display: none;
@@ -1261,6 +1267,9 @@ iframe {
   }
   #subForm label {
     padding: 0 16px;
+  }
+  .still {
+    width: 50%;
   }
 }
 @media screen and (max-width: 500px) {
@@ -1387,5 +1396,8 @@ iframe {
   }
   #video-overlay-text {
     margin-top: 13px;
+  }
+  .still {
+    width: 100%;
   }
 }

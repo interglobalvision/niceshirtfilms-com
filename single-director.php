@@ -12,6 +12,7 @@ if( have_posts() ) {
     the_post();
     $meta = get_post_meta($post->ID);
     $directorName = get_the_title();
+    $stills = get_post_meta( get_the_ID(), '_igv_stills', true );
 ?>
 
   <section id="director" <?php post_class(); ?>>
@@ -30,6 +31,13 @@ if( have_posts() ) {
           <li id="director-showreel-play" class="director-menu-item director-menu-item-blue u-pointer"><a href="#play-all">Play All</a></li>
           <li id="director-showreel-label" class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Showreel</a></li>
           <li id="director-menu-archive" class="director-menu-item u-pointer"><a href="#archive">Archive</a></li>
+    <?php
+    if (!empty($stills)) {
+    ?>
+          <li id="director-menu-stills" class="director-menu-item u-pointer"><a href="#stills">Stills</a></li>
+    <?php
+    }
+    ?>
           <li id="director-menu-biography" class="director-menu-item u-pointer"><a href="#biography">Biography</a></li>
         </ul>
 
@@ -175,6 +183,25 @@ if ($posttags) {
 }
 ?>
     </section>
+<?php
+if (!empty($stills)) {
+?>
+    <section id="director-stills" class="director-section u-cf">
+      <div id="stills-container">
+<?php
+  foreach( $stills as $still ) {
+    $still_image = wp_get_attachment_image($still, 'stills');
+?>
+    <div class="still"><?php echo $still_image; ?></div>
+<?php
+  }
+?>
+
+      </div>
+    </section>
+<?php
+}
+?>
 
     <section id="director-biography" class="director-section u-cf">
 
