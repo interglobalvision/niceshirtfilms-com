@@ -193,7 +193,7 @@ function directorInit() {
     overlayImage.close();
   });
 
-  $('#image-overlay-next').on('click', function () {
+  $('#image-overlay-next, #image-overlay-player').on('click', function () {
     overlayImage.next();
   });
 

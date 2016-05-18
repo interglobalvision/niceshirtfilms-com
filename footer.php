@@ -13,7 +13,7 @@
     <div class="u-holder">
       <div class="u-held">
         <div id="image-overlay-inner">
-          <div id="image-overlay-player"></div>
+          <div id="image-overlay-player" class="u-pointer"></div>
         </div>
       </div>
     </div>
