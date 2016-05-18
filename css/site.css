@@ -1152,7 +1152,10 @@ iframe {
   background-color: rgba(0,0,0,0.5);
 }
 .still {
-  width: 33%;
+  width: 33.33%;
+  padding: 1px;
+  padding: 1px;
+  box-sizing: border-box;
 }
 #video-overlay,
 #image-overlay {
