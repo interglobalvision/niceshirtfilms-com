@@ -660,7 +660,8 @@ iframe
 
 // VIDEO OVERLAY
 
-#video-overlay
+#video-overlay,
+#image-overlay
   display: none
   background-color: rgba(255,255,255,.92)
   position: fixed
@@ -670,7 +671,8 @@ iframe
   bottom: 0
   z-index: 99999
 
-#video-overlay-player
+#video-overlay-player,
+#image-overlay-player
   background-color: $color-soft-black
 
 .video-overlay-nav
@@ -679,19 +681,23 @@ iframe
   .genericon
     font-size: $overlay-nav-size
 
-#video-overlay-close
+#video-overlay-close,
+#image-overlay-close
   top: $margin-basic
   right: $margin-basic
 
-#video-overlay-next
+#video-overlay-next,
+#image-overlay-next
   margin-top: -($overlay-nav-size/2)
   right: $margin-basic
 
-#video-overlay-previous
+#video-overlay-previous,
+#image-overlay-previous
   margin-top: -($overlay-nav-size/2)
   left: $margin-basic
 
 #video-overlay-inner
+#image-overlay-inner
   width: 80%
   margin: 0 auto
 

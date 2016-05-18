@@ -1,5 +1,24 @@
   </section>
 
+  <section id="image-overlay">
+    <nav id="image-overlay-close" class="video-overlay-nav u-pointer">
+      <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-close.svg'); ?>
+    </nav>
+    <nav id="image-overlay-next" class="video-overlay-nav u-pointer">
+      <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-arrow-right.svg'); ?>
+    </nav>
+    <nav id="image-overlay-previous" class="video-overlay-nav u-pointer">
+      <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-arrow-left.svg'); ?>
+    </nav>
+    <div class="u-holder">
+      <div class="u-held">
+        <div id="image-overlay-inner">
+          <div id="image-overlay-player"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="video-overlay">
     <nav id="video-overlay-close" class="video-overlay-nav u-pointer">
       <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-close.svg'); ?>
