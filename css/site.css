@@ -700,7 +700,7 @@ iframe {
   padding-top: 16px;
   padding-right: 32px;
 }
-#vimeo-max-player,
+#vimeo-player,
 #video-overlay-player {
   position: relative;
   height: 0;
@@ -708,11 +708,11 @@ iframe {
   -webkit-transition: padding-top 0.6s;
   transition: padding-top 0.6s;
 }
-#vimeo-max-player iframe,
+#vimeo-player iframe,
 #video-overlay-player iframe,
-#vimeo-max-player object,
+#vimeo-player object,
 #video-overlay-player object,
-#vimeo-max-player embed,
+#vimeo-player embed,
 #video-overlay-player embed {
   position: absolute;
   top: 0;
@@ -1153,9 +1153,9 @@ iframe {
 }
 .still {
   width: 33.33%;
-  padding-bottom: 1px;
-  padding-right: 1px;
   box-sizing: border-box;
+  border-top: 1px solid #edecec;
+  border-right: 1px solid #edecec;
 }
 #image-overlay {
   text-align: center;
