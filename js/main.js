@@ -11,11 +11,9 @@ var largeImagesTriggerWidth = 700,
 
   directorShowreelVideos = $('.director-showreel-video'),
   directorShowreelLength = directorShowreelVideos.length,
-  directorShowreelVideos = $('.director-showreel-video'),
-  directorShowreelLength = directorShowreelVideos.length,
 
   directorStills = $('.still'),
-  directorStillsLenght = directorStills.length,
+  directorStillsLength = directorStills.length,
 
 
   sidebar = $('#sidebar'),
@@ -193,7 +191,7 @@ function directorInit() {
     overlayImage.close();
   });
 
-  $('#image-overlay-next, #image-overlay-player').on('click', function () {
+  $('#image-overlay-next, #image-overlay-viewer').on('click', function () {
     overlayImage.next();
   });
 
@@ -279,7 +277,7 @@ function directorInit() {
 // OVERLAY IMAGE
 var overlayImage = {
 
-  player: $('#image-overlay-player'),
+  viewer: $('#image-overlay-viewer'),
 
   overlay: $('#image-overlay'),
   overlayInner: $('#image-overlay-inner'),
@@ -289,18 +287,16 @@ var overlayImage = {
   load: function(image, postIndex) { 
     var _this = this;
 
-    image.attr('width', '100%').removeAttr('height');
+    image.attr('max-width', '100%').removeAttr('height');
 
     _this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
-    _this.player.html(image);
+    _this.viewer.html(image);
 
     // use fixHeight after animations
       _this.fixHeight();
     
     $(window).resize(function() {
-      this.timeout = setTimeout(function() {
-        _this.fixHeight();
-      }, 50);
+      _this.fixHeight();
     });
 
 
@@ -309,7 +305,7 @@ var overlayImage = {
   next: function () {
     var nowPlayingIndex = this.overlay.data('now-playing'),
       nextIndex = nowPlayingIndex + 1;
-    if (directorStillsLenght > nextIndex) {
+    if (directorStillsLength > nextIndex) {
       var image = directorStills.eq(nextIndex).children('img').clone();
       this.load(image, nextIndex);
     } else {
@@ -322,8 +318,8 @@ var overlayImage = {
     var nowPlayingIndex = this.overlay.data('now-playing'),
       prevousIndex = nowPlayingIndex - 1;
     if (prevousIndex === -1) {
-      var image = directorStills.eq(directorStillsLenght - 1).children('img').clone();
-      this.load(image, directorStillsLenght - 1);
+      var image = directorStills.eq(directorStillsLength - 1).children('img').clone();
+      this.load(image, directorStillsLength - 1);
     } else {
       var image = directorStills.eq(prevousIndex).children('img').clone();
       this.load(image, prevousIndex);
@@ -332,7 +328,7 @@ var overlayImage = {
 
   close: function () {
     this.overlay.fadeOut(fastAnimationSpeed).data('now-playing', '');
-    this.player.html('');
+    this.viewer.html('');
   },
 
   fixHeight: function () {
