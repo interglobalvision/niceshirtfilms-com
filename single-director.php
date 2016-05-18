@@ -192,7 +192,7 @@ if (!empty($stills)) {
   foreach( $stills as $still ) {
     $still_image = wp_get_attachment_image($still, 'stills');
 ?>
-    <div class="still js-load-overlay-image"><?php echo $still_image; ?></div>
+    <div class="still js-load-overlay-image u-pointer"><?php echo $still_image; ?></div>
 <?php
   }
 ?>
