@@ -14,6 +14,11 @@
       <div class="u-held">
         <div id="image-overlay-inner">
           <div id="image-overlay-viewer" class="u-pointer"></div>
+            <div id="video-overlay-text" class="u-align-center">
+              <h3 id="image-overlay-director"></h3>
+              <h4 id="image-overlay-title"></h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -189,13 +189,14 @@ if (!empty($stills)) {
     <section id="director-stills" class="director-section u-cf">
       <div id="stills-container">
 <?php
-  foreach( $stills as $still ) {
-    $still_image = wp_get_attachment_image($still, 'stills');
-    $still_full_image = wp_get_attachment_image($still, 'full', null, array (
+  foreach( $stills as $still_id ) {
+    $still_image = wp_get_attachment_image($still_id, 'stills');
+    $still_full_image = wp_get_attachment_image($still_id, 'full', null, array (
       'class' => 'full-still',
     ) );
+    $caption = get_post_field('post_excerpt', $still_id);
 ?>
-    <div class="still js-load-overlay-image u-pointer">
+  <div class="still js-load-overlay-image u-pointer" data-caption="<?php echo $caption; ?>" data-director="<?php echo $directorName; ?>">
       <?php echo $still_image; ?>
       <?php echo $still_full_image; ?>
     </div>

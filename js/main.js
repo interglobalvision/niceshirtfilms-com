@@ -169,7 +169,7 @@ function directorInit() {
     // LOAD STILLS IN OVERLAY
 
   $('.js-load-overlay-image').on('click', function () {
-    overlayImage.load($(this).children('.full-still').clone(), $(this).index());
+    overlayImage.load($(this).children('.full-still').clone(), $(this).data(), $(this).index());
   });
 
 
@@ -282,15 +282,26 @@ var overlayImage = {
   overlay: $('#image-overlay'),
   overlayInner: $('#image-overlay-inner'),
 
+  overlayDirector: $('#image-overlay-director'),
+  overlayTitle: $('#image-overlay-title'),
+
   timeout: 0,
 
-  load: function(image, postIndex) { 
+  load: function(image, postData, postIndex) { 
     var _this = this;
 
     image.attr('max-width', '100%').removeAttr('width').removeAttr('height');
 
     _this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
     _this.viewer.html(image);
+
+    _this.overlayDirector.html(postData.director);
+
+    if( postData.caption.length !== 0 ) {
+      _this.overlayTitle.html(postData.caption);
+    } else {
+      _this.overlayTitle.html('&nbsp');
+    }
 
     // use fixHeight after animations
       _this.fixHeight();
@@ -307,10 +318,10 @@ var overlayImage = {
       nextIndex = nowPlayingIndex + 1;
     if (directorStillsLength > nextIndex) {
       var image = directorStills.eq(nextIndex).children('.full-still').clone();
-      this.load(image, nextIndex);
+      this.load(image, directorStills.eq(nextIndex).data(), nextIndex);
     } else {
       var image = directorStills.eq(0).children('.full-still').clone();
-      this.load(image, 0);
+      this.load(image, directorStills.eq(0).data(), 0);
     }
   },
 
@@ -319,10 +330,10 @@ var overlayImage = {
       prevousIndex = nowPlayingIndex - 1;
     if (prevousIndex === -1) {
       var image = directorStills.eq(directorStillsLength - 1).children('.full-still').clone();
-      this.load(image, directorStillsLength - 1);
+      this.load(image, directorStills.eq(directorStillsLength - 1).data(), directorStillsLength - 1);
     } else {
       var image = directorStills.eq(prevousIndex).children('.full-still').clone();
-      this.load(image, prevousIndex);
+      this.load(image, directorStills.eq(prevousIndex).data(), prevousIndex);
     }
   },
 
