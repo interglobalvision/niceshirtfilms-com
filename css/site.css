@@ -1160,6 +1160,9 @@ iframe {
 .still .full-still {
   display: none;
 }
+.still .attachment-stills {
+  width: 100%;
+}
 #image-overlay {
   text-align: center;
 }
