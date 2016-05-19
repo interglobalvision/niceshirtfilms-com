@@ -191,8 +191,14 @@ if (!empty($stills)) {
 <?php
   foreach( $stills as $still ) {
     $still_image = wp_get_attachment_image($still, 'stills');
+    $still_full_image = wp_get_attachment_image($still, 'full', null, array (
+      'class' => 'full-still',
+    ) );
 ?>
-    <div class="still js-load-overlay-image u-pointer"><?php echo $still_image; ?></div>
+    <div class="still js-load-overlay-image u-pointer">
+      <?php echo $still_image; ?>
+      <?php echo $still_full_image; ?>
+    </div>
 <?php
   }
 ?>

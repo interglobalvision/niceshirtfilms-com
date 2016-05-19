@@ -169,7 +169,7 @@ function directorInit() {
     // LOAD STILLS IN OVERLAY
 
   $('.js-load-overlay-image').on('click', function () {
-    overlayImage.load($(this).children('img').clone(), $(this).index());
+    overlayImage.load($(this).children('.full-still').clone(), $(this).index());
   });
 
 
@@ -287,7 +287,7 @@ var overlayImage = {
   load: function(image, postIndex) { 
     var _this = this;
 
-    image.attr('max-width', '100%').removeAttr('height');
+    image.attr('max-width', '100%').removeAttr('width').removeAttr('height');
 
     _this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
     _this.viewer.html(image);
@@ -306,10 +306,10 @@ var overlayImage = {
     var nowPlayingIndex = this.overlay.data('now-playing'),
       nextIndex = nowPlayingIndex + 1;
     if (directorStillsLength > nextIndex) {
-      var image = directorStills.eq(nextIndex).children('img').clone();
+      var image = directorStills.eq(nextIndex).children('.full-still').clone();
       this.load(image, nextIndex);
     } else {
-      var image = directorStills.eq(0).children('img').clone();
+      var image = directorStills.eq(0).children('.full-still').clone();
       this.load(image, 0);
     }
   },
@@ -318,10 +318,10 @@ var overlayImage = {
     var nowPlayingIndex = this.overlay.data('now-playing'),
       prevousIndex = nowPlayingIndex - 1;
     if (prevousIndex === -1) {
-      var image = directorStills.eq(directorStillsLength - 1).children('img').clone();
+      var image = directorStills.eq(directorStillsLength - 1).children('.full-still').clone();
       this.load(image, directorStillsLength - 1);
     } else {
-      var image = directorStills.eq(prevousIndex).children('img').clone();
+      var image = directorStills.eq(prevousIndex).children('.full-still').clone();
       this.load(image, prevousIndex);
     }
   },
