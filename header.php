@@ -142,6 +142,7 @@ if (is_single()) {
           <a class="js-ajax-page" href="<?php echo home_url('sign-up/'); ?>"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-subscribe.svg'); ?></a>
           <a target="_blank" href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-twitter.svg'); ?></a>
           <a target="_blank" href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-facebook.svg'); ?></a>
+          <a target="_blank" href="https://instagram.com/niceshirtfilms/" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-instagram.svg'); ?></a>
         </ul>
       </div>
 
