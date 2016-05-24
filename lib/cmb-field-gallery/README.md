@@ -35,6 +35,7 @@ array(
 	'name' => 'Gallery Images',
 	'desc' => 'Upload and manage gallery images',
 	'button' => 'Manage gallery', // Optionally set button label
+	'clear-button' => 'Clear gallery', // Optionally set clear button label
 	'id'   => $prefix . 'gallery_images',
 	'type' => 'pw_gallery',
 	'sanitization_cb' => 'pw_gallery_field_sanitise',
@@ -48,7 +49,6 @@ array(
 ![Image](screenshot-2.png?raw=true)
 
 ## To-do
-* Add a clear gallery button
 * Thumbnail previews
 
 ## Example front-end output
