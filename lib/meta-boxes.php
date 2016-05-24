@@ -166,6 +166,7 @@ function igv_cmb_metaboxes() {
     'id'          => $prefix . 'stills',
     'description' => __( 'Director Stills', 'cmb2' ),
     'button' => 'Manage stills', // Optionally set button label
+    'clear-button' => 'Clear stills', // Optionally set button label
     'type' => 'pw_gallery',
     'sanitization_cb' => 'pw_gallery_field_sanitise',
   ) );
