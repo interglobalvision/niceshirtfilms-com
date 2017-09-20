@@ -35,6 +35,7 @@
     "gulp-util": "~3.0.1",
     "gulp-watch": "~4.3.5",
     "jshint-stylish": "~2.1.0",
-    "kouto-swiss": "~0.12.0"
+    "kouto-swiss": "~0.12.0",
+    "jshint": "^2.9.5"
   }
 }
