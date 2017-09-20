@@ -1,3 +1,6 @@
+/* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
+/* global $, document, wp_variables, google, $f */
+
 var largeImagesTriggerWidth = 700,
   extraLargeImagesTriggerWidth = 1100,
 
@@ -8,6 +11,10 @@ var largeImagesTriggerWidth = 700,
 
   directorShowreelVideos = $('.director-showreel-video'),
   directorShowreelLength = directorShowreelVideos.length,
+
+  directorStills = $('.still'),
+  directorStillsLength = directorStills.length,
+
 
   sidebar = $('#sidebar'),
   sidebarButton = $('#sidebar-toggle'),
@@ -29,8 +36,8 @@ function videoBackgrounds() {
     video.css('min-width', '');
     if( container.height() > video.height() ) {
       var newHeight = container.height() / video.height() * 103;
-      video.css('min-width', newHeight + '%')
-    } 
+      video.css('min-width', newHeight + '%');
+    }
   });
 }
 
@@ -158,6 +165,13 @@ function directorInit() {
   $('.js-load-overlay-vimeo').on('click', function () {
     overlayVimeoPlayer.load($(this).data(), $(this).index());
   });
+    
+    // LOAD STILLS IN OVERLAY
+
+  $('.js-load-overlay-image').on('click', function () {
+    overlayImage.load($(this).children('.full-still').clone(), $(this).data(), $(this).index());
+  });
+
 
     // OVERLAY NAVS
 
@@ -173,10 +187,23 @@ function directorInit() {
     overlayVimeoPlayer.playPrev();
   });
 
+  $('#image-overlay-close').on('click', function () {
+    overlayImage.close();
+  });
+
+  $('#image-overlay-next, #image-overlay-viewer').on('click', function () {
+    overlayImage.next();
+  });
+
+  $('#image-overlay-previous').on('click', function () {
+    overlayImage.prev();
+  });
+
+
     // INLINE PLAYER NAVS
 
   $('#inline-player-next').on('click', function () {
-    inlineVimeoPlayer.playNext();
+    inlineVimeoPlayer.next();
   });
 
   $('#inline-player-previous').on('click', function () {
@@ -247,6 +274,90 @@ function directorInit() {
   });
 
 }
+// OVERLAY IMAGE
+var overlayImage = {
+
+  viewer: $('#image-overlay-viewer'),
+
+  overlay: $('#image-overlay'),
+  overlayInner: $('#image-overlay-inner'),
+
+  overlayDirector: $('#image-overlay-director'),
+  overlayTitle: $('#image-overlay-title'),
+
+  timeout: 0,
+
+  load: function(image, postData, postIndex) { 
+    var _this = this;
+
+    image.attr('max-width', '100%').removeAttr('width').removeAttr('height');
+
+    _this.overlay.fadeIn(fastAnimationSpeed).data('now-playing', postIndex);
+    _this.viewer.html(image);
+
+    _this.overlayDirector.html(postData.director);
+
+    if( postData.caption.length !== 0 ) {
+      _this.overlayTitle.html(postData.caption);
+    } else {
+      _this.overlayTitle.html('&nbsp');
+    }
+
+    // use fixHeight after animations
+      _this.fixHeight();
+    
+    $(window).resize(function() {
+      _this.fixHeight();
+    });
+
+
+  },
+
+  next: function () {
+    var nowPlayingIndex = this.overlay.data('now-playing'),
+      nextIndex = nowPlayingIndex + 1;
+    if (directorStillsLength > nextIndex) {
+      var image = directorStills.eq(nextIndex).children('.full-still').clone();
+      this.load(image, directorStills.eq(nextIndex).data(), nextIndex);
+    } else {
+      var image = directorStills.eq(0).children('.full-still').clone();
+      this.load(image, directorStills.eq(0).data(), 0);
+    }
+  },
+
+  prev: function () {
+    var nowPlayingIndex = this.overlay.data('now-playing'),
+      prevousIndex = nowPlayingIndex - 1;
+    if (prevousIndex === -1) {
+      var image = directorStills.eq(directorStillsLength - 1).children('.full-still').clone();
+      this.load(image, directorStills.eq(directorStillsLength - 1).data(), directorStillsLength - 1);
+    } else {
+      var image = directorStills.eq(prevousIndex).children('.full-still').clone();
+      this.load(image, directorStills.eq(prevousIndex).data(), prevousIndex);
+    }
+  },
+
+  close: function () {
+    this.overlay.fadeOut(fastAnimationSpeed).data('now-playing', '');
+    this.viewer.html('');
+  },
+
+  fixHeight: function () {
+
+    this.overlayInner.height('auto');
+    this.overlayInner.width('80%');
+
+    var windowHeight = $(window).height();
+    var height = this.overlayInner.height();
+
+
+    while (height > (windowHeight*0.95)) {
+      this.overlayInner.width(this.overlayInner.width()*0.95);
+      height = this.overlayInner.height();
+    }
+  }
+
+};
 
 // OVERLAY PLAYER
 var overlayVimeoPlayer = {
@@ -487,6 +598,23 @@ function router( page, hash ) {
 
       $('#director-menu-archive').addClass('active');
 
+    // #stills
+    } else if ( hash === 'stills' ) {
+      // MASONRY
+      $('#stills-container').imagesLoaded( function() {
+        $('#stills-container').masonry({
+          itemSelector: '.still',
+        });
+      });
+
+
+      inlineVimeoPlayer.close();
+      $('.director-section').slideUp(basicAnimationSpeed);
+      $('#director-stills').slideDown(basicAnimationSpeed);
+      $('#director-menu').attr('data-active', 'stills' );
+
+      $('#director-menu-stills').addClass('active');
+
     // #biography
     } else if ( hash === 'biography' ) {
 
@@ -576,7 +704,7 @@ function initializeMap() {
   var marker = new google.maps.Marker({
     position: myLatlng,
     map: map,
-    icon: wp_variables.themeUrl + '/img/optimized/ns-mapmarker.png'
+    icon: wp_variables.themeUrl + '/img/dist/ns-mapmarker.png'
   });
   infowindow.open(map,marker);
   google.maps.event.addListener(marker, 'click', function() {

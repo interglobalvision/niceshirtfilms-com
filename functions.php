@@ -42,6 +42,9 @@ if( function_exists( 'add_image_size' ) ) {
   add_image_size( 'grid-thumb-larger', 700, 467, true );
   add_image_size( 'grid-thumb-largest', 900, 600, true );
 
+  add_image_size( 'stills', 763, 9999, false );
+  add_image_size( 'full', 2000, 9999, false );
+
   add_image_size( 'width-500', 500, 9999, false );
   add_image_size( 'width-250', 250, 9999, false );
 
@@ -58,15 +61,25 @@ get_template_part( 'lib/gallery' );
 get_template_part( 'lib/post-types' );
 get_template_part( 'lib/meta-boxes' );
 
-add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
+add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 11 );
 function cmb_initialize_cmb_meta_boxes() {
   // Add CMB2 plugin
   if( ! class_exists( 'cmb2_bootstrap_202' ) )
     require_once 'lib/CMB2/init.php';
 
   // Add CMB2 Attached Posts Field plugin
-  if ( ! function_exists( 'cmb2_attached_posts_fields_render' ) )
+  if ( ! function_exists( 'cmb2_attached_posts_fields_render' ) ) {
     require_once 'lib/cmb2-attached-posts/cmb2-attached-posts-field.php';
+  }
+
+  // Add CMB2 Gallery field
+  if ( ! function_exists( 'pw_gallery_field' ) ) {
+    define( 'PW_GALLERY_URL', get_stylesheet_directory_uri() . '/lib/cmb-field-gallery/' );
+    require_once 'lib/cmb-field-gallery/cmb-field-gallery.php';
+  }
+
+  //
+
 }
 
 // Disable that freaking admin bar

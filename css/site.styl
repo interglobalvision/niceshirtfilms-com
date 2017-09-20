@@ -173,6 +173,8 @@ iframe
 .u-force-width
   min-height: 1em
 
+.u-pointer
+  cursor: pointer
 
 // 3 COL FLUID
 
@@ -262,7 +264,7 @@ iframe
   outline: none
   width: 50px
   border-width: 0 0 1px 0
-  border-image: url(../img/optimized/ns-searchborder.svg) 2 3 repeat
+  border-image: url(../img/dist/ns-searchborder.svg) 2 3 repeat
   background-color: transparent
   font-family:"LLAkkuratProWeb-Regular"
   color: $color-blue
@@ -556,7 +558,9 @@ iframe
   #director-showreel-label
     display: none
 
-  &[data-active="archive"], &[data-active="biography"]
+  &[data-active="archive"],
+  &[data-active="biography"],
+  &[data-active="stills"]
     #director-showreel-play
       display: none
     #director-showreel-label
@@ -587,7 +591,9 @@ iframe
 
   // CONTENT SECTIONS
 
-#director-biography, #director-archive
+#director-biography,
+#director-archive,
+#director-stills
   display: none
 
 
@@ -651,10 +657,24 @@ iframe
   &:hover .u-fixed-ratio-content
     background-color: rgba(0,0,0,0.5)
 
+.still
+  width: 33.33%
+  box-sizing: border-box
+  border-top: 1px solid $color-border-gray
+  border-right: 1px solid $color-border-gray
+  .full-still
+    display: none
+  .attachment-stills
+    width: 100%
+
+// IMAGE VIEWER
+#image-overlay
+  text-align: center
 
 // VIDEO OVERLAY
 
-#video-overlay
+#video-overlay,
+#image-overlay
   display: none
   background-color: rgba(255,255,255,.92)
   position: fixed
@@ -673,19 +693,23 @@ iframe
   .genericon
     font-size: $overlay-nav-size
 
-#video-overlay-close
+#video-overlay-close,
+#image-overlay-close
   top: $margin-basic
   right: $margin-basic
 
-#video-overlay-next
+#video-overlay-next,
+#image-overlay-next
   margin-top: -($overlay-nav-size/2)
   right: $margin-basic
 
-#video-overlay-previous
+#video-overlay-previous,
+#image-overlay-previous
   margin-top: -($overlay-nav-size/2)
   left: $margin-basic
 
 #video-overlay-inner
+#image-overlay-inner
   width: 80%
   margin: 0 auto
 
@@ -775,6 +799,9 @@ iframe
   #subForm
     label
       padding: 0 $margin-small
+
+  .still
+    width: 50%
 
 
 @media screen and (max-width: 500px)
@@ -920,3 +947,7 @@ iframe
 
   #video-overlay-text
     margin-top: 13px
+
+  .still
+    width: 100%
+
