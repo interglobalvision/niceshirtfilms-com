@@ -102,26 +102,32 @@ if( is_home() ) {
       <div class="sidebar-section font-larger">
         <ul id="sidebar-directors">
 <?php
-$directors = get_posts('post_type=director&posts_per_page=-1&orderby=title&order=ASC');
-if (is_single()) {
-  if (is_single_type('director', $post)) {
+$directors = new WP_Query(array(
+  'post_type' => 'director',
+  'orderby' => 'menu_order',
+  'order' => 'ASC',
+  'nopaging' => true
+));
+
+if ($directors->have_posts()) {
+
+  // if page is single director save reference to post ID
+  $directorId = 0;
+  if (is_single() && is_single_type('director', $post)) {
     $directorId = $post->ID;
-    foreach ($directors as $post) {
-      if ($directorId === $post->ID) {
-        echo '<li class="menu-active"><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
-      } else {
-        echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
-      }
-    }
-  } else {
-    foreach ($directors as $post) {
+  }
+
+  while ($directors->have_posts()) {
+    $directors->the_post();
+
+    if ($directorId === $post->ID) {
+      echo '<li class="menu-active"><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+    } else {
       echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
     }
   }
-} else {
-  foreach ($directors as $post) {
-    echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
-  }
+
+  wp_reset_postdata();
 }
 ?>
         </ul>
