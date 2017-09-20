@@ -61,7 +61,7 @@ get_template_part( 'lib/gallery' );
 get_template_part( 'lib/post-types' );
 get_template_part( 'lib/meta-boxes' );
 
-add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 11 );
+add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
 function cmb_initialize_cmb_meta_boxes() {
   // Add CMB2 plugin
   if( ! class_exists( 'cmb2_bootstrap_202' ) )
@@ -149,7 +149,7 @@ function change_my_wp_login_image() {
 echo "
 <style>
   body.login #login h1 a {
-    background: url('".get_bloginfo('template_url')."/images/niceshirt.png') 0 no-repeat transparent;
+    background: url('".get_bloginfo('template_url')."/images/niceshirt.svg') 0 no-repeat transparent;
     height:72px;
     width:312px;
   }
