@@ -70,7 +70,7 @@ if (!empty($meta['_igv_brand'][0])) {
 
       <div class="post-copy">
         <nav class="post-copy-close u-pointer">
-          <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-close.svg'); ?>
+          <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-close.svg'); ?>
         </nav>
 
         <div class="post-copy-container">
@@ -99,7 +99,7 @@ if (!empty($meta['_igv_brand'][0])) {
 
             <p class="u-align-center">
               <a class="js-ajax-director" href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
-                <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-director.svg'); ?>
+                <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-director.svg'); ?>
               </a>
             </p>
 
@@ -187,7 +187,7 @@ if (!empty($meta['_igv_longtitle'][0])) {
 
         <div class="post-copy">
           <nav class="post-copy-close u-pointer">
-            <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-close.svg'); ?>
+            <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-close.svg'); ?>
           </nav>
           <div class="post-copy-container">
             <div class="copy u-marginauto">
@@ -204,7 +204,7 @@ if (!empty($meta['_igv_director'][0])) {
 
               <p class="u-align-center">
                 <a class="js-ajax-director" href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
-                  <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-director.svg'); ?>
+                  <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-director.svg'); ?>
                 </a>
               </p>
 <?php

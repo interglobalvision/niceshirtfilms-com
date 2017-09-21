@@ -80,14 +80,14 @@ if( is_home() ) {
 
   <section id="main-container">
 
-    <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/NiceShirt_button.svg'); ?>
+    <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/NiceShirt_button.svg'); ?>
 
     <!-- start content -->
     <nav id="sidebar">
 
       <div class="sidebar-section font-larger">
         <a class="js-ajax-index" href="<?php echo home_url(); ?>">
-          <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/niceshirt-logo.svg'); ?>
+          <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/niceshirt-logo.svg'); ?>
         </a>
       </div>
 
@@ -145,10 +145,10 @@ if ($directors->have_posts()) {
           <li><a href="tel:+442072558100">+44 (0)20 7255 8100</a></li>
           <li><a href="mailto:hello@niceshirtfilms.com">hello@niceshirtfilms.com</a></li>
           <li>
-          <a class="js-ajax-page" href="<?php echo home_url('sign-up/'); ?>"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-subscribe.svg'); ?></a>
-          <a target="_blank" href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-twitter.svg'); ?></a>
-          <a target="_blank" href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-facebook.svg'); ?></a>
-          <a target="_blank" href="https://instagram.com/niceshirtfilms/" target="_blank"><?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-instagram.svg'); ?></a>
+          <a class="js-ajax-page" href="<?php echo home_url('sign-up/'); ?>"><?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-subscribe.svg'); ?></a>
+          <a target="_blank" href="https://twitter.com/niceshirtfilms" target="_blank"><?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-twitter.svg'); ?></a>
+          <a target="_blank" href="https://www.facebook.com/NiceShirtFilms" target="_blank"><?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-facebook.svg'); ?></a>
+          <a target="_blank" href="https://instagram.com/niceshirtfilms/" target="_blank"><?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/ns-instagram.svg'); ?></a>
         </ul>
       </div>
 

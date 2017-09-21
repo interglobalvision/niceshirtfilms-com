@@ -114,10 +114,10 @@ if ($archive) {
   <div id="inline-player-bar" class="u-cf">
     <div class="col col1">
       <nav id="inline-player-previous" class="inline-player-nav u-pointer">
-        <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-left.svg'); ?>
+        <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-left.svg'); ?>
       </nav>
       <nav id="inline-player-next" class="inline-player-nav u-pointer">
-        <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-right.svg'); ?>
+        <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-arrow-right.svg'); ?>
       </nav>
     </div>
     <div class="col col2">

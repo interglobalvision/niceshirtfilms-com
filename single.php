@@ -96,7 +96,7 @@ if (!empty($meta['_igv_director'][0])) {
 
               <p class="u-align-center">
                 <a class="js-ajax-director" href="<?php echo get_the_permalink($meta['_igv_director'][0]) ?>">
-                  <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-director.svg'); ?>
+                  <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/optimized/ns-director.svg'); ?>
                 </a>
               </p>
 <?php
