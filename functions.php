@@ -149,7 +149,7 @@ function change_my_wp_login_image() {
 echo "
 <style>
   body.login #login h1 a {
-    background: url('".get_bloginfo('template_url')."/images/niceshirt.svg') 0 no-repeat transparent;
+    background: url('".get_bloginfo('template_url')."/img/dist/niceshirt-logo.svg') 0 no-repeat transparent;
     height:72px;
     width:312px;
   }

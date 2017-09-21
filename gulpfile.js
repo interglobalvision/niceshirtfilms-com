@@ -76,9 +76,12 @@ gulp.task('style', function() {
 gulp.task('images', function () {
   return gulp.src('img/src/*.*')
   .pipe(cache('images'))
-  .pipe(imagemin({
-    progressive: false
-  }))
+  .pipe(imagemin([
+    imagemin.gifsicle({interlaced: false, optimizationLevel: 1}),
+    imagemin.jpegtran({progressive: false, arithmetic: false}),
+    imagemin.optipng({optimizationLevel: 4, bitDepthReduction: true, colorTypeReduction: true, paletteReduction: true}),
+    imagemin.svgo({plugins: [{cleanupIDs: false}]})
+  ]))
   .on('error', errorNotify)
   .pipe(gulp.dest('img/dist'))
 	.pipe(notify({ message: 'Images task complete' }));
