@@ -61,7 +61,7 @@ get_template_part( 'lib/gallery' );
 get_template_part( 'lib/post-types' );
 get_template_part( 'lib/meta-boxes' );
 
-add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
+add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 100 );
 function cmb_initialize_cmb_meta_boxes() {
   // Add CMB2 plugin
   if( ! class_exists( 'cmb2_bootstrap_202' ) )
@@ -77,8 +77,6 @@ function cmb_initialize_cmb_meta_boxes() {
     define( 'PW_GALLERY_URL', get_stylesheet_directory_uri() . '/lib/cmb-field-gallery/' );
     require_once 'lib/cmb-field-gallery/cmb-field-gallery.php';
   }
-
-  //
 
 }
 
