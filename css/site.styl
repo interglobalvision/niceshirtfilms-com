@@ -437,8 +437,9 @@ iframe
     max-width: none
 
 .contact-person
-  margin-bottom: $margin-small
-  margin-top: $margin-small
+  box-sizing: border-box
+  padding: $margin-basic
+  width: 280px
   svg
     display: inline-block
     height: $font-size-basic
@@ -886,9 +887,8 @@ iframe
         box-sizing: border-box
 
   .contact-person
-    box-sizing: border-box
-    padding-left: $margin-small
-    padding-right: $margin-small
+    width: 100%
+    padding: $margin-small
 
   #subForm
     .col2

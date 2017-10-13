@@ -22,27 +22,17 @@ if( have_posts() ) {
       <div id="map-canvas"></div>
     </section>
 
-    <section>
+    <section class="row">
 
 <?php
 $people = get_posts('post_type=people&posts_per_page=-1&orderby=menu_order');
+
 foreach ($people as $post) {
-  $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'width-250');
   $meta = get_post_meta($post->ID);
 ?>
-      <div class="contact-person row u-cf">
-        <div class="col col1 u-align-right">
-          <img src="<?php echo $img[0]; ?>" />
+      <div class="contact-person col">
+        <h3><?php echo $post->post_title; ?></h3>
 <?php
-if (!$img) {
-  echo '&nbsp;';
-} ?>
-        </div>
-
-        <div class="col col2">
-<?php
-  echo $post->post_title;
-  echo '<br/>';
 
   if (!empty($meta['_igv_title'][0])) {
     echo $meta['_igv_title'][0];
@@ -68,7 +58,6 @@ if (!$img) {
   }
 
 ?>
-        </div>
       </div>
 <?php
 }

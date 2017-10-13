@@ -591,7 +591,6 @@ a:visited:hover {
 html,
 body {
   background-color: #edecec;
-  -webkit-transition: background-color 0.7s;
   transition: background-color 0.7s;
 }
 img {
@@ -667,17 +666,14 @@ iframe {
   box-sizing: border-box;
   padding: 16px;
   background-color: #fdfdfd;
-  -webkit-transition-property: background-color, -webkit-transform;
   transition-property: background-color, -webkit-transform;
   transition-property: transform, background-color;
   transition-property: transform, background-color, -webkit-transform;
-  -webkit-transition-duration: 0.7s;
-          transition-duration: 0.7s;
+  transition-duration: 0.7s;
 }
 #sidebar-toggle {
   display: none;
   z-index: 999;
-  -webkit-transition: -webkit-transform 0.7s;
   transition: -webkit-transform 0.7s;
   transition: transform 0.7s;
   transition: transform 0.7s, -webkit-transform 0.7s;
@@ -705,7 +701,6 @@ iframe {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition: padding-top 0.6s;
   transition: padding-top 0.6s;
 }
 #vimeo-player iframe,
@@ -771,7 +766,6 @@ iframe {
   background-color: #0e0e0e;
   background-position: center center;
   background-size: cover;
-  -webkit-transition: height 0.7s;
   transition: height 0.7s;
   overflow: hidden;
 }
@@ -794,7 +788,6 @@ iframe {
 }
 .webm-background-container {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   position: absolute;
@@ -804,14 +797,11 @@ iframe {
   width: 100%;
   height: 100%;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 .touch .webm-background-container {
@@ -820,7 +810,6 @@ iframe {
 .webm-background {
   height: auto;
   width: 100%;
-  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 .post-header {
@@ -872,10 +861,8 @@ iframe {
   height: 380px;
   width: 100%;
   z-index: 1;
-  -webkit-transition-property: top;
   transition-property: top;
-  -webkit-transition-duration: 0.7s;
-          transition-duration: 0.7s;
+  transition-duration: 0.7s;
 }
 .home-video.active .home-video-player {
   top: 0;
@@ -907,8 +894,9 @@ iframe {
   max-width: none;
 }
 .contact-person {
-  margin-bottom: 16px;
-  margin-top: 16px;
+  box-sizing: border-box;
+  padding: 32px;
+  width: 280px;
 }
 .contact-person svg {
   display: inline-block;
@@ -992,7 +980,6 @@ iframe {
 #inline-player-bar {
   display: none;
   opacity: 0;
-  -webkit-transition: opacity 0.6s;
   transition: opacity 0.6s;
 }
 .inline-player-nav {
@@ -1001,7 +988,6 @@ iframe {
   margin-bottom: 0.4em;
   margin-right: 1em;
   opacity: 0;
-  -webkit-transition: opacity 0.6s;
   transition: opacity 0.6s;
 }
 .inline-player-nav svg {
@@ -1072,7 +1058,6 @@ iframe {
   display: none;
 }
 #director-archive {
-  -webkit-transition: padding-top 0.6s;
   transition: padding-top 0.6s;
 }
 #director-archive a:hover {
@@ -1097,7 +1082,6 @@ iframe {
   width: 20%;
   -webkit-transform: scale(0);
           transform: scale(0);
-  -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
@@ -1130,7 +1114,6 @@ iframe {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transition: opacity 0.6s;
   transition: opacity 0.6s;
 }
 .director-archive-video .u-holder:hover,
@@ -1144,7 +1127,6 @@ iframe {
 }
 .director-archive-video .u-fixed-ratio-content,
 .director-showreel-video .u-fixed-ratio-content {
-  -webkit-transition: background-color 0.6s;
   transition: background-color 0.6s;
 }
 .director-archive-video:hover .u-fixed-ratio-content,
@@ -1358,9 +1340,8 @@ iframe {
     box-sizing: border-box;
   }
   .contact-person {
-    box-sizing: border-box;
-    padding-left: 16px;
-    padding-right: 16px;
+    width: 100%;
+    padding: 16px;
   }
   #subForm .col2 {
     box-sizing: border-box;
