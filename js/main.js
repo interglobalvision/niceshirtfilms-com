@@ -73,6 +73,7 @@ function closeAllPosts() {
     el.style.height = '';
   });
   $('.home-video-player').html('');
+  $('.embed-holder').html('');
   $('.post-copy').slideUp(fastAnimationSpeed);
 }
 
@@ -80,7 +81,7 @@ function closeAllPosts() {
 
 function sidebarInit() {
   // TOGGLE SIDEBAR
-  sidebarButton.on('click', function () {
+  sidebarButton.on('click', function() {
     if (sidebar.hasClass('open')) {
       sidebar.removeClass('open');
       // jQuery cant add/removeClass on SVG elements [wtf]
@@ -97,14 +98,14 @@ function sidebarInit() {
 function postsInit() {
 
   // HOME POSTS CLOSE
-  $('.post-copy-close').on('click', function (e) {
+  $('.post-copy-close').on('click', function(e) {
     e.preventDefault();
     $(this).parent('.post-copy').parent().removeClass('active');
     closeAllPosts();
   });
 
   // HOME VIDEO POSTS OPEN
-  $('.home-video .post-main').on('click', function (e) {
+  $('.home-video .post-main').on('click', function(e) {
     e.preventDefault();
     closeAllPosts();
     var post = $(this).parent(),
@@ -131,16 +132,25 @@ function postsInit() {
   });
 
   // NEWS POSTS OPEN
-  $('.news-read-more .post-main').on('click', function (e) {
+  $('.news-read-more .post-main').on('click', function(e) {
     e.preventDefault();
     closeAllPosts();
 
-    var post = $(this).parent();
-    post.find('.post-copy').slideDown(fastAnimationSpeed);
-    post.addClass('active');
-    scrollTimer = setTimeout(function () {
-      post.ScrollTo();
-    }, (fastAnimationSpeed+10));
+    var $post = $(this).parent();
+
+    $post.find('.post-copy').slideDown(fastAnimationSpeed, function() {
+      $post.addClass('active');
+
+      scrollTimer = setTimeout(function () {
+        $post.ScrollTo();
+      }, (fastAnimationSpeed + 10));
+    });
+
+    if ($post.data('embed')) {
+      var embed = JSON.parse($post.data('embed'));
+
+      $post.find('.embed-holder').html(embed);
+    }
   });
 }
 
@@ -165,7 +175,7 @@ function directorInit() {
   $('.js-load-overlay-vimeo').on('click', function () {
     overlayVimeoPlayer.load($(this).data(), $(this).index());
   });
-    
+
     // LOAD STILLS IN OVERLAY
 
   $('.js-load-overlay-image').on('click', function () {
@@ -287,7 +297,7 @@ var overlayImage = {
 
   timeout: 0,
 
-  load: function(image, postData, postIndex) { 
+  load: function(image, postData, postIndex) {
     var _this = this;
 
     image.attr('max-width', '100%').removeAttr('width').removeAttr('height');
@@ -305,7 +315,7 @@ var overlayImage = {
 
     // use fixHeight after animations
       _this.fixHeight();
-    
+
     $(window).resize(function() {
       _this.fixHeight();
     });
