@@ -147,9 +147,9 @@ if ($webmBackground && $mp4Background) {
 ?>
         <div class="post-main u-pointer"  style="background-color: <?php if (!empty($meta['_igv_color'][0])) { echo $meta['_igv_color'][0];} ?>">
           <div class="webm-background-container">
-            <video class="webm-background" autoplay="true" loop="true" muted="true">
-              <source src="<?php echo $webmBackground; ?>" type='video/webm; codecs="vp8, vorbis"'/>
-              <source src="<?php echo $mp4Background; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+            <video class="webm-background" autoplay loop muted playsinline>
+              <source src="<?php echo $webmBackground; ?>" type="video/webm"/>
+              <source src="<?php echo $mp4Background; ?>" type="video/mp4" />
             </video>
           </div>
 <?php
@@ -201,9 +201,6 @@ the_content();
 ?>
 <div class="embed-holder"></div>
 <?php
-
-if (!empty($meta['_igv_director'][0])) {}
-
 if (!empty($meta['_igv_director'][0])) {
 ?>
 
