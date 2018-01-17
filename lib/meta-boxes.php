@@ -29,7 +29,7 @@ function igv_cmb_metaboxes() {
   // Start with an underscore to hide fields from custom fields list
   $prefix = '_igv_';
 
-  
+
   $director_args = array(
     'post_type' => 'director'
   );
@@ -69,6 +69,12 @@ function igv_cmb_metaboxes() {
     'type' => 'checkbox'
   ) );
   $posts_metabox -> add_field( array(
+    'name' => 'Embed',
+    'desc' => 'embed code to display after the post content',
+    'id' => $prefix . 'embed',
+    'type' => 'textarea_code'
+  ) );
+  $posts_metabox -> add_field( array(
     'name' => 'Video Background WebM',
     'desc' => 'Video clip use for title background (WebM)',
     'id' => $prefix . 'videobackground_webm',
@@ -103,7 +109,7 @@ function igv_cmb_metaboxes() {
   ) );
 
   // Director Metaboxes
-  $director_metabox = new_cmb2_box( array( 
+  $director_metabox = new_cmb2_box( array(
     'id'         => 'director_metabox',
     'title'      => __( 'Director', 'cmb' ),
     'object_types'      => array( 'video' ), // Post type
@@ -132,7 +138,7 @@ function igv_cmb_metaboxes() {
   ) ) ;
 
   // Showreel Metaboxes
-  $showreel_metabox = new_cmb2_box( array( 
+  $showreel_metabox = new_cmb2_box( array(
     'id'         => 'showreel_metabox',
     'title'      => __( 'Showreel', 'cmb' ),
     'object_types'      => array( 'director', ), // Post type
@@ -153,7 +159,7 @@ function igv_cmb_metaboxes() {
   ) );
 
   // Stills Metaboxex
-  $stills_metabox = new_cmb2_box( array( 
+  $stills_metabox = new_cmb2_box( array(
     'id'         => 'stills_metabox',
     'title'      => __( 'Stills', 'cmb' ),
     'object_types'      => array( 'director', ), // Post type
