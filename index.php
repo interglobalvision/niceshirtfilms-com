@@ -141,7 +141,7 @@ if ($readMore) {
 } else {
   post_class('home-post home-news');
 }
-?> id="post-<?php the_ID(); ?>">
+?> data-embed="<?php if (!empty($meta['_igv_embed'][0])) { echo htmlspecialchars(json_encode($meta['_igv_embed'][0]));} ?>" id="post-<?php the_ID(); ?>">
 <?php
 if ($webmBackground && $mp4Background) {
 ?>
@@ -198,6 +198,11 @@ if (!empty($meta['_igv_longtitle'][0])) {
               </div>
 <?php
 the_content();
+?>
+<div class="embed-holder"></div>
+<?php
+
+if (!empty($meta['_igv_director'][0])) {}
 
 if (!empty($meta['_igv_director'][0])) {
 ?>
