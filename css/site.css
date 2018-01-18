@@ -804,9 +804,6 @@ iframe {
           align-items: center;
   transition: all 0.2s;
 }
-.touch .webm-background-container {
-  display: none;
-}
 .webm-background {
   height: auto;
   width: 100%;
