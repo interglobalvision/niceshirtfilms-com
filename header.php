@@ -134,6 +134,13 @@ if ($directors->have_posts()) {
       </div>
 
       <div class="sidebar-section">
+        <ul>
+          <li>xxx</li>
+          
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
         <form role="search" method="get" id="search-form" action="<?php echo home_url( '/' ); ?>">
           <label <?php if (is_search()) {echo 'class="menu-active"';}?> id="search-label">search</label>
           <input type="search" id="search-input" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
