@@ -35,6 +35,7 @@ function igv_cmb_metaboxes() {
   );
 
   $showreel_args = array(
+    'posts_per_page' => 190,
     'post_type'   => 'video',
     'meta_query' => array(
       array(
