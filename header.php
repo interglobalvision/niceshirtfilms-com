@@ -94,42 +94,70 @@ if( is_home() ) {
       <div class="sidebar-section font-larger">
         <ul>
           <li <?php if (is_page('about')) {echo 'class="menu-active"';}?>><a class="js-ajax-page" href="<?php echo home_url('about/'); ?>">About</a></li>
-          <!-- <li <?php if (is_category('news')) {echo 'class="menu-active"';}?>><a class="js-ajax-index" href="<?php echo home_url('category/news/'); ?>">News</a></li> -->
+<!--           <li <?php if (is_category('news')) {echo 'class="menu-active"';}?>><a class="js-ajax-index" href="<?php echo home_url('category/news/'); ?>">News</a></li> -->
           <li <?php if (is_page('contact')) {echo 'class="menu-active"';}?>><a class="js-ajax-page" href="<?php echo home_url('contact/'); ?>">Contact</a></li>
         </ul>
       </div>
 
       <div class="sidebar-section font-larger">
         <ul id="sidebar-directors">
-<?php
-$directors = new WP_Query(array(
-  'post_type' => 'director',
-  'orderby' => 'menu_order',
-  'order' => 'ASC',
-  'nopaging' => true
-));
+          <?php
+            $current_page_id = $post->ID;
 
-if ($directors->have_posts()) {
+            $directors = new WP_Query(array(
+              'post_type' => 'director',
+              'orderby' => 'menu_order',
+              'order' => 'ASC',
+              'nopaging' => true,
+              'meta_query' => array(
+                'relation' => 'OR',
+                array(
+                  'key'     => '_igv_is_new_talent',
+                  'compare' => 'NOT EXISTS',
+                ),
+                array(
+                  'key'     => '_igv_is_new_talent',
+                  'value'   => 'on',
+                  'compare' => 'NOT LIKE',
+                ),
+              ),
+            ));
 
-  // if page is single director save reference to post ID
-  $directorId = 0;
-  if (is_single() && is_single_type('director', $post)) {
-    $directorId = $post->ID;
-  }
+            if ($directors->have_posts()) {
+              while ($directors->have_posts()) {
+                $directors->the_post();
+                render_list_director($post, $current_page_id);
+              }
 
-  while ($directors->have_posts()) {
-    $directors->the_post();
+              wp_reset_postdata();
+            }
+          ?>
+        </ul>
+      </div>
 
-    if ($directorId === $post->ID) {
-      echo '<li class="menu-active"><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
-    } else {
-      echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
-    }
-  }
+      <div class="sidebar-section">
+      	<ul>
+	        <li class="font-light-gray">New Talent</li>
+          <?php
+            $new_talent = new WP_Query(array(
+              'post_type' => 'director',
+              'orderby' => 'menu_order',
+              'order' => 'ASC',
+              'nopaging' => true,
+              'meta_key' => '_igv_is_new_talent',
+              'meta_value' => 'on',
+              'meta_compare' => 'LIKE'
+            ));
 
-  wp_reset_postdata();
-}
-?>
+            if ($new_talent->have_posts()) {
+              while ($new_talent->have_posts()) {
+                $new_talent->the_post();
+                render_list_director($post, $current_page_id);
+              }
+
+              wp_reset_postdata();
+            }
+          ?>
         </ul>
       </div>
 

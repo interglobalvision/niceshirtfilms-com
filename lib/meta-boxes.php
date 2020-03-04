@@ -138,6 +138,23 @@ function igv_cmb_metaboxes() {
     'options' => get_post_objects($director_args),
   ) ) ;
 
+  // Director Meta
+  $director_details_metabox = new_cmb2_box( array(
+    'id'         => 'director_details_metabox',
+    'title'      => __( 'Details', 'cmb' ),
+    'object_types'      => array( 'director', ), // Post type
+    'context'    => 'normal',
+    'priority'   => 'high',
+    'show_names' => true, // Show field names on the left
+  ) );
+
+  $director_details_metabox -> add_field( array(
+    'name'    => __( 'New talent?', 'cmb2' ),
+    'desc'    => __( 'If selected will show in the new talent section of the menu', 'cmb2' ),
+    'id'      => $prefix . 'is_new_talent',
+    'type'    => 'checkbox',
+  ) );
+
   // Showreel Metaboxes
   $showreel_metabox = new_cmb2_box( array(
     'id'         => 'showreel_metabox',

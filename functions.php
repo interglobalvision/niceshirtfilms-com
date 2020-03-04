@@ -194,6 +194,16 @@ function alter_query($query) {
 	remove_all_actions ( '__after_loop');
 }
 
+// Render header menu list items from director WP_Query
+
+function render_list_director($post, $current_page_id) {
+  if ($current_page_id === $post->ID) {
+    echo '<li class="menu-active"><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+  } else {
+    echo '<li><a class="js-ajax-director" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a></li>';
+  }
+}
+
 // Director name from ID
 
 function echoDirectorName($id) {
