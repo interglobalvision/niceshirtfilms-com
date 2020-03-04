@@ -28,9 +28,7 @@ if( have_posts() ) {
       <div class="col col1">
 
         <ul id="director-menu" class="font-size-smaller u-cf">
-          <li id="director-showreel-play" class="director-menu-item director-menu-item-blue u-pointer"><a href="#play-all">Play All</a></li>
           <li id="director-showreel-label" class="director-menu-item director-menu-item-blue u-pointer"><a href="#">Showreel</a></li>
-          <li id="director-menu-archive" class="director-menu-item u-pointer"><a href="#archive">Archive</a></li>
     <?php
     if (!empty($stills)) {
     ?>
