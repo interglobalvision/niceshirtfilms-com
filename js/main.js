@@ -617,32 +617,33 @@ function router( page, hash ) {
         });
       });
 
-
       inlineVimeoPlayer.close();
+
       $('.director-section').slideUp(basicAnimationSpeed);
+
       $('#director-stills').slideDown(basicAnimationSpeed);
       $('#director-menu').attr('data-active', 'stills' );
-
       $('#director-menu-stills').addClass('active');
 
     // #biography
     } else if ( hash === 'biography' ) {
-
       inlineVimeoPlayer.close();
-      $('.director-section').slideUp(basicAnimationSpeed);
+      $('#director-stills').slideUp(basicAnimationSpeed);
+
+      $('#director-showreel').slideDown(basicAnimationSpeed);
       $('#director-biography').slideDown(basicAnimationSpeed);
+
+      $(window).scrollTo($('#director-biography'), basicAnimationSpeed);
+
       $('#director-menu').attr('data-active', 'biography' );
-
       $('#director-menu-biography').addClass('active');
-
     } else {
       inlineVimeoPlayer.close();
       $('#director-menu').attr('data-active', '');
       $('.director-section').slideUp(basicAnimationSpeed);
       $('#director-showreel').slideDown(basicAnimationSpeed);
     }
-
-   }
+  }
 }
 
 // MAP EMBED

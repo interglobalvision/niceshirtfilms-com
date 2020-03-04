@@ -1013,12 +1013,10 @@ iframe {
   display: none;
 }
 #director-menu[data-active="archive"] #director-showreel-play,
-#director-menu[data-active="biography"] #director-showreel-play,
 #director-menu[data-active="stills"] #director-showreel-play {
   display: none;
 }
 #director-menu[data-active="archive"] #director-showreel-label,
-#director-menu[data-active="biography"] #director-showreel-label,
 #director-menu[data-active="stills"] #director-showreel-label {
   display: inline-block;
 }
@@ -1053,6 +1051,10 @@ iframe {
 #director-archive,
 #director-stills {
   display: none;
+}
+#director-biography {
+  padding-top: 4rem;
+  min-height: calc(100vh - 4rem);
 }
 #director-archive {
   transition: padding-top 0.6s;
