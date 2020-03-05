@@ -551,7 +551,9 @@ iframe
   color: $color-dark-text-gray
 
 #director-menu
-  padding-top: $margin-small
+  padding-top: 'calc(%s - .25rem)' % $margin-small
+  display: flex
+  justify-content: flex-end
 
   #director-showreel-label
     display: none
@@ -561,16 +563,14 @@ iframe
     #director-showreel-play
       display: none
     #director-showreel-label
-      display: inline-block
+      display: block
 
 .director-menu-item
-  width: 80px
   text-align: center
   display: block
-  float: left
   text-transform: uppercase
   background-color: $color-dark-gray
-  padding: 0em 0.4em
+  padding: .1rem .6rem
   margin-bottom: $margin-nav-spacing
   margin-right: $margin-nav-spacing
   color: $color-soft-white
@@ -743,6 +743,13 @@ iframe
   #main-content
     padding-left: $width-sidebar
 
+  #director-header
+    .col1
+      width: 50%
+      box-sizing: border-box
+      &.colpad1left
+        padding-left: $margin-small
+
   .director-archive-video
     width: 33.33%
 
@@ -770,9 +777,6 @@ iframe
   #main-content
     padding-left: 0
 
-  .colpad1left
-    padding-left: $margin-small
-
   .copy
     padding-left: $margin-small
 
@@ -781,7 +785,7 @@ iframe
       width: 50%
       box-sizing: border-box
       &.colpad1left
-        width: 33.33%
+        width: 'calc(50% - 30px - %s)' % $margin-basic
 
   .director-showreel-video
     h3
