@@ -655,6 +655,9 @@ iframe {
 .colpad1left {
   padding-left: 33.3%;
 }
+.col-half {
+  width: 50%;
+}
 #sidebar {
   width: 250px;
   position: fixed;
