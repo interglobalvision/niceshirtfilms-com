@@ -1153,6 +1153,10 @@ iframe {
 }
 #image-overlay {
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 #video-overlay,
 #image-overlay {
