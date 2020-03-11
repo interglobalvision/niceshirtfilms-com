@@ -910,4 +910,9 @@ $(document).ready(function () {
     google.maps.event.addDomListener(window, 'load', initializeMap);
   }
 
+
+  $('#search-label').on('click', function() {
+    $('#search-input').focus();
+  });
+
 });
