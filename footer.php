@@ -52,7 +52,7 @@
     <script>window.jQuery || document.write('<script src="<?php bloginfo('stylesheet_directory'); ?>/js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1dtJVKkbFoIGINO734bpSLHV4fg1mYKg"></script>
-    <script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
+    <script src="https://f.vimeocdn.com/js/froogaloop2.min.js"></script>
     <?php wp_footer(); ?>
 
     <script type="text/javascript">
