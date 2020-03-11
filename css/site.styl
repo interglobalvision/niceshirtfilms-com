@@ -517,8 +517,6 @@ iframe
     opacity: 1
   .inline-player-nav
     opacity: 1
-  #director-archive
-    padding-top: $margin-small
 
   // INLINE PLAYER
 
@@ -562,7 +560,6 @@ iframe
   #director-showreel-label
     display: none
 
-  &[data-active="archive"],
   &[data-active="stills"]
     #director-showreel-play
       display: none
@@ -593,7 +590,6 @@ iframe
   // CONTENT SECTIONS
 
 #director-biography,
-#director-archive,
 #director-stills
   display: none
 
@@ -603,32 +599,7 @@ iframe
 
   // ARCHIVE
 
-#director-archive
-  transition: padding-top $basic-animation-speed
-  a:hover
-    opacity: 1
-
-#director-archive-tags
-  padding-bottom: $margin-small
-
-.filter-tag
-  float: left
-  background-color: $color-dark-gray
-  color: $color-soft-white
-  text-transform: uppercase
-  padding: 0 0.4em
-  margin-bottom: $margin-nav-spacing
-  margin-right: $margin-nav-spacing
-
-.filter-tag-active
-  background-color: $color-blue
-
-.director-archive-video
-  width: 20%
-  transform: scale(0)
-  transition: transform $fast-animation-speed
-  &.active
-    transform: scale(1)
+.director-showreel-video
   h4
     -webkit-font-smoothing: antialiased
     font-family:"LLAkkuratProWeb-Regular"
@@ -638,7 +609,7 @@ iframe
 
   // THUMBNAILS
 
-.director-archive-video, .director-showreel-video
+.director-showreel-video
   float: left
   position: relative
   &.active
@@ -755,9 +726,6 @@ iframe
       &.colpad1left
         padding-left: $margin-small
 
-  .director-archive-video
-    width: 33.33%
-
 @media screen and (max-width: 888px)
 
   #sidebar
@@ -871,7 +839,7 @@ iframe
     .u-holder
       opacity: 1
 
-  #director-archive, #director-biography
+  #director-biography
     .col1
       display: none
     .col2
@@ -879,9 +847,6 @@ iframe
       box-sizing: border-box
       padding-left: $margin-small
       padding-right: $margin-small
-
-  .director-archive-video
-    width: 50%
 
 
   // PAGE

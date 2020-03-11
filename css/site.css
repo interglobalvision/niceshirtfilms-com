@@ -974,9 +974,6 @@ iframe {
 .cinema-mode .inline-player-nav {
   opacity: 1;
 }
-.cinema-mode #director-archive {
-  padding-top: 16px;
-}
 #inline-player-bar {
   display: none;
   opacity: 0;
@@ -1021,11 +1018,9 @@ iframe {
 #director-menu #director-showreel-label {
   display: none;
 }
-#director-menu[data-active="archive"] #director-showreel-play,
 #director-menu[data-active="stills"] #director-showreel-play {
   display: none;
 }
-#director-menu[data-active="archive"] #director-showreel-label,
 #director-menu[data-active="stills"] #director-showreel-label {
   display: block;
 }
@@ -1055,7 +1050,6 @@ iframe {
   background-color: #7fddf5;
 }
 #director-biography,
-#director-archive,
 #director-stills {
   display: none;
 }
@@ -1063,56 +1057,20 @@ iframe {
   padding-top: 4rem;
   min-height: calc(100vh - 4rem);
 }
-#director-archive {
-  transition: padding-top 0.6s;
-}
-#director-archive a:hover {
-  opacity: 1;
-}
-#director-archive-tags {
-  padding-bottom: 16px;
-}
-.filter-tag {
-  float: left;
-  background-color: #cdcbcb;
-  color: #fdfdfd;
-  text-transform: uppercase;
-  padding: 0 0.4em;
-  margin-bottom: 5px;
-  margin-right: 5px;
-}
-.filter-tag-active {
-  background-color: #00bcec;
-}
-.director-archive-video {
-  width: 20%;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  transition: -webkit-transform 0.2s;
-  transition: transform 0.2s;
-  transition: transform 0.2s, -webkit-transform 0.2s;
-}
-.director-archive-video.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.director-archive-video h4 {
+.director-showreel-video h4 {
   -webkit-font-smoothing: antialiased;
   font-family: "LLAkkuratProWeb-Regular";
 }
-.director-archive-video h4 em {
+.director-showreel-video h4 em {
   font-family: "LLAkkuratProWeb-Italic";
 }
-.director-archive-video,
 .director-showreel-video {
   float: left;
   position: relative;
 }
-.director-archive-video.active,
 .director-showreel-video.active {
   display: block;
 }
-.director-archive-video .u-holder,
 .director-showreel-video .u-holder {
   color: #fdfdfd;
   text-align: center;
@@ -1122,20 +1080,16 @@ iframe {
   left: 0;
   transition: opacity 0.6s;
 }
-.director-archive-video .u-holder:hover,
 .director-showreel-video .u-holder:hover {
   opacity: 1;
 }
-.director-archive-video .u-held,
 .director-showreel-video .u-held {
   box-sizing: border-box;
   padding: 8px;
 }
-.director-archive-video .u-fixed-ratio-content,
 .director-showreel-video .u-fixed-ratio-content {
   transition: background-color 0.6s;
 }
-.director-archive-video:hover .u-fixed-ratio-content,
 .director-showreel-video:hover .u-fixed-ratio-content {
   background-color: rgba(0,0,0,0.5);
 }
@@ -1225,9 +1179,6 @@ iframe {
   }
   #director-header .col1.colpad1left {
     padding-left: 16px;
-  }
-  .director-archive-video {
-    width: 33.33%;
   }
 }
 @media screen and (max-width: 888px) {
@@ -1332,19 +1283,14 @@ iframe {
   .director-showreel-video.col1 .u-holder {
     opacity: 1;
   }
-  #director-archive .col1,
   #director-biography .col1 {
     display: none;
   }
-  #director-archive .col2,
   #director-biography .col2 {
     width: 100%;
     box-sizing: border-box;
     padding-left: 16px;
     padding-right: 16px;
-  }
-  .director-archive-video {
-    width: 50%;
   }
   #page .row .col1 {
     display: none;
