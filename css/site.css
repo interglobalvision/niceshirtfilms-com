@@ -997,7 +997,7 @@ iframe {
   fill: #cdcbcb;
 }
 #inline-nowplaying {
-  font-size: 14px;
+  font-size: 15px;
   -webkit-font-smoothing: subpixel-antialiased;
   color: #41413f;
   padding-bottom: 8px;
@@ -1048,6 +1048,9 @@ iframe {
 }
 .director-menu-item-blue:hover {
   background-color: #7fddf5;
+}
+#director-menu-biography {
+  margin-right: 10px;
 }
 #director-biography,
 #director-stills {
