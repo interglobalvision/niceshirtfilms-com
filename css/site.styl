@@ -190,6 +190,10 @@ iframe
 .colpad1left
   padding-left: 33.3%
 
+// 2 COL FLUID
+
+.col-half
+  width: 50%
 
 // STRUCTURE
 
@@ -513,8 +517,6 @@ iframe
     opacity: 1
   .inline-player-nav
     opacity: 1
-  #director-archive
-    padding-top: $margin-small
 
   // INLINE PLAYER
 
@@ -539,7 +541,7 @@ iframe
         fill: $color-dark-gray
 
 #inline-nowplaying
-  font-size: $font-size-smaller
+  font-size: $font-size-basic
   -webkit-font-smoothing: subpixel-antialiased
   color: $color-dark-text-gray
   padding-bottom: $margin-tiny
@@ -551,27 +553,28 @@ iframe
   color: $color-dark-text-gray
 
 #director-menu
-  padding-top: $margin-small
+  padding-top: 'calc(%s - .25rem)' % $margin-small
+  display: flex
+  justify-content: flex-end
 
   #director-showreel-label
     display: none
 
-  &[data-active="archive"],
-  &[data-active="biography"],
   &[data-active="stills"]
     #director-showreel-play
       display: none
     #director-showreel-label
-      display: inline-block
+      display: block
+
+#director-name
+  text-align: center
 
 .director-menu-item
-  width: 80px
   text-align: center
   display: block
-  float: left
   text-transform: uppercase
   background-color: $color-dark-gray
-  padding: 0em 0.4em
+  padding: .1rem .6rem
   margin-bottom: $margin-nav-spacing
   margin-right: $margin-nav-spacing
   color: $color-soft-white
@@ -587,42 +590,26 @@ iframe
   &:hover
     background-color: $color-light-blue
 
+#director-menu-biography
+  margin-right: 10px
+
   // CONTENT SECTIONS
 
 #director-biography,
-#director-archive,
 #director-stills
   display: none
 
+#director-biography
+  padding-top: 4rem;
+  min-height: calc(100vh - 4rem);
+
+.director-biography-image
+  max-width: 70%
+  padding: 20px 15%
 
   // ARCHIVE
 
-#director-archive
-  transition: padding-top $basic-animation-speed
-  a:hover
-    opacity: 1
-
-#director-archive-tags
-  padding-bottom: $margin-small
-
-.filter-tag
-  float: left
-  background-color: $color-dark-gray
-  color: $color-soft-white
-  text-transform: uppercase
-  padding: 0 0.4em
-  margin-bottom: $margin-nav-spacing
-  margin-right: $margin-nav-spacing
-
-.filter-tag-active
-  background-color: $color-blue
-
-.director-archive-video
-  width: 20%
-  transform: scale(0)
-  transition: transform $fast-animation-speed
-  &.active
-    transform: scale(1)
+.director-showreel-video
   h4
     -webkit-font-smoothing: antialiased
     font-family:"LLAkkuratProWeb-Regular"
@@ -632,7 +619,7 @@ iframe
 
   // THUMBNAILS
 
-.director-archive-video, .director-showreel-video
+.director-showreel-video
   float: left
   position: relative
   &.active
@@ -668,6 +655,7 @@ iframe
 // IMAGE VIEWER
 #image-overlay
   text-align: center
+  user-select: none
 
 // VIDEO OVERLAY
 
@@ -741,8 +729,12 @@ iframe
   #main-content
     padding-left: $width-sidebar
 
-  .director-archive-video
-    width: 33.33%
+  #director-header
+    .col1
+      width: 50%
+      box-sizing: border-box
+      &.colpad1left
+        padding-left: $margin-small
 
 @media screen and (max-width: 888px)
 
@@ -768,9 +760,6 @@ iframe
   #main-content
     padding-left: 0
 
-  .colpad1left
-    padding-left: $margin-small
-
   .copy
     padding-left: $margin-small
 
@@ -779,7 +768,7 @@ iframe
       width: 50%
       box-sizing: border-box
       &.colpad1left
-        width: 33.33%
+        width: 'calc(50% - 30px - %s)' % $margin-basic
 
   .director-showreel-video
     h3
@@ -860,7 +849,7 @@ iframe
     .u-holder
       opacity: 1
 
-  #director-archive, #director-biography
+  #director-biography
     .col1
       display: none
     .col2
@@ -868,9 +857,6 @@ iframe
       box-sizing: border-box
       padding-left: $margin-small
       padding-right: $margin-small
-
-  .director-archive-video
-    width: 50%
 
 
   // PAGE
