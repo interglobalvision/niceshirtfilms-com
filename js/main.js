@@ -126,7 +126,7 @@ function postsInit() {
       });
     });
     scrollTimer = setTimeout(function () {
-      post.ScrollTo();
+      $(window).scrollTo(post, basicAnimationSpeed);
     }, basicAnimationSpeed);
   });
 
@@ -141,7 +141,7 @@ function postsInit() {
       $post.addClass('active');
 
       scrollTimer = setTimeout(function () {
-        $post.ScrollTo();
+        $(window).scrollTo($post, basicAnimationSpeed);
       }, (fastAnimationSpeed + 10));
     });
 
