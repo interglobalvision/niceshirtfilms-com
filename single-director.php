@@ -20,7 +20,7 @@ if( have_posts() ) {
     <header id="director-header" class="page-header u-cf">
 
       <div class="col col1 colpad1left">
-        <h3><?php the_title(); ?></h3>
+        <h3 id="director-name"><?php the_title(); ?></h3>
       </div>
 
       <div class="col col1">
@@ -138,9 +138,7 @@ if (!empty($stills)) {
     <section id="director-biography" class="director-section u-cf">
 
       <div class="col col1 u-force-width">
-
-        <?php the_post_thumbnail('width-500'); ?>
-
+        <?php the_post_thumbnail('width-500', array('class' => 'director-biography-image')); ?>
       </div>
 
       <div class="col col2">
