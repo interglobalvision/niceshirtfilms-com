@@ -556,6 +556,7 @@ iframe
   padding-top: 'calc(%s - .25rem)' % $margin-small
   display: flex
   justify-content: flex-end
+  flex-wrap: wrap
 
   #director-showreel-label
     display: none
@@ -746,7 +747,7 @@ iframe
   #sidebar-toggle
     width: 30px
     height: 30px
-    top: 0
+    top: -3px
     right: 0
     padding: $margin-small
     position: fixed
@@ -820,9 +821,9 @@ iframe
   #sidebar
     width: 100%
 
-  #sidebar-toggle
-    path
-      fill: $color-dark-text-gray
+//   #sidebar-toggle
+//     path
+//       fill: $color-dark-text-gray
 
 
   // POSTS
@@ -841,6 +842,15 @@ iframe
 
   #director-menu
     padding-top: 0
+    padding-right: 50px
+
+  #director-menu-biography
+    margin-right: 5px
+
+  #director-name
+    font-size: 20px
+    line-height: 1
+    text-align: left
 
   .director-showreel-video.col1
     width: 100%
@@ -850,9 +860,7 @@ iframe
       opacity: 1
 
   #director-biography
-    .col1
-      display: none
-    .col2
+    .col1, .col2
       width: 100%
       box-sizing: border-box
       padding-left: $margin-small
